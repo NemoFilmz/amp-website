@@ -17,13 +17,12 @@ export default {
         glow: '#2BD9FF',
       },
       fontFamily: {
-        // Brand kit kiu3xgz: impact (display), roboto (body), roboto-extralight (light)
-        display: ['"impact"', 'Impact', '"Haettenschweiler"', '"Arial Narrow Bold"', 'sans-serif'],
-        body: ['"roboto"', 'Roboto', '"Helvetica Neue"', 'system-ui', 'sans-serif'],
-        light: ['"roboto-extralight"', '"roboto"', 'Roboto', '"Helvetica Neue"', 'sans-serif'],
+        // Display: Anton (heavy condensed grotesk). Body: Roboto. Both via Google Fonts.
+        display: ['"Anton"', '"Arial Narrow Bold"', 'Impact', 'sans-serif'],
+        body: ['"Roboto"', '"Helvetica Neue"', 'system-ui', 'sans-serif'],
         // No monospace anywhere. `mono` maps to the brand body face so any stray
         // `font-mono` still renders in Roboto, never a typewriter font.
-        mono: ['"roboto"', 'Roboto', '"Helvetica Neue"', 'system-ui', 'sans-serif'],
+        mono: ['"Roboto"', '"Helvetica Neue"', 'system-ui', 'sans-serif'],
       },
       letterSpacing: {
         tightest: '-0.03em',
