@@ -310,7 +310,7 @@ export const OFFICES: Office[] = [
     city: 'Abu Dhabi',
     country: 'UAE',
     role: 'Government communication, energy sector projects, and strategic industrial production.',
-    email: 'abu.dhabi@actionmpro.com',
+    email: 'ayman@actionmpro.com',
     coord: '24.45°N 54.37°E',
   },
   {
@@ -487,7 +487,7 @@ export const FOOTER = {
     'projects@actionmpro.com',
     'academy@actionmpro.com',
     'careers@actionmpro.com',
-    'abu.dhabi@actionmpro.com',
+    'ayman@actionmpro.com',
     'dubai@actionmpro.com',
     'riyadh@actionmpro.com',
     'barcelona@actionmpro.com',
