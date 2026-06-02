@@ -31,10 +31,10 @@ export const HERO = {
     'For more than 15 years, we have helped decision-makers, investors, and public audiences understand complex technologies and industrial ecosystems through cinematic films, advanced 3D animation, AI production, immersive storytelling, and premium presentation experiences.',
   statement:
     'From offshore drilling platforms to next-generation aviation systems, from smart cities to cultural megaprojects, we turn complexity into clarity.',
+  // One clear primary (see the work), one secondary (start a project).
   ctas: [
-    { label: 'Explore Our Work', href: '#industries', variant: 'primary' as const },
-    { label: 'Start Your Project', href: '#contact', variant: 'outline' as const },
-    { label: 'Discover AMP Academy', href: '#academy', variant: 'ghost' as const },
+    { label: 'Explore Our Work', to: '/work', variant: 'primary' as const },
+    { label: 'Start Your Project', to: '/contact', variant: 'outline' as const },
   ],
   posterImage: '/placeholders/hero.jpg', // swap for a real still; set videoSrc for a showreel
   videoSrc: '', // swap in real AMP showreel here
@@ -473,10 +473,11 @@ export const FOOTER = {
   nav: [
     'Home',
     'About AMP',
+    'Work',
+    'Technology',
+    'AMP Academy',
     'Industries',
     'Services',
-    'Projects',
-    'AMP Academy',
     'Global Offices',
     'Careers',
     'Contact',
@@ -515,7 +516,7 @@ export const PAGES = {
     eyebrow: 'Selected Work',
     title: 'Complexity, Made Cinematic',
     intro:
-      'Industrial and government storytelling at national scale, from offshore platforms to vision films. Representative work shown below; replace with real productions.',
+      'Industrial and government storytelling at national scale, from offshore drilling platforms and refineries to national vision films and smart-city reveals.',
   },
   technology: {
     eyebrow: 'Technology & Innovation',

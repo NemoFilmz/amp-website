@@ -27,15 +27,20 @@ export function Industries() {
             key={industry.name}
             src={industry.image}
             alt={industry.name}
-            className="flex min-h-[72vh] items-end md:min-h-[80vh]"
+            className="flex min-h-[58vh] items-end md:min-h-[80vh]"
           >
+            {/* Localized scrim so text stays legible over bright imagery (sunset, sparks) */}
+            <div
+              aria-hidden
+              className="absolute inset-x-0 bottom-0 z-[1] h-2/3 bg-gradient-to-t from-base via-base/80 to-transparent"
+            />
             <Container className="relative z-10 pb-12 md:pb-20">
               <Reveal>
                 <span className="index-tag">
                   {pad(i + 1)}
                   <span className="text-muted"> / {pad(INDUSTRIES.length)}</span>
                 </span>
-                <h3 className="mt-4 font-display text-[clamp(2.6rem,7vw,6rem)] leading-[0.9] tracking-tighter text-primary">
+                <h3 className="mt-4 font-display text-[clamp(2rem,7vw,5.5rem)] leading-[0.92] tracking-tighter text-primary">
                   {industry.name}
                 </h3>
                 <p className="mt-5 max-w-xl font-light text-xl leading-relaxed text-secondary md:text-2xl">

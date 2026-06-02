@@ -7,24 +7,6 @@ import { useSmoothScroll } from './SmoothScroll'
 import { Wordmark } from './Wordmark'
 import { cn } from '../lib/util'
 
-/** Bilingual capability indicator. EN is active; full Arabic is a later phase. */
-function LangIndicator({ className }: { className?: string }) {
-  return (
-    <span
-      className={cn(
-        'flex items-center font-body text-[11px] font-medium uppercase tracking-[0.18em] text-muted',
-        className,
-      )}
-      aria-label="Language: English. Arabic coming soon."
-      title="Arabic coming soon"
-    >
-      <span className="text-primary">EN</span>
-      <span className="mx-1 text-line-strong">/</span>
-      <span>AR</span>
-    </span>
-  )
-}
-
 export function Nav() {
   const [scrolled, setScrolled] = useState(false)
   const [open, setOpen] = useState(false)
@@ -89,7 +71,6 @@ export function Nav() {
           </nav>
 
           <div className="hidden items-center gap-5 lg:flex">
-            <LangIndicator />
             <Link
               to="/contact"
               className="rounded-full border border-amp px-5 py-2.5 font-body text-[11px] font-medium uppercase tracking-[0.12em] text-amp transition-all duration-300 hover:bg-amp hover:text-base"
@@ -164,7 +145,6 @@ export function Nav() {
               >
                 Start Your Project
               </Link>
-              <LangIndicator className="mt-8 justify-center" />
             </nav>
           </motion.div>
         )}

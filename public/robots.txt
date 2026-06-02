@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://actionmpro.com/sitemap.xml

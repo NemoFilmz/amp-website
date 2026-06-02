@@ -20,6 +20,12 @@ export function ContactPage() {
 
   function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault()
+    // No backend yet: hand the inquiry to the user's mail client so the lead is never lost.
+    const subject = encodeURIComponent(`Project inquiry${name ? ` from ${name}` : ''}`)
+    const body = encodeURIComponent(
+      `Name: ${name}\nEmail: ${email}\nOrganization: ${organization}\nProject type: ${projectType}\n\n${message}`,
+    )
+    window.location.href = `mailto:${PROJECTS_EMAIL}?subject=${subject}&body=${body}`
     setSubmitted(true)
   }
 

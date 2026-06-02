@@ -7,10 +7,11 @@ import { Container } from './ui'
 const navToByLabel: Record<string, string> = {
   Home: '/',
   'About AMP': '/about',
+  Work: '/work',
+  Technology: '/technology',
+  'AMP Academy': '/academy',
   Industries: '/#industries',
   Services: '/#services',
-  Projects: '/work',
-  'AMP Academy': '/academy',
   'Global Offices': '/#global',
   Careers: '/careers',
   Contact: '/contact',

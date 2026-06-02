@@ -17,7 +17,11 @@ export function WhoWeAre() {
               <h2 className="mt-6 font-display text-[clamp(2rem,4vw,3.4rem)] uppercase leading-[0.98] tracking-tighter text-primary">
                 {WHO_WE_ARE.title}
               </h2>
-              <div aria-hidden className="mt-8 hidden h-px w-16 bg-amp lg:block" />
+              <div aria-hidden className="mt-8 h-px w-16 bg-amp" />
+              <p className="mt-8 max-w-xs font-body text-base leading-relaxed text-muted">
+                A specialized studio where cinema, engineering understanding, and AI-driven production
+                converge for executive and government-level audiences.
+              </p>
             </Reveal>
           </div>
         </div>

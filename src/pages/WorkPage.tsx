@@ -1,4 +1,5 @@
 import { useMemo, useState } from 'react'
+import { Link } from 'react-router-dom'
 import { ArrowRight, ArrowUpRight } from 'lucide-react'
 import { PageHero, Section, CinematicMedia, Eyebrow, CTAButton } from '../components/ui'
 import { Reveal, RevealGroup, RevealItem } from '../components/Reveal'
@@ -83,7 +84,7 @@ export function WorkPage() {
             Selected Productions
           </h2>
           <p className="eyebrow mt-6 text-muted">
-            Representative work. Replace with real productions.
+            A representative selection across the sectors we serve.
           </p>
         </Reveal>
 
@@ -123,7 +124,11 @@ export function WorkPage() {
         >
           {visible.map((c) => (
             <RevealItem key={`${c.title}-${c.scope}`}>
-              <article className="group relative overflow-hidden rounded-lg">
+              <Link
+                to="/contact"
+                aria-label={`Enquire about ${c.title}`}
+                className="group relative block overflow-hidden rounded-lg"
+              >
                 <CinematicMedia
                   src={c.image}
                   alt={c.title}
@@ -152,7 +157,7 @@ export function WorkPage() {
                     </p>
                   </div>
                 </CinematicMedia>
-              </article>
+              </Link>
             </RevealItem>
           ))}
         </RevealGroup>

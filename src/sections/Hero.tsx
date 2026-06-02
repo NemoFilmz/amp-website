@@ -132,7 +132,7 @@ export function Hero() {
 
           {motionItem(
             'mt-8',
-            <h1 className="font-display text-[clamp(2.6rem,7.2vw,6rem)] font-normal leading-[0.94] tracking-tighter text-balance text-primary">
+            <h1 className="font-display text-[clamp(2rem,8.5vw,6rem)] font-normal leading-[0.96] tracking-tighter text-balance text-primary">
               <Headline text={HERO.headline} />
             </h1>,
           )}
@@ -164,14 +164,14 @@ export function Hero() {
                   <Magnetic key={c.label}>
                     <CTAButton
                       variant={c.variant}
-                      href={c.href}
+                      to={c.to}
                       icon={<ArrowRight size={16} aria-hidden />}
                     >
                       {c.label}
                     </CTAButton>
                   </Magnetic>
                 ) : (
-                  <CTAButton key={c.label} variant={c.variant} href={c.href}>
+                  <CTAButton key={c.label} variant={c.variant} to={c.to}>
                     {c.label}
                   </CTAButton>
                 ),

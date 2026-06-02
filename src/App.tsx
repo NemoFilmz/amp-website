@@ -1,25 +1,41 @@
+import { lazy, Suspense, type ComponentType } from 'react'
 import { Routes, Route } from 'react-router-dom'
 import { Layout } from './components/Layout'
-import { HomePage } from './pages/HomePage'
-import { AboutPage } from './pages/AboutPage'
-import { WorkPage } from './pages/WorkPage'
-import { TechnologyPage } from './pages/TechnologyPage'
-import { AcademyPage } from './pages/AcademyPage'
-import { CareersPage } from './pages/CareersPage'
-import { ContactPage } from './pages/ContactPage'
+
+const named = <T extends string>(p: Promise<Record<T, ComponentType>>, key: T) =>
+  p.then((m) => ({ default: m[key] }))
+
+const HomePage = lazy(() => named(import('./pages/HomePage'), 'HomePage'))
+const AboutPage = lazy(() => named(import('./pages/AboutPage'), 'AboutPage'))
+const WorkPage = lazy(() => named(import('./pages/WorkPage'), 'WorkPage'))
+const TechnologyPage = lazy(() => named(import('./pages/TechnologyPage'), 'TechnologyPage'))
+const AcademyPage = lazy(() => named(import('./pages/AcademyPage'), 'AcademyPage'))
+const CareersPage = lazy(() => named(import('./pages/CareersPage'), 'CareersPage'))
+const ContactPage = lazy(() => named(import('./pages/ContactPage'), 'ContactPage'))
+
+function RouteFallback() {
+  return <div aria-hidden className="min-h-screen bg-base" />
+}
 
 export default function App() {
   return (
     <Routes>
       <Route element={<Layout />}>
-        <Route index element={<HomePage />} />
-        <Route path="about" element={<AboutPage />} />
-        <Route path="work" element={<WorkPage />} />
-        <Route path="technology" element={<TechnologyPage />} />
-        <Route path="academy" element={<AcademyPage />} />
-        <Route path="careers" element={<CareersPage />} />
-        <Route path="contact" element={<ContactPage />} />
-        <Route path="*" element={<HomePage />} />
+        <Route
+          index
+          element={
+            <Suspense fallback={<RouteFallback />}>
+              <HomePage />
+            </Suspense>
+          }
+        />
+        <Route path="about" element={<Suspense fallback={<RouteFallback />}><AboutPage /></Suspense>} />
+        <Route path="work" element={<Suspense fallback={<RouteFallback />}><WorkPage /></Suspense>} />
+        <Route path="technology" element={<Suspense fallback={<RouteFallback />}><TechnologyPage /></Suspense>} />
+        <Route path="academy" element={<Suspense fallback={<RouteFallback />}><AcademyPage /></Suspense>} />
+        <Route path="careers" element={<Suspense fallback={<RouteFallback />}><CareersPage /></Suspense>} />
+        <Route path="contact" element={<Suspense fallback={<RouteFallback />}><ContactPage /></Suspense>} />
+        <Route path="*" element={<Suspense fallback={<RouteFallback />}><HomePage /></Suspense>} />
       </Route>
     </Routes>
   )

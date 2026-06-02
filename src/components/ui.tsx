@@ -217,14 +217,23 @@ export function CinematicMedia({
       )}
       {/* navy/cyan grade wash + legibility gradient */}
       {overlay && (
-        <div
-          aria-hidden
-          className="absolute inset-0"
-          style={{
-            background:
-              'radial-gradient(120% 80% at 70% 20%, rgba(43,217,255,0.10), transparent 60%), linear-gradient(180deg, rgba(8,9,11,0.05) 0%, rgba(8,9,11,0.45) 68%, rgba(8,9,11,0.9) 100%)',
-          }}
-        />
+        <>
+          {/* navy duotone tint: unifies mismatched photo temperatures toward the brand */}
+          <div
+            aria-hidden
+            className="absolute inset-0 mix-blend-multiply"
+            style={{ background: 'linear-gradient(180deg,#16243a,#0a1018)', opacity: 0.5 }}
+          />
+          {/* cyan top glow + bottom legibility gradient */}
+          <div
+            aria-hidden
+            className="absolute inset-0"
+            style={{
+              background:
+                'radial-gradient(120% 80% at 70% 18%, rgba(43,217,255,0.12), transparent 58%), linear-gradient(180deg, rgba(8,9,11,0.05) 0%, rgba(8,9,11,0.45) 66%, rgba(8,9,11,0.92) 100%)',
+            }}
+          />
+        </>
       )}
       {children}
     </div>

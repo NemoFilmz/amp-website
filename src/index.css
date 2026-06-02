@@ -72,9 +72,10 @@
     @apply font-body text-[11px] font-medium uppercase tracking-label text-amp;
   }
 
-  /* Cinematic image grade: tint placeholder imagery toward the AMP navy/cyan world */
+  /* Cinematic image grade: desaturate + darken so mismatched photos converge
+     toward one cool, graded look (paired with the navy duotone tint overlay). */
   .cine-grade {
-    filter: saturate(1.05) contrast(1.06) brightness(0.82);
+    filter: saturate(0.78) contrast(1.08) brightness(0.78);
   }
 
   /* Fine grain/noise overlay for atmosphere. Apply to a relative parent. */
