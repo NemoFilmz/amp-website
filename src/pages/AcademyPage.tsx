@@ -3,7 +3,6 @@ import { ArrowUpRight, ArrowRight, Calendar, Hotel, Users } from 'lucide-react'
 import { PageHero, Section, Eyebrow, CTAButton, CinematicMedia } from '../components/ui'
 import { Reveal, RevealGroup, RevealItem } from '../components/Reveal'
 import { ACADEMY, PAGES } from '../data/site'
-import { pad } from '../lib/util'
 
 /* Background image per track (order matches ACADEMY.tracks). */
 const TRACK_IMG = [
@@ -57,8 +56,7 @@ export function AcademyPage() {
               >
                 <CinematicMedia src={TRACK_IMG[i]} alt={track.name} className="absolute inset-0 h-full w-full" />
                 <div className="absolute inset-0 z-10 flex flex-col justify-end p-7 md:p-8">
-                  <span className="index-tag">{pad(i + 1)}</span>
-                  <h3 className="mt-3 font-display text-2xl leading-tight tracking-tighter text-primary md:text-3xl">
+                  <h3 className="font-display text-2xl leading-tight tracking-tighter text-primary md:text-3xl">
                     {track.name}
                   </h3>
                   <p className="mt-2 max-w-md font-body text-sm leading-relaxed text-secondary">

@@ -5,7 +5,6 @@ import {
   Boxes,
   Sparkles,
   Check,
-  MapPin,
   ArrowUpRight,
   ArrowRight,
 } from 'lucide-react'
@@ -240,11 +239,6 @@ export function AboutPage() {
                   {office.country}
                 </span>
               </div>
-
-              <span className="index-tag mt-4 inline-flex items-center gap-2">
-                <MapPin size={13} aria-hidden />
-                {office.coord}
-              </span>
 
               <p className="mt-5 max-w-prose font-body leading-relaxed text-secondary">
                 {office.role}

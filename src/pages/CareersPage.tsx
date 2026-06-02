@@ -115,8 +115,7 @@ export function CareersPage() {
                   <Icon size={20} />
                 </span>
                 <div>
-                  <span className="index-tag text-muted">{String(i + 1).padStart(2, '0')}</span>
-                  <h3 className="mt-2 font-display text-xl leading-tight tracking-tighter text-primary md:text-2xl">
+                  <h3 className="font-display text-xl leading-tight tracking-tighter text-primary md:text-2xl">
                     {item}
                   </h3>
                 </div>
@@ -142,7 +141,7 @@ export function CareersPage() {
         </Reveal>
 
         <RevealGroup className="mt-12 border-b border-line">
-          {ROLES.map((role, i) => (
+          {ROLES.map((role) => (
             <RevealItem key={role.title}>
               <a
                 href={applyHref(role)}
@@ -152,14 +151,9 @@ export function CareersPage() {
                   'transition-colors duration-300 hover:bg-surface',
                 )}
               >
-                <div className="flex items-baseline gap-4">
-                  <span className="index-tag text-muted">
-                    {String(i + 1).padStart(2, '0')}
-                  </span>
-                  <h3 className="font-display text-xl leading-tight tracking-tighter text-primary transition-colors duration-300 group-hover:text-amp md:text-2xl">
-                    {role.title}
-                  </h3>
-                </div>
+                <h3 className="font-display text-xl leading-tight tracking-tighter text-primary transition-colors duration-300 group-hover:text-amp md:text-2xl">
+                  {role.title}
+                </h3>
 
                 <span className="font-body text-[11px] uppercase tracking-label text-secondary sm:justify-self-end">
                   {role.discipline}

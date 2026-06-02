@@ -1,6 +1,6 @@
 import { useState, type FormEvent } from 'react'
 import { Link } from 'react-router-dom'
-import { Check, MapPin, ArrowUpRight, Send, ArrowRight } from 'lucide-react'
+import { Check, ArrowUpRight, Send, ArrowRight } from 'lucide-react'
 import { PageHero, Section, Eyebrow, CTAButton, Magnetic } from '../components/ui'
 import { Reveal, RevealGroup, RevealItem } from '../components/Reveal'
 import { OFFICES, GENERAL_EMAILS, SERVICES, PAGES } from '../data/site'
@@ -219,11 +219,6 @@ export function ContactPage() {
                       </h3>
                       <span className="text-muted">{office.country}</span>
                     </div>
-
-                    <span className="index-tag mt-3 inline-flex items-center gap-1.5">
-                      <MapPin size={12} aria-hidden />
-                      {office.coord}
-                    </span>
 
                     <p className="mt-4 text-sm leading-relaxed text-secondary">
                       {office.role}

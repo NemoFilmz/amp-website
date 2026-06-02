@@ -1,7 +1,7 @@
 import { motion, useReducedMotion, type Variants } from 'framer-motion'
 import { ArrowRight, ChevronDown } from 'lucide-react'
 import { Container, TickLabel, CTAButton, Magnetic, CinematicBackdrop } from '../components/ui'
-import { HERO, BRAND, OFFICES } from '../data/site'
+import { HERO, BRAND } from '../data/site'
 
 const EASE = [0.16, 1, 0.3, 1] as const
 
@@ -106,11 +106,6 @@ export function Hero() {
         }}
       />
 
-      {/* Top-right coordinate detail */}
-      <div className="absolute right-6 top-28 z-10 hidden md:right-20 md:block">
-        <span className="index-tag">{OFFICES[0].coord}</span>
-      </div>
-
       {/* Content */}
       <Container className="relative z-10 py-32">
         <motion.div
@@ -122,9 +117,6 @@ export function Hero() {
           {motionItem(
             'flex flex-col gap-3 sm:flex-row sm:items-center sm:gap-6',
             <>
-              <span className="index-tag">
-                01<span className="text-muted"> / 10</span>
-              </span>
               <TickLabel>Cinematic Industrial Storytelling</TickLabel>
               <span className="eyebrow text-muted">{BRAND.years} Years</span>
             </>,

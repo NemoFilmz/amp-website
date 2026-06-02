@@ -4,7 +4,6 @@ import { ChevronDown } from 'lucide-react'
 import { Section, Eyebrow } from '../components/ui'
 import { Reveal } from '../components/Reveal'
 import { SERVICES, SERVICES_TITLE } from '../data/site'
-import { pad } from '../lib/util'
 
 const EASE = [0.16, 1, 0.3, 1] as const
 
@@ -61,11 +60,7 @@ export function Services() {
                     onClick={() => setOpen(isOpen ? null : i)}
                     className="grid w-full grid-cols-12 items-start gap-4 py-7 text-left md:gap-6"
                   >
-                    <span className="col-span-2 md:col-span-1">
-                      <span className="index-tag">{pad(i + 1)}</span>
-                    </span>
-
-                    <span className="col-span-10 md:col-span-4">
+                    <span className="col-span-11 md:col-span-5">
                       <span className="block font-display text-[clamp(1.4rem,2.2vw,2rem)] tracking-tighter text-primary">
                         {service.name}
                       </span>

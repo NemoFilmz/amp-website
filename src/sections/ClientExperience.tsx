@@ -2,7 +2,6 @@ import { Check } from 'lucide-react'
 import { Section, Eyebrow } from '../components/ui'
 import { Reveal, RevealGroup, RevealItem } from '../components/Reveal'
 import { CLIENTS } from '../data/site'
-import { pad } from '../lib/util'
 
 export function ClientExperience() {
   return (
@@ -20,10 +19,10 @@ export function ClientExperience() {
       </Reveal>
 
       <RevealGroup className="mt-6 grid grid-cols-1 gap-px bg-line sm:grid-cols-2">
-        {CLIENTS.list.map((client, i) => (
+        {CLIENTS.list.map((client) => (
           <RevealItem key={client}>
             <div className="group flex items-center gap-4 bg-base px-6 py-6 transition-colors duration-300 hover:bg-elevated">
-              <span className="index-tag shrink-0">{pad(i + 1)}</span>
+              <span aria-hidden className="h-1.5 w-1.5 shrink-0 rounded-full bg-amp" />
               <span className="font-display text-lg tracking-tighter text-primary transition-colors duration-300 group-hover:text-amp md:text-xl">
                 {client}
               </span>

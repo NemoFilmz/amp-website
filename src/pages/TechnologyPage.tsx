@@ -95,9 +95,6 @@ export function TechnologyPage() {
                 >
                   <Icon size={20} />
                 </span>
-                <span className="index-tag text-muted">
-                  {String(i + 1).padStart(2, '0')}
-                </span>
                 <h3 className="font-display text-lg leading-tight tracking-tighter text-primary">
                   {item}
                 </h3>

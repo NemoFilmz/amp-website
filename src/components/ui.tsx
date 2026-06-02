@@ -6,7 +6,7 @@ import {
 } from 'react'
 import { motion, useMotionValue, useSpring, useReducedMotion } from 'framer-motion'
 import { Link } from 'react-router-dom'
-import { cn, pad } from '../lib/util'
+import { cn } from '../lib/util'
 
 /* ------------------------------------------------------------------ */
 /* Section shell                                                       */
@@ -56,24 +56,17 @@ export function Container({
 /* ------------------------------------------------------------------ */
 
 export function Eyebrow({
-  index,
-  total,
   children,
   className,
 }: {
+  /** Accepted for backwards compatibility; no longer rendered. */
   index?: number
   total?: number
   children: ReactNode
   className?: string
 }) {
   return (
-    <div className={cn('flex items-center gap-3', className)}>
-      {index !== undefined && (
-        <span className="index-tag">
-          {pad(index)}
-          {total !== undefined && <span className="text-muted"> / {pad(total)}</span>}
-        </span>
-      )}
+    <div className={cn('flex items-center', className)}>
       <span className="eyebrow">{children}</span>
     </div>
   )

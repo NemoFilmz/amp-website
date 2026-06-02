@@ -1,7 +1,6 @@
 import { Container, Eyebrow, CinematicMedia } from '../components/ui'
 import { Reveal } from '../components/Reveal'
 import { INDUSTRIES, INDUSTRIES_TITLE } from '../data/site'
-import { pad } from '../lib/util'
 
 /**
  * Simple, cinematic industry panels: a full-bleed graded image with the
@@ -22,7 +21,7 @@ export function Industries() {
       </Container>
 
       <div className="flex flex-col">
-        {INDUSTRIES.map((industry, i) => (
+        {INDUSTRIES.map((industry) => (
           <CinematicMedia
             key={industry.name}
             src={industry.image}
@@ -36,11 +35,7 @@ export function Industries() {
             />
             <Container className="relative z-10 pb-12 md:pb-20">
               <Reveal>
-                <span className="index-tag">
-                  {pad(i + 1)}
-                  <span className="text-muted"> / {pad(INDUSTRIES.length)}</span>
-                </span>
-                <h3 className="mt-4 font-display text-[clamp(2rem,7vw,5.5rem)] leading-[0.92] tracking-tighter text-primary">
+                <h3 className="font-display text-[clamp(2rem,7vw,5.5rem)] leading-[0.92] tracking-tighter text-primary">
                   {industry.name}
                 </h3>
                 <p className="mt-5 max-w-xl font-light text-xl leading-relaxed text-secondary md:text-2xl">

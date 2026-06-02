@@ -1,6 +1,6 @@
 import { Section, Eyebrow } from '../components/ui'
 import { Reveal, RevealGroup, RevealItem } from '../components/Reveal'
-import { Globe, MapPin, ArrowUpRight } from 'lucide-react'
+import { Globe, ArrowUpRight } from 'lucide-react'
 import { GLOBAL_INTRO, OFFICES, GENERAL_EMAILS } from '../data/site'
 
 export function GlobalPresence() {
@@ -34,16 +34,10 @@ export function GlobalPresence() {
         {OFFICES.map((office) => (
           <RevealItem key={office.city}>
             <article className="group relative h-full rounded-lg border border-line bg-surface p-8 transition-colors duration-300 hover:border-line-strong">
-              <div className="flex items-start justify-between gap-4">
-                <h3 className="font-display text-[clamp(1.5rem,2.6vw,2.2rem)] leading-none tracking-tighter text-primary">
-                  {office.city}
-                  <span className="ml-2 text-muted">{office.country}</span>
-                </h3>
-                <span className="index-tag inline-flex shrink-0 items-center gap-1.5 whitespace-nowrap pt-1">
-                  <MapPin aria-hidden size={12} className="text-amp" />
-                  {office.coord}
-                </span>
-              </div>
+              <h3 className="font-display text-[clamp(1.5rem,2.6vw,2.2rem)] leading-none tracking-tighter text-primary">
+                {office.city}
+                <span className="ml-2 text-muted">{office.country}</span>
+              </h3>
 
               <p className="mt-4 font-body leading-relaxed text-secondary">
                 {office.role}
