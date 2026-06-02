@@ -1,0 +1,116 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+  --amp: #f9c00c;
+  --glow: #2bd9ff;
+}
+
+@layer base {
+  * {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-base text-primary font-body antialiased;
+    margin: 0;
+    overflow-x: hidden;
+  }
+
+  /* Lenis controls scroll; disable native smooth when active */
+  .lenis.lenis-smooth {
+    scroll-behavior: auto !important;
+  }
+  .lenis.lenis-stopped {
+    overflow: hidden;
+  }
+
+  ::selection {
+    background: var(--amp);
+    color: #08090b;
+  }
+
+  /* Refined dark scrollbar */
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #08090b;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #1b1f26;
+    border-radius: 999px;
+    border: 2px solid #08090b;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #2a2f38;
+  }
+
+  :focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 2px #08090b, 0 0 0 4px var(--amp);
+    border-radius: 2px;
+  }
+}
+
+@layer components {
+  /* Technical micro-label, set in the wide brand face (never monospace) */
+  .eyebrow {
+    @apply font-body text-[11px] font-medium uppercase tracking-label text-muted;
+  }
+
+  /* Section index counter (e.g. 03 / 10) */
+  .index-tag {
+    @apply font-body text-[11px] font-medium uppercase tracking-label text-amp;
+  }
+
+  /* Cinematic image grade: tint placeholder imagery toward the AMP navy/cyan world */
+  .cine-grade {
+    filter: saturate(1.05) contrast(1.06) brightness(0.82);
+  }
+
+  /* Fine grain/noise overlay for atmosphere. Apply to a relative parent. */
+  .grain::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.045;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    mix-blend-mode: overlay;
+    z-index: 1;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  .text-pretty {
+    text-wrap: pretty;
+  }
+  /* Mask that fades content into the obsidian base at the bottom */
+  .fade-bottom {
+    -webkit-mask-image: linear-gradient(to bottom, black 55%, transparent 100%);
+    mask-image: linear-gradient(to bottom, black 55%, transparent 100%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
