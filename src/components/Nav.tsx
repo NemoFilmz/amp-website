@@ -43,7 +43,7 @@ export function Nav() {
 
   const linkClass = ({ isActive }: { isActive: boolean }) =>
     cn(
-      'font-body text-[13px] font-medium uppercase tracking-[0.12em] transition-colors',
+      'font-body text-[14px] font-medium uppercase tracking-[0.12em] transition-colors',
       isActive ? 'text-amp' : 'text-secondary hover:text-primary',
     )
 
@@ -57,7 +57,7 @@ export function Nav() {
             : 'border-b border-transparent bg-transparent',
         )}
       >
-        <div className="mx-auto flex h-[72px] max-w-content items-center justify-between px-6 md:px-12 lg:px-20">
+        <div className="mx-auto flex h-[84px] max-w-content items-center justify-between px-6 md:px-12 lg:px-20">
           <Link to="/" onClick={homeClick} className="shrink-0" aria-label="Action Media Production, home">
             <Wordmark />
           </Link>
@@ -73,7 +73,7 @@ export function Nav() {
           <div className="hidden items-center gap-5 lg:flex">
             <Link
               to="/contact"
-              className="rounded-full border border-amp px-5 py-2.5 font-body text-[13px] font-medium uppercase tracking-[0.12em] text-amp transition-all duration-300 hover:bg-amp hover:text-base"
+              className="rounded-full border border-amp px-5 py-3 font-body text-[14px] font-medium uppercase tracking-[0.12em] text-amp transition-all duration-300 hover:bg-amp hover:text-base"
             >
               Start Your Project
             </Link>
@@ -103,7 +103,7 @@ export function Nav() {
             aria-label="Site menu"
             className="fixed inset-0 z-[60] flex flex-col bg-base lg:hidden"
           >
-            <div className="flex h-[72px] items-center justify-between px-6">
+            <div className="flex h-[84px] items-center justify-between px-6">
               <Link to="/" onClick={() => setOpen(false)}>
                 <Wordmark />
               </Link>

@@ -68,7 +68,7 @@ function RouteManager() {
 
   useEffect(() => {
     if (hash) {
-      const id = window.setTimeout(() => scrollTo(hash, { offset: -80 }), 80)
+      const id = window.setTimeout(() => scrollTo(hash, { offset: -96 }), 80)
       return () => window.clearTimeout(id)
     }
     scrollTo(0, { immediate: true })

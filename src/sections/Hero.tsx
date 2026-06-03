@@ -50,7 +50,7 @@ export function Hero() {
     )
 
   return (
-    <section className="relative flex min-h-screen items-start overflow-hidden grain">
+    <section className="relative flex min-h-[82vh] items-start overflow-hidden grain">
       {/* Full-bleed background: procedural backdrop as the base, a graded poster
           image on top, swappable for a real showreel video when HERO.videoSrc is set.
           The image hides itself on error so the backdrop always remains. */}
@@ -110,7 +110,7 @@ export function Hero() {
 
       {/* Content. No vertical padding: min-h-screen + items-center already centers it,
           so the whole block (through the CTAs) fits within one laptop screen. */}
-      <Container className="relative z-10 pt-32 pb-20 md:pt-40">
+      <Container className="relative z-10 pt-36 pb-20 md:pt-44">
         <motion.div
           className="max-w-5xl"
           variants={reduce ? undefined : containerVariants}
