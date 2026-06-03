@@ -68,6 +68,10 @@ export type Industry = {
   blurb: string
   items: string[]
   image: string
+  /** Optional scroll-scrubbed video (scroll position drives playback). */
+  video?: string
+  /** Poster/first frame for the scroll video. */
+  poster?: string
 }
 
 export const INDUSTRIES_TITLE = 'Specialized Expertise Across Critical Industries'
@@ -104,6 +108,8 @@ export const INDUSTRIES: Industry[] = [
       'HSE awareness campaigns',
     ],
     image: '/placeholders/oilgas.jpg',
+    video: '/video/oilgas-scroll.mp4',
+    poster: '/video/oilgas-poster.jpg',
   },
   {
     name: 'Energy & Utilities',
