@@ -139,6 +139,8 @@ export const INDUSTRIES: Industry[] = [
       'Safety and training visuals',
     ],
     image: '/placeholders/aviation.jpg',
+    video: '/video/aviation-scroll.mp4',
+    poster: '/video/aviation-poster.jpg',
   },
   {
     name: 'Heavy Industries',
