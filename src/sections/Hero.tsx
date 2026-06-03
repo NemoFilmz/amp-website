@@ -106,8 +106,9 @@ export function Hero() {
         }}
       />
 
-      {/* Content */}
-      <Container className="relative z-10 py-32">
+      {/* Content. No vertical padding: min-h-screen + items-center already centers it,
+          so the whole block (through the CTAs) fits within one laptop screen. */}
+      <Container className="relative z-10 py-20 md:py-16">
         <motion.div
           className="max-w-5xl"
           variants={reduce ? undefined : containerVariants}
@@ -123,33 +124,33 @@ export function Hero() {
           )}
 
           {motionItem(
-            'mt-8',
-            <h1 className="font-display text-[clamp(2rem,8.5vw,6rem)] font-normal leading-[0.96] tracking-tighter text-balance text-primary">
+            'mt-6',
+            <h1 className="font-display text-[clamp(1.9rem,6.2vw,4.75rem)] font-normal leading-[0.98] tracking-tighter text-balance text-primary">
               <Headline text={HERO.headline} />
             </h1>,
           )}
 
           {motionItem(
-            'mt-8',
-            <p className="max-w-2xl font-body text-lg text-secondary md:text-xl">
+            'mt-6',
+            <p className="max-w-2xl font-body text-base text-secondary md:text-lg">
               {HERO.subheadline}
             </p>,
           )}
 
           {motionItem(
-            'mt-5',
-            <p className="max-w-2xl font-body text-base text-muted">{HERO.paragraph}</p>,
+            'mt-4',
+            <p className="max-w-2xl font-body text-sm text-muted md:text-base">{HERO.paragraph}</p>,
           )}
 
           {motionItem(
-            'mt-8',
-            <p className="max-w-3xl border-l-2 border-amp pl-5 font-light text-lg text-primary/90 md:text-xl">
+            'mt-6',
+            <p className="max-w-3xl border-l-2 border-amp pl-5 font-light text-base text-primary/90 md:text-lg">
               {HERO.statement}
             </p>,
           )}
 
           {motionItem(
-            'mt-10 flex flex-wrap items-center gap-3',
+            'mt-8 flex flex-wrap items-center gap-3',
             <>
               {HERO.ctas.map((c) =>
                 c.variant === 'primary' ? (
