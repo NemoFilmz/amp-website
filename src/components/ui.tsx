@@ -55,21 +55,16 @@ export function Container({
 /* Labels                                                              */
 /* ------------------------------------------------------------------ */
 
-export function Eyebrow({
-  children,
-  className,
-}: {
-  /** Accepted for backwards compatibility; no longer rendered. */
+export function Eyebrow(_props: {
+  /** All accepted for backwards compatibility; the eyebrow no longer renders. */
   index?: number
   total?: number
   children: ReactNode
   className?: string
 }) {
-  return (
-    <div className={cn('flex items-center', className)}>
-      <span className="eyebrow">{children}</span>
-    </div>
-  )
+  // Section/page "eyebrow" toppers (e.g. "Who We Are", "Industries We Serve")
+  // are intentionally not rendered.
+  return null
 }
 
 /** A short label with a leading 18px AMP-yellow tick mark. */

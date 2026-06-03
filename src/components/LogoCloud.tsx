@@ -57,15 +57,19 @@ export function LogoCloud({ items, columns = 4, className, ...props }: LogoCloud
         className="pointer-events-none absolute -bottom-px left-1/2 w-screen -translate-x-1/2 border-b border-line"
       />
 
-      {/* Brand accent: AMP-yellow half-rectangles centred on the grid's left and
-          right edges (half sits over the edge, reading as a half rectangle). */}
+      {/* Brand accent: a thin AMP-yellow open bracket (half rectangle) framing the
+          outer column on each side. Left wraps the ADNOC / ADWEA cells, right
+          wraps the Abu Dhabi Airports / Sky News cells; the inner side stays open
+          and the arms reach in toward the logos. */}
       <div
         aria-hidden
-        className="pointer-events-none absolute left-0 top-1/2 z-10 h-24 w-4 -translate-x-1/2 -translate-y-1/2 bg-amp"
+        style={{ width: `${(100 / columns) * 0.78}%` }}
+        className="pointer-events-none absolute inset-y-0 left-0 z-10 border-y-[1.5px] border-l-[1.5px] border-amp"
       />
       <div
         aria-hidden
-        className="pointer-events-none absolute right-0 top-1/2 z-10 h-24 w-4 -translate-y-1/2 translate-x-1/2 bg-amp"
+        style={{ width: `${(100 / columns) * 0.78}%` }}
+        className="pointer-events-none absolute inset-y-0 right-0 z-10 border-y-[1.5px] border-r-[1.5px] border-amp"
       />
     </div>
   )
