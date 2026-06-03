@@ -150,6 +150,24 @@ export const INDUSTRIES: Industry[] = [
   },
 ]
 
+/* ---------- 3b. WHO WE SERVE (logo cloud) ----------
+   Honest organisation-type wordmarks (no invented client names or logos). Each
+   item can carry an image `src` later to swap a real client/partner logo in. */
+export const LOGO_CLOUD = {
+  eyebrow: 'Who We Serve',
+  heading: 'Built for the organizations that move decisions.',
+  items: [
+    { label: 'Government Entities' },
+    { label: 'Ministries' },
+    { label: 'National Oil Companies' },
+    { label: 'Energy Leaders' },
+    { label: 'Airlines' },
+    { label: 'Infrastructure Developers' },
+    { label: 'Industrial Operators' },
+    { label: 'Smart City Developers' },
+  ] as { label: string; src?: string }[],
+}
+
 /* ---------- 4. SERVICES ---------- */
 export type Service = {
   name: string

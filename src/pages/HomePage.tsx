@@ -1,6 +1,7 @@
 import { Hero } from '../sections/Hero'
 import { WhoWeAre } from '../sections/WhoWeAre'
 import { Industries } from '../sections/Industries'
+import { ClientLogos } from '../sections/ClientLogos'
 import { Services } from '../sections/Services'
 import { WhyAmp } from '../sections/WhyAmp'
 import { GlobalPresence } from '../sections/GlobalPresence'
@@ -15,6 +16,7 @@ export function HomePage() {
       <Hero />
       <WhoWeAre />
       <Industries />
+      <ClientLogos />
       <Services />
       <WhyAmp />
       <GlobalPresence />
