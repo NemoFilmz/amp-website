@@ -50,7 +50,7 @@ export function Hero() {
     )
 
   return (
-    <section className="relative flex min-h-[58vh] items-start overflow-hidden grain">
+    <section className="relative flex min-h-[60vh] items-center overflow-hidden grain pt-[84px]">
       {/* Full-bleed background: procedural backdrop as the base, a graded poster
           image on top, swappable for a real showreel video when HERO.videoSrc is set.
           The image hides itself on error so the backdrop always remains. */}
@@ -108,9 +108,11 @@ export function Hero() {
         }}
       />
 
-      {/* Content. No vertical padding: min-h-screen + items-center already centers it,
-          so the whole block (through the CTAs) fits within one laptop screen. */}
-      <Container className="relative z-10 pt-36 pb-20 md:pt-44">
+      {/* Content. The section reserves the fixed nav's height (pt-[84px]) and uses
+          items-center; with no internal vertical padding here, the section's spare
+          min-height is split evenly above and below this block, so the gap from the
+          nav equals the gap to the section's bottom edge. */}
+      <Container className="relative z-10">
         <motion.div
           className="max-w-5xl"
           variants={reduce ? undefined : containerVariants}

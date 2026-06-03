@@ -37,7 +37,7 @@ export function WhoWeAre() {
                 {WHO_WE_ARE.title}
               </h2>
               <div aria-hidden className="mt-8 h-px w-16 bg-amp" />
-              <p className="mt-8 max-w-xs font-body text-base leading-relaxed text-secondary">
+              <p className="mt-8 max-w-xs font-body text-lg leading-relaxed text-secondary">
                 A specialized studio where cinema, engineering understanding, and AI-driven production
                 converge for executive and government-level audiences.
               </p>
