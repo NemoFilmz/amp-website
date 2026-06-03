@@ -180,8 +180,8 @@ export function WorkPage() {
               Bring your most complex story to the screen
             </h2>
             <p className="mx-auto mt-6 max-w-2xl font-body text-lg leading-relaxed text-secondary">
-              From offshore platforms to national vision films, our team turns operational
-              complexity into cinematic clarity built for executive audiences.
+              From offshore platforms to national vision films, we make the most ambitious
+              projects impossible to overlook.
             </p>
             <div className="mt-10 flex justify-center">
               <CTAButton to="/contact" icon={<ArrowRight size={16} />}>

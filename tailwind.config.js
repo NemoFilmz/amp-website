@@ -17,12 +17,12 @@ export default {
         glow: '#2BD9FF',
       },
       fontFamily: {
-        // Display: Anton (heavy condensed grotesk). Body: Roboto. Both via Google Fonts.
+        // Display: Anton (Google Fonts). Body: Industry (Adobe Fonts kit olx4mzh).
         display: ['"Anton"', '"Arial Narrow Bold"', 'Impact', 'sans-serif'],
-        body: ['"Roboto"', '"Helvetica Neue"', 'system-ui', 'sans-serif'],
+        body: ['"industry"', '"Helvetica Neue"', 'system-ui', 'sans-serif'],
         // No monospace anywhere. `mono` maps to the brand body face so any stray
-        // `font-mono` still renders in Roboto, never a typewriter font.
-        mono: ['"Roboto"', '"Helvetica Neue"', 'system-ui', 'sans-serif'],
+        // `font-mono` still renders in Industry, never a typewriter font.
+        mono: ['"industry"', '"Helvetica Neue"', 'system-ui', 'sans-serif'],
       },
       letterSpacing: {
         tightest: '-0.03em',

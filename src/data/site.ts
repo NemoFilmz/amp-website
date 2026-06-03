@@ -451,7 +451,7 @@ export const CLIENTS = {
     'Our productions are designed to communicate at the highest executive and international levels.',
   // Trust signals, grounded entirely in the brief's own language (no invented clients/stats).
   trust: [
-    'Communication at the highest executive and international levels',
+    'Fifteen years across national and industrial programs',
     'Films developed for ministries, authorities, and national projects',
     'Built to inform strategic, investment, and decision-making conversations',
   ],
@@ -540,6 +540,6 @@ export const PAGES = {
     eyebrow: 'Contact & Consultation',
     title: "Let's Create Cinematic Impact",
     intro:
-      'Reach our regional studios, or start a project brief with our team. We communicate at the highest executive and international levels.',
+      'Reach our regional studios, or start a project brief with our team.',
   },
 } as const

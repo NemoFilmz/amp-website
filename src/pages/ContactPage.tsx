@@ -272,7 +272,7 @@ export function ContactPage() {
             </h2>
             <p className="mx-auto mt-6 max-w-2xl font-body text-lg leading-relaxed text-secondary">
               From national initiatives to billion-dollar projects, our team is
-              ready to help you transform complexity into clarity.
+              ready to bring your vision to the people who decide.
             </p>
             <div className="mt-9 flex flex-wrap justify-center gap-3">
               <Magnetic>
