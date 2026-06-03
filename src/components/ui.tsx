@@ -291,7 +291,7 @@ const variantClasses: Record<Variant, string> = {
 }
 
 const baseBtn =
-  'group inline-flex items-center justify-center gap-2.5 rounded-full px-7 py-3.5 text-[13px] font-medium uppercase tracking-[0.08em] transition-all duration-300'
+  'group inline-flex items-center justify-center gap-2.5 rounded-full px-7 py-3.5 text-[14px] font-medium uppercase tracking-[0.08em] transition-all duration-300'
 
 export function CTAButton({
   children,

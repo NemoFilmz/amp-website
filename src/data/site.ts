@@ -24,9 +24,9 @@ export const NAV_LINKS = [
 
 /* ---------- 1. HERO ---------- */
 export const HERO = {
-  headline: 'We Transform Complex Industries Into Cinematic Visual Experiences',
+  headline: 'Visuals that move decisions.',
   subheadline:
-    'Action Media Production (AMP) specializes in high-end visual storytelling for government entities, mega projects, energy, oil & gas, aviation, culture, infrastructure, and heavy industries.',
+    'We transform complex government and industrial concepts into visual experiences.',
   paragraph:
     'For more than 15 years, we have helped decision-makers, investors, and public audiences understand complex technologies and industrial ecosystems through cinematic films, advanced 3D animation, AI production, immersive storytelling, and premium presentation experiences.',
   statement:

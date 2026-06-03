@@ -123,7 +123,7 @@ export function AcademyPage() {
               </CTAButton>
               <a
                 href="mailto:academy@actionmpro.com"
-                className="inline-flex items-center justify-center gap-2.5 rounded-full border border-line-strong px-7 py-3.5 text-[13px] font-medium uppercase tracking-[0.08em] text-primary transition-all duration-300 hover:border-amp hover:text-amp"
+                className="inline-flex items-center justify-center gap-2.5 rounded-full border border-line-strong px-7 py-3.5 text-[14px] font-medium uppercase tracking-[0.08em] text-primary transition-all duration-300 hover:border-amp hover:text-amp"
               >
                 academy@actionmpro.com
               </a>

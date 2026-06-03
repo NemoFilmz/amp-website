@@ -176,7 +176,7 @@ export function ContactPage() {
                     <div className="md:col-span-2">
                       <button
                         type="submit"
-                        className="group inline-flex items-center justify-center gap-2.5 rounded-full bg-amp px-7 py-3.5 text-[13px] font-medium uppercase tracking-[0.08em] text-base transition hover:shadow-amp active:scale-[0.98]"
+                        className="group inline-flex items-center justify-center gap-2.5 rounded-full bg-amp px-7 py-3.5 text-[14px] font-medium uppercase tracking-[0.08em] text-base transition hover:shadow-amp active:scale-[0.98]"
                       >
                         <span>Send Inquiry</span>
                         <Send

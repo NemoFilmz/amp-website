@@ -159,7 +159,7 @@ export function CareersPage() {
                   {role.discipline}
                 </span>
 
-                <span className="inline-flex items-center gap-2 font-body text-[13px] uppercase tracking-label text-amp sm:justify-self-end">
+                <span className="inline-flex items-center gap-2 font-body text-[14px] uppercase tracking-label text-amp sm:justify-self-end">
                   Apply
                   <ArrowUpRight
                     size={16}

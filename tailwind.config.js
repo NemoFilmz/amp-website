@@ -30,7 +30,9 @@ export default {
         label: '0.22em',
       },
       maxWidth: {
-        content: '1440px',
+        // Wide enough to fill larger laptops (e.g. 15" Air on "More Space" = 1710 logical)
+        // without leaving big side margins. Only affects viewports wider than this.
+        content: '1680px',
         prose: '68ch',
       },
       boxShadow: {

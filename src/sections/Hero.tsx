@@ -1,7 +1,7 @@
 import { motion, useReducedMotion, type Variants } from 'framer-motion'
 import { ArrowRight, ChevronDown } from 'lucide-react'
-import { Container, TickLabel, CTAButton, Magnetic, CinematicBackdrop } from '../components/ui'
-import { HERO, BRAND } from '../data/site'
+import { Container, CTAButton, Magnetic, CinematicBackdrop } from '../components/ui'
+import { HERO } from '../data/site'
 
 const EASE = [0.16, 1, 0.3, 1] as const
 
@@ -15,19 +15,21 @@ const itemVariants: Variants = {
   show: { opacity: 1, y: 0, transition: { duration: 0.9, ease: EASE } },
 }
 
+const HEADLINE_ACCENT = 'decisions'
+
 /**
- * Renders the headline with the word "Cinematic" emphasised in AMP yellow,
+ * Renders the headline with the key word emphasised in AMP yellow,
  * splitting on that exact token so all surrounding copy stays verbatim.
  */
 function Headline({ text }: { text: string }) {
-  const parts = text.split('Cinematic')
+  const parts = text.split(HEADLINE_ACCENT)
   if (parts.length === 1) return <>{text}</>
   return (
     <>
       {parts.map((part, i) => (
         <span key={i}>
           {part}
-          {i < parts.length - 1 && <span className="text-amp">Cinematic</span>}
+          {i < parts.length - 1 && <span className="text-amp">{HEADLINE_ACCENT}</span>}
         </span>
       ))}
     </>
@@ -116,16 +118,8 @@ export function Hero() {
           animate={reduce ? undefined : 'show'}
         >
           {motionItem(
-            'flex flex-col gap-3 sm:flex-row sm:items-center sm:gap-6',
-            <>
-              <TickLabel>Cinematic Industrial Storytelling</TickLabel>
-              <span className="eyebrow text-muted">{BRAND.years} Years</span>
-            </>,
-          )}
-
-          {motionItem(
-            'mt-6',
-            <h1 className="font-display text-[clamp(1.9rem,6.2vw,4.75rem)] font-normal leading-[0.98] tracking-tighter text-balance text-primary">
+            '',
+            <h1 className="font-display text-[clamp(2.2rem,6.5vw,5.25rem)] font-normal leading-[0.98] tracking-tighter text-balance text-primary">
               <Headline text={HERO.headline} />
             </h1>,
           )}
