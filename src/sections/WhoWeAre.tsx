@@ -1,12 +1,20 @@
 import { CircleDot } from 'lucide-react'
-import { Section, Eyebrow } from '../components/ui'
+import { Section, Container, Eyebrow } from '../components/ui'
+import { BackgroundPaths } from '../components/BackgroundPaths'
 import { Reveal, RevealGroup, RevealItem } from '../components/Reveal'
 import { WHO_WE_ARE } from '../data/site'
 
 export function WhoWeAre() {
   return (
-    <Section id="about" divider className="py-24 md:py-32">
-      <div className="grid grid-cols-1 gap-12 lg:grid-cols-12">
+    <Section
+      id="about"
+      divider
+      container={false}
+      className="relative overflow-hidden py-24 md:py-32"
+    >
+      <BackgroundPaths />
+      <Container className="relative z-10">
+        <div className="grid grid-cols-1 gap-12 lg:grid-cols-12">
         {/* Left: eyebrow + sticky headline */}
         <div className="lg:col-span-5">
           <div className="lg:sticky lg:top-28">
@@ -71,7 +79,8 @@ export function WhoWeAre() {
             </p>
           </Reveal>
         </div>
-      </div>
+        </div>
+      </Container>
     </Section>
   )
 }

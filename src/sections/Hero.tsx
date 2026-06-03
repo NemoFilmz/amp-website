@@ -1,5 +1,5 @@
 import { motion, useReducedMotion, type Variants } from 'framer-motion'
-import { ArrowRight, ChevronDown } from 'lucide-react'
+import { ArrowRight } from 'lucide-react'
 import { Container, CTAButton, Magnetic, CinematicBackdrop } from '../components/ui'
 import { HERO } from '../data/site'
 
@@ -50,7 +50,7 @@ export function Hero() {
     )
 
   return (
-    <section className="relative flex min-h-[82vh] items-start overflow-hidden grain">
+    <section className="relative flex min-h-[58vh] items-start overflow-hidden grain">
       {/* Full-bleed background: procedural backdrop as the base, a graded poster
           image on top, swappable for a real showreel video when HERO.videoSrc is set.
           The image hides itself on error so the backdrop always remains. */}
@@ -167,12 +167,6 @@ export function Hero() {
           )}
         </motion.div>
       </Container>
-
-      {/* Scroll cue */}
-      <div className="absolute bottom-8 left-1/2 z-10 flex -translate-x-1/2 flex-col items-center gap-2">
-        <span className="eyebrow">Scroll</span>
-        <ChevronDown size={16} aria-hidden className="animate-scroll-cue text-muted" />
-      </div>
     </section>
   )
 }
