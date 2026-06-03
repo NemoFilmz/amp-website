@@ -43,7 +43,7 @@ export const HERO = {
 /* ---------- 2. WHO WE ARE ---------- */
 export const WHO_WE_ARE = {
   title: 'A New Generation of Industrial Storytelling',
-  lead: 'AMP is not a traditional production company.',
+  lead: 'Our work speaks for itself.',
   body: [
     'We are a specialized visual communication studio built for governments, industrial leaders, energy companies, airlines, infrastructure developers, and innovation-driven organizations.',
     'Our strength lies in simplifying highly technical, operational, and industrial subjects into emotionally engaging visual experiences that inspire awareness, confidence, investment, and strategic decision-making.',
