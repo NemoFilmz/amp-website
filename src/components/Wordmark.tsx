@@ -13,7 +13,7 @@ export function Wordmark({
 }) {
   return (
     <span className={cn('inline-flex flex-col leading-none', className)} aria-label="Action Media Production">
-      <span className="font-display font-bold tracking-tighter text-[1.3rem] md:text-[1.4rem]">
+      <span className="font-display font-bold tracking-tighter text-[1.6rem] md:text-[1.8rem]">
         <span className="text-primary">ACTI</span>
         <span className="text-amp">ON</span>
         <span className="text-primary"> MEDIA</span>

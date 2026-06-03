@@ -33,16 +33,38 @@ function FloatingPaths({ position }: { position: number }) {
             stroke="currentColor"
             strokeWidth={path.width}
             strokeOpacity={0.1 + (i % 14) * 0.025}
-            initial={{ pathLength: 0.3, opacity: 0.6 }}
+            initial={
+              reduce
+                ? { pathLength: 1, opacity: 0.55 }
+                : { pathLength: 0.7, pathSpacing: 0.3, pathOffset: 0, opacity: 0.5 }
+            }
             animate={
               reduce
-                ? { pathLength: 1, opacity: 0.6 }
-                : { pathLength: 1, opacity: [0.35, 0.7, 0.35], pathOffset: [0, 1, 0] }
+                ? { pathLength: 1, opacity: 0.55 }
+                : { pathOffset: [0, 1], opacity: [0.3, 0.6, 0.3] }
             }
+            // Seamless loop: pathLength + pathSpacing = 1, so one full path-length
+            // shift (pathOffset 0 -> 1) equals exactly one dash period and wraps
+            // invisibly. Flow is one-directional (no ping-pong) at a constant linear
+            // rate. Each path is phase-shifted with a negative delay, and the opacity
+            // "breathing" runs on a different period, so the field never visibly repeats.
             transition={
               reduce
                 ? undefined
-                : { duration: 18 + (i % 10) * 2, repeat: Infinity, ease: 'linear' }
+                : {
+                    pathOffset: {
+                      duration: 22 + (i % 11) * 3,
+                      repeat: Infinity,
+                      ease: 'linear',
+                      delay: -((i * 2.3) % 22),
+                    },
+                    opacity: {
+                      duration: 9 + (i % 6) * 2,
+                      repeat: Infinity,
+                      ease: 'easeInOut',
+                      delay: -((i * 1.7) % 9),
+                    },
+                  }
             }
           />
         ))}
