@@ -22,7 +22,7 @@ export function ClientLogos() {
 
       <Reveal delay={0.05}>
         <div className="mx-auto mt-12 max-w-content px-6 md:px-12 lg:px-20">
-          <LogoCloud items={LOGO_CLOUD.items} />
+          <LogoCloud items={LOGO_CLOUD.items} columns={5} />
         </div>
       </Reveal>
     </section>

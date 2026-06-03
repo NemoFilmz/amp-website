@@ -81,7 +81,7 @@ function LogoCell({
           alt={item.label}
           src={item.src}
           loading="lazy"
-          className="pointer-events-none h-5 select-none opacity-70 brightness-0 invert transition-opacity duration-300 group-hover:opacity-100 md:h-6"
+          className="pointer-events-none max-h-12 w-auto max-w-[150px] select-none object-contain opacity-80 transition-opacity duration-300 group-hover:opacity-100 md:max-h-14"
         />
       ) : (
         <span className="text-center font-body text-[12px] font-medium uppercase leading-tight tracking-[0.18em] text-secondary transition-colors duration-300 group-hover:text-primary md:text-sm">

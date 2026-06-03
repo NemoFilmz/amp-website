@@ -154,17 +154,19 @@ export const INDUSTRIES: Industry[] = [
    Honest organisation-type wordmarks (no invented client names or logos). Each
    item can carry an image `src` later to swap a real client/partner logo in. */
 export const LOGO_CLOUD = {
-  eyebrow: 'Who We Serve',
-  heading: 'Built for the organizations that move decisions.',
+  eyebrow: 'Trusted By',
+  heading: 'Our Partners.',
   items: [
-    { label: 'Government Entities' },
-    { label: 'Ministries' },
-    { label: 'National Oil Companies' },
-    { label: 'Energy Leaders' },
-    { label: 'Airlines' },
-    { label: 'Infrastructure Developers' },
-    { label: 'Industrial Operators' },
-    { label: 'Smart City Developers' },
+    { label: 'ADNOC', src: '/logos/adnoc.png' },
+    { label: 'Mubadala', src: '/logos/mubadala.png' },
+    { label: 'Masdar', src: '/logos/masdar.png' },
+    { label: 'Etihad Airways', src: '/logos/etihad.png' },
+    { label: 'Abu Dhabi Airports', src: '/logos/adairports.png' },
+    { label: 'Abu Dhabi Water & Electricity Authority', src: '/logos/adwea.png' },
+    { label: 'NMDC Group', src: '/logos/nmdc.png' },
+    { label: 'TAZIZ', src: '/logos/taziz.png' },
+    { label: 'Presight', src: '/logos/presight.png' },
+    { label: 'Sky News Arabia', src: '/logos/skynews.png' },
   ] as { label: string; src?: string }[],
 }
 
