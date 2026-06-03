@@ -21,7 +21,7 @@ function Overlay({ name, blurb }: { name: string; blurb: string }) {
         <h3 className="font-display text-[clamp(1.6rem,3.2vw,2.75rem)] leading-[0.95] tracking-tighter text-primary">
           {name}
         </h3>
-        <p className="mt-3 max-w-md font-light text-base leading-relaxed text-secondary md:text-lg">
+        <p className="mt-3 max-w-md font-light text-[1rem] leading-relaxed text-secondary md:text-lg">
           {blurb}
         </p>
       </div>

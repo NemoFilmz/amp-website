@@ -82,7 +82,7 @@ export function AboutPage() {
             <Reveal delay={0.12}>
               <div className="border-l border-line pl-6 md:pl-8">
                 <TickLabel>{WHO_WE_ARE.title}</TickLabel>
-                <p className="mt-5 font-body text-base leading-relaxed text-muted">
+                <p className="mt-5 font-body text-[1rem] leading-relaxed text-muted">
                   A specialized studio where cinema, engineering understanding, and
                   AI-driven production converge for executive-level audiences.
                 </p>
@@ -105,7 +105,7 @@ export function AboutPage() {
               className="flex items-center gap-4 border-t border-line py-4"
             >
               <CircleDot size={13} className="shrink-0 text-amp" aria-hidden />
-              <span className="font-body text-base text-primary">{capability}</span>
+              <span className="font-body text-[1rem] text-primary">{capability}</span>
             </RevealItem>
           ))}
         </RevealGroup>

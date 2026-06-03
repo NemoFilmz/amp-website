@@ -127,26 +127,14 @@ export function Hero() {
           )}
 
           {motionItem(
-            'mt-6',
-            <p className="max-w-2xl font-body text-base text-secondary md:text-lg">
+            'mt-8',
+            <p className="max-w-3xl font-body text-[clamp(1.2rem,2.3vw,1.9rem)] font-light leading-snug text-primary/90">
               {HERO.subheadline}
             </p>,
           )}
 
           {motionItem(
-            'mt-4',
-            <p className="max-w-2xl font-body text-sm text-muted md:text-base">{HERO.paragraph}</p>,
-          )}
-
-          {motionItem(
-            'mt-6',
-            <p className="max-w-3xl border-l-2 border-amp pl-5 font-light text-base text-primary/90 md:text-lg">
-              {HERO.statement}
-            </p>,
-          )}
-
-          {motionItem(
-            'mt-8 flex flex-wrap items-center gap-3',
+            'mt-12 flex flex-wrap items-center gap-3',
             <>
               {HERO.ctas.map((c) =>
                 c.variant === 'primary' ? (
