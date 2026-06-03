@@ -10,6 +10,8 @@ const PROJECTS_EMAIL = 'projects@actionmpro.com'
 const fieldClass =
   'w-full bg-surface border border-line rounded-md py-3.5 px-5 text-primary placeholder:text-muted focus:border-amp focus:outline-none transition-colors font-body'
 
+const labelClass = 'mb-2 block font-body text-[12px] font-medium uppercase tracking-label text-secondary'
+
 export function ContactPage() {
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
@@ -62,12 +64,11 @@ export function ContactPage() {
                     <Check className="text-amp" size={26} />
                   </span>
                   <h3 className="font-display text-[clamp(1.6rem,3vw,2.2rem)] leading-[1.02] tracking-tighter text-primary">
-                    Thank you
+                    Almost there
                   </h3>
                   <p className="mx-auto mt-4 max-w-md font-body leading-relaxed text-secondary">
-                    Your inquiry has reached AMP. Our team will review your project
-                    and respond shortly. For anything time-sensitive, reach us
-                    directly at{' '}
+                    We have opened a draft email so you can review your message and send it to our
+                    team. If nothing opened, write to{' '}
                     <a
                       href={`mailto:${PROJECTS_EMAIL}`}
                       className="text-amp underline-offset-4 hover:underline"
@@ -76,6 +77,13 @@ export function ContactPage() {
                     </a>
                     .
                   </p>
+                  <button
+                    type="button"
+                    onClick={() => setSubmitted(false)}
+                    className="mt-7 font-body text-[12px] font-medium uppercase tracking-label text-secondary underline-offset-4 transition-colors hover:text-amp"
+                  >
+                    Edit or send another
+                  </button>
                 </div>
               ) : (
                 <>
@@ -84,15 +92,14 @@ export function ContactPage() {
                     className="mt-9 grid grid-cols-1 gap-5 md:grid-cols-2"
                   >
                     <div>
-                      <label htmlFor="contact-name" className="sr-only">
+                      <label htmlFor="contact-name" className={labelClass}>
                         Name
                       </label>
                       <input
                         id="contact-name"
                         type="text"
                         autoComplete="name"
-                        placeholder="Name"
-                        aria-label="Name"
+                        placeholder="Jane Doe"
                         value={name}
                         onChange={(e) => setName(e.target.value)}
                         className={fieldClass}
@@ -100,15 +107,15 @@ export function ContactPage() {
                     </div>
 
                     <div>
-                      <label htmlFor="contact-email" className="sr-only">
-                        Email
+                      <label htmlFor="contact-email" className={labelClass}>
+                        Email <span className="text-amp">*</span>
                       </label>
                       <input
                         id="contact-email"
                         type="email"
+                        required
                         autoComplete="email"
-                        placeholder="Email"
-                        aria-label="Email"
+                        placeholder="jane@organization.com"
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
                         className={fieldClass}
@@ -116,15 +123,14 @@ export function ContactPage() {
                     </div>
 
                     <div>
-                      <label htmlFor="contact-organization" className="sr-only">
+                      <label htmlFor="contact-organization" className={labelClass}>
                         Organization
                       </label>
                       <input
                         id="contact-organization"
                         type="text"
                         autoComplete="organization"
-                        placeholder="Organization"
-                        aria-label="Organization"
+                        placeholder="Ministry, company, or entity"
                         value={organization}
                         onChange={(e) => setOrganization(e.target.value)}
                         className={fieldClass}
@@ -132,18 +138,17 @@ export function ContactPage() {
                     </div>
 
                     <div>
-                      <label htmlFor="contact-project-type" className="sr-only">
+                      <label htmlFor="contact-project-type" className={labelClass}>
                         Project type
                       </label>
                       <select
                         id="contact-project-type"
-                        aria-label="Project type"
                         value={projectType}
                         onChange={(e) => setProjectType(e.target.value)}
                         className={fieldClass}
                       >
                         <option value="" disabled>
-                          Project type
+                          Select a project type
                         </option>
                         {SERVICES.map((service) => (
                           <option key={service.name} value={service.name}>
@@ -154,14 +159,14 @@ export function ContactPage() {
                     </div>
 
                     <div className="md:col-span-2">
-                      <label htmlFor="contact-message" className="sr-only">
-                        Message
+                      <label htmlFor="contact-message" className={labelClass}>
+                        Message <span className="text-amp">*</span>
                       </label>
                       <textarea
                         id="contact-message"
                         rows={5}
-                        placeholder="Tell us about your project"
-                        aria-label="Message"
+                        required
+                        placeholder="Tell us about the initiative, project, or technology you need to communicate."
                         value={message}
                         onChange={(e) => setMessage(e.target.value)}
                         className={fieldClass}
@@ -171,7 +176,7 @@ export function ContactPage() {
                     <div className="md:col-span-2">
                       <button
                         type="submit"
-                        className="group inline-flex items-center justify-center gap-2.5 rounded-full bg-amp px-7 py-3.5 text-[13px] font-medium uppercase tracking-[0.08em] text-base transition hover:shadow-amp"
+                        className="group inline-flex items-center justify-center gap-2.5 rounded-full bg-amp px-7 py-3.5 text-[13px] font-medium uppercase tracking-[0.08em] text-base transition hover:shadow-amp active:scale-[0.98]"
                       >
                         <span>Send Inquiry</span>
                         <Send

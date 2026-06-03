@@ -31,10 +31,10 @@ export const HERO = {
     'For more than 15 years, we have helped decision-makers, investors, and public audiences understand complex technologies and industrial ecosystems through cinematic films, advanced 3D animation, AI production, immersive storytelling, and premium presentation experiences.',
   statement:
     'From offshore drilling platforms to next-generation aviation systems, from smart cities to cultural megaprojects, we turn complexity into clarity.',
-  // One clear primary (see the work), one secondary (start a project).
+  // Primary = the #1 conversion (matches the header CTA); secondary = see the work.
   ctas: [
-    { label: 'Explore Our Work', to: '/work', variant: 'primary' as const },
-    { label: 'Start Your Project', to: '/contact', variant: 'outline' as const },
+    { label: 'Start Your Project', to: '/contact', variant: 'primary' as const },
+    { label: 'Explore Our Work', to: '/work', variant: 'outline' as const },
   ],
   posterImage: '/placeholders/hero.jpg', // swap for a real still; set videoSrc for a showreel
   videoSrc: '', // swap in real AMP showreel here
@@ -461,10 +461,10 @@ export const CLIENTS = {
 export const CTA = {
   title: "Let's Create The Future of Visual Storytelling",
   body: 'Whether you are launching a national initiative, presenting a billion-dollar project, visualizing future technologies, or building awareness around complex operations, AMP helps you transform vision into cinematic impact.',
+  // One primary conversion + one genuinely different path (academy). No duplicates.
   buttons: [
-    { label: 'Book a Consultation', href: '#contact', variant: 'primary' as const },
-    { label: 'Start a Project', href: '#contact', variant: 'outline' as const },
-    { label: 'Join AMP Academy', href: '#academy', variant: 'ghost' as const },
+    { label: 'Start Your Project', to: '/contact', variant: 'primary' as const },
+    { label: 'Join AMP Academy', to: '/academy', variant: 'ghost' as const },
   ],
 }
 

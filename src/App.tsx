@@ -12,6 +12,7 @@ const TechnologyPage = lazy(() => named(import('./pages/TechnologyPage'), 'Techn
 const AcademyPage = lazy(() => named(import('./pages/AcademyPage'), 'AcademyPage'))
 const CareersPage = lazy(() => named(import('./pages/CareersPage'), 'CareersPage'))
 const ContactPage = lazy(() => named(import('./pages/ContactPage'), 'ContactPage'))
+const NotFound = lazy(() => named(import('./pages/NotFound'), 'NotFound'))
 
 function RouteFallback() {
   return <div aria-hidden className="min-h-screen bg-base" />
@@ -35,7 +36,7 @@ export default function App() {
         <Route path="academy" element={<Suspense fallback={<RouteFallback />}><AcademyPage /></Suspense>} />
         <Route path="careers" element={<Suspense fallback={<RouteFallback />}><CareersPage /></Suspense>} />
         <Route path="contact" element={<Suspense fallback={<RouteFallback />}><ContactPage /></Suspense>} />
-        <Route path="*" element={<Suspense fallback={<RouteFallback />}><HomePage /></Suspense>} />
+        <Route path="*" element={<Suspense fallback={<RouteFallback />}><NotFound /></Suspense>} />
       </Route>
     </Routes>
   )

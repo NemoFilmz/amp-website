@@ -33,23 +33,6 @@ export function Footer() {
             <p className="mt-3 font-body font-medium text-[11px] uppercase tracking-[0.14em] text-muted">
               {BRAND.years} years of transforming complexity into powerful storytelling.
             </p>
-            <div className="mt-7 flex gap-6">
-              {[
-                { label: 'Instagram', short: 'IG' },
-                { label: 'LinkedIn', short: 'LI' },
-                { label: 'YouTube', short: 'YT' },
-              ].map((s) => (
-                <a
-                  key={s.short}
-                  href="#top"
-                  aria-label={s.label}
-                  onClick={(e) => e.preventDefault()}
-                  className="font-body font-medium text-[11px] uppercase tracking-[0.18em] text-muted transition-colors hover:text-amp"
-                >
-                  {s.short}
-                </a>
-              ))}
-            </div>
           </div>
 
           {/* Navigation */}
@@ -112,22 +95,10 @@ export function Footer() {
           </p>
         </div>
 
-        <div className="mt-10 flex flex-col items-start justify-between gap-3 border-t border-line pt-6 sm:flex-row sm:items-center">
+        <div className="mt-10 border-t border-line pt-6">
           <p className="font-body font-medium text-[11px] uppercase tracking-[0.14em] text-muted">
             © {year} {BRAND.short}. All rights reserved.
           </p>
-          <div className="flex gap-6">
-            {['Privacy', 'Terms'].map((l) => (
-              <a
-                key={l}
-                href="#top"
-                onClick={(e) => e.preventDefault()}
-                className="font-body font-medium text-[11px] uppercase tracking-[0.14em] text-muted transition-colors hover:text-secondary"
-              >
-                {l}
-              </a>
-            ))}
-          </div>
         </div>
       </Container>
     </footer>

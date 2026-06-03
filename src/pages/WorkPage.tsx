@@ -139,14 +139,6 @@ export function WorkPage() {
                     {c.tag}
                   </span>
 
-                  {/* Hover arrow */}
-                  <span
-                    aria-hidden
-                    className="absolute right-4 top-4 z-10 translate-y-1 text-amp opacity-0 transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100"
-                  >
-                    <ArrowUpRight size={22} />
-                  </span>
-
                   {/* Bottom text block */}
                   <div className="absolute bottom-5 left-5 right-5 z-10">
                     <h3 className="font-display text-xl tracking-tighter text-primary md:text-2xl">
@@ -155,6 +147,15 @@ export function WorkPage() {
                     <p className="mt-1.5 font-body text-sm leading-relaxed text-secondary">
                       {c.scope}
                     </p>
+                    {/* Persistent, honest affordance: these route to contact, not a case page */}
+                    <span className="mt-3 inline-flex items-center gap-1.5 font-body text-[12px] font-medium uppercase tracking-label text-amp">
+                      Enquire
+                      <ArrowUpRight
+                        size={15}
+                        aria-hidden
+                        className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                      />
+                    </span>
                   </div>
                 </CinematicMedia>
               </Link>
