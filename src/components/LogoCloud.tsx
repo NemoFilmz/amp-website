@@ -56,6 +56,17 @@ export function LogoCloud({ items, columns = 4, className, ...props }: LogoCloud
         aria-hidden
         className="pointer-events-none absolute -bottom-px left-1/2 w-screen -translate-x-1/2 border-b border-line"
       />
+
+      {/* Brand accent: AMP-yellow half-rectangles centred on the grid's left and
+          right edges (half sits over the edge, reading as a half rectangle). */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute left-0 top-1/2 z-10 h-24 w-4 -translate-x-1/2 -translate-y-1/2 bg-amp"
+      />
+      <div
+        aria-hidden
+        className="pointer-events-none absolute right-0 top-1/2 z-10 h-24 w-4 -translate-y-1/2 translate-x-1/2 bg-amp"
+      />
     </div>
   )
 }
@@ -81,7 +92,7 @@ function LogoCell({
           alt={item.label}
           src={item.src}
           loading="lazy"
-          className="pointer-events-none max-h-12 w-auto max-w-[150px] select-none object-contain opacity-80 transition-opacity duration-300 group-hover:opacity-100 md:max-h-14"
+          className="pointer-events-none max-h-16 w-auto max-w-[160px] select-none object-contain opacity-80 transition-opacity duration-300 group-hover:opacity-100 md:max-h-20"
         />
       ) : (
         <span className="text-center font-body text-[12px] font-medium uppercase leading-tight tracking-[0.18em] text-secondary transition-colors duration-300 group-hover:text-primary md:text-sm">
