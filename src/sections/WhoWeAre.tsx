@@ -13,6 +13,17 @@ export function WhoWeAre() {
       className="relative overflow-hidden py-24 md:py-32"
     >
       <BackgroundPaths />
+      {/* Legibility scrim: darkens the animated paths into a subtle texture so the
+          copy (which sits above it at z-10) reads with strong contrast. Slightly
+          deeper at the edges for a contained, panel-like feel. */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-0"
+        style={{
+          background:
+            'radial-gradient(115% 95% at 50% 45%, rgba(8,9,11,0.50) 0%, rgba(8,9,11,0.66) 55%, rgba(8,9,11,0.80) 100%)',
+        }}
+      />
       <Container className="relative z-10">
         <div className="grid grid-cols-1 gap-12 lg:grid-cols-12">
         {/* Left: eyebrow + sticky headline */}
@@ -26,7 +37,7 @@ export function WhoWeAre() {
                 {WHO_WE_ARE.title}
               </h2>
               <div aria-hidden className="mt-8 h-px w-16 bg-amp" />
-              <p className="mt-8 max-w-xs font-body text-base leading-relaxed text-muted">
+              <p className="mt-8 max-w-xs font-body text-base leading-relaxed text-secondary">
                 A specialized studio where cinema, engineering understanding, and AI-driven production
                 converge for executive and government-level audiences.
               </p>
