@@ -1,5 +1,5 @@
 import { CircleDot } from 'lucide-react'
-import { Section, Container, Eyebrow } from '../components/ui'
+import { Section, Container } from '../components/ui'
 import { BackgroundPaths } from '../components/BackgroundPaths'
 import { Reveal, RevealGroup, RevealItem } from '../components/Reveal'
 import { WHO_WE_ARE } from '../data/site'
@@ -26,19 +26,13 @@ export function WhoWeAre() {
       />
       <Container className="relative z-10">
         <div className="grid grid-cols-1 gap-12 lg:grid-cols-12">
-        {/* Left: eyebrow + sticky headline */}
-        <div className="lg:col-span-5">
-          <div className="lg:sticky lg:top-28">
-            <Reveal>
-              <Eyebrow index={2} total={10}>
-                Who We Are
-              </Eyebrow>
-              <h2 className="mt-6 font-display text-[clamp(2rem,4.5vw,3.6rem)] uppercase leading-[0.98] tracking-tighter text-primary">
-                {WHO_WE_ARE.title}
-              </h2>
-              <div aria-hidden className="mt-8 h-px w-16 bg-amp" />
-            </Reveal>
-          </div>
+        {/* Left: headline, vertically centred against the right-hand content */}
+        <div className="lg:col-span-5 lg:flex lg:items-center">
+          <Reveal>
+            <h2 className="font-display text-[clamp(2rem,4.5vw,3.6rem)] uppercase leading-[0.98] tracking-tighter text-primary">
+              {WHO_WE_ARE.title}
+            </h2>
+          </Reveal>
         </div>
 
         {/* Right: editorial body */}
