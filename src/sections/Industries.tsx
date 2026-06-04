@@ -27,6 +27,16 @@ export function Industries() {
               alt={industry.name}
               className="flex min-h-[58vh] items-end md:min-h-[80vh]"
             >
+              {/* Smooth left-side fade: a semi-transparent dark panel that lifts text
+                  contrast while the imagery stays visible through it and on the right. */}
+              <div
+                aria-hidden
+                className="absolute inset-0 z-[1]"
+                style={{
+                  background:
+                    'linear-gradient(to right, rgba(8,9,11,0.72) 0%, rgba(8,9,11,0.42) 32%, transparent 66%)',
+                }}
+              />
               {/* Localized scrim so text stays legible over bright imagery (sunset, sparks) */}
               <div
                 aria-hidden

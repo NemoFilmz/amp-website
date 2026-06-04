@@ -13,6 +13,16 @@ type ScrollVideoPanelProps = {
 function Overlay({ name, blurb }: { name: string; blurb: string }) {
   return (
     <>
+      {/* Smooth left-side fade: a semi-transparent dark panel that lifts text
+          contrast while the video stays visible through it and on the right. */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-0 z-[1]"
+        style={{
+          background:
+            'linear-gradient(to right, rgba(8,9,11,0.72) 0%, rgba(8,9,11,0.42) 32%, transparent 66%)',
+        }}
+      />
       <div
         aria-hidden
         className="absolute inset-x-0 bottom-0 z-[1] h-2/3 bg-gradient-to-t from-base/95 via-base/45 to-transparent"
