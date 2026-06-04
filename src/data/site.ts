@@ -122,6 +122,8 @@ export const INDUSTRIES: Industry[] = [
       'Utility infrastructure',
     ],
     image: '/placeholders/energy.jpg',
+    video: '/video/energy-scroll.mp4',
+    poster: '/video/energy-poster.jpg',
   },
   {
     name: 'Aviation & Airlines',
