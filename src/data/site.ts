@@ -153,6 +153,8 @@ export const INDUSTRIES: Industry[] = [
       'Transportation infrastructure',
     ],
     image: '/placeholders/heavy.jpg',
+    video: '/video/heavy-scroll.mp4',
+    poster: '/video/heavy-poster.jpg',
   },
 ]
 
