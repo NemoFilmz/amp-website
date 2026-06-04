@@ -15,7 +15,7 @@ const itemVariants: Variants = {
   show: { opacity: 1, y: 0, transition: { duration: 0.9, ease: EASE } },
 }
 
-const HEADLINE_ACCENT = 'decisions'
+const HEADLINE_ACCENT = 'decisions.'
 
 /**
  * Renders the headline with the key word emphasised in AMP yellow,
@@ -127,7 +127,7 @@ export function Hero() {
         >
           {motionItem(
             '',
-            <h1 className="font-display text-[clamp(2.75rem,8.5vw,8rem)] font-normal leading-[0.95] tracking-tighter text-primary">
+            <h1 className="font-display text-[clamp(2.75rem,8.5vw,8rem)] font-normal leading-[1.05] tracking-tighter text-primary">
               <Headline text={HERO.headline} />
             </h1>,
           )}
