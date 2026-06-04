@@ -10,6 +10,7 @@ import {
 } from 'lucide-react'
 import { PageHero, Section, Container, Eyebrow, TickLabel, CTAButton } from '../components/ui'
 import { Reveal, RevealGroup, RevealItem } from '../components/Reveal'
+import TeamShowcase from '../components/TeamShowcase'
 import {
   WHO_WE_ARE,
   PHILOSOPHY,
@@ -261,7 +262,23 @@ export function AboutPage() {
       </Section>
 
       {/* ---------------------------------------------------------------- */}
-      {/* 5. CLOSING CTA BAND                                               */}
+      {/* 5. TEAM                                                           */}
+      {/* ---------------------------------------------------------------- */}
+      <Section container={false} divider className="py-24 md:py-32">
+        <Container>
+          <Reveal>
+            <h2 className="max-w-prose font-display text-[clamp(2rem,4.5vw,3.6rem)] leading-[0.98] tracking-tighter text-primary">
+              The people behind the work
+            </h2>
+          </Reveal>
+        </Container>
+        <div className="mt-12 md:mt-16">
+          <TeamShowcase />
+        </div>
+      </Section>
+
+      {/* ---------------------------------------------------------------- */}
+      {/* 6. CLOSING CTA BAND                                               */}
       {/* ---------------------------------------------------------------- */}
       <Section container={false} className="relative overflow-hidden bg-surface py-24 md:py-32">
         <div
