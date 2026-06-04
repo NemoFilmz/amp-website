@@ -17,12 +17,12 @@ export default {
         glow: '#2BD9FF',
       },
       fontFamily: {
-        // Display: Anton (Google Fonts). Body: Industry (Adobe Fonts kit olx4mzh).
+        // Display: Anton (Google Fonts). Body: Dinosaur (Adobe Fonts kit olx4mzh).
         display: ['"Anton"', '"Arial Narrow Bold"', 'Impact', 'sans-serif'],
-        body: ['"industry"', '"Helvetica Neue"', 'system-ui', 'sans-serif'],
-        // No monospace anywhere. `mono` maps to the brand body face so any stray
-        // `font-mono` still renders in Industry, never a typewriter font.
-        mono: ['"industry"', '"Helvetica Neue"', 'system-ui', 'sans-serif'],
+        body: ['"dinosaur"', '"Helvetica Neue"', 'system-ui', 'sans-serif'],
+        // No monospace anywhere. `mono` maps to the body face so any stray
+        // `font-mono` still renders in Dinosaur, never a typewriter font.
+        mono: ['"dinosaur"', '"Helvetica Neue"', 'system-ui', 'sans-serif'],
       },
       letterSpacing: {
         tightest: '-0.03em',

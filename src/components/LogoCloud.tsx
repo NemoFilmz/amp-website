@@ -7,7 +7,11 @@ export type LogoItem = {
   label: string
   /** Optional logo image. When set, the image renders instead of the wordmark. */
   src?: string
+  /** Optional per-logo size override (Tailwind max-h/max-w classes). */
+  size?: string
 }
+
+const DEFAULT_LOGO_SIZE = 'max-h-16 max-w-[160px] md:max-h-20'
 
 type LogoCloudProps = ComponentProps<'div'> & {
   items: LogoItem[]
@@ -96,7 +100,10 @@ function LogoCell({
           alt={item.label}
           src={item.src}
           loading="lazy"
-          className="pointer-events-none max-h-16 w-auto max-w-[160px] select-none object-contain opacity-80 transition-opacity duration-300 group-hover:opacity-100 md:max-h-20"
+          className={cn(
+            'pointer-events-none w-auto select-none object-contain opacity-80 transition-opacity duration-300 group-hover:opacity-100',
+            item.size ?? DEFAULT_LOGO_SIZE,
+          )}
         />
       ) : (
         <span className="text-center font-body text-[12px] font-medium uppercase leading-tight tracking-[0.18em] text-secondary transition-colors duration-300 group-hover:text-primary md:text-sm">

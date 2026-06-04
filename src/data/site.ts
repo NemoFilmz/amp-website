@@ -163,14 +163,14 @@ export const LOGO_CLOUD = {
     { label: 'ADNOC', src: '/logos/adnoc.png' },
     { label: 'Mubadala', src: '/logos/mubadala.png' },
     { label: 'Masdar', src: '/logos/masdar.png' },
-    { label: 'Etihad Airways', src: '/logos/etihad.png' },
+    { label: 'Etihad Airways', src: '/logos/etihad.png', size: 'max-h-24 max-w-[250px] md:max-h-[7rem]' },
     { label: 'Abu Dhabi Airports', src: '/logos/adairports.png' },
     { label: 'Abu Dhabi Water & Electricity Authority', src: '/logos/adwea.png' },
     { label: 'NMDC Group', src: '/logos/nmdc.png' },
     { label: 'TAZIZ', src: '/logos/taziz.png' },
     { label: 'Presight', src: '/logos/presight.png' },
     { label: 'Sky News Arabia', src: '/logos/skynews.png' },
-  ] as { label: string; src?: string }[],
+  ] as { label: string; src?: string; size?: string }[],
 }
 
 /* ---------- 4. SERVICES ---------- */
