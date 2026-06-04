@@ -56,7 +56,7 @@ export function Hero() {
     )
 
   return (
-    <section className="relative flex min-h-screen items-center overflow-hidden grain pt-[100px]">
+    <section className="relative flex min-h-screen items-center overflow-hidden grain pt-[100px] pb-10">
       {/* Full-bleed background: procedural backdrop as the base, a graded poster
           image on top, swappable for a real showreel video when HERO.videoSrc is set.
           The image hides itself on error so the backdrop always remains. */}
@@ -140,7 +140,7 @@ export function Hero() {
           )}
 
           {motionItem(
-            'mt-14 flex flex-wrap items-center gap-3',
+            'mt-24 flex flex-wrap items-center gap-3',
             <>
               {HERO.ctas.map((c) =>
                 c.variant === 'primary' ? (
