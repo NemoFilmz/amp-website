@@ -86,6 +86,8 @@ export const INDUSTRIES: Industry[] = [
       'Smart city developments',
     ],
     image: '/placeholders/gov.jpg',
+    video: '/video/government-scroll.mp4',
+    poster: '/video/government-poster.jpg',
   },
   {
     name: 'Oil & Gas',
@@ -151,8 +153,6 @@ export const INDUSTRIES: Industry[] = [
       'Transportation infrastructure',
     ],
     image: '/placeholders/heavy.jpg',
-    video: '/video/heavy-scroll.mp4',
-    poster: '/video/heavy-poster.jpg',
   },
 ]
 
