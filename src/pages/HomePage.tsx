@@ -2,14 +2,11 @@ import { Hero } from '../sections/Hero'
 import { WhoWeAre } from '../sections/WhoWeAre'
 import { Industries } from '../sections/Industries'
 import { ClientLogos } from '../sections/ClientLogos'
-import { Services } from '../sections/Services'
-import { WhyAmp } from '../sections/WhyAmp'
-import { GlobalPresence } from '../sections/GlobalPresence'
-import { Philosophy } from '../sections/Philosophy'
-import { Academy } from '../sections/Academy'
-import { ClientExperience } from '../sections/ClientExperience'
-import { CTASection } from '../sections/CTASection'
 
+/**
+ * Home page: scrolls Hero -> Who We Are -> Industries -> Our Partners, then the
+ * footer reveals itself. The remaining sections live on their own pages.
+ */
 export function HomePage() {
   return (
     <>
@@ -17,13 +14,6 @@ export function HomePage() {
       <WhoWeAre />
       <Industries />
       <ClientLogos />
-      <ClientExperience />
-      <Services />
-      <WhyAmp />
-      <GlobalPresence />
-      <Philosophy />
-      <Academy />
-      <CTASection />
     </>
   )
 }
