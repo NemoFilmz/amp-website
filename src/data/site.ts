@@ -38,7 +38,7 @@ export const HERO = {
 
 /* ---------- 2. WHO WE ARE ---------- */
 export const WHO_WE_ARE = {
-  title: 'A New Generation of Industrial Storytelling',
+  title: 'Complex, made clear',
   lead: 'Our work speaks for itself.',
   body: [
     'We are a specialized visual communication studio built for governments, industrial leaders, energy companies, airlines, infrastructure developers, and innovation-driven organizations.',
