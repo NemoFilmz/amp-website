@@ -124,7 +124,7 @@ export function ScrollVideoPanel({ src, poster, name, blurb }: ScrollVideoPanelP
   )
 
   if (reduce) {
-    return frame(<img src={poster} alt={name} className="absolute inset-0 h-full w-full object-cover" />)
+    return frame(<img src={poster} alt={name} className="absolute inset-0 h-full w-full object-cover object-[50%_25%]" />)
   }
 
   if (touch) {
@@ -137,7 +137,7 @@ export function ScrollVideoPanel({ src, poster, name, blurb }: ScrollVideoPanelP
         loop
         playsInline
         aria-hidden
-        className="absolute inset-0 h-full w-full object-cover"
+        className="absolute inset-0 h-full w-full object-cover object-[50%_25%]"
       />,
     )
   }
@@ -152,7 +152,7 @@ export function ScrollVideoPanel({ src, poster, name, blurb }: ScrollVideoPanelP
       preload="auto"
       aria-hidden
       tabIndex={-1}
-      className="absolute inset-0 h-full w-full object-cover"
+      className="absolute inset-0 h-full w-full object-cover object-[50%_25%]"
     />,
   )
 }
