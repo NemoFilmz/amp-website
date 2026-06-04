@@ -62,12 +62,7 @@ export function AboutPage() {
         <div className="mt-10 grid gap-y-12 md:grid-cols-12 md:gap-x-16">
           {/* Lead + body */}
           <div className="md:col-span-7">
-            <Reveal delay={0.04}>
-              <h2 className="max-w-prose text-balance font-light text-2xl leading-snug text-primary md:text-3xl">
-                {WHO_WE_ARE.lead}
-              </h2>
-            </Reveal>
-            <div className="mt-7 space-y-6">
+            <div className="space-y-6">
               {WHO_WE_ARE.body.map((paragraph, i) => (
                 <Reveal key={paragraph} delay={0.08 + i * 0.04}>
                   <p className="max-w-prose font-body text-lg leading-relaxed text-secondary">
