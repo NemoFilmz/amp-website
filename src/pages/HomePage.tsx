@@ -17,12 +17,12 @@ export function HomePage() {
       <WhoWeAre />
       <Industries />
       <ClientLogos />
+      <ClientExperience />
       <Services />
       <WhyAmp />
       <GlobalPresence />
       <Philosophy />
       <Academy />
-      <ClientExperience />
       <CTASection />
     </>
   )
