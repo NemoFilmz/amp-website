@@ -50,11 +50,11 @@ export function WhoWeAre() {
           </Reveal>
 
           {/* Capabilities ledger */}
-          <div className="mt-12 border-t border-line-strong pt-10">
-            <RevealGroup className="grid grid-cols-1 md:grid-cols-2">
+          <div className="mt-12">
+            <RevealGroup className="grid grid-cols-1 gap-y-1 md:grid-cols-2">
               {WHO_WE_ARE.capabilities.slice(0, 6).map((capability) => (
                 <RevealItem key={capability}>
-                  <div className="flex items-center gap-3 border-t border-line py-3.5">
+                  <div className="flex items-center gap-3 py-3">
                     <CircleDot size={13} className="shrink-0 text-amp" aria-hidden />
                     <span className="font-body text-primary">{capability}</span>
                   </div>
