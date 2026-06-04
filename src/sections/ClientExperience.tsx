@@ -14,11 +14,9 @@ export function ClientExperience() {
         <h2 className="mt-4 max-w-4xl font-display text-[clamp(2rem,4.5vw,3.6rem)] leading-[0.98] tracking-tighter text-primary text-balance">
           {CLIENTS.title}
         </h2>
-
-        <p className="eyebrow mt-10">{CLIENTS.lead}</p>
       </Reveal>
 
-      <RevealGroup className="mt-6 grid grid-cols-1 gap-px bg-line sm:grid-cols-2">
+      <RevealGroup className="mt-10 grid grid-cols-1 gap-px bg-line sm:grid-cols-2">
         {CLIENTS.list.map((client) => (
           <RevealItem key={client}>
             <div className="group flex items-center gap-4 bg-base px-6 py-6 transition-colors duration-300 hover:bg-elevated">
