@@ -162,7 +162,7 @@ export const INDUSTRIES: Industry[] = [
    Honest organisation-type wordmarks (no invented client names or logos). Each
    item can carry an image `src` later to swap a real client/partner logo in. */
 export const LOGO_CLOUD = {
-  heading: 'Our Partners.',
+  heading: 'Our Partners',
   items: [
     { label: 'ADNOC', src: '/logos/adnoc.png' },
     { label: 'Mubadala', src: '/logos/mubadala.png' },
