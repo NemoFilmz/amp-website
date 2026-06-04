@@ -3,7 +3,7 @@ import { Outlet, useLocation } from 'react-router-dom'
 import { SmoothScroll, useSmoothScroll } from './SmoothScroll'
 import { Nav } from './Nav'
 import { ScrollRail } from './ScrollRail'
-import { Footer } from './Footer'
+import { StickyFooter } from './StickyFooter'
 
 const SITE = 'Action Media Production'
 const ROUTE_META: Record<string, { title: string; description: string }> = {
@@ -87,7 +87,7 @@ export function Layout() {
       <main id="top">
         <Outlet />
       </main>
-      <Footer />
+      <StickyFooter />
     </SmoothScroll>
   )
 }
