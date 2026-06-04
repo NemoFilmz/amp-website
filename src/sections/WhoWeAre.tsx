@@ -37,10 +37,6 @@ export function WhoWeAre() {
                 {WHO_WE_ARE.title}
               </h2>
               <div aria-hidden className="mt-8 h-px w-16 bg-amp" />
-              <p className="mt-8 max-w-xs font-body text-lg leading-relaxed text-secondary">
-                A specialized studio where cinema, engineering understanding, and AI-driven production
-                converge for executive and government-level audiences.
-              </p>
             </Reveal>
           </div>
         </div>
@@ -53,19 +49,6 @@ export function WhoWeAre() {
             </p>
           </Reveal>
 
-          <Reveal delay={0.1}>
-            <div>
-              {WHO_WE_ARE.body.map((paragraph) => (
-                <p
-                  key={paragraph}
-                  className="mt-6 max-w-prose font-body text-lg leading-relaxed text-secondary"
-                >
-                  {paragraph}
-                </p>
-              ))}
-            </div>
-          </Reveal>
-
           {/* Capabilities ledger */}
           <div className="mt-12 border-t border-line-strong pt-10">
             <Reveal delay={0.05}>
@@ -73,7 +56,7 @@ export function WhoWeAre() {
             </Reveal>
 
             <RevealGroup className="mt-6 grid grid-cols-1 md:grid-cols-2">
-              {WHO_WE_ARE.capabilities.map((capability) => (
+              {WHO_WE_ARE.capabilities.slice(0, 6).map((capability) => (
                 <RevealItem key={capability}>
                   <div className="flex items-center gap-3 border-t border-line py-3.5">
                     <CircleDot size={13} className="shrink-0 text-amp" aria-hidden />
@@ -83,12 +66,6 @@ export function WhoWeAre() {
               ))}
             </RevealGroup>
           </div>
-
-          <Reveal delay={0.05}>
-            <p className="mt-10 max-w-prose font-body text-lg leading-relaxed text-secondary">
-              {WHO_WE_ARE.closing}
-            </p>
-          </Reveal>
         </div>
         </div>
       </Container>
