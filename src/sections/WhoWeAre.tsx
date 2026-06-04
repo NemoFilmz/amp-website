@@ -51,11 +51,7 @@ export function WhoWeAre() {
 
           {/* Capabilities ledger */}
           <div className="mt-12 border-t border-line-strong pt-10">
-            <Reveal delay={0.05}>
-              <p className="eyebrow">{WHO_WE_ARE.capabilitiesIntro}</p>
-            </Reveal>
-
-            <RevealGroup className="mt-6 grid grid-cols-1 md:grid-cols-2">
+            <RevealGroup className="grid grid-cols-1 md:grid-cols-2">
               {WHO_WE_ARE.capabilities.slice(0, 6).map((capability) => (
                 <RevealItem key={capability}>
                   <div className="flex items-center gap-3 border-t border-line py-3.5">
