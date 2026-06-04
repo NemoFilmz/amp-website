@@ -33,7 +33,7 @@ export const HERO = {
     { label: 'Explore Our Work', to: '/work', variant: 'outline' as const },
   ],
   posterImage: '/placeholders/hero.jpg', // swap for a real still; set videoSrc for a showreel
-  videoSrc: '', // swap in real AMP showreel here
+  videoSrc: '/video/hero-bg.mp4', // background showreel loop
 }
 
 /* ---------- 2. WHO WE ARE ---------- */
