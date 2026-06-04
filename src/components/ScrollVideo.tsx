@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState, type ReactNode } from 'react'
 import { useReducedMotion } from 'framer-motion'
 import { Container } from './ui'
+import { Reveal } from './Reveal'
 
 type ScrollVideoPanelProps = {
   src: string
@@ -9,45 +10,47 @@ type ScrollVideoPanelProps = {
   blurb: string
 }
 
-/** Oil & Gas label over a bottom scrim, sized for the contained video. */
+/** Full-bleed name + blurb over a left fade and bottom scrim (matches the image panels). */
 function Overlay({ name, blurb }: { name: string; blurb: string }) {
   return (
     <>
-      {/* Smooth left-side fade: a semi-transparent dark panel that lifts text
-          contrast while the video stays visible through it and on the right. */}
+      {/* Smooth left-side fade for text contrast; video stays visible through it. */}
       <div
         aria-hidden
-        className="pointer-events-none absolute inset-0 z-[1]"
+        className="absolute inset-0 z-[1]"
         style={{
           background:
             'linear-gradient(to right, rgba(8,9,11,0.72) 0%, rgba(8,9,11,0.42) 32%, transparent 66%)',
         }}
       />
+      {/* Bottom scrim */}
       <div
         aria-hidden
-        className="absolute inset-x-0 bottom-0 z-[1] h-2/3 bg-gradient-to-t from-base/95 via-base/45 to-transparent"
+        className="absolute inset-x-0 bottom-0 z-[1] h-2/3 bg-gradient-to-t from-base via-base/80 to-transparent"
       />
-      <div className="absolute inset-x-0 bottom-0 z-10 p-6 md:p-10">
-        <h3 className="font-display text-[clamp(1.6rem,3.2vw,2.75rem)] leading-[0.95] tracking-tighter text-primary">
-          {name}
-        </h3>
-        <p className="mt-3 max-w-md font-light text-[1rem] leading-relaxed text-secondary md:text-lg">
-          {blurb}
-        </p>
-      </div>
+      <Container className="relative z-10 pb-12 md:pb-20">
+        <Reveal>
+          <h3 className="font-display text-[clamp(2rem,7vw,5.5rem)] leading-[0.92] tracking-tighter text-primary">
+            {name}
+          </h3>
+          <p className="mt-5 max-w-xl font-light text-xl leading-relaxed text-secondary md:text-2xl">
+            {blurb}
+          </p>
+        </Reveal>
+      </Container>
     </>
   )
 }
 
 /**
- * A contained, margin-respecting video that scrubs with scroll: as the box
+ * A full-bleed video whose playback position is driven by scroll: as the panel
  * travels through the viewport (in normal flow — nothing is pinned), its
- * position drives video.currentTime, so it plays forward as you scroll past
- * and backward as you scroll up. The source is encoded all-intra so every
- * scroll position seeks to an exact, smooth frame.
+ * position drives video.currentTime, so it plays forward as you scroll past and
+ * back as you scroll up. The source is all-intra so every scroll position seeks
+ * to an exact, smooth frame.
  *
- * Falls back to a static poster for reduced-motion and a muted autoplay loop
- * on touch devices (where scroll-scrubbing is unreliable).
+ * Falls back to a static poster for reduced-motion and a muted autoplay loop on
+ * touch devices (where scroll-scrubbing is unreliable).
  */
 export function ScrollVideoPanel({ src, poster, name, blurb }: ScrollVideoPanelProps) {
   const reduce = useReducedMotion()
@@ -77,7 +80,7 @@ export function ScrollVideoPanel({ src, poster, name, blurb }: ScrollVideoPanelP
         try {
           video.currentTime = target
         } catch {
-          /* seek can throw mid-load; the next scroll re-applies */
+          /* seek can throw mid-load; next scroll re-applies */
         }
       }
     }
@@ -87,8 +90,6 @@ export function ScrollVideoPanel({ src, poster, name, blurb }: ScrollVideoPanelP
       const rect = box.getBoundingClientRect()
       const vh = window.innerHeight
       const denom = vh + rect.height
-      // 0 when the box's top enters the bottom of the viewport,
-      // 1 when its bottom has scrolled past the top of the viewport.
       const progress = denom > 0 ? Math.min(1, Math.max(0, (vh - rect.top) / denom)) : 0
       target = progress * Math.max(0, duration - 0.05)
       if (!raf) raf = requestAnimationFrame(apply)
@@ -113,15 +114,13 @@ export function ScrollVideoPanel({ src, poster, name, blurb }: ScrollVideoPanelP
   }, [scrub])
 
   const frame = (media: ReactNode) => (
-    <Container className="py-16 md:py-24">
-      <div
-        ref={boxRef}
-        className="relative aspect-video w-full overflow-hidden rounded-xl border border-line bg-surface"
-      >
-        {media}
-        <Overlay name={name} blurb={blurb} />
-      </div>
-    </Container>
+    <div
+      ref={boxRef}
+      className="relative flex min-h-[58vh] items-end overflow-hidden md:min-h-[80vh]"
+    >
+      {media}
+      <Overlay name={name} blurb={blurb} />
+    </div>
   )
 
   if (reduce) {
