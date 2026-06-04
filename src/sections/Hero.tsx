@@ -29,7 +29,13 @@ function Headline({ text }: { text: string }) {
       {parts.map((part, i) => (
         <span key={i}>
           {part}
-          {i < parts.length - 1 && <span className="text-amp">{HEADLINE_ACCENT}</span>}
+          {i < parts.length - 1 && (
+            <>
+              {/* Force the line to break only here, so the accent word leads its own line. */}
+              <br />
+              <span className="text-amp">{HEADLINE_ACCENT}</span>
+            </>
+          )}
         </span>
       ))}
     </>
@@ -114,27 +120,27 @@ export function Hero() {
           nav equals the gap to the section's bottom edge. */}
       <Container className="relative z-10">
         <motion.div
-          className="max-w-5xl"
+          className="max-w-6xl"
           variants={reduce ? undefined : containerVariants}
           initial={reduce ? false : 'hidden'}
           animate={reduce ? undefined : 'show'}
         >
           {motionItem(
             '',
-            <h1 className="font-display text-[clamp(2.2rem,6.5vw,5.25rem)] font-normal leading-[0.98] tracking-tighter text-balance text-primary">
+            <h1 className="font-display text-[clamp(2.75rem,8.5vw,8rem)] font-normal leading-[0.95] tracking-tighter text-primary">
               <Headline text={HERO.headline} />
             </h1>,
           )}
 
           {motionItem(
-            'mt-8',
+            'mt-10',
             <p className="max-w-3xl font-body text-[clamp(1.2rem,2.3vw,1.9rem)] font-light leading-snug text-primary/90">
               {HERO.subheadline}
             </p>,
           )}
 
           {motionItem(
-            'mt-12 flex flex-wrap items-center gap-3',
+            'mt-14 flex flex-wrap items-center gap-3',
             <>
               {HERO.ctas.map((c) =>
                 c.variant === 'primary' ? (
