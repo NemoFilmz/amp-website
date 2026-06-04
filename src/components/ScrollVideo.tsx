@@ -23,12 +23,12 @@ function Overlay({ name, blurb }: { name: string; blurb: string }) {
             'linear-gradient(to right, rgba(8,9,11,0.72) 0%, rgba(8,9,11,0.42) 32%, transparent 66%)',
         }}
       />
-      {/* Bottom scrim */}
+      {/* Top scrim */}
       <div
         aria-hidden
-        className="absolute inset-x-0 bottom-0 z-[1] h-2/3 bg-gradient-to-t from-base via-base/80 to-transparent"
+        className="absolute inset-x-0 top-0 z-[1] h-2/3 bg-gradient-to-b from-base via-base/80 to-transparent"
       />
-      <Container className="relative z-10 pb-12 md:pb-20">
+      <Container className="relative z-10 pt-28 md:pt-32">
         <Reveal>
           <h3 className="font-display text-[clamp(2rem,7vw,5.5rem)] leading-[0.92] tracking-tighter text-primary">
             {name}
@@ -116,7 +116,7 @@ export function ScrollVideoPanel({ src, poster, name, blurb }: ScrollVideoPanelP
   const frame = (media: ReactNode) => (
     <div
       ref={boxRef}
-      className="relative flex min-h-[58vh] items-end overflow-hidden md:min-h-[80vh]"
+      className="relative flex min-h-[58vh] items-start overflow-hidden md:min-h-[80vh]"
     >
       {media}
       <Overlay name={name} blurb={blurb} />

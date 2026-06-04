@@ -14,12 +14,14 @@ export const BRAND = {
 } as const
 
 export const NAV_LINKS = [
-  { label: 'About', to: '/about' },
-  { label: 'Work', to: '/work' },
-  { label: 'Technology', to: '/technology' },
+  // In-page anchors scroll to home sections (seamless, no page change).
+  // Academy is the one true sub-page (its own route).
+  { label: 'Home', to: '/#top' },
+  { label: 'About', to: '/#about' },
+  { label: 'Work', to: '/#industries' },
+  { label: 'Services', to: '/#services' },
   { label: 'Academy', to: '/academy' },
-  { label: 'Careers', to: '/careers' },
-  { label: 'Contact', to: '/contact' },
+  { label: 'Contact', to: '/#contact' },
 ] as const
 
 /* ---------- 1. HERO ---------- */

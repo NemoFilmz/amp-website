@@ -25,7 +25,7 @@ export function Industries() {
               key={industry.name}
               src={industry.image}
               alt={industry.name}
-              className="flex min-h-[58vh] items-end md:min-h-[80vh]"
+              className="flex min-h-[58vh] items-start md:min-h-[80vh]"
             >
               {/* Smooth left-side fade: a semi-transparent dark panel that lifts text
                   contrast while the imagery stays visible through it and on the right. */}
@@ -40,9 +40,9 @@ export function Industries() {
               {/* Localized scrim so text stays legible over bright imagery (sunset, sparks) */}
               <div
                 aria-hidden
-                className="absolute inset-x-0 bottom-0 z-[1] h-2/3 bg-gradient-to-t from-base via-base/80 to-transparent"
+                className="absolute inset-x-0 top-0 z-[1] h-2/3 bg-gradient-to-b from-base via-base/80 to-transparent"
               />
-              <Container className="relative z-10 pb-12 md:pb-20">
+              <Container className="relative z-10 pt-28 md:pt-32">
                 <Reveal>
                   <h3 className="font-display text-[clamp(2rem,7vw,5.5rem)] leading-[0.92] tracking-tighter text-primary">
                     {industry.name}

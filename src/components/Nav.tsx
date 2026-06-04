@@ -41,11 +41,10 @@ export function Nav() {
     if (pathname === '/') scrollTo(0)
   }
 
+  const linkBase = 'font-body text-[16px] font-medium uppercase tracking-[0.12em] transition-colors'
   const linkClass = ({ isActive }: { isActive: boolean }) =>
-    cn(
-      'font-body text-[16px] font-medium uppercase tracking-[0.12em] transition-colors',
-      isActive ? 'text-amp' : 'text-secondary hover:text-primary',
-    )
+    cn(linkBase, isActive ? 'text-amp' : 'text-secondary hover:text-primary')
+  const hashLinkClass = cn(linkBase, 'text-secondary hover:text-primary')
 
   return (
     <>
@@ -63,11 +62,17 @@ export function Nav() {
           </Link>
 
           <nav className="hidden items-center gap-8 lg:flex">
-            {NAV_LINKS.map((l) => (
-              <NavLink key={l.to} to={l.to} className={linkClass}>
-                {l.label}
-              </NavLink>
-            ))}
+            {NAV_LINKS.map((l) =>
+              l.to.includes('#') ? (
+                <Link key={l.to} to={l.to} className={hashLinkClass}>
+                  {l.label}
+                </Link>
+              ) : (
+                <NavLink key={l.to} to={l.to} className={linkClass}>
+                  {l.label}
+                </NavLink>
+              ),
+            )}
           </nav>
 
           <div className="hidden items-center gap-5 lg:flex">
@@ -124,18 +129,28 @@ export function Nav() {
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: 0.05 * i + 0.1 }}
                 >
-                  <NavLink
-                    to={l.to}
-                    onClick={() => setOpen(false)}
-                    className={({ isActive }) =>
-                      cn(
-                        'block border-b border-line py-4 font-display text-3xl tracking-tighter',
-                        isActive ? 'text-amp' : 'text-primary',
-                      )
-                    }
-                  >
-                    {l.label}
-                  </NavLink>
+                  {l.to.includes('#') ? (
+                    <Link
+                      to={l.to}
+                      onClick={() => setOpen(false)}
+                      className="block border-b border-line py-4 font-display text-3xl tracking-tighter text-primary"
+                    >
+                      {l.label}
+                    </Link>
+                  ) : (
+                    <NavLink
+                      to={l.to}
+                      onClick={() => setOpen(false)}
+                      className={({ isActive }) =>
+                        cn(
+                          'block border-b border-line py-4 font-display text-3xl tracking-tighter',
+                          isActive ? 'text-amp' : 'text-primary',
+                        )
+                      }
+                    >
+                      {l.label}
+                    </NavLink>
+                  )}
                 </motion.div>
               ))}
               <Link
