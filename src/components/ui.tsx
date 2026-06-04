@@ -367,13 +367,12 @@ export function Marquee({
 /* ------------------------------------------------------------------ */
 
 export function PageHero({
-  eyebrow,
   title,
   intro,
   seed = 3,
   children,
 }: {
-  eyebrow: string
+  eyebrow?: string
   title: string
   intro?: string
   seed?: number
@@ -391,8 +390,7 @@ export function PageHero({
         }}
       />
       <Container className="relative z-10">
-        <TickLabel>{eyebrow}</TickLabel>
-        <h1 className="mt-6 max-w-4xl text-balance font-display text-[clamp(2.4rem,6vw,5rem)] leading-[0.96] tracking-tighter text-primary">
+        <h1 className="max-w-4xl text-balance font-display text-[clamp(2.4rem,6vw,5rem)] leading-[0.96] tracking-tighter text-primary">
           {title}
         </h1>
         {intro && (
