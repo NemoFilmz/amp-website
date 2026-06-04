@@ -25,8 +25,10 @@ export default {
         mono: ['"dinosaur"', '"Helvetica Neue"', 'system-ui', 'sans-serif'],
       },
       letterSpacing: {
-        tightest: '-0.03em',
-        tighter: '-0.02em',
+        // Display ("impact"/Anton) tracking, loosened by 3% (+0.03em) per request.
+        tightest: '0em',
+        tighter: '0.01em',
+        tight: '0.005em',
         label: '0.22em',
       },
       maxWidth: {

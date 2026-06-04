@@ -90,7 +90,7 @@ export function CareersPage() {
           <Eyebrow index={2} total={4}>
             The Disciplines We Bring Together
           </Eyebrow>
-          <h2 className="mt-4 max-w-3xl font-display text-[clamp(2rem,4.5vw,3.4rem)] leading-[0.98] tracking-tighter text-primary">
+          <h2 className="mt-4 max-w-3xl font-display text-[clamp(2rem,4.5vw,3.6rem)] leading-[0.98] tracking-tighter text-primary">
             One team, many crafts
           </h2>
           {DISCIPLINES_PILLAR.body && (
@@ -131,7 +131,7 @@ export function CareersPage() {
           <Eyebrow index={3} total={4}>
             Open Roles
           </Eyebrow>
-          <h2 className="mt-4 max-w-3xl font-display text-[clamp(2rem,4.5vw,3.4rem)] leading-[0.98] tracking-tighter text-primary">
+          <h2 className="mt-4 max-w-3xl font-display text-[clamp(2rem,4.5vw,3.6rem)] leading-[0.98] tracking-tighter text-primary">
             Where your craft fits
           </h2>
           <p className="mt-6 inline-flex items-center gap-2.5 rounded-full border border-line px-4 py-2 font-body text-sm text-muted">
@@ -201,7 +201,7 @@ export function CareersPage() {
               }}
             />
             <div className="relative z-10">
-              <h2 className="mx-auto max-w-3xl text-balance font-display text-[clamp(1.9rem,4.5vw,3.4rem)] leading-[1] tracking-tighter text-primary">
+              <h2 className="mx-auto max-w-3xl text-balance font-display text-[clamp(2rem,4.5vw,3.6rem)] leading-[1] tracking-tighter text-primary">
                 Do not see your role? Introduce yourself.
               </h2>
               <p className="mx-auto mt-5 max-w-xl font-body text-lg leading-relaxed text-secondary">

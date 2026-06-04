@@ -152,7 +152,7 @@ export function AboutPage() {
           <Eyebrow index={3} total={5}>
             Built for Complex Industries
           </Eyebrow>
-          <h2 className="mt-4 max-w-prose font-display text-[clamp(2rem,4.5vw,3.4rem)] leading-[0.98] tracking-tighter text-primary">
+          <h2 className="mt-4 max-w-prose font-display text-[clamp(2rem,4.5vw,3.6rem)] leading-[0.98] tracking-tighter text-primary">
             A complete ecosystem behind every frame
           </h2>
         </Reveal>
@@ -223,7 +223,7 @@ export function AboutPage() {
           <Eyebrow index={4} total={5}>
             Global Presence
           </Eyebrow>
-          <h2 className="mt-4 max-w-prose font-display text-[clamp(2rem,4.5vw,3.4rem)] leading-[0.98] tracking-tighter text-primary">
+          <h2 className="mt-4 max-w-prose font-display text-[clamp(2rem,4.5vw,3.6rem)] leading-[0.98] tracking-tighter text-primary">
             Strategic hubs across the region and beyond
           </h2>
         </Reveal>

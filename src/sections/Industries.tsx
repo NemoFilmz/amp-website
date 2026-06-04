@@ -1,7 +1,7 @@
-import { Container, Eyebrow, CinematicMedia } from '../components/ui'
+import { Container, CinematicMedia } from '../components/ui'
 import { Reveal } from '../components/Reveal'
 import { ScrollVideoPanel } from '../components/ScrollVideo'
-import { INDUSTRIES, INDUSTRIES_TITLE } from '../data/site'
+import { INDUSTRIES } from '../data/site'
 
 /**
  * Simple, cinematic industry panels: a full-bleed graded image with the
@@ -10,17 +10,6 @@ import { INDUSTRIES, INDUSTRIES_TITLE } from '../data/site'
 export function Industries() {
   return (
     <section id="industries" className="relative scroll-mt-24 border-t border-line">
-      <Container className="py-20 md:py-28">
-        <Reveal>
-          <Eyebrow index={3} total={10}>
-            Industries We Serve
-          </Eyebrow>
-          <h2 className="mt-4 max-w-4xl font-display text-[clamp(2rem,4.5vw,3.6rem)] leading-[0.98] tracking-tighter text-primary">
-            {INDUSTRIES_TITLE}
-          </h2>
-        </Reveal>
-      </Container>
-
       <div className="flex flex-col">
         {INDUSTRIES.map((industry) =>
           industry.video ? (

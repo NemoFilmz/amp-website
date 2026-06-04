@@ -41,7 +41,7 @@ export function AcademyPage() {
       <Section divider className="py-24 md:py-32">
         <Reveal>
           <Eyebrow>Choose a Track</Eyebrow>
-          <h2 className="mt-4 max-w-3xl font-display text-[clamp(2rem,4.5vw,3.4rem)] leading-[0.98] tracking-tighter text-primary">
+          <h2 className="mt-4 max-w-3xl font-display text-[clamp(2rem,4.5vw,3.6rem)] leading-[0.98] tracking-tighter text-primary">
             Five disciplines, taught from real projects
           </h2>
         </Reveal>
@@ -81,7 +81,7 @@ export function AcademyPage() {
       <Section divider className="py-24 md:py-32">
         <Reveal>
           <Eyebrow>The Experience</Eyebrow>
-          <h2 className="mt-4 max-w-3xl font-display text-[clamp(2rem,4.5vw,3.4rem)] leading-[0.98] tracking-tighter text-primary">
+          <h2 className="mt-4 max-w-3xl font-display text-[clamp(2rem,4.5vw,3.6rem)] leading-[0.98] tracking-tighter text-primary">
             A luxury creative experience
           </h2>
           <p className="mt-6 max-w-2xl font-body text-lg leading-relaxed text-secondary">

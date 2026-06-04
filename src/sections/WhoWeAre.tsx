@@ -33,7 +33,7 @@ export function WhoWeAre() {
               <Eyebrow index={2} total={10}>
                 Who We Are
               </Eyebrow>
-              <h2 className="mt-6 font-display text-[clamp(2rem,4vw,3.4rem)] uppercase leading-[0.98] tracking-tighter text-primary">
+              <h2 className="mt-6 font-display text-[clamp(2rem,4.5vw,3.6rem)] uppercase leading-[0.98] tracking-tighter text-primary">
                 {WHO_WE_ARE.title}
               </h2>
               <div aria-hidden className="mt-8 h-px w-16 bg-amp" />
