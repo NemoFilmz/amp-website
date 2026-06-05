@@ -2,7 +2,6 @@ import { useEffect } from 'react'
 import { Outlet, useLocation } from 'react-router-dom'
 import { SmoothScroll, useSmoothScroll } from './SmoothScroll'
 import { Nav } from './Nav'
-import { ScrollRail } from './ScrollRail'
 import { Footer } from './Footer'
 
 const SITE = 'Action Media Production'
@@ -83,7 +82,6 @@ export function Layout() {
     <SmoothScroll>
       <RouteManager />
       <Nav />
-      <ScrollRail />
       <main id="top">
         <Outlet />
       </main>

@@ -1,10 +1,11 @@
 import { useEffect, useRef, useState } from 'react'
-import { AnimatePresence, motion } from 'framer-motion'
+import { AnimatePresence, motion, useScroll, useSpring } from 'framer-motion'
 import { Link, NavLink, useLocation } from 'react-router-dom'
-import { Menu, X } from 'lucide-react'
+import { Menu, X, ArrowRight } from 'lucide-react'
 import { NAV_LINKS } from '../data/site'
 import { useSmoothScroll } from './SmoothScroll'
 import { Wordmark } from './Wordmark'
+import { Magnetic } from './ui'
 import { cn } from '../lib/util'
 
 export function Nav() {
@@ -41,10 +42,13 @@ export function Nav() {
     if (pathname === '/') scrollTo(0)
   }
 
+  const { scrollYProgress } = useScroll()
+  const progress = useSpring(scrollYProgress, { stiffness: 140, damping: 30, mass: 0.2 })
+
   const linkBase = 'font-body text-[16px] font-medium uppercase tracking-[0.12em] transition-colors'
-  const linkClass = ({ isActive }: { isActive: boolean }) =>
-    cn(linkBase, isActive ? 'text-amp' : 'text-secondary hover:text-primary')
-  const hashLinkClass = cn(linkBase, 'text-secondary hover:text-primary')
+  // Active = the current route. Home-section anchors don't mark a page.
+  const isActive = (to: string) =>
+    to === '/#top' ? pathname === '/' : !to.includes('#') && pathname === to
 
   return (
     <>
@@ -62,26 +66,41 @@ export function Nav() {
           </Link>
 
           <nav className="hidden items-center gap-8 lg:flex">
-            {NAV_LINKS.map((l) =>
-              l.to.includes('#') ? (
-                <Link key={l.to} to={l.to} className={hashLinkClass}>
+            {NAV_LINKS.map((l) => {
+              const active = isActive(l.to)
+              return (
+                <Link
+                  key={l.to}
+                  to={l.to}
+                  className={cn(
+                    linkBase,
+                    'group relative py-1',
+                    active ? 'text-primary' : 'text-secondary hover:text-primary',
+                  )}
+                >
                   {l.label}
+                  <span
+                    aria-hidden
+                    className={cn(
+                      'absolute -bottom-0.5 left-0 h-[2px] w-full origin-left bg-amp transition-transform duration-300 ease-out',
+                      active ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100',
+                    )}
+                  />
                 </Link>
-              ) : (
-                <NavLink key={l.to} to={l.to} className={linkClass}>
-                  {l.label}
-                </NavLink>
-              ),
-            )}
+              )
+            })}
           </nav>
 
           <div className="hidden items-center gap-5 lg:flex">
-            <Link
-              to="/contact"
-              className="rounded-full border border-amp px-6 py-3.5 font-body text-[16px] font-medium uppercase tracking-[0.12em] text-amp transition-all duration-300 hover:bg-amp hover:text-base"
-            >
-              Start Your Project
-            </Link>
+            <Magnetic>
+              <Link
+                to="/contact"
+                className="inline-flex items-center gap-2 rounded-full bg-amp px-6 py-3.5 font-body text-[16px] font-medium uppercase tracking-[0.12em] text-base transition-shadow duration-300 hover:shadow-amp"
+              >
+                Start Your Project
+                <ArrowRight size={16} aria-hidden />
+              </Link>
+            </Magnetic>
           </div>
 
           <button
@@ -94,6 +113,13 @@ export function Nav() {
             <Menu size={22} strokeWidth={1.5} />
           </button>
         </div>
+
+        {/* Scroll-progress accent line */}
+        <motion.div
+          aria-hidden
+          className="absolute bottom-0 left-0 h-[2px] w-full origin-left bg-amp"
+          style={{ scaleX: progress }}
+        />
       </header>
 
       <AnimatePresence>
