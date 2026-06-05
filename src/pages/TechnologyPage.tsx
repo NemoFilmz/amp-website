@@ -115,7 +115,7 @@ export function TechnologyPage() {
             className="absolute inset-0"
             style={{
               background:
-                'linear-gradient(180deg, rgba(8,9,11,0.45) 0%, rgba(8,9,11,0.25) 50%, rgba(8,9,11,0.92) 100%)',
+                'linear-gradient(180deg, rgba(32,33,36,0.45) 0%, rgba(32,33,36,0.25) 50%, rgba(32,33,36,0.92) 100%)',
             }}
           />
           <Container className="relative z-10 flex h-full flex-col justify-end pb-12 md:pb-16">
@@ -278,7 +278,7 @@ export function TechnologyPage() {
           className="absolute inset-0"
           style={{
             background:
-              'radial-gradient(60% 60% at 50% 0%, rgba(249,192,12,0.10), transparent 70%), linear-gradient(180deg, rgba(8,9,11,0.55) 0%, rgba(8,9,11,0.4) 45%, rgba(8,9,11,0.95) 100%)',
+              'radial-gradient(60% 60% at 50% 0%, rgba(249,192,12,0.10), transparent 70%), linear-gradient(180deg, rgba(32,33,36,0.55) 0%, rgba(32,33,36,0.4) 45%, rgba(32,33,36,0.95) 100%)',
           }}
         />
         <Container className="relative z-10 text-center">

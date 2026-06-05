@@ -218,7 +218,7 @@ export function CinematicMedia({
             className="absolute inset-0"
             style={{
               background:
-                'radial-gradient(120% 80% at 70% 18%, rgba(43,217,255,0.12), transparent 58%), linear-gradient(180deg, rgba(8,9,11,0.05) 0%, rgba(8,9,11,0.45) 66%, rgba(8,9,11,0.92) 100%)',
+                'radial-gradient(120% 80% at 70% 18%, rgba(43,217,255,0.12), transparent 58%), linear-gradient(180deg, rgba(32,33,36,0.05) 0%, rgba(32,33,36,0.45) 66%, rgba(32,33,36,0.92) 100%)',
             }}
           />
         </>
@@ -386,7 +386,7 @@ export function PageHero({
         className="absolute inset-0"
         style={{
           background:
-            'linear-gradient(180deg, rgba(8,9,11,0.55) 0%, rgba(8,9,11,0.35) 45%, rgba(8,9,11,0.92) 100%)',
+            'linear-gradient(180deg, rgba(32,33,36,0.55) 0%, rgba(32,33,36,0.35) 45%, rgba(32,33,36,0.92) 100%)',
         }}
       />
       <Container className="relative z-10">

@@ -21,7 +21,7 @@ export function WhoWeAre() {
         className="pointer-events-none absolute inset-0"
         style={{
           background:
-            'radial-gradient(115% 95% at 50% 45%, rgba(8,9,11,0.50) 0%, rgba(8,9,11,0.66) 55%, rgba(8,9,11,0.80) 100%)',
+            'radial-gradient(115% 95% at 50% 45%, rgba(32,33,36,0.50) 0%, rgba(32,33,36,0.66) 55%, rgba(32,33,36,0.80) 100%)',
         }}
       />
       <Container className="relative z-10">

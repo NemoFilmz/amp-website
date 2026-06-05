@@ -101,7 +101,7 @@ export function Hero() {
         className="absolute inset-0"
         style={{
           background:
-            'linear-gradient(180deg, rgba(8,9,11,0.62) 0%, rgba(8,9,11,0.40) 34%, rgba(8,9,11,0.78) 78%, rgba(8,9,11,0.98) 100%)',
+            'linear-gradient(180deg, rgba(32,33,36,0.62) 0%, rgba(32,33,36,0.40) 34%, rgba(32,33,36,0.78) 78%, rgba(32,33,36,0.98) 100%)',
         }}
       />
       {/* Left-edge wash to ground the type column */}
@@ -110,7 +110,7 @@ export function Hero() {
         className="absolute inset-0"
         style={{
           background:
-            'linear-gradient(90deg, rgba(8,9,11,0.70) 0%, rgba(8,9,11,0.30) 42%, transparent 70%)',
+            'linear-gradient(90deg, rgba(32,33,36,0.70) 0%, rgba(32,33,36,0.30) 42%, transparent 70%)',
         }}
       />
 

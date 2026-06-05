@@ -175,7 +175,7 @@ export function Philosophy() {
         className="pointer-events-none absolute inset-0"
         style={{
           background:
-            'radial-gradient(60% 70% at 18% 38%, rgba(43,217,255,0.12), transparent 62%), radial-gradient(80% 90% at 100% 100%, rgba(8,9,11,0.85), transparent 55%), linear-gradient(180deg, rgba(8,9,11,0.35) 0%, rgba(8,9,11,0.78) 100%)',
+            'radial-gradient(60% 70% at 18% 38%, rgba(43,217,255,0.12), transparent 62%), radial-gradient(80% 90% at 100% 100%, rgba(32,33,36,0.85), transparent 55%), linear-gradient(180deg, rgba(32,33,36,0.35) 0%, rgba(32,33,36,0.78) 100%)',
         }}
       />
 

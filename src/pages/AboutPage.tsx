@@ -8,17 +8,16 @@ import {
   ArrowUpRight,
   ArrowRight,
 } from 'lucide-react'
-import { PageHero, Section, Container, Eyebrow, TickLabel, CTAButton } from '../components/ui'
+import { Section, Container, Eyebrow, TickLabel, CTAButton } from '../components/ui'
 import { Reveal, RevealGroup, RevealItem } from '../components/Reveal'
 import TeamShowcase from '../components/TeamShowcase'
 import { WhoWeAre } from '../sections/WhoWeAre'
 import {
-  WHO_WE_ARE,
+  ABOUT_STORY,
   PHILOSOPHY,
   WHY_PILLARS,
   STATS,
   OFFICES,
-  PAGES,
 } from '../data/site'
 import { cn } from '../lib/util'
 
@@ -47,9 +46,7 @@ function renderPhilosophyLine(line: string) {
 
 export function AboutPage() {
   return (
-    <main>
-      <PageHero {...PAGES.about} seed={0} />
-
+    <main className="pt-12 md:pt-16">
       {/* "Complex, made clear" intro, moved here from the home page */}
       <WhoWeAre />
 
@@ -57,19 +54,28 @@ export function AboutPage() {
       {/* 1. STORY                                                          */}
       {/* ---------------------------------------------------------------- */}
       <Section className="py-24 md:py-32">
+        {/* Statement headline — the section's focal point (value prop accented) */}
         <Reveal>
-          <Eyebrow index={1} total={5}>
-            Who We Are
-          </Eyebrow>
+          <h2 className="max-w-4xl text-balance font-display text-[clamp(2.2rem,5vw,4rem)] leading-[1.02] tracking-tighter text-primary">
+            We make complicated things{' '}
+            <span className="text-amp">easy to understand.</span>
+          </h2>
         </Reveal>
 
-        <div className="mt-10 grid gap-y-12 md:grid-cols-12 md:gap-x-16">
-          {/* Lead + body */}
+        {/* Lead — sets context, clearly between headline and body */}
+        <Reveal delay={0.05}>
+          <p className="mt-8 max-w-3xl font-light text-xl leading-snug text-primary md:text-2xl">
+            {ABOUT_STORY.intro}
+          </p>
+        </Reveal>
+
+        {/* Narrative (read) on the left; capabilities (scan) as a sidebar on the right */}
+        <div className="mt-14 grid gap-y-12 md:mt-16 md:grid-cols-12 md:gap-x-16">
           <div className="md:col-span-7">
             <div className="space-y-6">
-              {WHO_WE_ARE.body.map((paragraph, i) => (
-                <Reveal key={paragraph} delay={0.08 + i * 0.04}>
-                  <p className="max-w-prose font-body text-lg leading-relaxed text-secondary">
+              {ABOUT_STORY.paragraphs.map((paragraph, i) => (
+                <Reveal key={paragraph} delay={0.06 + i * 0.04}>
+                  <p className="max-w-prose font-body text-lg leading-relaxed text-primary/90">
                     {paragraph}
                   </p>
                 </Reveal>
@@ -77,44 +83,24 @@ export function AboutPage() {
             </div>
           </div>
 
-          {/* Side rail: title echo */}
           <div className="md:col-span-5">
-            <Reveal delay={0.12}>
-              <div className="border-l border-line pl-6 md:pl-8">
-                <TickLabel>{WHO_WE_ARE.title}</TickLabel>
-                <p className="mt-5 font-body text-[1rem] leading-relaxed text-muted">
-                  A specialized studio where cinema, engineering understanding, and
-                  AI-driven production converge for executive-level audiences.
-                </p>
+            <Reveal delay={0.1}>
+              <div className="md:border-l md:border-line md:pl-10">
+                <h3 className="font-display text-xl tracking-tighter text-primary">
+                  {ABOUT_STORY.bringIntro}
+                </h3>
+                <ul className="mt-6 space-y-4">
+                  {ABOUT_STORY.bring.map((item) => (
+                    <li key={item} className="flex items-start gap-3">
+                      <CircleDot size={13} className="mt-1.5 shrink-0 text-amp" aria-hidden />
+                      <span className="font-body text-primary/90">{item}</span>
+                    </li>
+                  ))}
+                </ul>
               </div>
             </Reveal>
           </div>
         </div>
-
-        {/* Divider */}
-        <div className="my-14 h-px w-full bg-line md:my-20" aria-hidden />
-
-        {/* Capabilities ledger */}
-        <Reveal>
-          <span className="eyebrow">{WHO_WE_ARE.capabilitiesIntro}</span>
-        </Reveal>
-        <RevealGroup className="mt-8 grid grid-cols-1 gap-x-16 sm:grid-cols-2">
-          {WHO_WE_ARE.capabilities.map((capability) => (
-            <RevealItem
-              key={capability}
-              className="flex items-center gap-4 border-t border-line py-4"
-            >
-              <CircleDot size={13} className="shrink-0 text-amp" aria-hidden />
-              <span className="font-body text-[1rem] text-primary">{capability}</span>
-            </RevealItem>
-          ))}
-        </RevealGroup>
-
-        <Reveal delay={0.06}>
-          <p className="mt-12 max-w-2xl font-light text-xl leading-relaxed text-secondary md:mt-16">
-            {WHO_WE_ARE.closing}
-          </p>
-        </Reveal>
       </Section>
 
       {/* ---------------------------------------------------------------- */}

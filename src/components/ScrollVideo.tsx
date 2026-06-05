@@ -20,7 +20,7 @@ function Overlay({ name, blurb }: { name: string; blurb: string }) {
         className="absolute inset-0 z-[1]"
         style={{
           background:
-            'linear-gradient(to right, rgba(8,9,11,0.72) 0%, rgba(8,9,11,0.42) 32%, transparent 66%)',
+            'linear-gradient(to right, rgba(32,33,36,0.72) 0%, rgba(32,33,36,0.42) 32%, transparent 66%)',
         }}
       />
       {/* Top scrim */}

@@ -34,7 +34,7 @@
 
   ::selection {
     background: var(--amp);
-    color: #08090b;
+    color: #202124;
   }
 
   /* Refined dark scrollbar */
@@ -43,12 +43,12 @@
     height: 10px;
   }
   ::-webkit-scrollbar-track {
-    background: #08090b;
+    background: #202124;
   }
   ::-webkit-scrollbar-thumb {
     background: #1b1f26;
     border-radius: 999px;
-    border: 2px solid #08090b;
+    border: 2px solid #202124;
   }
   ::-webkit-scrollbar-thumb:hover {
     background: #2a2f38;
@@ -56,7 +56,7 @@
 
   :focus-visible {
     outline: none;
-    box-shadow: 0 0 0 2px #08090b, 0 0 0 4px var(--amp);
+    box-shadow: 0 0 0 2px #202124, 0 0 0 4px var(--amp);
     border-radius: 2px;
   }
 }

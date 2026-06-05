@@ -4,11 +4,11 @@ export default {
   theme: {
     extend: {
       colors: {
-        base: '#08090B',
-        surface: '#0E1014',
-        elevated: '#14171C',
-        line: '#1B1F26',
-        'line-strong': '#2A2F38',
+        base: '#202124',
+        surface: '#26282c',
+        elevated: '#2d2f34',
+        line: '#383b42',
+        'line-strong': '#494d55',
         primary: '#F4F5F7',
         secondary: '#A6ADB8',
         muted: '#8B93A1',

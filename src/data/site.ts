@@ -60,6 +60,27 @@ export const WHO_WE_ARE = {
     'AMP delivers world-class content designed for global audiences and executive-level presentations.',
 }
 
+/* ---------- 2b. ABOUT STORY ---------- */
+export const ABOUT_STORY = {
+  headline: 'We make complicated things easy to understand.',
+  intro:
+    'Action Media Productions (AMP) is a visual communication studio. We work with the government, energy companies, and major industry and infrastructure.',
+  paragraphs: [
+    "Their work is hard to explain. It's technical, it runs deep, and the people who need to grasp it rarely share the same background. We close that gap by building the work from scratch, turning complex subjects into visuals that make sense at a glance.",
+    "That approach also lets us show what a camera can't reach: the inside of a working refinery, or a facility that's still on the drawing board. When filming is the right call, we shoot it. When it isn't, we build it.",
+    'Understanding changes outcomes. When the work is clear, people are far more willing to trust it and back it.',
+  ],
+  bringIntro: 'What we bring to it',
+  bring: [
+    'Handcrafted 3D animation, built from scratch',
+    'Filming and live production for corporate video',
+    'Cinematic direction with real film training behind it',
+    'Deep knowledge of how the industrial sector actually works',
+    'High-performance rendering',
+    'Art direction that understands the technology, not just the look',
+  ],
+}
+
 /* ---------- 3. INDUSTRIES ---------- */
 export type Industry = {
   name: string
