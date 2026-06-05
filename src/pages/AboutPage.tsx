@@ -11,7 +11,7 @@ import {
 import { Section, Container, Eyebrow, TickLabel, CTAButton } from '../components/ui'
 import { Reveal, RevealGroup, RevealItem } from '../components/Reveal'
 import TeamShowcase from '../components/TeamShowcase'
-import { WhoWeAre } from '../sections/WhoWeAre'
+import { BackgroundPaths } from '../components/BackgroundPaths'
 import {
   ABOUT_STORY,
   PHILOSOPHY,
@@ -47,16 +47,13 @@ function renderPhilosophyLine(line: string) {
 export function AboutPage() {
   return (
     <main className="pt-12 md:pt-16">
-      {/* "Complex, made clear" intro, moved here from the home page */}
-      <WhoWeAre />
-
       {/* ---------------------------------------------------------------- */}
       {/* 1. STORY                                                          */}
       {/* ---------------------------------------------------------------- */}
       <Section className="py-24 md:py-32">
         {/* Statement headline — the section's focal point (value prop accented) */}
         <Reveal>
-          <h2 className="max-w-4xl text-balance font-display text-[clamp(2.2rem,5vw,4rem)] leading-[1.02] tracking-tighter text-primary">
+          <h2 className="max-w-4xl text-balance font-display text-[clamp(2rem,4.5vw,3.6rem)] leading-[1.02] tracking-tighter text-primary">
             We make complicated things{' '}
             <span className="text-amp">easy to understand.</span>
           </h2>
@@ -116,24 +113,32 @@ export function AboutPage() {
         <RevealGroup className="mt-12 max-w-4xl space-y-2 md:mt-16 md:space-y-3">
           {PHILOSOPHY.lines.map((line) => (
             <RevealItem key={line}>
-              <p className="font-display leading-[1.02] tracking-tighter text-primary text-[clamp(1.6rem,4vw,3rem)]">
+              <p className="font-display leading-[1.1] tracking-tighter text-primary text-[clamp(1.4rem,3vw,2.4rem)]">
                 {renderPhilosophyLine(line)}
               </p>
             </RevealItem>
           ))}
         </RevealGroup>
-
-        <Reveal delay={0.1}>
-          <p className="mt-12 max-w-2xl font-light text-xl leading-relaxed text-secondary md:mt-16">
-            {PHILOSOPHY.body}
-          </p>
-        </Reveal>
       </Section>
 
       {/* ---------------------------------------------------------------- */}
       {/* 3. CAPABILITIES + STATS                                           */}
       {/* ---------------------------------------------------------------- */}
-      <Section divider className="py-24 md:py-32">
+      <Section
+        divider
+        container={false}
+        className="relative overflow-hidden py-24 md:py-32"
+      >
+        <BackgroundPaths />
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-0"
+          style={{
+            background:
+              'radial-gradient(115% 95% at 50% 40%, rgba(32,33,36,0.45) 0%, rgba(32,33,36,0.62) 55%, rgba(32,33,36,0.82) 100%)',
+          }}
+        />
+        <Container className="relative z-10">
         <Reveal>
           <Eyebrow index={3} total={5}>
             Built for Complex Industries
@@ -199,6 +204,7 @@ export function AboutPage() {
             )
           })}
         </RevealGroup>
+        </Container>
       </Section>
 
       {/* ---------------------------------------------------------------- */}
@@ -279,7 +285,7 @@ export function AboutPage() {
             <TickLabel className="justify-center">Start the Conversation</TickLabel>
           </Reveal>
           <Reveal delay={0.05}>
-            <h2 className="mx-auto mt-6 max-w-3xl text-balance font-display text-[clamp(2.2rem,5.5vw,4.4rem)] leading-[0.98] tracking-tighter text-primary">
+            <h2 className="mx-auto mt-6 max-w-3xl text-balance font-display text-[clamp(2rem,4.5vw,3.6rem)] leading-[0.98] tracking-tighter text-primary">
               Let us build the future together
             </h2>
           </Reveal>

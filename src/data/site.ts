@@ -64,11 +64,12 @@ export const WHO_WE_ARE = {
 export const ABOUT_STORY = {
   headline: 'We make complicated things easy to understand.',
   intro:
-    'Action Media Productions (AMP) is a visual communication studio. We work with the government, energy companies, and major industry and infrastructure.',
+    'Action Media Productions (AMP) is a visual communication studio in Abu Dhabi. We work with the government, energy companies, and major industry and infrastructure. Since 2009 our clients have included ADNOC, Etihad, Mubadala, and Masdar. The work has brought home seven Platinum MUSE Awards and a global top-ten finish at the NYX Awards.',
   paragraphs: [
     "Their work is hard to explain. It's technical, it runs deep, and the people who need to grasp it rarely share the same background. We close that gap by building the work from scratch, turning complex subjects into visuals that make sense at a glance.",
     "That approach also lets us show what a camera can't reach: the inside of a working refinery, or a facility that's still on the drawing board. When filming is the right call, we shoot it. When it isn't, we build it.",
     'Understanding changes outcomes. When the work is clear, people are far more willing to trust it and back it.',
+    "Behind it is a team of animators, filmmakers, and art directors who are at their best on the hardest briefs, led by people who've spent decades in production, broadcasting, and film, here and internationally. It's why the work stays on brand and stays with the people who see it.",
   ],
   bringIntro: 'What we bring to it',
   bring: [
@@ -400,11 +401,10 @@ export const PHILOSOPHY = {
   eyebrow: 'From Complexity to Clarity',
   title: 'Our Philosophy',
   lines: [
-    'Every industrial system has a story.',
-    'Every technology has a human impact.',
-    'Every national vision deserves cinematic storytelling.',
+    'At AMP, we bring filmmaking and a real understanding of engineering together.',
+    'We turn complex, technical subjects into cinematic work people can follow, and actually care about.',
   ],
-  body: 'At AMP, we combine cinema, technology, engineering understanding, and AI-powered creativity to transform technical complexity into visual narratives that audiences can understand, remember, and emotionally connect with.',
+  body: '',
 }
 
 /* ---------- 8. AMP ACADEMY ---------- */

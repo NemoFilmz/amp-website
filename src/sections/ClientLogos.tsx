@@ -13,7 +13,7 @@ export function ClientLogos() {
     <section className="relative border-t border-line py-20 md:py-28">
       <Container>
         <Reveal>
-          <h2 className="mx-auto max-w-2xl text-center font-display text-[clamp(1.6rem,3.4vw,2.6rem)] leading-[1.02] tracking-tighter text-primary text-balance">
+          <h2 className="mx-auto max-w-2xl text-center font-display text-[clamp(2rem,4.5vw,3.6rem)] leading-[1.02] tracking-tighter text-primary text-balance">
             {LOGO_CLOUD.heading}
           </h2>
         </Reveal>
