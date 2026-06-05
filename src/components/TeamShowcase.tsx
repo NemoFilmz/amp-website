@@ -16,59 +16,24 @@ export interface TeamMember {
 }
 
 /**
- * PLACEHOLDER team — swap these for the real AMP team (names, roles, photos,
- * and social links). Photos use a placeholder avatar service for now.
+ * Team — names and roles from actionmpro.com/about. The live site has no
+ * individual headshots, so photos use a placeholder avatar service for now;
+ * swap in real headshots (and per-person social links) when available.
  */
-const PLACEHOLDER_TEAM: TeamMember[] = [
-  {
-    id: '1',
-    name: 'Team Member',
-    role: 'Founder & Creative Director',
-    image: 'https://i.pravatar.cc/400?img=12',
-    social: { linkedin: '#' },
-  },
-  {
-    id: '2',
-    name: 'Team Member',
-    role: 'Director of Photography',
-    image: 'https://i.pravatar.cc/400?img=5',
-    social: { instagram: '#', linkedin: '#' },
-  },
-  {
-    id: '3',
-    name: 'Team Member',
-    role: 'Lead 3D Artist',
-    image: 'https://i.pravatar.cc/400?img=13',
-    social: { behance: '#', linkedin: '#' },
-  },
-  {
-    id: '4',
-    name: 'Team Member',
-    role: 'Executive Producer',
-    image: 'https://i.pravatar.cc/400?img=32',
-    social: { linkedin: '#' },
-  },
-  {
-    id: '5',
-    name: 'Team Member',
-    role: 'AI Production Lead',
-    image: 'https://i.pravatar.cc/400?img=33',
-    social: { twitter: '#', linkedin: '#' },
-  },
-  {
-    id: '6',
-    name: 'Team Member',
-    role: 'Post-Production Supervisor',
-    image: 'https://i.pravatar.cc/400?img=16',
-    social: { instagram: '#' },
-  },
+const TEAM: TeamMember[] = [
+  { id: '1', name: 'Ayman Ahmed', role: 'Owner & Creative Director', image: 'https://i.pravatar.cc/400?img=12' },
+  { id: '2', name: 'Michael Salama', role: 'Director of Photography', image: 'https://i.pravatar.cc/400?img=13' },
+  { id: '3', name: 'Robson Batista', role: 'Marketing Manager', image: 'https://i.pravatar.cc/400?img=33' },
+  { id: '4', name: 'Manasa J', role: 'Business Development Manager', image: 'https://i.pravatar.cc/400?img=45' },
+  { id: '5', name: 'Mavie Alexander', role: 'Photographer', image: 'https://i.pravatar.cc/400?img=15' },
+  { id: '6', name: 'Muhammad Kashan', role: 'Motion Graphic Designer', image: 'https://i.pravatar.cc/400?img=53' },
 ]
 
 interface TeamShowcaseProps {
   members?: TeamMember[]
 }
 
-export default function TeamShowcase({ members = PLACEHOLDER_TEAM }: TeamShowcaseProps) {
+export default function TeamShowcase({ members = TEAM }: TeamShowcaseProps) {
   const [hoveredId, setHoveredId] = useState<string | null>(null)
 
   const col1 = members.filter((_, i) => i % 3 === 0)

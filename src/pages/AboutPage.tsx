@@ -66,8 +66,38 @@ export function AboutPage() {
           </p>
         </Reveal>
 
+        {/* Proof strip — clients + awards pulled out of the prose so they read
+            at a glance (chunking) and the awards isolate as credentials. */}
+        <Reveal delay={0.1}>
+          <div className="mt-12 grid gap-px overflow-hidden rounded-xl border border-line bg-line md:mt-14 md:grid-cols-2">
+            <div className="bg-surface p-7 md:p-9">
+              <span className="eyebrow">{ABOUT_STORY.clientsLabel}</span>
+              <ul className="mt-5 flex flex-wrap items-center gap-x-7 gap-y-3">
+                {ABOUT_STORY.clients.map((client) => (
+                  <li
+                    key={client}
+                    className="font-display text-2xl tracking-tighter text-primary md:text-[1.7rem]"
+                  >
+                    {client}
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div className="grid grid-cols-2 divide-x divide-line">
+              {ABOUT_STORY.awards.map((award) => (
+                <div key={award.label} className="bg-surface p-7 md:p-9">
+                  <div className="font-display text-[clamp(1.9rem,3.6vw,2.9rem)] leading-none text-amp">
+                    {award.value}
+                  </div>
+                  <div className="eyebrow mt-2.5">{award.label}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </Reveal>
+
         {/* Narrative (read) on the left; capabilities (scan) as a sidebar on the right */}
-        <div className="mt-14 grid gap-y-12 md:mt-16 md:grid-cols-12 md:gap-x-16">
+        <div className="mt-16 grid gap-y-12 md:mt-20 md:grid-cols-12 md:gap-x-16">
           <div className="md:col-span-7">
             <div className="space-y-6">
               {ABOUT_STORY.paragraphs.map((paragraph, i) => (

@@ -64,7 +64,13 @@ export const WHO_WE_ARE = {
 export const ABOUT_STORY = {
   headline: 'We make complicated things easy to understand.',
   intro:
-    'Action Media Productions (AMP) is a visual communication studio in Abu Dhabi. We work with the government, energy companies, and major industry and infrastructure. Since 2009 our clients have included ADNOC, Etihad, Mubadala, and Masdar. The work has brought home seven Platinum MUSE Awards and a global top-ten finish at the NYX Awards.',
+    'Action Media Productions (AMP) is a visual communication studio in Abu Dhabi. We work with the government, energy companies, and major industry and infrastructure.',
+  clientsLabel: 'Clients since 2009',
+  clients: ['ADNOC', 'Etihad', 'Mubadala', 'Masdar'],
+  awards: [
+    { value: '7', label: 'Platinum MUSE Awards' },
+    { value: 'Top 10', label: 'NYX Awards, worldwide' },
+  ],
   paragraphs: [
     "Their work is hard to explain. It's technical, it runs deep, and the people who need to grasp it rarely share the same background. We close that gap by building the work from scratch, turning complex subjects into visuals that make sense at a glance.",
     "That approach also lets us show what a camera can't reach: the inside of a working refinery, or a facility that's still on the drawing board. When filming is the right call, we shoot it. When it isn't, we build it.",
