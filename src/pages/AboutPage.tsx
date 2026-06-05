@@ -11,6 +11,7 @@ import {
 import { PageHero, Section, Container, Eyebrow, TickLabel, CTAButton } from '../components/ui'
 import { Reveal, RevealGroup, RevealItem } from '../components/Reveal'
 import TeamShowcase from '../components/TeamShowcase'
+import { WhoWeAre } from '../sections/WhoWeAre'
 import {
   WHO_WE_ARE,
   PHILOSOPHY,
@@ -48,6 +49,9 @@ export function AboutPage() {
   return (
     <main>
       <PageHero {...PAGES.about} seed={0} />
+
+      {/* "Complex, made clear" intro, moved here from the home page */}
+      <WhoWeAre />
 
       {/* ---------------------------------------------------------------- */}
       {/* 1. STORY                                                          */}
