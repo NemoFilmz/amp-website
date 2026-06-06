@@ -87,7 +87,7 @@ export const CountryMarkers = forwardRef<
                   : 'left-1/2 -translate-x-1/2 text-center')
             }
           >
-            {c.name}
+            {c.label ?? c.name}
           </span>
         </button>
       ))}
