@@ -19,7 +19,6 @@ export const NAV_LINKS = [
   { label: 'Home', to: '/#top' },
   { label: 'About', to: '/about' },
   { label: 'Work', to: '/work' },
-  { label: 'Services', to: '/#services' },
   { label: 'Academy', to: '/academy' },
   { label: 'Contact', to: '/#contact' },
 ] as const
@@ -364,6 +363,8 @@ export type Office = {
   comingSoon?: boolean
   /** Optional background photo for the card. */
   image?: string
+  /** object-position for the background photo (defaults to "50% 55%"). */
+  imagePosition?: string
 }
 
 export const GLOBAL_INTRO = 'AMP operates across strategic regional and international hubs.'
@@ -375,6 +376,8 @@ export const OFFICES: Office[] = [
     role: 'Government communication, energy sector projects, and strategic industrial production.',
     email: 'ayman@actionmpro.com',
     coord: '24.45°N 54.37°E',
+    image: '/placeholders/abu-dhabi.jpg',
+    imagePosition: '50% 42%',
   },
   {
     city: 'Dubai',
@@ -382,6 +385,8 @@ export const OFFICES: Office[] = [
     role: 'Creative production, commercial storytelling, innovation projects, and AI production.',
     email: 'ayman@actionmpro.com',
     coord: '25.20°N 55.27°E',
+    image: '/placeholders/dubai.jpg',
+    imagePosition: '50% 48%',
   },
   {
     city: 'Riyadh',
@@ -390,6 +395,8 @@ export const OFFICES: Office[] = [
     email: 'ayman@actionmpro.com',
     coord: '24.71°N 46.68°E',
     comingSoon: true,
+    image: '/placeholders/saudi.jpg',
+    imagePosition: '50% 35%',
   },
   {
     city: 'Barcelona',
@@ -398,6 +405,7 @@ export const OFFICES: Office[] = [
     email: 'ayman@actionmpro.com',
     coord: '41.39°N 2.17°E',
     image: '/placeholders/barcelona.jpg',
+    imagePosition: '50% 45%',
   },
 ]
 

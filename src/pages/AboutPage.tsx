@@ -167,14 +167,15 @@ export function AboutPage() {
                     src={office.image}
                     alt=""
                     aria-hidden
-                    className="absolute inset-0 h-full w-full object-cover object-[50%_55%] transition-transform duration-700 ease-out group-hover:scale-105"
+                    style={{ objectPosition: office.imagePosition ?? '50% 55%' }}
+                    className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
                   />
                   <div
                     aria-hidden
                     className="absolute inset-0"
                     style={{
                       background:
-                        'linear-gradient(to bottom, rgba(32,33,36,0.92) 0%, rgba(32,33,36,0.6) 48%, rgba(32,33,36,0.28) 100%)',
+                        'linear-gradient(to bottom, rgba(32,33,36,0.95) 0%, rgba(32,33,36,0.72) 50%, rgba(32,33,36,0.42) 100%)',
                     }}
                   />
                 </>
@@ -184,18 +185,18 @@ export function AboutPage() {
                   <h3 className="font-display text-3xl tracking-tighter text-primary md:text-4xl">
                     {office.city}
                   </h3>
-                  <span className="font-body text-sm uppercase tracking-label text-muted">
+                  <span className="font-body text-sm uppercase tracking-label text-primary/70">
                     {office.country}
                   </span>
                 </div>
 
-                <p className="mt-5 max-w-prose font-body leading-relaxed text-secondary">
+                <p className="mt-5 max-w-prose font-body leading-relaxed text-primary/90">
                   {office.role}
                 </p>
 
                 {office.comingSoon && (
-                  <span className="mt-6 inline-flex items-center gap-2 font-body text-sm uppercase tracking-label text-muted">
-                    <span aria-hidden className="h-1.5 w-1.5 rounded-full bg-amp/70" />
+                  <span className="mt-6 inline-flex items-center gap-2 font-body text-sm uppercase tracking-label text-primary/80">
+                    <span aria-hidden className="h-1.5 w-1.5 rounded-full bg-amp" />
                     Coming soon
                   </span>
                 )}
