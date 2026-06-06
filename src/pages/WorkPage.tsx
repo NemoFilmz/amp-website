@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from 'react'
 import { Link, useSearchParams } from 'react-router-dom'
-import { ArrowUpRight, Gauge, Layers, Boxes, Sparkles, Check } from 'lucide-react'
+import { Check } from 'lucide-react'
 import { Section, CinematicMedia, Eyebrow } from '../components/ui'
 import { Reveal, RevealGroup, RevealItem } from '../components/Reveal'
 import { CtaCard } from '../components/CtaCard'
@@ -62,8 +62,6 @@ const ALL = 'All'
 
 /* Distinct tags, in first-seen order, prefixed with the "All" filter. */
 const FILTERS: string[] = [ALL, ...Array.from(new Set(CASES.map((c) => c.tag)))]
-
-const PILLAR_ICONS = [Gauge, Layers, Boxes, Sparkles] as const
 
 export function WorkPage() {
   const [searchParams] = useSearchParams()
@@ -143,12 +141,12 @@ export function WorkPage() {
               <Link
                 to="/contact"
                 aria-label={`Enquire about ${c.title}`}
-                className="group relative block overflow-hidden rounded-lg"
+                className="group relative block overflow-hidden rounded-2xl"
               >
                 <CinematicMedia
                   src={c.image}
                   alt={c.title}
-                  className="aspect-[4/3] rounded-lg transition-transform duration-500 group-hover:scale-[1.03]"
+                  className="aspect-[4/3] rounded-2xl transition-transform duration-500 group-hover:scale-[1.03]"
                 >
                   {/* Tag pill */}
                   <span className="absolute left-4 top-4 z-10 rounded-full border border-amp px-3 py-1 text-xs text-amp">
@@ -163,15 +161,6 @@ export function WorkPage() {
                     <p className="mt-1.5 font-body text-sm leading-relaxed text-secondary">
                       {c.scope}
                     </p>
-                    {/* Persistent, honest affordance: these route to contact, not a case page */}
-                    <span className="mt-3 inline-flex items-center gap-1.5 font-body text-[12px] font-medium uppercase tracking-label text-amp">
-                      Enquire
-                      <ArrowUpRight
-                        size={15}
-                        aria-hidden
-                        className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
-                      />
-                    </span>
                   </div>
                 </CinematicMedia>
               </Link>
@@ -213,19 +202,12 @@ export function WorkPage() {
 
         {/* Pillar cards */}
         <RevealGroup className="mt-16 grid gap-6 md:mt-20 md:grid-cols-2">
-          {WHY_PILLARS.map((pillar, i) => {
-            const Icon = PILLAR_ICONS[i] ?? Sparkles
+          {WHY_PILLARS.map((pillar) => {
             return (
               <RevealItem
                 key={pillar.title}
-                className="group rounded-lg border border-line bg-surface p-8 transition-colors duration-300 hover:border-line-strong hover:bg-elevated"
+                className="group rounded-2xl border border-line bg-surface p-8 transition-colors duration-300 hover:border-line-strong hover:bg-elevated"
               >
-                <span
-                  aria-hidden
-                  className="mb-6 flex h-11 w-11 items-center justify-center rounded-full border border-line bg-base text-amp transition-transform duration-300 group-hover:-translate-y-0.5"
-                >
-                  <Icon size={20} />
-                </span>
                 <h3 className="font-display text-2xl tracking-tighter text-primary md:text-[1.75rem]">
                   {pillar.title}
                 </h3>
