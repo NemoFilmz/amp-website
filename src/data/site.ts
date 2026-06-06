@@ -489,6 +489,198 @@ export const ACADEMY = {
   ],
 }
 
+/* ---------- ACADEMY COURSE SALES PAGES ----------
+   One sales page per track, following a classic course-page anatomy:
+   hero -> story + video -> description -> modules -> testimonials ->
+   instructor -> pricing -> guarantee -> FAQ -> closing PS.
+
+   Per-course copy below is real product content. The SHARED block holds
+   content that is the same for every AMP Academy course; the testimonials,
+   instructor photo, and exact pricing are PLACEHOLDERS to replace with real
+   values before launch. */
+export type Course = {
+  name: string
+  tagline: string
+  image: string
+  story: string[]
+  description: string
+  modules: { title: string; desc: string }[]
+}
+
+export const COURSES: Course[] = [
+  {
+    name: 'AI Cinematic Production',
+    tagline: 'Learn how AI is transforming filmmaking and visual communication.',
+    image: '/placeholders/hero.jpg',
+    story: [
+      'A few years ago, the work in this course took a full studio and weeks of render time. Today a small team that knows the tools can do it in days, without losing the cinematic feel. That shift is what this weekend is about.',
+      'You sit with the producers who fold AI into real client work at AMP and learn where it genuinely helps, where it does not, and how to keep a premium, on-brand look the whole way through.',
+    ],
+    description:
+      "A hands-on weekend inside AMP's AI production pipeline: how generative tools are used to plan, generate, and finish cinematic industrial work without it ever looking machine-made.",
+    modules: [
+      { title: 'The AI Production Pipeline', desc: 'How AI slots into a real cinematic workflow, end to end.' },
+      { title: 'Generative Image & Video for Film', desc: 'Build usable frames and shots you can actually direct.' },
+      { title: 'Blending AI With Real Footage', desc: 'Combine generated and filmed material so the seam disappears.' },
+      { title: 'Directing AI for a Premium Look', desc: 'Hold the wow factor and stay on brand from first frame to last.' },
+    ],
+  },
+  {
+    name: 'Industrial 3D Animation',
+    tagline: 'Master cinematic industrial visualization and technical storytelling.',
+    image: '/placeholders/oilgas.jpg',
+    story: [
+      'Most 3D work looks like 3D. The work that wins trust looks like it was filmed inside a facility that may not even exist yet. Closing that gap is a craft, and it is the one AMP has spent fifteen years refining.',
+      'Over the weekend you rebuild a real AMP production from the ground up and see exactly how a technical subject becomes something an executive can grasp at a glance.',
+    ],
+    description:
+      'Learn the full pipeline behind AMP\'s industrial visualization: reading technical reality, building believable environments, and rendering at a cinematic, high-end level.',
+    modules: [
+      { title: 'Reading Technical Reality', desc: 'Turn engineering drawings and site data into a visual plan.' },
+      { title: 'Building Industrial Environments', desc: 'Model and dress facilities that feel real and lived-in.' },
+      { title: 'The High-End Render Pipeline', desc: 'Lighting, materials, and the render-farm workflow behind the look.' },
+      { title: 'Animation That Explains Systems', desc: 'Move the camera and the machinery so the idea reads instantly.' },
+    ],
+  },
+  {
+    name: 'Government Presentation Films',
+    tagline: 'How executive-level presentation films are developed for ministries, authorities, and national projects.',
+    image: '/placeholders/gov.jpg',
+    story: [
+      'When a national vision is presented to leadership, the film in the room carries enormous weight. It has minutes to make something vast feel clear, credible, and worth backing.',
+      'This course takes you inside how AMP builds those films: the brief, the restraint, and the cinematic decisions that make decision-makers lean in.',
+    ],
+    description:
+      'A weekend on the discipline of executive presentation films, from the first ministry brief to a cut that turns a complex national initiative into a clear, confident story.',
+    modules: [
+      { title: 'The Executive Brief', desc: 'Understand what leadership actually needs to see and feel.' },
+      { title: 'Visualizing National Vision', desc: 'Give scale and ambition a form people can follow.' },
+      { title: 'Cinematic Presentation Design', desc: 'Pace, music, and restraint built for the boardroom.' },
+      { title: 'Delivering for Ministries & Authorities', desc: 'Approvals, sensitivities, and a flawless final handover.' },
+    ],
+  },
+  {
+    name: 'Cinematic Storytelling for Mega Projects',
+    tagline: 'Emotionally communicate infrastructure, culture, aviation, and energy projects.',
+    image: '/placeholders/heavy.jpg',
+    story: [
+      'A port, a power plant, a new district: on paper these are spreadsheets and schematics. On screen they can be the most ambitious stories a region is telling about its own future.',
+      'You learn how AMP finds the human thread inside enormous, technical projects and films it so audiences actually care.',
+    ],
+    description:
+      'Learn to turn infrastructure and industry into cinema: finding the human story, directing for scale and emotion, and carrying a mega project from brief to final cut.',
+    modules: [
+      { title: 'Finding the Human Story', desc: 'Locate the emotional thread inside a technical brief.' },
+      { title: 'Scale, Emotion & Pace', desc: 'Direct camera, music, and edit so size becomes feeling.' },
+      { title: 'Infrastructure as Cinema', desc: 'Make ports, grids, and districts feel cinematic and alive.' },
+      { title: 'From Brief to Final Cut', desc: 'Run the full production journey on a real mega project.' },
+    ],
+  },
+  {
+    name: 'Creative Direction & Art Department',
+    tagline: "How AMP's art department builds world-class visual experiences.",
+    image: '/placeholders/aviation.jpg',
+    story: [
+      'The difference between work that is merely correct and work that is unforgettable usually lives in the art department: the colour, the frame, the hundred deliberate choices behind a single look.',
+      'This course opens up how AMP builds and holds a visual language across an entire production, even when the subject is deeply technical.',
+    ],
+    description:
+      "A weekend inside AMP's art direction: developing a visual language, art-directing technical subjects, and running an art department that consistently delivers the wow factor.",
+    modules: [
+      { title: 'Building a Visual Language', desc: 'Set the look, colour, and rules a whole production follows.' },
+      { title: 'Art Direction for Technical Subjects', desc: 'Make engineering beautiful without making it dishonest.' },
+      { title: 'The Art Department Workflow', desc: 'How references, boards, and reviews keep quality high.' },
+      { title: 'Achieving the Wow Factor', desc: 'The finishing decisions that make work impossible to ignore.' },
+    ],
+  },
+]
+
+export const COURSE_SHARED = {
+  /* PLACEHOLDER testimonials — replace with real participant quotes before
+     launch. Attributions are generic on purpose (no invented named people). */
+  testimonials: [
+    {
+      quote:
+        'I came in thinking I understood rendering. I left with the actual pipeline behind work I had admired for years.',
+      name: 'AMP Academy participant',
+      role: '3D Artist',
+    },
+    {
+      quote:
+        'The most useful three days of my career. Everything was drawn from real projects, none of it was theory.',
+      name: 'AMP Academy participant',
+      role: 'Filmmaker',
+    },
+    {
+      quote:
+        'Worth it for the production tour alone. The mentorship genuinely changed how I direct.',
+      name: 'AMP Academy participant',
+      role: 'Creative Director',
+    },
+  ],
+  /* PLACEHOLDER instructor — swap the photo for a real team image. */
+  instructor: {
+    name: 'The AMP Senior Team',
+    role: 'Directors, 3D leads, and AI producers',
+    photo: '/team/ayman-ahmed.jpg',
+    bio: "You learn from the directors, animators, and AI producers who built AMP's work for ADNOC, Etihad, Mubadala, and Masdar over the last fifteen years, and brought home seven Platinum MUSE Awards. Every method in the room comes from a real, delivered production.",
+  },
+  /* PLACEHOLDER pricing — set real figures, or keep "On request". */
+  pricing: [
+    {
+      tier: 'Weekend Intensive',
+      price: 'On request',
+      note: 'Friday to Sunday',
+      features: ['Three-day masterclass', 'Real production breakdowns', 'Workshop materials to keep'],
+      highlighted: false,
+    },
+    {
+      tier: 'Weekend + 5-Star Stay',
+      price: 'On request',
+      note: 'Most popular',
+      features: [
+        'Everything in Weekend Intensive',
+        '2 nights in a nearby 5-star hotel',
+        'VIP networking sessions',
+        'Private production tour',
+      ],
+      highlighted: true,
+    },
+    {
+      tier: 'Private Mentorship',
+      price: 'On request',
+      note: 'By arrangement',
+      features: ['One-to-one with AMP leads', 'Tailored to your own project', 'Scheduled around you'],
+      highlighted: false,
+    },
+  ],
+  guarantee:
+    "If your first day at AMP Academy doesn't change how you see cinematic production, tell us before day two and we'll arrange a full refund. No awkward conversation.",
+  faq: [
+    {
+      q: 'Who is this for?',
+      a: 'Filmmakers, 3D artists, AI creators, designers, and visual storytellers who want to work at a premium, cinematic level.',
+    },
+    {
+      q: 'Do I need to be advanced?',
+      a: 'No. We teach the methods from real projects, so motivated beginners and working professionals both get value.',
+    },
+    {
+      q: 'Where does it take place?',
+      a: 'At AMP in Abu Dhabi, with selected programs including a 5-star stay and private production tours.',
+    },
+    {
+      q: 'What do I leave with?',
+      a: 'The real workflow behind award-winning AMP productions, plus workshop materials you keep.',
+    },
+    {
+      q: 'How do I reserve a seat?',
+      a: 'Send an enquiry and our team will confirm dates, pricing, and availability for your chosen track.',
+    },
+  ],
+  ps: 'P.S. Seats are deliberately limited each weekend so every participant gets real mentorship time with the AMP team. If the dates work for you, reserve early.',
+}
+
 /* ---------- 9. CLIENT EXPERIENCE ---------- */
 export const CLIENTS = {
   title: 'Designed for Leaders, Governments, and Visionaries',

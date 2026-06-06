@@ -57,7 +57,10 @@ function RouteManager() {
   const { scrollTo } = useSmoothScroll()
 
   useEffect(() => {
-    const meta = ROUTE_META[pathname] ?? ROUTE_META['/']
+    // Dynamic routes (e.g. /academy/:slug) have no static entry and manage
+    // their own document title, so don't clobber it with a fallback here.
+    const meta = ROUTE_META[pathname]
+    if (!meta) return
     document.title = meta.title
     setMeta('description', 'name', meta.description)
     setMeta('og:title', 'property', meta.title)

@@ -8,13 +8,15 @@ export function pad(n: number): string {
 }
 
 /**
- * URL-safe slug for an industry/filter name, used to link the home industry
- * panels to the Work page with the matching filter pre-selected.
- * e.g. "Oil & Gas" -> "oil-gas", "Energy & Utilities" -> "energy-utilities".
+ * URL-safe slug from any display name.
+ * e.g. "Oil & Gas" -> "oil-gas", "AI Cinematic Production" -> "ai-cinematic-production".
  */
-export function industrySlug(name: string): string {
+export function slugify(name: string): string {
   return name
     .toLowerCase()
     .replace(/[^a-z0-9]+/g, '-')
     .replace(/^-|-$/g, '')
 }
+
+/** Back-compat alias used by the home industry panels / Work filter links. */
+export const industrySlug = slugify

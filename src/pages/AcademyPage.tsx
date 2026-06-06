@@ -2,16 +2,8 @@ import { Link } from 'react-router-dom'
 import { ArrowUpRight, ArrowRight, Calendar, Hotel, Users } from 'lucide-react'
 import { Section, Eyebrow, CTAButton, CinematicMedia } from '../components/ui'
 import { Reveal, RevealGroup, RevealItem } from '../components/Reveal'
-import { ACADEMY } from '../data/site'
-
-/* Background image per track (order matches ACADEMY.tracks). */
-const TRACK_IMG = [
-  '/placeholders/hero.jpg', // AI Cinematic Production
-  '/placeholders/oilgas.jpg', // Industrial 3D Animation
-  '/placeholders/gov.jpg', // Government Presentation Films
-  '/placeholders/heavy.jpg', // Cinematic Storytelling for Mega Projects
-  '/placeholders/aviation.jpg', // Creative Direction & Art Department
-]
+import { ACADEMY, COURSES } from '../data/site'
+import { slugify } from '../lib/util'
 
 /* Condensed "what's included", distilled from the weekend + luxury detail. */
 const INCLUDED = [
@@ -45,23 +37,23 @@ export function AcademyPage() {
         </Reveal>
 
         <RevealGroup className="mt-12 grid gap-5 sm:grid-cols-2">
-          {ACADEMY.tracks.map((track, i) => (
-            <RevealItem key={track.name}>
+          {COURSES.map((course) => (
+            <RevealItem key={course.name}>
               <Link
-                to="/contact"
+                to={`/academy/${slugify(course.name)}`}
                 className="group relative block aspect-[16/10] overflow-hidden rounded-lg border border-line transition-colors duration-300 hover:border-amp"
-                aria-label={`Enquire about ${track.name}`}
+                aria-label={`View the ${course.name} course`}
               >
-                <CinematicMedia src={TRACK_IMG[i]} alt={track.name} className="absolute inset-0 h-full w-full" />
+                <CinematicMedia src={course.image} alt={course.name} className="absolute inset-0 h-full w-full" />
                 <div className="absolute inset-0 z-10 flex flex-col justify-end p-7 md:p-8">
                   <h3 className="font-display text-2xl leading-tight tracking-tighter text-primary md:text-3xl">
-                    {track.name}
+                    {course.name}
                   </h3>
                   <p className="mt-2 max-w-md font-body text-sm leading-relaxed text-secondary">
-                    {track.desc}
+                    {course.tagline}
                   </p>
                   <span className="mt-4 inline-flex items-center gap-2 font-body text-[12px] font-medium uppercase tracking-label text-amp">
-                    Enquire
+                    View course
                     <ArrowUpRight
                       size={15}
                       aria-hidden
