@@ -148,11 +148,15 @@ export function AboutPage() {
       <Section divider className="py-24 md:py-32">
         <Reveal>
           <Eyebrow index={3} total={5}>
-            Global Presence
+            International Presence
           </Eyebrow>
-          <h2 className="mt-4 max-w-prose font-display text-[clamp(2rem,4.5vw,3.6rem)] leading-[0.98] tracking-tighter text-primary">
-            Strategic hubs across the region and beyond
+          <h2 className="mt-4 max-w-3xl font-display text-[clamp(2rem,4.5vw,3.6rem)] leading-[0.98] tracking-tighter text-primary">
+            An international presence, from the Gulf to Europe
           </h2>
+          <p className="mt-6 max-w-2xl font-light text-xl leading-relaxed text-secondary">
+            From Abu Dhabi to Barcelona, we stay close to the projects, and the
+            people, that need us.
+          </p>
         </Reveal>
 
         <RevealGroup className="mt-12 grid gap-px bg-line md:mt-16 md:grid-cols-2">
