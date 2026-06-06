@@ -11,8 +11,6 @@ const navToByLabel: Record<string, string> = {
   Technology: '/technology',
   'AMP Academy': '/academy',
   Industries: '/#industries',
-  Services: '/#services',
-  'Global Offices': '/#global',
   Careers: '/careers',
   Contact: '/contact',
 }

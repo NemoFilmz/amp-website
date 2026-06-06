@@ -20,7 +20,7 @@ export const NAV_LINKS = [
   { label: 'About', to: '/about' },
   { label: 'Work', to: '/work' },
   { label: 'Academy', to: '/academy' },
-  { label: 'Contact', to: '/#contact' },
+  { label: 'Contact', to: '/contact' },
 ] as const
 
 /* ---------- 1. HERO ---------- */
@@ -740,8 +740,6 @@ export const FOOTER = {
     'Technology',
     'AMP Academy',
     'Industries',
-    'Services',
-    'Global Offices',
     'Careers',
     'Contact',
   ],
