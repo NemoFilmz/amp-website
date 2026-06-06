@@ -32,7 +32,7 @@ export function AcademyPage() {
           <Reveal>
             <div className="mx-auto max-w-3xl text-center">
               <h2 className="font-display text-[clamp(2rem,4.5vw,3.6rem)] leading-[0.98] tracking-tighter text-primary">
-                Welcome to AMP
+                Welcome to <span className="text-amp">AMP</span>
               </h2>
               <p className="mx-auto mt-6 max-w-xl font-light text-xl leading-relaxed text-secondary">
                 Learn on real projects. Build the skills of an AMP creative.
