@@ -30,10 +30,14 @@ export function AcademyPage() {
       <Section container={false} className="pt-40 pb-24 md:pt-48 md:pb-32">
         <Container>
           <Reveal>
-            <Eyebrow>Choose a Track</Eyebrow>
-            <h2 className="mt-4 max-w-3xl font-display text-[clamp(2rem,4.5vw,3.6rem)] leading-[0.98] tracking-tighter text-primary">
-              Five disciplines, taught from real projects
-            </h2>
+            <div className="mx-auto max-w-3xl text-center">
+              <h2 className="font-display text-[clamp(2rem,4.5vw,3.6rem)] leading-[0.98] tracking-tighter text-primary">
+                Welcome to AMP
+              </h2>
+              <p className="mx-auto mt-6 max-w-xl font-light text-xl leading-relaxed text-secondary">
+                Learn on real projects. Build the skills of an AMP creative.
+              </p>
+            </div>
           </Reveal>
         </Container>
 
