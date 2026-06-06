@@ -45,7 +45,7 @@ export function Nav() {
   const { scrollYProgress } = useScroll()
   const progress = useSpring(scrollYProgress, { stiffness: 140, damping: 30, mass: 0.2 })
 
-  const linkBase = 'font-body text-[16px] font-medium uppercase tracking-[0.12em] transition-colors'
+  const linkBase = 'font-body text-[17px] font-medium uppercase tracking-[0.12em] transition-colors'
   // Active = the current route. Home-section anchors don't mark a page.
   const isActive = (to: string) =>
     to === '/#top' ? pathname === '/' : !to.includes('#') && pathname === to
@@ -60,7 +60,7 @@ export function Nav() {
             : 'border-b border-transparent bg-transparent',
         )}
       >
-        <div className="mx-auto flex h-[100px] max-w-content items-center justify-between px-6 md:px-12 lg:px-20">
+        <div className="mx-auto flex h-[116px] max-w-content items-center justify-between px-6 md:px-12 lg:px-20">
           <Link to="/" onClick={homeClick} className="shrink-0" aria-label="Action Media Production, home">
             <Wordmark />
           </Link>
@@ -75,7 +75,7 @@ export function Nav() {
                   className={cn(
                     linkBase,
                     'group relative py-1',
-                    active ? 'text-primary' : 'text-secondary hover:text-primary',
+                    active ? 'text-primary' : 'text-primary/80 hover:text-primary',
                   )}
                 >
                   {l.label}
@@ -95,7 +95,7 @@ export function Nav() {
             <Magnetic>
               <Link
                 to="/contact"
-                className="inline-flex items-center gap-2 rounded-full bg-amp px-6 py-3.5 font-body text-[16px] font-medium uppercase tracking-[0.12em] text-base transition-shadow duration-300 hover:shadow-amp"
+                className="inline-flex items-center gap-2 rounded-full bg-amp px-7 py-3.5 font-body text-[17px] font-medium uppercase tracking-[0.12em] text-base transition-shadow duration-300 hover:shadow-amp"
               >
                 Start Your Project
                 <ArrowRight size={16} aria-hidden />
@@ -134,7 +134,7 @@ export function Nav() {
             aria-label="Site menu"
             className="fixed inset-0 z-[60] flex flex-col bg-base lg:hidden"
           >
-            <div className="flex h-[100px] items-center justify-between px-6">
+            <div className="flex h-[116px] items-center justify-between px-6">
               <Link to="/" onClick={() => setOpen(false)}>
                 <Wordmark />
               </Link>
