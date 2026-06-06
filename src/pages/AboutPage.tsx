@@ -111,10 +111,10 @@ export function AboutPage() {
       <Section divider className="py-24 md:py-32">
         <Reveal>
           <Eyebrow index={3} total={5}>
-            International Presence
+            International Projects
           </Eyebrow>
           <h2 className="mt-4 max-w-prose font-display text-[clamp(2rem,4.5vw,3.6rem)] leading-[0.98] tracking-tighter text-primary">
-            International Presence
+            International Projects
           </h2>
         </Reveal>
 

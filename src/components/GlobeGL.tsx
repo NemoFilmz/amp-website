@@ -7,6 +7,7 @@ import { CountryMarkers, type CountryMarkersHandle } from './CountryMarkers'
 
 const AMBER = 0xf9c00c
 const BASE = 0x202124
+const SPIN = Math.PI * 1.6
 
 function sphereVec(lat: number, lng: number, r = 1): THREE.Vector3 {
   const la = (lat * Math.PI) / 180
@@ -29,7 +30,7 @@ function vslerp(a: THREE.Vector3, b: THREE.Vector3, t: number): THREE.Vector3 {
     .add(b.clone().multiplyScalar(Math.sin(t * om) / so))
 }
 
-/** A WebGL (Three.js) dotted-continents globe: dark, floating, auto-rotating. */
+/** A WebGL (Three.js) dotted-continents globe: scroll spins it into view; drag to spin. */
 export function GlobeGL() {
   const wrapRef = useRef<HTMLDivElement>(null)
   const mountRef = useRef<HTMLDivElement>(null)
@@ -51,9 +52,9 @@ export function GlobeGL() {
     const camera = new THREE.PerspectiveCamera(32, W / H, 0.1, 100)
     const countryVecs = COUNTRIES.map((c) => sphereVec(c.lat, c.lng))
     const centroid = countryVecs
-      .reduce((acc, v) => acc.add(v), new THREE.Vector3())
+      .reduce((acc, v) => acc.add(v.clone()), new THREE.Vector3())
       .normalize()
-    camera.position.copy(centroid.multiplyScalar(3.8))
+    camera.position.copy(centroid.clone().multiplyScalar(3.8))
 
     const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true })
     renderer.setPixelRatio(Math.min(2, window.devicePixelRatio || 1))
@@ -61,27 +62,33 @@ export function GlobeGL() {
     renderer.setClearAlpha(0)
     mount.appendChild(renderer.domElement)
 
+    // Everything that should spin during the scroll reveal lives in this group.
+    const group = new THREE.Group()
+    scene.add(group)
+
     const dotGeo = new THREE.BufferGeometry()
     dotGeo.setAttribute('position', new THREE.Float32BufferAttribute(LAND_DOTS, 3))
-    const dots = new THREE.Points(
-      dotGeo,
-      new THREE.PointsMaterial({
-        color: 0x9aa6b8,
-        size: 0.019,
-        sizeAttenuation: true,
-        transparent: true,
-        opacity: 0.72,
-        depthWrite: false,
-        fog: true,
-      }),
+    group.add(
+      new THREE.Points(
+        dotGeo,
+        new THREE.PointsMaterial({
+          color: 0x9aa6b8,
+          size: 0.019,
+          sizeAttenuation: true,
+          transparent: true,
+          opacity: 0.72,
+          depthWrite: false,
+          fog: true,
+        }),
+      ),
     )
-    scene.add(dots)
 
-    const occluder = new THREE.Mesh(
-      new THREE.SphereGeometry(0.962, 64, 64),
-      new THREE.MeshBasicMaterial({ color: BASE }),
+    group.add(
+      new THREE.Mesh(
+        new THREE.SphereGeometry(0.962, 64, 64),
+        new THREE.MeshBasicMaterial({ color: BASE }),
+      ),
     )
-    scene.add(occluder)
 
     const arcMat = new THREE.LineBasicMaterial({ color: AMBER, transparent: true, opacity: 0.6 })
     for (const [i, j] of COUNTRY_ARCS) {
@@ -91,17 +98,15 @@ export function GlobeGL() {
         s.multiplyScalar(1 + 0.18 * Math.sin(Math.PI * t))
         pts.push(s)
       }
-      scene.add(new THREE.Line(new THREE.BufferGeometry().setFromPoints(pts), arcMat))
+      group.add(new THREE.Line(new THREE.BufferGeometry().setFromPoints(pts), arcMat))
     }
 
     const controls = new OrbitControls(camera, renderer.domElement)
     controls.enableDamping = true
     controls.dampingFactor = 0.08
     controls.enablePan = false
-    controls.minDistance = 2.8
-    controls.maxDistance = 6
+    controls.enableZoom = false
     controls.rotateSpeed = 0.5
-    controls.autoRotateSpeed = 0.55
 
     const resize = () => {
       W = wrap.clientWidth
@@ -114,19 +119,29 @@ export function GlobeGL() {
     ro.observe(wrap)
 
     const camDir = new THREE.Vector3()
+    const worldVec = new THREE.Vector3()
     const tmp = new THREE.Vector3()
     let raf = 0
     const tick = () => {
-      controls.autoRotate = !reduce && !pausedRef.current
+      if (!pausedRef.current) {
+        const rect = wrap.getBoundingClientRect()
+        const prog = Math.max(
+          0,
+          Math.min(1, (window.innerHeight - rect.top) / (window.innerHeight * 0.6)),
+        )
+        const eased = reduce ? 1 : 1 - Math.pow(1 - prog, 3)
+        group.rotation.y = -(1 - eased) * SPIN
+      }
       controls.update()
       camDir.copy(camera.position).normalize()
       markersRef.current?.update(
         countryVecs.map((v) => {
-          tmp.copy(v).project(camera)
+          worldVec.copy(v).applyEuler(group.rotation)
+          tmp.copy(worldVec).project(camera)
           return {
             x: (tmp.x * 0.5 + 0.5) * W,
             y: (-tmp.y * 0.5 + 0.5) * H,
-            visible: v.dot(camDir) > 0.04,
+            visible: worldVec.dot(camDir) > 0.04,
           }
         }),
       )

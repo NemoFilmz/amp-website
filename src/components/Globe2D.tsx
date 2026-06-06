@@ -52,7 +52,9 @@ export function Globe2D() {
     }
     const countryVecs = COUNTRIES.map((c) => sphere(c.lat, c.lng))
 
-    const state = { rx: 0.5, ry: -0.5, vy: 0, dragging: false, lastX: 0, lastY: 0 }
+    const HOME_RY = -0.5
+    const SPIN = Math.PI * 1.6
+    const state = { rx: 0.5, ry: -0.5, userRy: 0, vy: 0, dragging: false, lastX: 0, lastY: 0 }
     let raf = 0
     let W = 0
     let H = 0
@@ -82,9 +84,18 @@ export function Globe2D() {
       const cy = H / 2
       const R = Math.min(W, H) * 0.45
 
-      if (!state.dragging && !pausedRef.current) {
-        state.ry += (reduce ? 0 : 0.0016) + state.vy
-        state.vy *= 0.94
+      if (!pausedRef.current) {
+        const rect = wrap.getBoundingClientRect()
+        const prog = Math.max(
+          0,
+          Math.min(1, (window.innerHeight - rect.top) / (window.innerHeight * 0.6)),
+        )
+        const eased = reduce ? 1 : 1 - Math.pow(1 - prog, 3)
+        if (!state.dragging) {
+          state.userRy += state.vy
+          state.vy *= 0.92
+        }
+        state.ry = HOME_RY - (1 - eased) * SPIN + state.userRy
       }
 
       ctx.clearRect(0, 0, W, H)
@@ -146,7 +157,7 @@ export function Globe2D() {
     }
     const onMove = (e: PointerEvent) => {
       if (!state.dragging) return
-      state.ry += (e.clientX - state.lastX) * 0.006
+      state.userRy += (e.clientX - state.lastX) * 0.006
       state.rx = Math.max(-1.2, Math.min(1.2, state.rx + (e.clientY - state.lastY) * 0.006))
       state.lastX = e.clientX
       state.lastY = e.clientY
