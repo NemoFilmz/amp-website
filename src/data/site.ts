@@ -377,7 +377,7 @@ export const OFFICES: Office[] = [
     email: 'ayman@actionmpro.com',
     coord: '24.45°N 54.37°E',
     image: '/placeholders/abu-dhabi.jpg',
-    imagePosition: '50% 42%',
+    imagePosition: '50% 25%',
   },
   {
     city: 'Dubai',
@@ -386,7 +386,7 @@ export const OFFICES: Office[] = [
     email: 'ayman@actionmpro.com',
     coord: '25.20°N 55.27°E',
     image: '/placeholders/dubai.jpg',
-    imagePosition: '50% 48%',
+    imagePosition: '50% 30%',
   },
   {
     city: 'Riyadh',

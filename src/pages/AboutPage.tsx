@@ -3,28 +3,7 @@ import { CircleDot } from 'lucide-react'
 import { Section, Container, Eyebrow } from '../components/ui'
 import { Reveal, RevealGroup, RevealItem } from '../components/Reveal'
 import TeamShowcase from '../components/TeamShowcase'
-import { ABOUT_STORY, PHILOSOPHY, OFFICES } from '../data/site'
-
-/**
- * Accent the phrase "national vision" inside the third philosophy line
- * without editing the source copy. We match case-insensitively and tint
- * the matched run AMP-yellow.
- */
-const ACCENT_PHRASE = 'national vision'
-function renderPhilosophyLine(line: string) {
-  const idx = line.toLowerCase().indexOf(ACCENT_PHRASE)
-  if (idx === -1) return line
-  const before = line.slice(0, idx)
-  const match = line.slice(idx, idx + ACCENT_PHRASE.length)
-  const after = line.slice(idx + ACCENT_PHRASE.length)
-  return (
-    <>
-      {before}
-      <span className="text-amp">{match}</span>
-      {after}
-    </>
-  )
-}
+import { ABOUT_STORY, OFFICES } from '../data/site'
 
 export function AboutPage() {
   return (
@@ -122,28 +101,7 @@ export function AboutPage() {
       </Section>
 
       {/* ---------------------------------------------------------------- */}
-      {/* 2. PHILOSOPHY                                                     */}
-      {/* ---------------------------------------------------------------- */}
-      <Section divider className="py-24 md:py-32">
-        <Reveal>
-          <Eyebrow index={2} total={5}>
-            Our Philosophy
-          </Eyebrow>
-        </Reveal>
-
-        <RevealGroup className="mt-12 max-w-4xl space-y-2 md:mt-16 md:space-y-3">
-          {PHILOSOPHY.lines.map((line) => (
-            <RevealItem key={line}>
-              <p className="font-display leading-[1.1] tracking-tighter text-primary text-[clamp(1.4rem,3vw,2.4rem)]">
-                {renderPhilosophyLine(line)}
-              </p>
-            </RevealItem>
-          ))}
-        </RevealGroup>
-      </Section>
-
-      {/* ---------------------------------------------------------------- */}
-      {/* 3. GLOBAL PRESENCE                                                */}
+      {/* 2. INTERNATIONAL PRESENCE                                         */}
       {/* ---------------------------------------------------------------- */}
       <Section divider className="py-24 md:py-32">
         <Reveal>
