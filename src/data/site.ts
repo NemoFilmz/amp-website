@@ -394,7 +394,6 @@ export const OFFICES: Office[] = [
     role: 'Vision-driven government projects, infrastructure storytelling, and mega development communication.',
     email: 'ayman@actionmpro.com',
     coord: '24.71°N 46.68°E',
-    comingSoon: true,
     image: '/placeholders/saudi.jpg',
     imagePosition: '50% 35%',
   },
