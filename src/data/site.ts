@@ -66,7 +66,7 @@ export const ABOUT_STORY = {
   intro:
     'Action Media Productions (AMP) is a visual communication studio in Abu Dhabi. We work with the government, energy companies, and major industry and infrastructure.',
   clientsLabel: 'Clients since 2009',
-  clients: ['ADNOC', 'Etihad', 'Mubadala', 'Masdar'],
+  clients: ['ADNOC', 'Mubadala', 'Etihad'],
   awards: [
     { value: '7', label: 'Platinum MUSE Awards' },
     { value: 'Top 10', label: 'NYX Awards, worldwide' },
@@ -360,6 +360,8 @@ export type Office = {
   role: string
   email: string
   coord: string
+  /** Office not open yet — show "Coming soon" instead of a contact email. */
+  comingSoon?: boolean
 }
 
 export const GLOBAL_INTRO = 'AMP operates across strategic regional and international hubs.'
@@ -376,21 +378,22 @@ export const OFFICES: Office[] = [
     city: 'Dubai',
     country: 'UAE',
     role: 'Creative production, commercial storytelling, innovation projects, and AI production.',
-    email: 'dubai@actionmpro.com',
+    email: 'ayman@actionmpro.com',
     coord: '25.20°N 55.27°E',
   },
   {
     city: 'Riyadh',
     country: 'Saudi Arabia',
     role: 'Vision-driven government projects, infrastructure storytelling, and mega development communication.',
-    email: 'riyadh@actionmpro.com',
+    email: 'ayman@actionmpro.com',
     coord: '24.71°N 46.68°E',
+    comingSoon: true,
   },
   {
     city: 'Barcelona',
     country: 'Spain',
     role: 'European creative collaboration, cinematic direction, design innovation, and artistic development.',
-    email: 'barcelona@actionmpro.com',
+    email: 'ayman@actionmpro.com',
     coord: '41.39°N 2.17°E',
   },
 ]

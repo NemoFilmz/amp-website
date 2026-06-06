@@ -1,3 +1,4 @@
+import { Fragment } from 'react'
 import { CircleDot, ArrowUpRight } from 'lucide-react'
 import { Section, Container, Eyebrow } from '../components/ui'
 import { Reveal, RevealGroup, RevealItem } from '../components/Reveal'
@@ -46,30 +47,32 @@ export function AboutPage() {
           </p>
         </Reveal>
 
-        {/* Proof strip — clients + awards pulled out of the prose so they read
-            at a glance (chunking) and the awards isolate as credentials. */}
+        {/* Proof strip — clients + awards as quiet credentials in a single
+            hairline-framed band (cleaner than a boxed, divided card). */}
         <Reveal delay={0.1}>
-          <div className="mt-12 grid gap-px overflow-hidden rounded-xl border border-line bg-line md:mt-14 md:grid-cols-2">
-            <div className="bg-surface p-7 md:p-9">
+          <div className="mt-12 grid gap-10 border-y border-line py-9 md:mt-14 md:grid-cols-[1.3fr_1fr] md:items-center md:gap-0 md:divide-x md:divide-line">
+            <div className="md:pr-14">
               <span className="eyebrow">{ABOUT_STORY.clientsLabel}</span>
-              <ul className="mt-5 flex flex-wrap items-center gap-x-7 gap-y-3">
-                {ABOUT_STORY.clients.map((client) => (
-                  <li
-                    key={client}
-                    className="font-display text-2xl tracking-tighter text-primary md:text-[1.7rem]"
-                  >
-                    {client}
-                  </li>
+              <div className="mt-4 flex flex-wrap items-center gap-x-4 gap-y-3">
+                {ABOUT_STORY.clients.map((client, i) => (
+                  <Fragment key={client}>
+                    {i > 0 && (
+                      <span aria-hidden className="h-1 w-1 shrink-0 rounded-full bg-amp/60" />
+                    )}
+                    <span className="font-body text-lg font-medium uppercase tracking-[0.1em] text-primary">
+                      {client}
+                    </span>
+                  </Fragment>
                 ))}
-              </ul>
+              </div>
             </div>
-            <div className="grid grid-cols-2 divide-x divide-line">
+            <div className="flex gap-12 md:pl-14">
               {ABOUT_STORY.awards.map((award) => (
-                <div key={award.label} className="bg-surface p-7 md:p-9">
-                  <div className="font-display text-[clamp(1.9rem,3.6vw,2.9rem)] leading-none text-amp">
+                <div key={award.label}>
+                  <div className="font-display text-[clamp(2rem,3.6vw,2.8rem)] leading-none text-amp">
                     {award.value}
                   </div>
-                  <div className="eyebrow mt-2.5">{award.label}</div>
+                  <div className="eyebrow mt-2">{award.label}</div>
                 </div>
               ))}
             </div>
@@ -168,17 +171,24 @@ export function AboutPage() {
                 {office.role}
               </p>
 
-              <a
-                href={`mailto:${office.email}`}
-                className="group/email mt-6 inline-flex items-center gap-2 font-body text-sm text-amp underline-offset-4 transition-colors hover:underline"
-              >
-                {office.email}
-                <ArrowUpRight
-                  size={15}
-                  aria-hidden
-                  className="transition-transform duration-300 group-hover/email:-translate-y-0.5 group-hover/email:translate-x-0.5"
-                />
-              </a>
+              {office.comingSoon ? (
+                <span className="mt-6 inline-flex items-center gap-2 font-body text-sm uppercase tracking-label text-muted">
+                  <span aria-hidden className="h-1.5 w-1.5 rounded-full bg-amp/70" />
+                  Coming soon
+                </span>
+              ) : (
+                <a
+                  href={`mailto:${office.email}`}
+                  className="group/email mt-6 inline-flex items-center gap-2 font-body text-sm text-amp underline-offset-4 transition-colors hover:underline"
+                >
+                  {office.email}
+                  <ArrowUpRight
+                    size={15}
+                    aria-hidden
+                    className="transition-transform duration-300 group-hover/email:-translate-y-0.5 group-hover/email:translate-x-0.5"
+                  />
+                </a>
+              )}
             </RevealItem>
           ))}
         </RevealGroup>
