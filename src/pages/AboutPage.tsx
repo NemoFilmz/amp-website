@@ -157,26 +157,49 @@ export function AboutPage() {
 
         <RevealGroup className="mt-12 grid gap-px bg-line md:mt-16 md:grid-cols-2">
           {OFFICES.map((office) => (
-            <RevealItem key={office.city} className="bg-surface p-8 md:p-10">
-              <div className="flex items-baseline justify-between gap-4">
-                <h3 className="font-display text-3xl tracking-tighter text-primary md:text-4xl">
-                  {office.city}
-                </h3>
-                <span className="font-body text-sm uppercase tracking-label text-muted">
-                  {office.country}
-                </span>
-              </div>
-
-              <p className="mt-5 max-w-prose font-body leading-relaxed text-secondary">
-                {office.role}
-              </p>
-
-              {office.comingSoon && (
-                <span className="mt-6 inline-flex items-center gap-2 font-body text-sm uppercase tracking-label text-muted">
-                  <span aria-hidden className="h-1.5 w-1.5 rounded-full bg-amp/70" />
-                  Coming soon
-                </span>
+            <RevealItem
+              key={office.city}
+              className="group relative flex flex-col overflow-hidden bg-surface p-8 md:p-10"
+            >
+              {office.image && (
+                <>
+                  <img
+                    src={office.image}
+                    alt=""
+                    aria-hidden
+                    className="absolute inset-0 h-full w-full object-cover object-[50%_55%] transition-transform duration-700 ease-out group-hover:scale-105"
+                  />
+                  <div
+                    aria-hidden
+                    className="absolute inset-0"
+                    style={{
+                      background:
+                        'linear-gradient(to bottom, rgba(32,33,36,0.92) 0%, rgba(32,33,36,0.6) 48%, rgba(32,33,36,0.28) 100%)',
+                    }}
+                  />
+                </>
               )}
+              <div className="relative z-10">
+                <div className="flex items-baseline justify-between gap-4">
+                  <h3 className="font-display text-3xl tracking-tighter text-primary md:text-4xl">
+                    {office.city}
+                  </h3>
+                  <span className="font-body text-sm uppercase tracking-label text-muted">
+                    {office.country}
+                  </span>
+                </div>
+
+                <p className="mt-5 max-w-prose font-body leading-relaxed text-secondary">
+                  {office.role}
+                </p>
+
+                {office.comingSoon && (
+                  <span className="mt-6 inline-flex items-center gap-2 font-body text-sm uppercase tracking-label text-muted">
+                    <span aria-hidden className="h-1.5 w-1.5 rounded-full bg-amp/70" />
+                    Coming soon
+                  </span>
+                )}
+              </div>
             </RevealItem>
           ))}
         </RevealGroup>

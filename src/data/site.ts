@@ -362,6 +362,8 @@ export type Office = {
   coord: string
   /** Office not open yet — show "Coming soon" instead of a contact email. */
   comingSoon?: boolean
+  /** Optional background photo for the card. */
+  image?: string
 }
 
 export const GLOBAL_INTRO = 'AMP operates across strategic regional and international hubs.'
@@ -395,6 +397,7 @@ export const OFFICES: Office[] = [
     role: 'European creative collaboration, cinematic direction, design innovation, and artistic development.',
     email: 'ayman@actionmpro.com',
     coord: '41.39°N 2.17°E',
+    image: '/placeholders/barcelona.jpg',
   },
 ]
 
