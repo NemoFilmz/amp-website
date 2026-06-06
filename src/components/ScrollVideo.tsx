@@ -1,7 +1,6 @@
 import { useEffect, useRef, useState, type ReactNode } from 'react'
 import { useReducedMotion } from 'framer-motion'
 import { Link } from 'react-router-dom'
-import { ArrowUpRight } from 'lucide-react'
 import { Container } from './ui'
 import { Reveal } from './Reveal'
 
@@ -45,14 +44,6 @@ function Overlay({ name, blurb }: { name: string; blurb: string }) {
           <p className="mt-5 max-w-xl font-light text-xl leading-relaxed text-secondary md:text-2xl">
             {blurb}
           </p>
-          <span className="mt-7 inline-flex items-center gap-2 font-body text-sm font-medium uppercase tracking-label text-amp md:mt-8">
-            View {name} work
-            <ArrowUpRight
-              size={16}
-              aria-hidden
-              className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
-            />
-          </span>
         </Reveal>
       </Container>
     </>

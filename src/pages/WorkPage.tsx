@@ -1,9 +1,10 @@
 import { useEffect, useMemo, useState } from 'react'
 import { Link, useSearchParams } from 'react-router-dom'
-import { ArrowRight, ArrowUpRight } from 'lucide-react'
-import { PageHero, Section, CinematicMedia, Eyebrow, CTAButton } from '../components/ui'
+import { ArrowUpRight, Gauge, Layers, Boxes, Sparkles, Check } from 'lucide-react'
+import { Section, CinematicMedia, Eyebrow } from '../components/ui'
 import { Reveal, RevealGroup, RevealItem } from '../components/Reveal'
-import { PAGES } from '../data/site'
+import { CtaCard } from '../components/CtaCard'
+import { STATS, WHY_PILLARS } from '../data/site'
 import { cn, industrySlug } from '../lib/util'
 
 /* ------------------------------------------------------------------ */
@@ -62,6 +63,8 @@ const ALL = 'All'
 /* Distinct tags, in first-seen order, prefixed with the "All" filter. */
 const FILTERS: string[] = [ALL, ...Array.from(new Set(CASES.map((c) => c.tag)))]
 
+const PILLAR_ICONS = [Gauge, Layers, Boxes, Sparkles] as const
+
 export function WorkPage() {
   const [searchParams] = useSearchParams()
 
@@ -87,16 +90,14 @@ export function WorkPage() {
 
   return (
     <>
-      <PageHero {...PAGES.work} seed={1} />
-
-      <Section className="py-24 md:py-32">
+      <Section className="pt-40 pb-24 md:pt-48 md:pb-32">
         {/* Intro + representative-content note */}
         <Reveal>
           <Eyebrow index={1} total={4}>
             Case Studies
           </Eyebrow>
           <h2 className="mt-4 max-w-prose font-display text-[clamp(2rem,4.5vw,3.6rem)] leading-[0.98] tracking-tighter text-primary">
-            Selected Productions
+            Work
           </h2>
           <p className="eyebrow mt-6 text-muted">
             A representative selection across the sectors we serve.
@@ -179,33 +180,84 @@ export function WorkPage() {
         </RevealGroup>
       </Section>
 
-      {/* Closing CTA band */}
+      {/* ---------------------------------------------------------------- */}
+      {/* Ecosystem + closing CTA — one section (moved from the About page) */}
+      {/* Plain background, matching the other pages.                       */}
+      {/* ---------------------------------------------------------------- */}
       <Section divider className="py-24 md:py-32">
-        <div className="relative overflow-hidden rounded-2xl border border-line bg-surface px-6 py-16 text-center md:px-16 md:py-24">
-          <div
-            aria-hidden
-            className="pointer-events-none absolute inset-0"
-            style={{
-              background:
-                'radial-gradient(60% 60% at 50% 0%, rgba(249,192,12,0.10), transparent 70%), radial-gradient(55% 60% at 18% 100%, rgba(43,217,255,0.07), transparent 70%)',
-            }}
-          />
-          <Reveal className="relative z-10">
-            <Eyebrow className="justify-center">Start a Conversation</Eyebrow>
-            <h2 className="mx-auto mt-5 max-w-3xl text-balance font-display text-[clamp(2rem,5vw,4rem)] leading-[0.98] tracking-tighter text-primary">
-              Bring your most complex story to the screen
-            </h2>
-            <p className="mx-auto mt-6 max-w-2xl font-body text-lg leading-relaxed text-secondary">
-              From offshore platforms to national vision films, we make the most ambitious
-              projects impossible to overlook.
-            </p>
-            <div className="mt-10 flex justify-center">
-              <CTAButton to="/contact" icon={<ArrowRight size={16} />}>
-                Discuss Your Project
-              </CTAButton>
-            </div>
-          </Reveal>
-        </div>
+        <Reveal>
+          <Eyebrow>Built for Complex Industries</Eyebrow>
+          <h2 className="mt-4 max-w-prose font-display text-[clamp(2rem,4.5vw,3.6rem)] leading-[0.98] tracking-tighter text-primary">
+            A complete ecosystem behind every frame
+          </h2>
+        </Reveal>
+
+        {/* Stat strip */}
+        <RevealGroup className="mt-12 grid grid-cols-2 gap-y-10 md:grid-cols-4">
+          {STATS.map((stat, i) => (
+            <RevealItem
+              key={stat.label}
+              className={cn(
+                'border-line pl-5',
+                i % 2 === 1 ? 'border-l' : 'border-l-0',
+                i % 4 === 0 ? 'md:border-l-0' : 'md:border-l',
+              )}
+            >
+              <div className="font-display text-[clamp(2rem,4vw,3.2rem)] leading-none text-amp">
+                {stat.value}
+              </div>
+              <div className="eyebrow mt-2">{stat.label}</div>
+            </RevealItem>
+          ))}
+        </RevealGroup>
+
+        {/* Pillar cards */}
+        <RevealGroup className="mt-16 grid gap-6 md:mt-20 md:grid-cols-2">
+          {WHY_PILLARS.map((pillar, i) => {
+            const Icon = PILLAR_ICONS[i] ?? Sparkles
+            return (
+              <RevealItem
+                key={pillar.title}
+                className="group rounded-lg border border-line bg-surface p-8 transition-colors duration-300 hover:border-line-strong hover:bg-elevated"
+              >
+                <span
+                  aria-hidden
+                  className="mb-6 flex h-11 w-11 items-center justify-center rounded-full border border-line bg-base text-amp transition-transform duration-300 group-hover:-translate-y-0.5"
+                >
+                  <Icon size={20} />
+                </span>
+                <h3 className="font-display text-2xl tracking-tighter text-primary md:text-[1.75rem]">
+                  {pillar.title}
+                </h3>
+                {pillar.body && (
+                  <p className="mt-3 font-body leading-relaxed text-secondary">
+                    {pillar.body}
+                  </p>
+                )}
+                {pillar.items && (
+                  <ul className="mt-6 grid grid-cols-1 gap-x-6 gap-y-2.5 sm:grid-cols-2">
+                    {pillar.items.map((item) => (
+                      <li key={item} className="flex items-start gap-2.5">
+                        <Check size={13} className="mt-1 shrink-0 text-amp" aria-hidden />
+                        <span className="font-body text-sm text-secondary">{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                )}
+              </RevealItem>
+            )
+          })}
+        </RevealGroup>
+
+        {/* Closing CTA — kept in this section so it reads as one page */}
+        <CtaCard
+          className="mt-16 md:mt-20"
+          imageSrc="/placeholders/heavy.jpg"
+          title="Let's build your next story"
+          description="Bring us your most technical subject. We turn it into cinematic work people can follow, and actually care about."
+          inputPlaceholder="Your email"
+          buttonText="Start your project"
+        />
       </Section>
     </>
   )

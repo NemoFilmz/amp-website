@@ -1,8 +1,8 @@
 import { Link } from 'react-router-dom'
 import { ArrowUpRight, ArrowRight, Calendar, Hotel, Users } from 'lucide-react'
-import { PageHero, Section, Eyebrow, CTAButton, CinematicMedia } from '../components/ui'
+import { Section, Eyebrow, CTAButton, CinematicMedia } from '../components/ui'
 import { Reveal, RevealGroup, RevealItem } from '../components/Reveal'
-import { ACADEMY, PAGES } from '../data/site'
+import { ACADEMY } from '../data/site'
 
 /* Background image per track (order matches ACADEMY.tracks). */
 const TRACK_IMG = [
@@ -35,10 +35,8 @@ const INCLUDED = [
 export function AcademyPage() {
   return (
     <>
-      <PageHero {...PAGES.academy} seed={3} />
-
       {/* ---------- Choose a track (the navigable core) ---------- */}
-      <Section divider className="py-24 md:py-32">
+      <Section className="pt-40 pb-24 md:pt-48 md:pb-32">
         <Reveal>
           <Eyebrow>Choose a Track</Eyebrow>
           <h2 className="mt-4 max-w-3xl font-display text-[clamp(2rem,4.5vw,3.6rem)] leading-[0.98] tracking-tighter text-primary">

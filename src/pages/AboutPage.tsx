@@ -1,27 +1,8 @@
-import {
-  CircleDot,
-  Gauge,
-  Layers,
-  Boxes,
-  Sparkles,
-  Check,
-  ArrowUpRight,
-  ArrowRight,
-} from 'lucide-react'
+import { CircleDot, ArrowUpRight, ArrowRight } from 'lucide-react'
 import { Section, Container, Eyebrow, TickLabel, CTAButton } from '../components/ui'
 import { Reveal, RevealGroup, RevealItem } from '../components/Reveal'
 import TeamShowcase from '../components/TeamShowcase'
-import { BackgroundPaths } from '../components/BackgroundPaths'
-import {
-  ABOUT_STORY,
-  PHILOSOPHY,
-  WHY_PILLARS,
-  STATS,
-  OFFICES,
-} from '../data/site'
-import { cn } from '../lib/util'
-
-const PILLAR_ICONS = [Gauge, Layers, Boxes, Sparkles] as const
+import { ABOUT_STORY, PHILOSOPHY, OFFICES } from '../data/site'
 
 /**
  * Accent the phrase "national vision" inside the third philosophy line
@@ -51,11 +32,10 @@ export function AboutPage() {
       {/* 1. STORY                                                          */}
       {/* ---------------------------------------------------------------- */}
       <Section className="py-24 md:py-32">
-        {/* Statement headline — the section's focal point (value prop accented) */}
+        {/* Identity headline — who AMP is; the intro answers it */}
         <Reveal>
           <h2 className="max-w-4xl text-balance font-display text-[clamp(2rem,4.5vw,3.6rem)] leading-[1.02] tracking-tighter text-primary">
-            We make complicated things{' '}
-            <span className="text-amp">easy to understand.</span>
+            Who we are
           </h2>
         </Reveal>
 
@@ -96,8 +76,16 @@ export function AboutPage() {
           </div>
         </Reveal>
 
+        {/* Core idea — heads the narrative that explains how we work */}
+        <Reveal delay={0.05}>
+          <h3 className="mt-16 max-w-3xl text-balance font-display text-[clamp(1.6rem,3.4vw,2.6rem)] leading-[1.05] tracking-tighter text-primary md:mt-20">
+            We make complicated things{' '}
+            <span className="text-amp">easy to understand.</span>
+          </h3>
+        </Reveal>
+
         {/* Narrative (read) on the left; capabilities (scan) as a sidebar on the right */}
-        <div className="mt-16 grid gap-y-12 md:mt-20 md:grid-cols-12 md:gap-x-16">
+        <div className="mt-8 grid gap-y-12 md:mt-10 md:grid-cols-12 md:gap-x-16">
           <div className="md:col-span-7">
             <div className="space-y-6">
               {ABOUT_STORY.paragraphs.map((paragraph, i) => (
@@ -152,97 +140,11 @@ export function AboutPage() {
       </Section>
 
       {/* ---------------------------------------------------------------- */}
-      {/* 3. CAPABILITIES + STATS                                           */}
-      {/* ---------------------------------------------------------------- */}
-      <Section
-        divider
-        container={false}
-        className="relative overflow-hidden py-24 md:py-32"
-      >
-        <BackgroundPaths />
-        <div
-          aria-hidden
-          className="pointer-events-none absolute inset-0"
-          style={{
-            background:
-              'radial-gradient(115% 95% at 50% 40%, rgba(32,33,36,0.45) 0%, rgba(32,33,36,0.62) 55%, rgba(32,33,36,0.82) 100%)',
-          }}
-        />
-        <Container className="relative z-10">
-        <Reveal>
-          <Eyebrow index={3} total={5}>
-            Built for Complex Industries
-          </Eyebrow>
-          <h2 className="mt-4 max-w-prose font-display text-[clamp(2rem,4.5vw,3.6rem)] leading-[0.98] tracking-tighter text-primary">
-            A complete ecosystem behind every frame
-          </h2>
-        </Reveal>
-
-        {/* Stat strip */}
-        <RevealGroup className="mt-12 grid grid-cols-2 gap-y-10 md:grid-cols-4">
-          {STATS.map((stat, i) => (
-            <RevealItem
-              key={stat.label}
-              className={cn(
-                'border-line pl-5',
-                i % 2 === 1 ? 'border-l' : 'border-l-0',
-                i % 4 === 0 ? 'md:border-l-0' : 'md:border-l',
-              )}
-            >
-              <div className="font-display text-[clamp(2rem,4vw,3.2rem)] leading-none text-amp">
-                {stat.value}
-              </div>
-              <div className="eyebrow mt-2">{stat.label}</div>
-            </RevealItem>
-          ))}
-        </RevealGroup>
-
-        {/* Pillar cards */}
-        <RevealGroup className="mt-16 grid gap-6 md:mt-20 md:grid-cols-2">
-          {WHY_PILLARS.map((pillar, i) => {
-            const Icon = PILLAR_ICONS[i] ?? Sparkles
-            return (
-              <RevealItem
-                key={pillar.title}
-                className="group rounded-lg border border-line bg-surface p-8 transition-colors duration-300 hover:border-line-strong hover:bg-elevated"
-              >
-                <span
-                  aria-hidden
-                  className="mb-6 flex h-11 w-11 items-center justify-center rounded-full border border-line bg-base text-amp transition-transform duration-300 group-hover:-translate-y-0.5"
-                >
-                  <Icon size={20} />
-                </span>
-                <h3 className="font-display text-2xl tracking-tighter text-primary md:text-[1.75rem]">
-                  {pillar.title}
-                </h3>
-                {pillar.body && (
-                  <p className="mt-3 font-body leading-relaxed text-secondary">
-                    {pillar.body}
-                  </p>
-                )}
-                {pillar.items && (
-                  <ul className="mt-6 grid grid-cols-1 gap-x-6 gap-y-2.5 sm:grid-cols-2">
-                    {pillar.items.map((item) => (
-                      <li key={item} className="flex items-start gap-2.5">
-                        <Check size={13} className="mt-1 shrink-0 text-amp" aria-hidden />
-                        <span className="font-body text-sm text-secondary">{item}</span>
-                      </li>
-                    ))}
-                  </ul>
-                )}
-              </RevealItem>
-            )
-          })}
-        </RevealGroup>
-        </Container>
-      </Section>
-
-      {/* ---------------------------------------------------------------- */}
-      {/* 4. GLOBAL PRESENCE                                                */}
+      {/* 3. GLOBAL PRESENCE                                                */}
       {/* ---------------------------------------------------------------- */}
       <Section divider className="py-24 md:py-32">
         <Reveal>
-          <Eyebrow index={4} total={5}>
+          <Eyebrow index={3} total={5}>
             Global Presence
           </Eyebrow>
           <h2 className="mt-4 max-w-prose font-display text-[clamp(2rem,4.5vw,3.6rem)] leading-[0.98] tracking-tighter text-primary">
@@ -283,7 +185,7 @@ export function AboutPage() {
       </Section>
 
       {/* ---------------------------------------------------------------- */}
-      {/* 5. TEAM                                                           */}
+      {/* 4. TEAM                                                           */}
       {/* ---------------------------------------------------------------- */}
       <Section container={false} divider className="py-24 md:py-32">
         <Container>
@@ -299,7 +201,7 @@ export function AboutPage() {
       </Section>
 
       {/* ---------------------------------------------------------------- */}
-      {/* 6. CLOSING CTA BAND                                               */}
+      {/* 5. CLOSING CTA BAND                                               */}
       {/* ---------------------------------------------------------------- */}
       <Section container={false} className="relative overflow-hidden bg-surface py-24 md:py-32">
         <div

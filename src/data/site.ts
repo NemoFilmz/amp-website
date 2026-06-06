@@ -15,10 +15,10 @@ export const BRAND = {
 
 export const NAV_LINKS = [
   // In-page anchors scroll to home sections (seamless, no page change).
-  // Academy is the one true sub-page (its own route).
+  // About, Work, and Academy are true sub-pages (their own routes).
   { label: 'Home', to: '/#top' },
   { label: 'About', to: '/about' },
-  { label: 'Work', to: '/#industries' },
+  { label: 'Work', to: '/work' },
   { label: 'Services', to: '/#services' },
   { label: 'Academy', to: '/academy' },
   { label: 'Contact', to: '/#contact' },
