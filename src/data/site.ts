@@ -71,10 +71,10 @@ export const ABOUT_STORY = {
     { value: 'Top 10', label: 'NYX Awards, worldwide' },
   ],
   paragraphs: [
-    "Their work is hard to explain. It's technical, it runs deep, and the people who need to grasp it rarely share the same background. We close that gap by building the work from scratch, turning complex subjects into visuals that make sense at a glance.",
-    "That approach also lets us show what a camera can't reach: the inside of a working refinery, or a facility that's still on the drawing board. When filming is the right call, we shoot it. When it isn't, we build it.",
+    "Their work is hard to explain. It's technical, it runs deep, and the people who need to understand it rarely share the same background. We close that gap by building the work from scratch, turning complex subjects into visuals that make sense at a glance.",
+    "That also lets us show what a camera can't reach: the inside of a working refinery, or a facility still on the drawing board. When filming is the right call, we shoot it. When it isn't, we build it.",
     'Understanding changes outcomes. When the work is clear, people are far more willing to trust it and back it.',
-    "Behind it is a team of animators, filmmakers, and art directors who are at their best on the hardest briefs, led by people who've spent decades in production, broadcasting, and film, here and internationally. It's why the work stays on brand and stays with the people who see it.",
+    "Behind it is a team of animators, filmmakers, and art directors who do their best work on the hardest briefs. They're led by people with decades in production, broadcasting, and film, here and abroad. That's why the work stays on brand, and stays with the people who see it.",
   ],
   bringIntro: 'What we bring to it',
   bring: [
