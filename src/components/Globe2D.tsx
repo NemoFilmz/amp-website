@@ -1,28 +1,7 @@
 import { useEffect, useRef } from 'react'
 import { LAND_DOTS } from './landDots'
-
-type City = {
-  name: string
-  lat: number
-  lng: number
-  /** Label offset (px) and alignment, to fan out the close Gulf cities. */
-  lx: number
-  ly: number
-  align: CanvasTextAlign
-}
-
-/** AMP offices. Index 0 (Abu Dhabi) is the hub the arcs spring from. */
-const CITIES: City[] = [
-  { name: 'ABU DHABI', lat: 24.453, lng: 54.366, lx: 0, ly: 22, align: 'center' },
-  { name: 'DUBAI', lat: 25.204, lng: 55.27, lx: 8, ly: -16, align: 'left' },
-  { name: 'RIYADH', lat: 24.713, lng: 46.675, lx: -8, ly: -16, align: 'right' },
-  { name: 'BARCELONA', lat: 41.385, lng: 2.173, lx: 0, ly: -16, align: 'center' },
-]
-const ARCS: [number, number][] = [
-  [0, 1],
-  [0, 2],
-  [0, 3],
-]
+import { COUNTRIES, COUNTRY_ARCS } from './globeMarkers'
+import { CountryMarkers, type CountryMarkersHandle } from './CountryMarkers'
 
 type Vec = [number, number, number]
 
@@ -56,6 +35,8 @@ function slerp(a: Vec, b: Vec, t: number): Vec {
 export function Globe2D() {
   const wrapRef = useRef<HTMLDivElement>(null)
   const canvasRef = useRef<HTMLCanvasElement>(null)
+  const markersRef = useRef<CountryMarkersHandle>(null)
+  const pausedRef = useRef(false)
 
   useEffect(() => {
     const wrap = wrapRef.current
@@ -69,7 +50,7 @@ export function Globe2D() {
     for (let i = 0; i < LAND_DOTS.length; i += 3) {
       dots.push([LAND_DOTS[i], LAND_DOTS[i + 1], LAND_DOTS[i + 2]])
     }
-    const cityVecs = CITIES.map((c) => sphere(c.lat, c.lng))
+    const countryVecs = COUNTRIES.map((c) => sphere(c.lat, c.lng))
 
     const state = { rx: 0.5, ry: -0.5, vy: 0, dragging: false, lastX: 0, lastY: 0 }
     let raf = 0
@@ -101,7 +82,7 @@ export function Globe2D() {
       const cy = H / 2
       const R = Math.min(W, H) * 0.45
 
-      if (!state.dragging) {
+      if (!state.dragging && !pausedRef.current) {
         state.ry += (reduce ? 0 : 0.0016) + state.vy
         state.vy *= 0.94
       }
@@ -126,9 +107,9 @@ export function Globe2D() {
       }
 
       ctx.lineWidth = 1.4
-      for (let k = 0; k < ARCS.length; k += 1) {
-        const a = cityVecs[ARCS[k][0]]
-        const b = cityVecs[ARCS[k][1]]
+      for (let k = 0; k < COUNTRY_ARCS.length; k += 1) {
+        const a = countryVecs[COUNTRY_ARCS[k][0]]
+        const b = countryVecs[COUNTRY_ARCS[k][1]]
         ctx.beginPath()
         let started = false
         for (let t = 0; t <= 1.0001; t += 1 / 56) {
@@ -146,26 +127,12 @@ export function Globe2D() {
         ctx.stroke()
       }
 
-      ;(ctx as CanvasRenderingContext2D & { letterSpacing: string }).letterSpacing = '1.5px'
-      ctx.font = '600 11px system-ui, -apple-system, Segoe UI, sans-serif'
-      for (let i = 0; i < CITIES.length; i += 1) {
-        const c = CITIES[i]
-        const p = project(cityVecs[i], cx, cy, R)
-        if (p.z < -0.05) continue
-        const fade = p.z < 0.12 ? Math.max(0, (p.z + 0.05) / 0.17) : 1
-        ctx.beginPath()
-        ctx.arc(p.x, p.y, 8, 0, Math.PI * 2)
-        ctx.strokeStyle = `rgba(249,192,12,${0.3 * fade})`
-        ctx.lineWidth = 1
-        ctx.stroke()
-        ctx.beginPath()
-        ctx.arc(p.x, p.y, 3.4, 0, Math.PI * 2)
-        ctx.fillStyle = `rgba(249,192,12,${0.95 * fade})`
-        ctx.fill()
-        ctx.fillStyle = `rgba(244,245,247,${fade})`
-        ctx.textAlign = c.align
-        ctx.fillText(c.name, p.x + c.lx, p.y + c.ly)
-      }
+      markersRef.current?.update(
+        countryVecs.map((v) => {
+          const p = project(v, cx, cy, R)
+          return { x: p.x, y: p.y, visible: p.z > 0.05 }
+        }),
+      )
 
       raf = requestAnimationFrame(draw)
     }
@@ -219,7 +186,13 @@ export function Globe2D() {
       <canvas
         ref={canvasRef}
         className="h-full w-full cursor-grab touch-none active:cursor-grabbing"
-        aria-label="Interactive globe of AMP offices: Abu Dhabi, Dubai, Riyadh, Barcelona"
+        aria-label="Interactive globe of AMP offices in the UAE, Saudi Arabia, and Spain"
+      />
+      <CountryMarkers
+        ref={markersRef}
+        onActiveChange={(i) => {
+          pausedRef.current = i != null
+        }}
       />
     </div>
   )
