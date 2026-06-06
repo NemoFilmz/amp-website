@@ -1,9 +1,10 @@
 import { Fragment } from 'react'
 import { CircleDot } from 'lucide-react'
 import { Section, Container, Eyebrow } from '../components/ui'
-import { Reveal, RevealGroup, RevealItem } from '../components/Reveal'
+import { Reveal } from '../components/Reveal'
 import TeamShowcase from '../components/TeamShowcase'
-import { ABOUT_STORY, OFFICES } from '../data/site'
+import { Globe } from '../components/Globe'
+import { ABOUT_STORY } from '../data/site'
 
 export function AboutPage() {
   return (
@@ -117,55 +118,11 @@ export function AboutPage() {
           </h2>
         </Reveal>
 
-        <RevealGroup className="mt-12 grid gap-px bg-line md:mt-16 md:grid-cols-2">
-          {OFFICES.map((office) => (
-            <RevealItem
-              key={office.city}
-              className="group relative flex flex-col overflow-hidden bg-surface p-8 md:p-10"
-            >
-              {office.image && (
-                <>
-                  <img
-                    src={office.image}
-                    alt=""
-                    aria-hidden
-                    style={{ objectPosition: office.imagePosition ?? '50% 55%' }}
-                    className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
-                  />
-                  <div
-                    aria-hidden
-                    className="absolute inset-0"
-                    style={{
-                      background:
-                        'linear-gradient(to bottom, rgba(32,33,36,0.95) 0%, rgba(32,33,36,0.72) 50%, rgba(32,33,36,0.42) 100%)',
-                    }}
-                  />
-                </>
-              )}
-              <div className="relative z-10">
-                <div className="flex items-baseline justify-between gap-4">
-                  <h3 className="font-display text-3xl tracking-tighter text-primary md:text-4xl">
-                    {office.city}
-                  </h3>
-                  <span className="font-body text-sm uppercase tracking-label text-primary/70">
-                    {office.country}
-                  </span>
-                </div>
-
-                <p className="mt-5 max-w-prose font-body leading-relaxed text-primary/90">
-                  {office.role}
-                </p>
-
-                {office.comingSoon && (
-                  <span className="mt-6 inline-flex items-center gap-2 font-body text-sm uppercase tracking-label text-primary/80">
-                    <span aria-hidden className="h-1.5 w-1.5 rounded-full bg-amp" />
-                    Coming soon
-                  </span>
-                )}
-              </div>
-            </RevealItem>
-          ))}
-        </RevealGroup>
+        <Reveal delay={0.05}>
+          <div className="mt-12 md:mt-16">
+            <Globe />
+          </div>
+        </Reveal>
       </Section>
 
       {/* ---------------------------------------------------------------- */}
