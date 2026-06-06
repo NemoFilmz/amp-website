@@ -1,5 +1,5 @@
 import { Fragment } from 'react'
-import { CircleDot, ArrowUpRight } from 'lucide-react'
+import { CircleDot } from 'lucide-react'
 import { Section, Container, Eyebrow } from '../components/ui'
 import { Reveal, RevealGroup, RevealItem } from '../components/Reveal'
 import TeamShowcase from '../components/TeamShowcase'
@@ -150,13 +150,9 @@ export function AboutPage() {
           <Eyebrow index={3} total={5}>
             International Presence
           </Eyebrow>
-          <h2 className="mt-4 max-w-3xl font-display text-[clamp(2rem,4.5vw,3.6rem)] leading-[0.98] tracking-tighter text-primary">
-            An international presence, from the Gulf to Europe
+          <h2 className="mt-4 max-w-prose font-display text-[clamp(2rem,4.5vw,3.6rem)] leading-[0.98] tracking-tighter text-primary">
+            International Presence
           </h2>
-          <p className="mt-6 max-w-2xl font-light text-xl leading-relaxed text-secondary">
-            From Abu Dhabi to Barcelona, we stay close to the projects, and the
-            people, that need us.
-          </p>
         </Reveal>
 
         <RevealGroup className="mt-12 grid gap-px bg-line md:mt-16 md:grid-cols-2">
@@ -175,23 +171,11 @@ export function AboutPage() {
                 {office.role}
               </p>
 
-              {office.comingSoon ? (
+              {office.comingSoon && (
                 <span className="mt-6 inline-flex items-center gap-2 font-body text-sm uppercase tracking-label text-muted">
                   <span aria-hidden className="h-1.5 w-1.5 rounded-full bg-amp/70" />
                   Coming soon
                 </span>
-              ) : (
-                <a
-                  href={`mailto:${office.email}`}
-                  className="group/email mt-6 inline-flex items-center gap-2 font-body text-sm text-amp underline-offset-4 transition-colors hover:underline"
-                >
-                  {office.email}
-                  <ArrowUpRight
-                    size={15}
-                    aria-hidden
-                    className="transition-transform duration-300 group-hover/email:-translate-y-0.5 group-hover/email:translate-x-0.5"
-                  />
-                </a>
               )}
             </RevealItem>
           ))}
