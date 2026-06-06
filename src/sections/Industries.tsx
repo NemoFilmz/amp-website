@@ -12,7 +12,7 @@ import { industrySlug } from '../lib/util'
  */
 export function Industries() {
   return (
-    <section id="industries" className="relative scroll-mt-24 border-t border-line">
+    <section id="industries" className="relative scroll-mt-24">
       <div className="flex flex-col">
         {INDUSTRIES.map((industry) => {
           const to = `/work?industry=${industrySlug(industry.name)}`
