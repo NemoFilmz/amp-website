@@ -127,7 +127,7 @@ export function Hero() {
         >
           {motionItem(
             '',
-            <h1 className="font-display text-[clamp(2.75rem,8.5vw,8rem)] font-normal leading-[1.05] tracking-tighter text-primary">
+            <h1 className="font-display text-[clamp(2.5rem,6.5vw,6rem)] font-normal leading-[1.05] tracking-tighter text-primary">
               <Headline text={HERO.headline} />
             </h1>,
           )}

@@ -38,7 +38,7 @@ function Overlay({ name, blurb }: { name: string; blurb: string }) {
       />
       <Container className="relative z-10 pt-28 md:pt-32">
         <Reveal>
-          <h3 className="font-display text-[clamp(2rem,7vw,5.5rem)] leading-[0.92] tracking-tighter text-primary">
+          <h3 className="font-display text-[clamp(2rem,5.8vw,4.75rem)] leading-[0.92] tracking-tighter text-primary">
             {name}
           </h3>
           <p className="mt-5 max-w-xl font-light text-xl leading-relaxed text-secondary md:text-2xl">

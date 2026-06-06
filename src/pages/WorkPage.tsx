@@ -97,9 +97,6 @@ export function WorkPage() {
           <h2 className="mt-4 max-w-prose font-display text-[clamp(2rem,4.5vw,3.6rem)] leading-[0.98] tracking-tighter text-primary">
             Work
           </h2>
-          <p className="eyebrow mt-6 text-muted">
-            A representative selection across the sectors we serve.
-          </p>
         </Reveal>
 
         {/* Industry filter row */}
