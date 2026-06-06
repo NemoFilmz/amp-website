@@ -42,6 +42,12 @@ function Headline({ text }: { text: string }) {
   )
 }
 
+/** Fades the hero media out toward the bottom so it melts into the section below. */
+const HERO_MEDIA_FADE = {
+  WebkitMaskImage: 'linear-gradient(to bottom, #000 56%, rgba(0,0,0,0) 96%)',
+  maskImage: 'linear-gradient(to bottom, #000 56%, rgba(0,0,0,0) 96%)',
+}
+
 export function Hero() {
   const reduce = useReducedMotion()
   const hasVideo = Boolean(HERO.videoSrc)
@@ -69,6 +75,7 @@ export function Hero() {
           onError={(e) => {
             ;(e.currentTarget as HTMLImageElement).style.opacity = '0'
           }}
+          style={HERO_MEDIA_FADE}
           className="cine-grade absolute inset-0 h-full w-full object-cover"
         />
       )}
@@ -80,6 +87,7 @@ export function Hero() {
           playsInline
           poster={HERO.posterImage}
           aria-hidden
+          style={HERO_MEDIA_FADE}
           className="cine-grade absolute inset-0 h-full w-full object-cover"
         >
           <source src={HERO.videoSrc} type="video/mp4" />

@@ -235,10 +235,7 @@ export function Globe() {
   }, [])
 
   return (
-    <div
-      ref={wrapRef}
-      className="relative h-[440px] w-full overflow-hidden rounded-2xl border border-line bg-base md:h-[560px]"
-    >
+    <div ref={wrapRef} className="relative h-[440px] w-full md:h-[600px]">
       <canvas
         ref={canvasRef}
         className="h-full w-full cursor-grab touch-none active:cursor-grabbing"
