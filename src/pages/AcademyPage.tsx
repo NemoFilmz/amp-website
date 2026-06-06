@@ -1,9 +1,8 @@
-import { Link } from 'react-router-dom'
-import { ArrowUpRight, ArrowRight, Calendar, Hotel, Users } from 'lucide-react'
-import { Section, Eyebrow, CTAButton, CinematicMedia } from '../components/ui'
+import { ArrowRight, Calendar, Hotel, Users } from 'lucide-react'
+import { Section, Container, Eyebrow, CTAButton } from '../components/ui'
 import { Reveal, RevealGroup, RevealItem } from '../components/Reveal'
-import { ACADEMY, COURSES } from '../data/site'
-import { slugify } from '../lib/util'
+import { CourseWheel } from '../components/CourseWheel'
+import { ACADEMY } from '../data/site'
 
 /* Condensed "what's included", distilled from the weekend + luxury detail. */
 const INCLUDED = [
@@ -27,44 +26,22 @@ const INCLUDED = [
 export function AcademyPage() {
   return (
     <>
-      {/* ---------- Choose a track (the navigable core) ---------- */}
-      <Section className="pt-40 pb-24 md:pt-48 md:pb-32">
-        <Reveal>
-          <Eyebrow>Choose a Track</Eyebrow>
-          <h2 className="mt-4 max-w-3xl font-display text-[clamp(2rem,4.5vw,3.6rem)] leading-[0.98] tracking-tighter text-primary">
-            Five disciplines, taught from real projects
-          </h2>
-        </Reveal>
+      {/* ---------- Choose a track: the course wheel ---------- */}
+      <Section container={false} className="pt-40 pb-24 md:pt-48 md:pb-32">
+        <Container>
+          <Reveal>
+            <Eyebrow>Choose a Track</Eyebrow>
+            <h2 className="mt-4 max-w-3xl font-display text-[clamp(2rem,4.5vw,3.6rem)] leading-[0.98] tracking-tighter text-primary">
+              Five disciplines, taught from real projects
+            </h2>
+          </Reveal>
+        </Container>
 
-        <RevealGroup className="mt-12 grid gap-5 sm:grid-cols-2">
-          {COURSES.map((course) => (
-            <RevealItem key={course.name}>
-              <Link
-                to={`/academy/${slugify(course.name)}`}
-                className="group relative block aspect-[16/10] overflow-hidden rounded-2xl border border-line transition-all duration-300 ease-out hover:-translate-y-1 hover:border-amp"
-                aria-label={`View the ${course.name} course`}
-              >
-                <CinematicMedia src={course.image} alt={course.name} className="absolute inset-0 h-full w-full" />
-                <div className="absolute inset-0 z-10 flex flex-col justify-end p-7 md:p-8">
-                  <h3 className="font-display text-2xl leading-tight tracking-tighter text-primary md:text-3xl">
-                    {course.name}
-                  </h3>
-                  <p className="mt-2 max-w-md font-body text-sm leading-relaxed text-secondary">
-                    {course.tagline}
-                  </p>
-                  <span className="mt-4 inline-flex items-center gap-2 font-body text-[12px] font-medium uppercase tracking-label text-amp">
-                    View course
-                    <ArrowUpRight
-                      size={15}
-                      aria-hidden
-                      className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
-                    />
-                  </span>
-                </div>
-              </Link>
-            </RevealItem>
-          ))}
-        </RevealGroup>
+        <Reveal delay={0.05}>
+          <div className="mt-14 md:mt-16">
+            <CourseWheel />
+          </div>
+        </Reveal>
       </Section>
 
       {/* ---------- What's included (condensed) ---------- */}

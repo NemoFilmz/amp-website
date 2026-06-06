@@ -26,32 +26,36 @@ export function AboutPage() {
           </p>
         </Reveal>
 
-        {/* Proof strip — clients + awards as quiet credentials in a single
-            hairline-framed band (cleaner than a boxed, divided card). */}
+        {/* Proof strip — clients + awards as balanced credentials in a
+            hairline band: legible labels, display-weight values both sides. */}
         <Reveal delay={0.1}>
-          <div className="mt-12 grid gap-10 border-y border-line py-9 md:mt-14 md:grid-cols-[1.3fr_1fr] md:items-center md:gap-0 md:divide-x md:divide-line">
-            <div className="md:pr-14">
-              <span className="eyebrow">{ABOUT_STORY.clientsLabel}</span>
-              <div className="mt-4 flex flex-wrap items-center gap-x-4 gap-y-3">
+          <div className="mt-12 grid gap-10 border-y border-line py-10 md:mt-14 md:grid-cols-[1.25fr_1fr] md:items-center md:gap-0 md:divide-x md:divide-line">
+            <div className="md:pr-16">
+              <span className="font-body text-sm font-medium uppercase tracking-[0.18em] text-secondary">
+                {ABOUT_STORY.clientsLabel}
+              </span>
+              <div className="mt-5 flex flex-wrap items-center gap-x-5 gap-y-3">
                 {ABOUT_STORY.clients.map((client, i) => (
                   <Fragment key={client}>
                     {i > 0 && (
-                      <span aria-hidden className="h-1 w-1 shrink-0 rounded-full bg-amp/60" />
+                      <span aria-hidden className="h-1.5 w-1.5 shrink-0 rounded-full bg-amp" />
                     )}
-                    <span className="font-body text-lg font-medium uppercase tracking-[0.1em] text-primary">
+                    <span className="font-display text-[clamp(1.5rem,2.3vw,2rem)] uppercase leading-none tracking-tight text-primary">
                       {client}
                     </span>
                   </Fragment>
                 ))}
               </div>
             </div>
-            <div className="flex gap-12 md:pl-14">
+            <div className="flex gap-10 md:pl-16">
               {ABOUT_STORY.awards.map((award) => (
                 <div key={award.label}>
-                  <div className="font-display text-[clamp(2rem,3.6vw,2.8rem)] leading-none text-amp">
+                  <div className="font-display text-[clamp(2.2rem,4vw,3.2rem)] leading-none text-amp">
                     {award.value}
                   </div>
-                  <div className="eyebrow mt-2">{award.label}</div>
+                  <div className="mt-2.5 font-body text-[13px] uppercase leading-snug tracking-[0.1em] text-secondary">
+                    {award.label}
+                  </div>
                 </div>
               ))}
             </div>
@@ -170,8 +174,8 @@ export function AboutPage() {
       <Section container={false} divider className="py-24 md:py-32">
         <Container>
           <Reveal>
-            <h2 className="max-w-prose font-display text-[clamp(2rem,4.5vw,3.6rem)] leading-[0.98] tracking-tighter text-primary">
-              The people behind the work
+            <h2 className="font-display text-[clamp(2rem,4.5vw,3.6rem)] leading-[1.05] tracking-tighter text-primary">
+              Meet the team in ACTI<span className="text-amp">ON</span>
             </h2>
           </Reveal>
         </Container>
