@@ -77,7 +77,16 @@ export const CountryMarkers = forwardRef<
             />
             <span className="relative h-2.5 w-2.5 rounded-full bg-amp shadow-[0_0_0_4px_rgba(249,192,12,0.18)]" />
           </span>
-          <span className="pointer-events-none absolute left-1/2 top-[125%] -translate-x-1/2 whitespace-nowrap font-body text-[11px] font-medium uppercase tracking-label text-primary">
+          <span
+            className={
+              'pointer-events-none absolute top-[125%] whitespace-nowrap font-body text-[11px] font-medium uppercase tracking-label text-primary ' +
+              (c.labelSide === 'right'
+                ? 'left-1/2 ml-1.5 text-left'
+                : c.labelSide === 'left'
+                  ? 'right-1/2 mr-1.5 text-right'
+                  : 'left-1/2 -translate-x-1/2 text-center')
+            }
+          >
             {c.name}
           </span>
         </button>

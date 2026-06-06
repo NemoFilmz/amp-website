@@ -23,10 +23,20 @@ export interface TeamMember {
 const TEAM: TeamMember[] = [
   { id: '1', name: 'Ayman Ahmed', role: 'Owner & Creative Director', image: '/team/ayman-ahmed.jpg' },
   { id: '2', name: 'Michael Salama', role: 'Director of Photography', image: '/team/michael-salama.jpg' },
-  { id: '3', name: 'Robson Batista', role: 'Marketing Manager', image: '/team/robson-batista.jpg' },
-  { id: '4', name: 'Manasa J', role: 'Business Development Manager', image: '/team/manasa-j.jpg' },
-  { id: '5', name: 'Mavie Alexander', role: 'Photographer', image: '/team/mavie-alexander.jpg' },
-  { id: '6', name: 'Muhammad Kashan', role: 'Motion Graphic Designer', image: '/team/muhammad-kashan.jpg' },
+  { id: '3', name: 'Mavie Alexander', role: 'Photographer', image: '/team/mavie-alexander.jpg' },
+  { id: '4', name: 'Robson Batista', role: 'Marketing Manager', image: '/team/robson-batista.jpg' },
+  { id: '5', name: 'Mirabela Antonache', role: 'Marketing Manager', image: '/team/mirabela-antonache.jpg' },
+  { id: '6', name: 'Manasa J', role: 'Business Development Manager', image: '/team/manasa-j.jpg' },
+  { id: '7', name: 'Cherry', role: 'Financial Manager', image: '/team/cherry.jpg' },
+  { id: '8', name: 'Luzveminda', role: 'Office Manager', image: '/team/luzveminda.jpg' },
+  { id: '9', name: 'Rasmik Bidari', role: 'Assistant Producer', image: '/team/rasmik-bidari.jpg' },
+  { id: '10', name: 'Muhammad Kashan', role: 'Motion Graphic Designer', image: '/team/muhammad-kashan.jpg' },
+  { id: '11', name: 'Umair', role: 'Motion Graphic Designer', image: '/team/umair.jpg' },
+  { id: '12', name: 'Nasif', role: 'Motion Graphic Designer', image: '/team/nasif.jpg' },
+  { id: '13', name: 'Mayjeline Sarminto', role: 'Film Editor', image: '/team/mayjeline-sarminto.jpg' },
+  { id: '14', name: 'Ghayas', role: 'Graphic Designer', image: '/team/ghayas.jpg' },
+  { id: '15', name: 'Abu Bakr', role: 'Production Assistant', image: '/team/abu-bakr.jpg' },
+  { id: '16', name: 'Abdul Jaleel', role: 'Camera Assistant', image: '/team/abdul-jaleel.jpg' },
 ]
 
 interface TeamShowcaseProps {
