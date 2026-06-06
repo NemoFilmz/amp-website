@@ -115,7 +115,7 @@ export function CoursePage() {
           {course.modules.map((module, i) => (
             <RevealItem
               key={module.title}
-              className="flex items-start gap-5 rounded-2xl border border-line bg-surface p-6 transition-colors duration-300 hover:border-line-strong md:gap-7 md:p-8"
+              className="group flex items-start gap-5 rounded-2xl border border-line bg-surface p-6 transition-all duration-300 ease-out hover:-translate-y-0.5 hover:border-line-strong hover:bg-elevated hover:shadow-xl hover:shadow-black/30 md:gap-7 md:p-8"
             >
               <span className="font-display text-3xl leading-none text-amp md:text-4xl">
                 {String(i + 1).padStart(2, '0')}
@@ -146,7 +146,10 @@ export function CoursePage() {
         </Reveal>
         <RevealGroup className="mt-12 grid gap-6 md:grid-cols-3">
           {testimonials.map((t) => (
-            <RevealItem key={t.quote} className="flex flex-col rounded-2xl border border-line bg-surface p-8">
+            <RevealItem
+              key={t.quote}
+              className="flex flex-col rounded-2xl border border-line bg-surface p-8 transition-all duration-300 ease-out hover:-translate-y-0.5 hover:border-line-strong"
+            >
               <Quote size={26} className="text-amp" aria-hidden />
               <p className="mt-4 flex-1 font-body text-lg leading-relaxed text-primary/90">{t.quote}</p>
               <p className="mt-6 font-body text-sm uppercase tracking-label text-muted">
@@ -162,7 +165,11 @@ export function CoursePage() {
         <div className="grid gap-10 md:grid-cols-[0.85fr_1.15fr] md:items-center md:gap-16">
           <Reveal>
             <div className="aspect-[4/5] overflow-hidden rounded-2xl border border-line">
-              <CinematicMedia src={instructor.photo} alt={instructor.name} className="h-full w-full" />
+              <img
+                src={instructor.photo}
+                alt={instructor.name}
+                className="h-full w-full object-cover object-[50%_25%] transition-transform duration-700 ease-out hover:scale-[1.03]"
+              />
             </div>
           </Reveal>
           <Reveal delay={0.08}>
@@ -188,8 +195,10 @@ export function CoursePage() {
             <RevealItem
               key={tier.tier}
               className={cn(
-                'relative flex flex-col rounded-2xl border bg-surface p-8',
-                tier.highlighted ? 'border-amp ring-1 ring-amp/40' : 'border-line',
+                'relative flex flex-col rounded-2xl border bg-surface p-8 transition-all duration-300 ease-out hover:-translate-y-1',
+                tier.highlighted
+                  ? 'border-amp ring-1 ring-amp/40 shadow-xl shadow-amp/5'
+                  : 'border-line hover:border-line-strong',
               )}
             >
               {tier.highlighted && (
@@ -243,7 +252,7 @@ export function CoursePage() {
         <div className="mx-auto mt-12 max-w-3xl border-y border-line">
           {faq.map((item) => (
             <details key={item.q} className="group border-b border-line last:border-b-0">
-              <summary className="flex cursor-pointer list-none items-center justify-between gap-4 py-5 font-display text-lg tracking-tight text-primary">
+              <summary className="flex cursor-pointer list-none items-center justify-between gap-4 py-5 font-display text-lg tracking-tight text-primary transition-colors duration-200 hover:text-amp">
                 {item.q}
                 <Plus
                   size={20}

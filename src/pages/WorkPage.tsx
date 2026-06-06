@@ -203,7 +203,7 @@ export function WorkPage() {
             return (
               <RevealItem
                 key={pillar.title}
-                className="group rounded-2xl border border-line bg-surface p-8 transition-colors duration-300 hover:border-line-strong hover:bg-elevated"
+                className="group rounded-2xl border border-line bg-surface p-8 transition-all duration-300 ease-out hover:-translate-y-0.5 hover:border-line-strong hover:bg-elevated hover:shadow-xl hover:shadow-black/30"
               >
                 <h3 className="font-display text-2xl tracking-tighter text-primary md:text-[1.75rem]">
                   {pillar.title}

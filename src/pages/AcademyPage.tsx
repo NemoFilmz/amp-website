@@ -41,7 +41,7 @@ export function AcademyPage() {
             <RevealItem key={course.name}>
               <Link
                 to={`/academy/${slugify(course.name)}`}
-                className="group relative block aspect-[16/10] overflow-hidden rounded-lg border border-line transition-colors duration-300 hover:border-amp"
+                className="group relative block aspect-[16/10] overflow-hidden rounded-2xl border border-line transition-all duration-300 ease-out hover:-translate-y-1 hover:border-amp"
                 aria-label={`View the ${course.name} course`}
               >
                 <CinematicMedia src={course.image} alt={course.name} className="absolute inset-0 h-full w-full" />
@@ -83,7 +83,7 @@ export function AcademyPage() {
           {INCLUDED.map(({ icon: Icon, title, text }) => (
             <RevealItem
               key={title}
-              className="rounded-lg border border-line bg-surface p-8 transition-colors duration-300 hover:border-line-strong"
+              className="rounded-2xl border border-line bg-surface p-8 transition-all duration-300 ease-out hover:-translate-y-0.5 hover:border-line-strong hover:shadow-xl hover:shadow-black/30"
             >
               <Icon size={22} className="mb-5 text-amp" aria-hidden />
               <h3 className="font-display text-xl tracking-tighter text-primary">{title}</h3>
