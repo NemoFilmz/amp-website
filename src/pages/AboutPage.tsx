@@ -1,5 +1,5 @@
-import { CircleDot, ArrowUpRight, ArrowRight } from 'lucide-react'
-import { Section, Container, Eyebrow, TickLabel, CTAButton } from '../components/ui'
+import { CircleDot, ArrowUpRight } from 'lucide-react'
+import { Section, Container, Eyebrow } from '../components/ui'
 import { Reveal, RevealGroup, RevealItem } from '../components/Reveal'
 import TeamShowcase from '../components/TeamShowcase'
 import { ABOUT_STORY, PHILOSOPHY, OFFICES } from '../data/site'
@@ -200,45 +200,6 @@ export function AboutPage() {
         </div>
       </Section>
 
-      {/* ---------------------------------------------------------------- */}
-      {/* 5. CLOSING CTA BAND                                               */}
-      {/* ---------------------------------------------------------------- */}
-      <Section container={false} className="relative overflow-hidden bg-surface py-24 md:py-32">
-        <div
-          aria-hidden
-          className="pointer-events-none absolute inset-0"
-          style={{
-            background:
-              'radial-gradient(60% 60% at 50% 0%, rgba(249,192,12,0.10), transparent 70%), radial-gradient(55% 60% at 15% 100%, rgba(43,217,255,0.07), transparent 70%)',
-          }}
-        />
-        <Container className="relative z-10 text-center">
-          <Reveal>
-            <TickLabel className="justify-center">Start the Conversation</TickLabel>
-          </Reveal>
-          <Reveal delay={0.05}>
-            <h2 className="mx-auto mt-6 max-w-3xl text-balance font-display text-[clamp(2rem,4.5vw,3.6rem)] leading-[0.98] tracking-tighter text-primary">
-              Let us build the future together
-            </h2>
-          </Reveal>
-          <Reveal delay={0.1}>
-            <p className="mx-auto mt-6 max-w-xl font-light text-xl leading-relaxed text-secondary">
-              See how we turn complexity into cinematic clarity, then bring us your
-              next national initiative or industrial story.
-            </p>
-          </Reveal>
-          <Reveal delay={0.16}>
-            <div className="mt-10 flex flex-wrap justify-center gap-3">
-              <CTAButton variant="primary" to="/work" icon={<ArrowRight size={16} />}>
-                See Our Work
-              </CTAButton>
-              <CTAButton variant="outline" to="/contact">
-                Start a Project
-              </CTAButton>
-            </div>
-          </Reveal>
-        </Container>
-      </Section>
     </main>
   )
 }
