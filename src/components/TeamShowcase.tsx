@@ -16,17 +16,17 @@ export interface TeamMember {
 }
 
 /**
- * Team — names and roles from actionmpro.com/about. The live site has no
- * individual headshots, so photos use a placeholder avatar service for now;
- * swap in real headshots (and per-person social links) when available.
+ * Team — names, roles, and headshots taken from actionmpro.com/about
+ * (bundled locally under /public/team so the site doesn't depend on the
+ * old WordPress install). Add per-person social links when available.
  */
 const TEAM: TeamMember[] = [
-  { id: '1', name: 'Ayman Ahmed', role: 'Owner & Creative Director', image: 'https://i.pravatar.cc/400?img=12' },
-  { id: '2', name: 'Michael Salama', role: 'Director of Photography', image: 'https://i.pravatar.cc/400?img=13' },
-  { id: '3', name: 'Robson Batista', role: 'Marketing Manager', image: 'https://i.pravatar.cc/400?img=33' },
-  { id: '4', name: 'Manasa J', role: 'Business Development Manager', image: 'https://i.pravatar.cc/400?img=45' },
-  { id: '5', name: 'Mavie Alexander', role: 'Photographer', image: 'https://i.pravatar.cc/400?img=15' },
-  { id: '6', name: 'Muhammad Kashan', role: 'Motion Graphic Designer', image: 'https://i.pravatar.cc/400?img=53' },
+  { id: '1', name: 'Ayman Ahmed', role: 'Owner & Creative Director', image: '/team/ayman-ahmed.jpg' },
+  { id: '2', name: 'Michael Salama', role: 'Director of Photography', image: '/team/michael-salama.jpg' },
+  { id: '3', name: 'Robson Batista', role: 'Marketing Manager', image: '/team/robson-batista.jpg' },
+  { id: '4', name: 'Manasa J', role: 'Business Development Manager', image: '/team/manasa-j.jpg' },
+  { id: '5', name: 'Mavie Alexander', role: 'Photographer', image: '/team/mavie-alexander.jpg' },
+  { id: '6', name: 'Muhammad Kashan', role: 'Motion Graphic Designer', image: '/team/muhammad-kashan.jpg' },
 ]
 
 interface TeamShowcaseProps {
@@ -118,7 +118,7 @@ function PhotoCard({
       <img
         src={member.image}
         alt={member.name}
-        className="h-full w-full object-cover transition-[filter] duration-500"
+        className="h-full w-full object-cover object-[50%_28%] transition-[filter] duration-500"
         style={{
           filter: isActive ? 'grayscale(0) brightness(1)' : 'grayscale(1) brightness(0.77)',
         }}
