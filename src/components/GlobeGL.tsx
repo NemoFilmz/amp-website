@@ -1,6 +1,7 @@
 import { useEffect, useRef } from 'react'
 import * as THREE from 'three'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
+import { LAND_DOTS } from './landDots'
 
 type City = { name: string; lat: number; lng: number; transform: string }
 
@@ -38,18 +39,6 @@ function vslerp(a: THREE.Vector3, b: THREE.Vector3, t: number): THREE.Vector3 {
     .clone()
     .multiplyScalar(Math.sin((1 - t) * om) / so)
     .add(b.clone().multiplyScalar(Math.sin(t * om) / so))
-}
-
-function fibonacciPoints(n: number): number[] {
-  const arr: number[] = []
-  const gr = (1 + Math.sqrt(5)) / 2
-  for (let i = 0; i < n; i += 1) {
-    const y = 1 - (i / (n - 1)) * 2
-    const r = Math.sqrt(Math.max(0, 1 - y * y))
-    const th = (2 * Math.PI * i) / gr
-    arr.push(Math.cos(th) * r, y, Math.sin(th) * r)
-  }
-  return arr
 }
 
 function glowTexture(): THREE.CanvasTexture {
@@ -99,15 +88,15 @@ export function GlobeGL() {
 
     // Dotted sphere
     const dotGeo = new THREE.BufferGeometry()
-    dotGeo.setAttribute('position', new THREE.Float32BufferAttribute(fibonacciPoints(1600), 3))
+    dotGeo.setAttribute('position', new THREE.Float32BufferAttribute(LAND_DOTS, 3))
     const dots = new THREE.Points(
       dotGeo,
       new THREE.PointsMaterial({
         color: 0x9aa6b8,
-        size: 0.02,
+        size: 0.019,
         sizeAttenuation: true,
         transparent: true,
-        opacity: 0.6,
+        opacity: 0.72,
         depthWrite: false,
         fog: true,
       }),

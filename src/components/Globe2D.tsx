@@ -1,4 +1,5 @@
 import { useEffect, useRef } from 'react'
+import { LAND_DOTS } from './landDots'
 
 type City = {
   name: string
@@ -51,19 +52,7 @@ function slerp(a: Vec, b: Vec, t: number): Vec {
   return [a[0] * k0 + b[0] * k1, a[1] * k0 + b[1] * k1, a[2] * k0 + b[2] * k1]
 }
 
-function fibonacciSphere(n: number): Vec[] {
-  const pts: Vec[] = []
-  const gr = (1 + Math.sqrt(5)) / 2
-  for (let i = 0; i < n; i += 1) {
-    const y = 1 - (i / (n - 1)) * 2
-    const r = Math.sqrt(Math.max(0, 1 - y * y))
-    const th = (2 * Math.PI * i) / gr
-    pts.push([Math.cos(th) * r, y, Math.sin(th) * r])
-  }
-  return pts
-}
-
-/** A dotted globe on a 2D canvas (no WebGL). The fallback for the WebGL globe. */
+/** A dotted-continents globe on a 2D canvas (no WebGL). The WebGL fallback. */
 export function Globe2D() {
   const wrapRef = useRef<HTMLDivElement>(null)
   const canvasRef = useRef<HTMLCanvasElement>(null)
@@ -76,7 +65,10 @@ export function Globe2D() {
     if (!ctx) return
 
     const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches
-    const dots = fibonacciSphere(1500)
+    const dots: Vec[] = []
+    for (let i = 0; i < LAND_DOTS.length; i += 3) {
+      dots.push([LAND_DOTS[i], LAND_DOTS[i + 1], LAND_DOTS[i + 2]])
+    }
     const cityVecs = CITIES.map((c) => sphere(c.lat, c.lng))
 
     const state = { rx: 0.5, ry: -0.5, vy: 0, dragging: false, lastX: 0, lastY: 0 }
@@ -126,11 +118,10 @@ export function Globe2D() {
 
       for (let i = 0; i < dots.length; i += 1) {
         const p = project(dots[i], cx, cy, R)
-        const a = p.z > 0 ? 0.1 + 0.34 * p.z : 0.05 * (1 + p.z)
-        if (a <= 0.02) continue
-        ctx.fillStyle = `rgba(150,162,178,${a})`
+        if (p.z <= 0.03) continue
+        ctx.fillStyle = `rgba(150,162,178,${0.16 + 0.5 * p.z})`
         ctx.beginPath()
-        ctx.arc(p.x, p.y, p.z > 0 ? 1.1 : 0.8, 0, Math.PI * 2)
+        ctx.arc(p.x, p.y, 1.25, 0, Math.PI * 2)
         ctx.fill()
       }
 
