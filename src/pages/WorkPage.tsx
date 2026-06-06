@@ -1,10 +1,10 @@
-import { useMemo, useState } from 'react'
-import { Link } from 'react-router-dom'
+import { useEffect, useMemo, useState } from 'react'
+import { Link, useSearchParams } from 'react-router-dom'
 import { ArrowRight, ArrowUpRight } from 'lucide-react'
 import { PageHero, Section, CinematicMedia, Eyebrow, CTAButton } from '../components/ui'
 import { Reveal, RevealGroup, RevealItem } from '../components/Reveal'
 import { PAGES } from '../data/site'
-import { cn } from '../lib/util'
+import { cn, industrySlug } from '../lib/util'
 
 /* ------------------------------------------------------------------ */
 /* Representative case studies.                                        */
@@ -63,7 +63,22 @@ const ALL = 'All'
 const FILTERS: string[] = [ALL, ...Array.from(new Set(CASES.map((c) => c.tag)))]
 
 export function WorkPage() {
-  const [active, setActive] = useState<string>(ALL)
+  const [searchParams] = useSearchParams()
+
+  // The home industry panels link here as /work?industry=<slug>; map that slug
+  // back to the matching filter so the right industry arrives pre-selected.
+  const fromParam = useMemo(() => {
+    const slug = searchParams.get('industry')
+    if (!slug) return ALL
+    return FILTERS.find((f) => industrySlug(f) === slug) ?? ALL
+  }, [searchParams])
+
+  const [active, setActive] = useState<string>(fromParam)
+
+  // Keep the selection in sync when arriving with (or changing) the param.
+  useEffect(() => {
+    setActive(fromParam)
+  }, [fromParam])
 
   const visible = useMemo(
     () => (active === ALL ? CASES : CASES.filter((c) => c.tag === active)),

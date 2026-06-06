@@ -1,5 +1,7 @@
 import { useEffect, useRef, useState, type ReactNode } from 'react'
 import { useReducedMotion } from 'framer-motion'
+import { Link } from 'react-router-dom'
+import { ArrowUpRight } from 'lucide-react'
 import { Container } from './ui'
 import { Reveal } from './Reveal'
 
@@ -8,6 +10,8 @@ type ScrollVideoPanelProps = {
   poster: string
   name: string
   blurb: string
+  /** Where the panel links to (the Work page, filtered to this industry). */
+  to: string
 }
 
 /** Full-bleed name + blurb over a left fade and bottom scrim (matches the image panels). */
@@ -41,6 +45,14 @@ function Overlay({ name, blurb }: { name: string; blurb: string }) {
           <p className="mt-5 max-w-xl font-light text-xl leading-relaxed text-secondary md:text-2xl">
             {blurb}
           </p>
+          <span className="mt-7 inline-flex items-center gap-2 font-body text-sm font-medium uppercase tracking-label text-amp md:mt-8">
+            View {name} work
+            <ArrowUpRight
+              size={16}
+              aria-hidden
+              className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+            />
+          </span>
         </Reveal>
       </Container>
     </>
@@ -57,7 +69,7 @@ function Overlay({ name, blurb }: { name: string; blurb: string }) {
  * Falls back to a static poster for reduced-motion and a muted autoplay loop on
  * touch devices (where scroll-scrubbing is unreliable).
  */
-export function ScrollVideoPanel({ src, poster, name, blurb }: ScrollVideoPanelProps) {
+export function ScrollVideoPanel({ src, poster, name, blurb, to }: ScrollVideoPanelProps) {
   const reduce = useReducedMotion()
   const [touch, setTouch] = useState(false)
   const boxRef = useRef<HTMLDivElement>(null)
@@ -119,13 +131,15 @@ export function ScrollVideoPanel({ src, poster, name, blurb }: ScrollVideoPanelP
   }, [scrub])
 
   const frame = (media: ReactNode) => (
-    <div
-      ref={boxRef}
-      className="relative flex min-h-[58vh] items-start overflow-hidden md:min-h-[80vh]"
-    >
-      {media}
-      <Overlay name={name} blurb={blurb} />
-    </div>
+    <Link to={to} aria-label={`See our ${name} work`} className="group block">
+      <div
+        ref={boxRef}
+        className="relative flex min-h-[58vh] items-start overflow-hidden md:min-h-[80vh]"
+      >
+        {media}
+        <Overlay name={name} blurb={blurb} />
+      </div>
+    </Link>
   )
 
   if (reduce) {
