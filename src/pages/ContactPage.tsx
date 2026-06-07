@@ -272,10 +272,7 @@ export function ContactPage() {
         <Reveal>
           <div className="mx-auto max-w-3xl text-center">
             <Eyebrow className="justify-center">Consultation</Eyebrow>
-            <h2 className="mt-5 text-balance font-display text-[clamp(2rem,5vw,3.6rem)] leading-[0.98] tracking-tighter text-primary">
-              Let us turn your vision into cinematic impact.
-            </h2>
-            <p className="mx-auto mt-6 max-w-2xl font-body text-lg leading-relaxed text-secondary">
+            <p className="mx-auto mt-5 max-w-2xl font-body text-lg leading-relaxed text-secondary">
               From national initiatives to billion-dollar projects, our team is
               ready to bring your vision to the people who decide.
             </p>
