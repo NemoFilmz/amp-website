@@ -10,7 +10,7 @@ import { cn } from '../lib/util'
 const CLIENT_LOGOS: Record<string, { src: string; size: string }> = {
   ADNOC: { src: '/logos/adnoc.png', size: 'h-12 md:h-14' },
   Mubadala: { src: '/logos/mubadala.png', size: 'h-11 md:h-12' },
-  Etihad: { src: '/logos/etihad.png', size: 'h-14 md:h-16' },
+  Etihad: { src: '/logos/etihad.png', size: 'h-20 md:h-24' },
 }
 
 export function AboutPage() {
