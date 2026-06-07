@@ -1,8 +1,7 @@
 import { Fragment } from 'react'
 import { CircleDot } from 'lucide-react'
-import { Section, Container, Eyebrow } from '../components/ui'
+import { Section, Eyebrow } from '../components/ui'
 import { Reveal } from '../components/Reveal'
-import TeamShowcase from '../components/TeamShowcase'
 import { Globe } from '../components/Globe'
 import { ABOUT_STORY } from '../data/site'
 
@@ -124,23 +123,6 @@ export function AboutPage() {
           </div>
         </Reveal>
       </Section>
-
-      {/* ---------------------------------------------------------------- */}
-      {/* 4. TEAM                                                           */}
-      {/* ---------------------------------------------------------------- */}
-      <Section container={false} divider className="py-24 md:py-32">
-        <Container>
-          <Reveal>
-            <h2 className="font-display text-[clamp(2rem,4.5vw,3.6rem)] leading-[1.05] tracking-tighter text-primary">
-              Meet the team in ACTI<span className="text-amp">ON</span>
-            </h2>
-          </Reveal>
-        </Container>
-        <div className="mt-12 md:mt-16">
-          <TeamShowcase />
-        </div>
-      </Section>
-
     </main>
   )
 }
