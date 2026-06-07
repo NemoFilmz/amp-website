@@ -1,9 +1,15 @@
-import { Fragment } from 'react'
 import { CircleDot } from 'lucide-react'
 import { Section, Eyebrow } from '../components/ui'
 import { Reveal } from '../components/Reveal'
 import { Globe } from '../components/Globe'
 import { ABOUT_STORY } from '../data/site'
+
+/** White client logos for the credentials strip, keyed by client name. */
+const CLIENT_LOGOS: Record<string, string> = {
+  ADNOC: '/logos/adnoc.png',
+  Mubadala: '/logos/mubadala.png',
+  Etihad: '/logos/etihad.png',
+}
 
 export function AboutPage() {
   return (
@@ -26,31 +32,30 @@ export function AboutPage() {
           </p>
         </Reveal>
 
-        {/* Proof strip — clients + awards as balanced credentials in a
-            hairline band: legible labels, display-weight values both sides. */}
+        {/* Proof strip — real client logos (a conventional "trusted by" row)
+            balanced against amber award stats across a hairline band. */}
         <Reveal delay={0.1}>
-          <div className="mt-12 grid gap-10 border-y border-line py-10 md:mt-14 md:grid-cols-[1.25fr_1fr] md:items-center md:gap-0 md:divide-x md:divide-line">
+          <div className="mt-12 grid gap-10 border-y border-line py-10 md:mt-14 md:grid-cols-[1.3fr_1fr] md:items-center md:gap-0 md:divide-x md:divide-line">
             <div className="md:pr-16">
               <span className="font-body text-sm font-medium uppercase tracking-[0.18em] text-secondary">
                 {ABOUT_STORY.clientsLabel}
               </span>
-              <div className="mt-5 flex flex-wrap items-center gap-x-5 gap-y-3">
-                {ABOUT_STORY.clients.map((client, i) => (
-                  <Fragment key={client}>
-                    {i > 0 && (
-                      <span aria-hidden className="h-1.5 w-1.5 shrink-0 rounded-full bg-amp" />
-                    )}
-                    <span className="font-display text-[clamp(1.5rem,2.3vw,2rem)] uppercase leading-none tracking-tight text-primary">
-                      {client}
-                    </span>
-                  </Fragment>
+              <div className="mt-6 flex flex-wrap items-center gap-x-9 gap-y-6 md:gap-x-11">
+                {ABOUT_STORY.clients.map((client) => (
+                  <img
+                    key={client}
+                    src={CLIENT_LOGOS[client]}
+                    alt={client}
+                    loading="lazy"
+                    className="h-8 w-auto max-w-[130px] select-none object-contain opacity-85 transition-opacity duration-300 hover:opacity-100 md:h-10"
+                  />
                 ))}
               </div>
             </div>
             <div className="flex gap-10 md:pl-16">
               {ABOUT_STORY.awards.map((award) => (
                 <div key={award.label}>
-                  <div className="font-display text-[clamp(2.2rem,4vw,3.2rem)] leading-none text-amp">
+                  <div className="font-display text-[clamp(2.4rem,4.2vw,3.4rem)] leading-none text-amp">
                     {award.value}
                   </div>
                   <div className="mt-2.5 font-body text-[13px] uppercase leading-snug tracking-[0.1em] text-secondary">
