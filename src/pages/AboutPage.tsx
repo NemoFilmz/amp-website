@@ -87,15 +87,15 @@ export function AboutPage() {
 
           <div className="md:col-span-5">
             <Reveal delay={0.1}>
-              <div className="md:border-l md:border-line md:pl-10">
-                <h3 className="font-display text-xl tracking-tighter text-primary">
+              <div className="md:border-l md:border-line md:pl-10 lg:pl-12">
+                <h3 className="font-display text-2xl tracking-tighter text-primary md:text-3xl">
                   {ABOUT_STORY.bringIntro}
                 </h3>
-                <ul className="mt-6 space-y-4">
+                <ul className="mt-8 space-y-5">
                   {ABOUT_STORY.bring.map((item) => (
-                    <li key={item} className="flex items-start gap-3">
-                      <CircleDot size={13} className="mt-1.5 shrink-0 text-amp" aria-hidden />
-                      <span className="font-body text-primary/90">{item}</span>
+                    <li key={item} className="flex items-start gap-3.5">
+                      <CircleDot size={16} className="mt-1.5 shrink-0 text-amp" aria-hidden />
+                      <span className="font-body text-lg leading-relaxed text-primary/90">{item}</span>
                     </li>
                   ))}
                 </ul>
