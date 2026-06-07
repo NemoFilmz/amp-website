@@ -1,6 +1,6 @@
 import { useEffect } from 'react'
 import { useParams, Navigate } from 'react-router-dom'
-import { Play, ArrowRight, Check, ShieldCheck, Quote, Plus } from 'lucide-react'
+import { Play, ArrowRight, Check, ShieldCheck, Quote, Plus, ImageIcon } from 'lucide-react'
 import { Section, Container, CinematicMedia, CTAButton, Eyebrow, TickLabel } from '../components/ui'
 import { Reveal, RevealGroup, RevealItem } from '../components/Reveal'
 import { COURSES, COURSE_SHARED } from '../data/site'
@@ -103,7 +103,19 @@ export function CoursePage() {
           </div>
         </Reveal>
 
-        {/* Software icons go here — upload pending. */}
+        {/* Software icon placeholders — swap each tile's box for a real logo. */}
+        <RevealGroup className="mx-auto mt-12 grid max-w-4xl grid-cols-3 gap-6 sm:grid-cols-4 md:mt-16 md:grid-cols-6">
+          {course.software.map((tool) => (
+            <RevealItem key={tool.name} className="flex flex-col items-center gap-3 text-center">
+              <div className="flex aspect-square w-full items-center justify-center rounded-2xl border border-line bg-surface transition-colors duration-300 hover:border-line-strong">
+                <ImageIcon size={26} className="text-muted" aria-hidden />
+              </div>
+              <span className="font-body text-[11px] uppercase tracking-label text-secondary">
+                {tool.name}
+              </span>
+            </RevealItem>
+          ))}
+        </RevealGroup>
       </Section>
 
       {/* 4. MODULES + 5. MID-PAGE CTA */}
