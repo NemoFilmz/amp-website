@@ -408,12 +408,7 @@ export const OFFICES: Office[] = [
   },
 ]
 
-export const GENERAL_EMAILS = [
-  'hello@actionmpro.com',
-  'projects@actionmpro.com',
-  'academy@actionmpro.com',
-  'careers@actionmpro.com',
-]
+export const GENERAL_EMAILS = ['ayman@actionmpro.com']
 
 /* ---------- 7. PHILOSOPHY ---------- */
 export const PHILOSOPHY = {
@@ -786,16 +781,7 @@ export const FOOTER = {
     'Contact',
   ],
   offices: ['Abu Dhabi', 'Dubai', 'Riyadh', 'Barcelona'],
-  emails: [
-    'hello@actionmpro.com',
-    'projects@actionmpro.com',
-    'academy@actionmpro.com',
-    'careers@actionmpro.com',
-    'ayman@actionmpro.com',
-    'dubai@actionmpro.com',
-    'riyadh@actionmpro.com',
-    'barcelona@actionmpro.com',
-  ],
+  emails: ['ayman@actionmpro.com'],
   statement: {
     lead: 'Action Media Production FZ LLC (AMP)',
     line: 'Creating cinematic visual experiences for governments, industries, and the future.',

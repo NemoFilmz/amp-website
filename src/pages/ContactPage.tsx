@@ -1,11 +1,11 @@
 import { useState, type FormEvent } from 'react'
 import { Link } from 'react-router-dom'
 import { Check, ArrowUpRight, Send, ArrowRight } from 'lucide-react'
-import { PageHero, Section, Eyebrow, CTAButton, Magnetic } from '../components/ui'
+import { Section, Eyebrow, CTAButton, Magnetic } from '../components/ui'
 import { Reveal, RevealGroup, RevealItem } from '../components/Reveal'
-import { OFFICES, GENERAL_EMAILS, SERVICES, PAGES } from '../data/site'
+import { OFFICES, GENERAL_EMAILS, SERVICES } from '../data/site'
 
-const PROJECTS_EMAIL = 'projects@actionmpro.com'
+const PROJECTS_EMAIL = 'ayman@actionmpro.com'
 
 const fieldClass =
   'w-full bg-surface border border-line rounded-md py-3.5 px-5 text-primary placeholder:text-muted focus:border-amp focus:outline-none transition-colors font-body'
@@ -33,10 +33,8 @@ export function ContactPage() {
 
   return (
     <>
-      <PageHero {...PAGES.contact} seed={0} />
-
       {/* ---- Contact body: form + regional rail ---- */}
-      <Section className="py-24 md:py-32">
+      <Section className="pt-40 pb-24 md:pt-48 md:pb-32">
         <div className="grid gap-12 lg:grid-cols-12">
           {/* LEFT: inquiry form */}
           <div className="lg:col-span-7">

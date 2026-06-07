@@ -231,7 +231,7 @@ export function WorkPage() {
         {/* Closing CTA — kept in this section so it reads as one page */}
         <CtaCard
           className="mt-16 md:mt-20"
-          imageSrc="/placeholders/cta-suite.jpg"
+          imageSrc="/placeholders/cta-rig.jpg"
           title="Let's build your next story"
           description="Bring us your most technical subject. We turn it into cinematic work people can follow, and actually care about."
           inputPlaceholder="Your email"

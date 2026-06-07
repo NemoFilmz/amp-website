@@ -3,12 +3,14 @@ import { Section, Eyebrow } from '../components/ui'
 import { Reveal } from '../components/Reveal'
 import { Globe } from '../components/Globe'
 import { ABOUT_STORY } from '../data/site'
+import { cn } from '../lib/util'
 
-/** White client logos for the credentials strip, keyed by client name. */
-const CLIENT_LOGOS: Record<string, string> = {
-  ADNOC: '/logos/adnoc.png',
-  Mubadala: '/logos/mubadala.png',
-  Etihad: '/logos/etihad.png',
+/** White client logos for the credentials strip, keyed by client name.
+ *  `size` is a per-logo height (some marks sit smaller within their bounds). */
+const CLIENT_LOGOS: Record<string, { src: string; size: string }> = {
+  ADNOC: { src: '/logos/adnoc.png', size: 'h-12 md:h-14' },
+  Mubadala: { src: '/logos/mubadala.png', size: 'h-11 md:h-12' },
+  Etihad: { src: '/logos/etihad.png', size: 'h-14 md:h-16' },
 }
 
 export function AboutPage() {
@@ -40,14 +42,17 @@ export function AboutPage() {
               <span className="font-body text-sm font-medium uppercase tracking-[0.18em] text-secondary">
                 {ABOUT_STORY.clientsLabel}
               </span>
-              <div className="mt-6 flex flex-wrap items-center gap-x-9 gap-y-6 md:gap-x-11">
+              <div className="mt-6 flex flex-wrap items-center gap-x-9 gap-y-6 md:gap-x-12">
                 {ABOUT_STORY.clients.map((client) => (
                   <img
                     key={client}
-                    src={CLIENT_LOGOS[client]}
+                    src={CLIENT_LOGOS[client].src}
                     alt={client}
                     loading="lazy"
-                    className="h-8 w-auto max-w-[130px] select-none object-contain opacity-85 transition-opacity duration-300 hover:opacity-100 md:h-10"
+                    className={cn(
+                      'w-auto max-w-[200px] select-none object-contain opacity-85 transition-opacity duration-300 hover:opacity-100',
+                      CLIENT_LOGOS[client].size,
+                    )}
                   />
                 ))}
               </div>
