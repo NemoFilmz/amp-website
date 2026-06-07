@@ -1,6 +1,6 @@
 import { useEffect } from 'react'
 import { useParams, Navigate } from 'react-router-dom'
-import { Play, ArrowRight, Check, ShieldCheck, Quote, Plus, AppWindow } from 'lucide-react'
+import { Play, ArrowRight, Check, ShieldCheck, Quote, Plus } from 'lucide-react'
 import { Section, Container, CinematicMedia, CTAButton, Eyebrow, TickLabel } from '../components/ui'
 import { Reveal, RevealGroup, RevealItem } from '../components/Reveal'
 import { COURSES, COURSE_SHARED } from '../data/site'
@@ -103,29 +103,7 @@ export function CoursePage() {
           </div>
         </Reveal>
 
-        <RevealGroup className="mx-auto mt-12 grid max-w-5xl grid-cols-2 gap-4 sm:grid-cols-3 md:mt-16">
-          {course.software.map((tool) => (
-            <RevealItem
-              key={tool.name}
-              className="group flex items-center gap-4 rounded-2xl border border-line bg-surface p-5 transition-all duration-300 ease-out hover:-translate-y-0.5 hover:border-line-strong hover:bg-elevated md:p-6"
-            >
-              <span
-                aria-hidden
-                className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-line bg-base text-amp transition-transform duration-300 group-hover:-translate-y-0.5"
-              >
-                <AppWindow size={20} />
-              </span>
-              <div className="min-w-0">
-                <div className="truncate font-display text-lg tracking-tighter text-primary">
-                  {tool.name}
-                </div>
-                <div className="mt-1 font-body text-[12px] uppercase tracking-label text-muted">
-                  {tool.use}
-                </div>
-              </div>
-            </RevealItem>
-          ))}
-        </RevealGroup>
+        {/* Software icons go here — upload pending. */}
       </Section>
 
       {/* 4. MODULES + 5. MID-PAGE CTA */}
