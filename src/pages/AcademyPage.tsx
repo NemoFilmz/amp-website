@@ -34,7 +34,7 @@ export function AcademyPage() {
               <h2 className="font-display text-[clamp(2rem,4.5vw,3.6rem)] leading-[0.98] tracking-tighter text-primary">
                 Welcome to <span className="text-amp">AMP</span> Academy
               </h2>
-              <p className="mx-auto mt-6 max-w-xl font-light text-xl leading-relaxed text-secondary">
+              <p className="mx-auto mt-6 max-w-xl font-light text-xl leading-relaxed text-primary/90">
                 Learn on real projects. Build the skills of an AMP creative.
               </p>
             </div>
