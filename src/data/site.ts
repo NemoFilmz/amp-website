@@ -518,6 +518,8 @@ export type Course = {
   story: string[]
   description: string
   modules: { title: string; desc: string }[]
+  /** Software/tools used across the course. */
+  software: { name: string; use: string }[]
 }
 
 export const COURSES: Course[] = [
@@ -537,6 +539,14 @@ export const COURSES: Course[] = [
       { title: 'Blending AI With Real Footage', desc: 'Combine generated and filmed material so the seam disappears.' },
       { title: 'Directing AI for a Premium Look', desc: 'Hold the wow factor and stay on brand from first frame to last.' },
     ],
+    software: [
+      { name: 'Runway', use: 'Generative video' },
+      { name: 'Midjourney', use: 'Concept & frames' },
+      { name: 'ComfyUI', use: 'Custom AI pipelines' },
+      { name: 'After Effects', use: 'Compositing' },
+      { name: 'DaVinci Resolve', use: 'Grade & finish' },
+      { name: 'Premiere Pro', use: 'Edit' },
+    ],
   },
   {
     name: 'Industrial 3D Animation',
@@ -553,6 +563,14 @@ export const COURSES: Course[] = [
       { title: 'Building Industrial Environments', desc: 'Model and dress facilities that feel real and lived-in.' },
       { title: 'The High-End Render Pipeline', desc: 'Lighting, materials, and the render-farm workflow behind the look.' },
       { title: 'Animation That Explains Systems', desc: 'Move the camera and the machinery so the idea reads instantly.' },
+    ],
+    software: [
+      { name: 'Cinema 4D', use: 'Modelling & animation' },
+      { name: 'Houdini', use: 'Simulations & FX' },
+      { name: 'Redshift', use: 'Rendering' },
+      { name: 'Substance 3D', use: 'Materials & texturing' },
+      { name: 'After Effects', use: 'Compositing' },
+      { name: 'Nuke', use: 'Finishing' },
     ],
   },
   {
@@ -571,6 +589,14 @@ export const COURSES: Course[] = [
       { title: 'Cinematic Presentation Design', desc: 'Pace, music, and restraint built for the boardroom.' },
       { title: 'Delivering for Ministries & Authorities', desc: 'Approvals, sensitivities, and a flawless final handover.' },
     ],
+    software: [
+      { name: 'Premiere Pro', use: 'Edit' },
+      { name: 'After Effects', use: 'Motion & titles' },
+      { name: 'DaVinci Resolve', use: 'Grade' },
+      { name: 'Cinema 4D', use: '3D visuals' },
+      { name: 'Photoshop', use: 'Design & retouch' },
+      { name: 'Pro Tools', use: 'Sound design' },
+    ],
   },
   {
     name: 'Cinematic Storytelling for Mega Projects',
@@ -588,6 +614,14 @@ export const COURSES: Course[] = [
       { title: 'Infrastructure as Cinema', desc: 'Make ports, grids, and districts feel cinematic and alive.' },
       { title: 'From Brief to Final Cut', desc: 'Run the full production journey on a real mega project.' },
     ],
+    software: [
+      { name: 'Premiere Pro', use: 'Edit' },
+      { name: 'DaVinci Resolve', use: 'Grade & finish' },
+      { name: 'After Effects', use: 'Motion graphics' },
+      { name: 'Cinema 4D', use: '3D & environments' },
+      { name: 'Pro Tools', use: 'Sound & score' },
+      { name: 'Photoshop', use: 'Design' },
+    ],
   },
   {
     name: 'Creative Direction & Art Department',
@@ -604,6 +638,14 @@ export const COURSES: Course[] = [
       { title: 'Art Direction for Technical Subjects', desc: 'Make engineering beautiful without making it dishonest.' },
       { title: 'The Art Department Workflow', desc: 'How references, boards, and reviews keep quality high.' },
       { title: 'Achieving the Wow Factor', desc: 'The finishing decisions that make work impossible to ignore.' },
+    ],
+    software: [
+      { name: 'Photoshop', use: 'Design & matte' },
+      { name: 'Illustrator', use: 'Vector & layout' },
+      { name: 'After Effects', use: 'Motion design' },
+      { name: 'Cinema 4D', use: '3D art direction' },
+      { name: 'Figma', use: 'Boards & systems' },
+      { name: 'Nuke', use: 'Finishing' },
     ],
   },
 ]

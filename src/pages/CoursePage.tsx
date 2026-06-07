@@ -1,6 +1,6 @@
 import { useEffect } from 'react'
 import { useParams, Navigate } from 'react-router-dom'
-import { Play, ArrowRight, Check, ShieldCheck, Quote, Plus } from 'lucide-react'
+import { Play, ArrowRight, Check, ShieldCheck, Quote, Plus, AppWindow } from 'lucide-react'
 import { Section, Container, CinematicMedia, CTAButton, Eyebrow, TickLabel } from '../components/ui'
 import { Reveal, RevealGroup, RevealItem } from '../components/Reveal'
 import { COURSES, COURSE_SHARED } from '../data/site'
@@ -88,19 +88,44 @@ export function CoursePage() {
         </div>
       </Section>
 
-      {/* 3. COURSE DESCRIPTION */}
+      {/* 3. SOFTWARE YOU'LL USE */}
       <Section divider className="py-24 md:py-32">
         <Reveal>
           <div className="mx-auto max-w-3xl text-center">
-            <Eyebrow>The Course</Eyebrow>
+            <Eyebrow>The Tools</Eyebrow>
             <h2 className="mt-4 font-display text-[clamp(2rem,4.5vw,3.6rem)] leading-[0.98] tracking-tighter text-primary">
-              What you'll learn
+              Software you'll use
             </h2>
             <p className="mx-auto mt-6 max-w-2xl font-light text-xl leading-relaxed text-secondary">
-              {course.description}
+              You'll work hands-on in the same professional toolset AMP uses on
+              real productions.
             </p>
           </div>
         </Reveal>
+
+        <RevealGroup className="mx-auto mt-12 grid max-w-5xl grid-cols-2 gap-4 sm:grid-cols-3 md:mt-16">
+          {course.software.map((tool) => (
+            <RevealItem
+              key={tool.name}
+              className="group flex items-center gap-4 rounded-2xl border border-line bg-surface p-5 transition-all duration-300 ease-out hover:-translate-y-0.5 hover:border-line-strong hover:bg-elevated md:p-6"
+            >
+              <span
+                aria-hidden
+                className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-line bg-base text-amp transition-transform duration-300 group-hover:-translate-y-0.5"
+              >
+                <AppWindow size={20} />
+              </span>
+              <div className="min-w-0">
+                <div className="truncate font-display text-lg tracking-tighter text-primary">
+                  {tool.name}
+                </div>
+                <div className="mt-1 font-body text-[12px] uppercase tracking-label text-muted">
+                  {tool.use}
+                </div>
+              </div>
+            </RevealItem>
+          ))}
+        </RevealGroup>
       </Section>
 
       {/* 4. MODULES + 5. MID-PAGE CTA */}
@@ -117,8 +142,13 @@ export function CoursePage() {
               key={module.title}
               className="group flex items-start gap-5 rounded-2xl border border-line bg-surface p-6 transition-all duration-300 ease-out hover:-translate-y-0.5 hover:border-line-strong hover:bg-elevated hover:shadow-xl hover:shadow-black/30 md:gap-7 md:p-8"
             >
-              <span className="font-display text-3xl leading-none text-amp md:text-4xl">
-                {String(i + 1).padStart(2, '0')}
+              <span className="shrink-0 text-center leading-none">
+                <span className="block font-body text-[11px] font-medium uppercase tracking-label text-amp">
+                  Day
+                </span>
+                <span className="font-display text-3xl leading-none text-amp md:text-4xl">
+                  {i + 1}
+                </span>
               </span>
               <div>
                 <h3 className="font-display text-xl tracking-tighter text-primary md:text-2xl">{module.title}</h3>
