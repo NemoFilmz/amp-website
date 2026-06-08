@@ -1,12 +1,8 @@
-import { useState, type FormEvent } from 'react'
 import { ArrowRight } from 'lucide-react'
 import { Section, Container } from '../components/ui'
 import { Reveal, RevealGroup, RevealItem } from '../components/Reveal'
 import { useSmoothScroll } from '../components/SmoothScroll'
 import { CourseWheel } from '../components/CourseWheel'
-import { ACADEMY } from '../data/site'
-
-const EMAIL = 'ayman@actionmpro.com'
 
 /* Four advantages of the academy (the "Why AMP Academy" grid). */
 const ADVANTAGES = [
@@ -29,47 +25,37 @@ const ADVANTAGES = [
 ]
 
 export function AcademyPage() {
-  const [form, setForm] = useState({ name: '', email: '', message: '' })
   const { scrollTo } = useSmoothScroll()
-
-  const submit = (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
-    const subject = encodeURIComponent(`AMP Academy enquiry${form.name ? ` from ${form.name}` : ''}`)
-    const body = encodeURIComponent(`Name: ${form.name}\nEmail: ${form.email}\n\n${form.message}`)
-    window.location.href = `mailto:${EMAIL}?subject=${subject}&body=${body}`
-  }
-
-  const field =
-    'w-full rounded-md border border-line bg-surface px-4 py-3 font-body text-primary placeholder:text-muted transition-colors focus:border-amp focus:outline-none'
 
   return (
     <main>
       {/* ---------------------------------------------------------------- */}
       {/* 1. HERO                                                          */}
       {/* ---------------------------------------------------------------- */}
-      <section className="relative flex min-h-screen items-center overflow-hidden">
-        <img
-          src="/placeholders/academy-hero.jpg"
-          alt=""
-          aria-hidden
-          className="absolute inset-0 h-full w-full object-cover"
-        />
-        {/* legibility grades */}
-        <div
-          aria-hidden
-          className="absolute inset-0"
-          style={{
-            background:
-              'linear-gradient(0deg, rgba(32,33,36,0.92) 0%, rgba(32,33,36,0.4) 48%, rgba(32,33,36,0.7) 100%), radial-gradient(70% 60% at 50% 45%, rgba(32,33,36,0.55), transparent 80%)',
-          }}
-        />
-        {/* diagonal accent line */}
-        <svg aria-hidden className="pointer-events-none absolute inset-0 h-full w-full" preserveAspectRatio="none">
-          <line x1="0%" y1="100%" x2="100%" y2="30%" stroke="rgba(244,245,247,0.18)" strokeWidth="1.5" />
-        </svg>
+      <section className="flex min-h-screen flex-col bg-base px-3 pb-3 pt-[120px] sm:px-5 sm:pb-5 md:px-7 md:pb-7 md:pt-[132px]">
+        {/* Floating rounded image card framed by the obsidian background */}
+        <div className="relative flex flex-1 items-center justify-center overflow-hidden rounded-[1.75rem] ring-1 ring-white/10 md:rounded-[2.5rem]">
+          <img
+            src="/placeholders/academy-hero.jpg"
+            alt=""
+            aria-hidden
+            className="absolute inset-0 h-full w-full object-cover"
+          />
+          {/* legibility grades */}
+          <div
+            aria-hidden
+            className="absolute inset-0"
+            style={{
+              background:
+                'linear-gradient(0deg, rgba(32,33,36,0.92) 0%, rgba(32,33,36,0.4) 48%, rgba(32,33,36,0.7) 100%), radial-gradient(70% 60% at 50% 45%, rgba(32,33,36,0.55), transparent 80%)',
+            }}
+          />
+          {/* diagonal accent line */}
+          <svg aria-hidden className="pointer-events-none absolute inset-0 h-full w-full" preserveAspectRatio="none">
+            <line x1="0%" y1="100%" x2="100%" y2="30%" stroke="rgba(244,245,247,0.18)" strokeWidth="1.5" />
+          </svg>
 
-        <Container className="relative z-10">
-          <div className="mx-auto max-w-4xl pt-24 text-center md:pt-0">
+          <div className="relative z-10 mx-auto max-w-4xl px-6 text-center">
             <Reveal>
               <h1
                 className="font-display text-[clamp(2.4rem,6vw,5rem)] leading-[0.95] tracking-tighter text-primary"
@@ -103,8 +89,7 @@ export function AcademyPage() {
               </div>
             </Reveal>
           </div>
-
-        </Container>
+        </div>
       </section>
 
       {/* ---------------------------------------------------------------- */}
@@ -129,12 +114,12 @@ export function AcademyPage() {
               </RevealGroup>
             </div>
 
-            {/* AMP's Yas Marina F1 piece, in its own framed container, poking off the right edge */}
+            {/* AMP architectural-viz piece, in its own framed container, poking off the right edge */}
             <div className="relative mt-12 hidden self-stretch lg:mt-0 lg:block lg:w-[44%]">
               <div className="absolute left-0 top-1/2 w-[42rem] max-w-none -translate-y-1/2 overflow-hidden rounded-2xl ring-1 ring-line shadow-[0_30px_70px_rgba(0,0,0,0.55)] xl:w-[50rem]">
                 <img
-                  src="/work/F1-Marina-Circuit-600x403.jpg"
-                  alt="AMP's Yas Marina Circuit F1 production"
+                  src="/academy/tower-night.jpg"
+                  alt="AMP architectural visualization of a tower at night"
                   loading="lazy"
                   className="w-full select-none"
                 />
@@ -164,58 +149,6 @@ export function AcademyPage() {
         <Reveal delay={0.05}>
           <div className="mt-14 md:mt-16">
             <CourseWheel />
-          </div>
-        </Reveal>
-      </Section>
-
-      {/* ---------------------------------------------------------------- */}
-      {/* 4. CONTACT + LEAVE A MESSAGE                                     */}
-      {/* ---------------------------------------------------------------- */}
-      <Section divider className="py-24 md:py-32">
-        <Reveal>
-          <div className="mx-auto max-w-2xl">
-            <h2 className="text-center font-display text-[clamp(1.6rem,3vw,2.4rem)] tracking-tighter text-primary">
-              Leave a message
-            </h2>
-            <form onSubmit={submit} className="mt-8 grid gap-4">
-              <div className="grid gap-4 sm:grid-cols-2">
-                <input
-                  type="text"
-                  required
-                  placeholder="Name"
-                  aria-label="Name"
-                  value={form.name}
-                  onChange={(e) => setForm({ ...form, name: e.target.value })}
-                  className={field}
-                />
-                <input
-                  type="email"
-                  required
-                  placeholder="Email"
-                  aria-label="Email"
-                  value={form.email}
-                  onChange={(e) => setForm({ ...form, email: e.target.value })}
-                  className={field}
-                />
-              </div>
-              <textarea
-                rows={6}
-                required
-                placeholder="Message"
-                aria-label="Message"
-                value={form.message}
-                onChange={(e) => setForm({ ...form, message: e.target.value })}
-                className={field}
-              />
-              <div className="text-center">
-                <button
-                  type="submit"
-                  className="inline-flex items-center gap-2 rounded-full border border-line-strong px-8 py-3 font-body text-[13px] font-medium uppercase tracking-label text-primary transition-all duration-300 hover:border-amp hover:text-amp"
-                >
-                  Send
-                </button>
-              </div>
-            </form>
           </div>
         </Reveal>
       </Section>
