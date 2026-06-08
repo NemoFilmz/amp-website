@@ -117,7 +117,23 @@ export function AcademyPage() {
           </h2>
         </Reveal>
 
-        <RevealGroup className="mx-auto mt-14 grid max-w-4xl gap-x-12 gap-y-12 md:mt-16 md:grid-cols-2 md:gap-x-16">
+        {/* AMP-produced Etihad F1 car (cut out from the Yas Marina portfolio piece) */}
+        <Reveal delay={0.06}>
+          <div className="relative mx-auto mt-12 flex w-fit justify-center md:mt-14">
+            <div
+              aria-hidden
+              className="absolute left-1/2 top-1/2 -z-10 h-72 w-72 -translate-x-1/2 -translate-y-1/2 rounded-full bg-amp/15 blur-[90px]"
+            />
+            <img
+              src="/academy/f1-car.png"
+              alt="Etihad Formula 1 car, an AMP production"
+              loading="lazy"
+              className="w-48 select-none drop-shadow-[0_30px_50px_rgba(0,0,0,0.55)] md:w-56"
+            />
+          </div>
+        </Reveal>
+
+        <RevealGroup className="mx-auto mt-12 grid max-w-4xl gap-x-12 gap-y-12 md:mt-14 md:grid-cols-2 md:gap-x-16">
           {ADVANTAGES.map(({ title, text }) => (
             <RevealItem key={title}>
               <h3 className="font-display text-xl tracking-tighter text-primary md:text-2xl">{title}</h3>
