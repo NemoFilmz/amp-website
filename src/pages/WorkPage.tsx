@@ -1,11 +1,12 @@
 import { useEffect, useMemo, useState } from 'react'
 import { useSearchParams } from 'react-router-dom'
-import { Check } from 'lucide-react'
+import { Check, Play } from 'lucide-react'
 import { Section, Eyebrow } from '../components/ui'
 import { Reveal, RevealGroup, RevealItem } from '../components/Reveal'
 import { CtaCard } from '../components/CtaCard'
+import { VideoModal } from '../components/VideoModal'
 import { STATS, WHY_PILLARS } from '../data/site'
-import { PROJECTS } from '../data/projects'
+import { PROJECTS, type Project } from '../data/projects'
 import { cn, industrySlug } from '../lib/util'
 
 const ALL = 'All'
@@ -43,8 +44,11 @@ export function WorkPage() {
     [active],
   )
 
+  const [video, setVideo] = useState<Project | null>(null)
+
   return (
     <>
+      <VideoModal vimeo={video?.vimeo ?? null} title={video?.title} onClose={() => setVideo(null)} />
       <Section className="pt-40 pb-24 md:pt-48 md:pb-32">
         {/* Intro + representative-content note */}
         <Reveal>
@@ -89,9 +93,12 @@ export function WorkPage() {
             very tall grid where the in-view threshold can never be met). */}
         <div className="mt-10 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {visible.map((p, i) => (
-            <div
+            <button
               key={`${p.image}-${i}`}
-              className="group relative block aspect-[3/2] overflow-hidden rounded-2xl border border-line"
+              type="button"
+              onClick={() => p.vimeo && setVideo(p)}
+              aria-label={`Play ${p.title}`}
+              className="group relative block aspect-[3/2] w-full overflow-hidden rounded-2xl border border-line text-left"
             >
               <img
                 src={p.image}
@@ -101,12 +108,19 @@ export function WorkPage() {
               />
               <div
                 aria-hidden
-                className="absolute inset-0"
+                className="absolute inset-0 transition-colors duration-300 group-hover:bg-base/20"
                 style={{
                   background:
                     'linear-gradient(to top, rgba(32,33,36,0.92) 0%, rgba(32,33,36,0.25) 48%, rgba(32,33,36,0) 100%)',
                 }}
               />
+              {/* play button */}
+              <span
+                aria-hidden
+                className="absolute left-1/2 top-1/2 z-10 flex h-14 w-14 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-amp/90 text-base opacity-0 shadow-amp transition-all duration-300 group-hover:opacity-100 group-hover:scale-105"
+              >
+                <Play size={22} className="ml-0.5" />
+              </span>
               {p.industries[0] && (
                 <span className="absolute left-4 top-4 z-10 rounded-full border border-amp/70 bg-base/40 px-3 py-1 font-body text-[11px] uppercase tracking-label text-amp backdrop-blur-sm">
                   {p.industries[0]}
@@ -117,7 +131,7 @@ export function WorkPage() {
                   {p.title}
                 </h3>
               </div>
-            </div>
+            </button>
           ))}
         </div>
       </Section>
