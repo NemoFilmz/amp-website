@@ -29,12 +29,12 @@ const ADVANTAGES = [
 
 /* Real clients whose work AMP has produced (social proof). */
 const LOGOS = [
-  { src: '/logos/adnoc.png', name: 'ADNOC', h: 'h-9 md:h-10' },
-  { src: '/logos/mubadala.png', name: 'Mubadala', h: 'h-7 md:h-8' },
-  { src: '/logos/etihad.png', name: 'Etihad', h: 'h-14 md:h-16' },
-  { src: '/logos/masdar.png', name: 'Masdar', h: 'h-7 md:h-8' },
-  { src: '/logos/nmdc.png', name: 'NMDC', h: 'h-9 md:h-10' },
-  { src: '/logos/adairports.png', name: 'Abu Dhabi Airports', h: 'h-9 md:h-10' },
+  { src: '/logos/adnoc.png', name: 'ADNOC', h: 'h-11 md:h-12' },
+  { src: '/logos/mubadala.png', name: 'Mubadala', h: 'h-9 md:h-10' },
+  { src: '/logos/etihad.png', name: 'Etihad', h: 'h-16 md:h-20' },
+  { src: '/logos/masdar.png', name: 'Masdar', h: 'h-9 md:h-10' },
+  { src: '/logos/nmdc.png', name: 'NMDC', h: 'h-11 md:h-12' },
+  { src: '/logos/adairports.png', name: 'Abu Dhabi Airports', h: 'h-11 md:h-12' },
 ]
 
 /* FAQ — answers drawn from the established academy facts. */
@@ -68,7 +68,7 @@ const CTA_CLASS =
 function Faq({ items }: { items: { q: string; a: string }[] }) {
   const [open, setOpen] = useState<number | null>(0)
   return (
-    <div className="mx-auto max-w-3xl border-y border-line">
+    <div className="max-w-3xl border-y border-line">
       {items.map((item, i) => {
         const isOpen = open === i
         return (
@@ -141,7 +141,7 @@ export function AcademyPage() {
             </div>
 
             <Reveal delay={0.1}>
-              <div className="overflow-hidden rounded-3xl ring-1 ring-line shadow-[0_30px_70px_rgba(0,0,0,0.5)]">
+              <div className="overflow-hidden rounded-2xl ring-1 ring-line shadow-[0_30px_70px_rgba(0,0,0,0.5)]">
                 <img
                   src="/placeholders/academy-hero.jpg"
                   alt="AMP Academy production environment"
@@ -159,10 +159,10 @@ export function AcademyPage() {
       <section className="border-y border-line bg-base py-12 md:py-14">
         <Container>
           <Reveal>
-            <p className="text-center font-body text-[12px] font-medium uppercase tracking-[0.2em] text-muted">
+            <p className="font-body text-[12px] font-medium uppercase tracking-[0.2em] text-muted">
               Taught on real work for the region's landmark institutions
             </p>
-            <div className="mt-8 flex flex-wrap items-center justify-center gap-x-10 gap-y-6 md:gap-x-16">
+            <div className="mt-9 flex flex-wrap items-center justify-start gap-x-12 gap-y-7 md:gap-x-16">
               {LOGOS.map((logo) => (
                 <img
                   key={logo.name}
@@ -188,7 +188,7 @@ export function AcademyPage() {
           <div className="lg:flex lg:gap-10">
             <div className="lg:w-[56%]">
               <Reveal>
-                <h2 className="whitespace-nowrap text-center font-display text-[clamp(1.7rem,5vw,3.6rem)] leading-[0.98] tracking-tighter text-primary">
+                <h2 className="whitespace-nowrap font-display text-[clamp(1.7rem,5vw,3.6rem)] leading-[0.98] tracking-tighter text-primary">
                   Why <span className="text-amp">AMP</span> Academy
                 </h2>
               </Reveal>
@@ -294,11 +294,11 @@ export function AcademyPage() {
       <Section id="courses" container={false} divider className="py-24 md:py-32">
         <Container>
           <Reveal>
-            <div className="mx-auto max-w-3xl text-center">
+            <div className="max-w-3xl">
               <h2 className="font-display text-[clamp(2rem,4.5vw,3.6rem)] leading-[0.98] tracking-tighter text-primary">
                 What we <span className="text-amp">teach</span>
               </h2>
-              <p className="mx-auto mt-6 max-w-xl font-body leading-relaxed text-secondary">
+              <p className="mt-6 max-w-xl font-body leading-relaxed text-secondary">
                 Pick the course that fits you. Open it to see the full program, reserve your seat, and book your place.
               </p>
             </div>
@@ -317,7 +317,7 @@ export function AcademyPage() {
       {/* ---------------------------------------------------------------- */}
       <Section divider className="py-24 md:py-32">
         <Reveal>
-          <h2 className="text-center font-display text-[clamp(2rem,4.5vw,3.4rem)] leading-[0.98] tracking-tighter text-primary">
+          <h2 className="font-display text-[clamp(2rem,4.5vw,3.4rem)] leading-[0.98] tracking-tighter text-primary">
             Frequently asked <span className="text-amp">questions</span>
           </h2>
         </Reveal>
@@ -334,15 +334,15 @@ export function AcademyPage() {
       <section className="border-t border-line bg-surface py-20 md:py-28">
         <Container>
           <Reveal>
-            <div className="mx-auto max-w-2xl text-center">
+            <div className="max-w-2xl">
               <h2 className="font-display text-[clamp(2rem,4.5vw,3.4rem)] leading-[1.0] tracking-tighter text-primary">
                 Spend one weekend inside a real <span className="text-amp">AMP</span> production
               </h2>
-              <p className="mx-auto mt-5 max-w-md font-body leading-relaxed text-secondary">
+              <p className="mt-5 max-w-md font-body leading-relaxed text-secondary">
                 Pick a course, reserve your seat, and learn the craft on real work, directly from the people
                 who made it.
               </p>
-              <div className="mt-9 flex flex-wrap items-center justify-center gap-4">
+              <div className="mt-9 flex flex-wrap items-center justify-start gap-4">
                 <button type="button" onClick={reserve} className={CTA_CLASS}>
                   Reserve your seat
                   <ArrowRight size={16} aria-hidden />
