@@ -93,7 +93,7 @@ export function ContactPage() {
 
   return (
     <main>
-      <section className="relative min-h-screen lg:grid lg:grid-cols-2">
+      <section className="relative lg:grid lg:grid-cols-2">
         {/* Top fade keeps the fixed nav legible over the map */}
         <div
           aria-hidden
@@ -101,7 +101,7 @@ export function ContactPage() {
         />
 
         {/* ---- Left: contact details + form ---- */}
-        <div className="flex items-center bg-base px-6 pb-20 pt-32 sm:px-10 lg:px-14 lg:py-24 xl:px-20">
+        <div className="flex items-center bg-base px-6 pb-20 pt-40 sm:px-10 lg:px-14 lg:pb-24 lg:pt-44 xl:px-20">
           <div className="w-full max-w-xl">
             <h1 className="font-display text-[clamp(2rem,4.5vw,3.4rem)] leading-[0.98] tracking-tighter text-primary">
               Get in <span className="text-amp">touch</span> with us
@@ -191,7 +191,7 @@ export function ContactPage() {
         </div>
 
         {/* ---- Right: studio map ---- */}
-        <div className="relative min-h-[55vh] bg-surface lg:min-h-0">
+        <div className="relative min-h-[60vh] bg-surface lg:min-h-0">
           <StudioMap />
         </div>
       </section>
