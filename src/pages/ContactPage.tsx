@@ -39,11 +39,11 @@ function StudioMap() {
   return (
     <div className="absolute inset-0 overflow-hidden">
       <iframe
-        title="AMP studio location — Yas Creative Hub, Podium 3, Abu Dhabi"
+        title="AMP studio location: Yas Creative Hub, Podium 3, Abu Dhabi"
         src={MAP_EMBED}
         loading="lazy"
         referrerPolicy="no-referrer-when-downgrade"
-        className="h-full w-full border-0"
+        className="pointer-events-none h-full w-full border-0"
         style={{ filter: 'invert(0.92) hue-rotate(185deg) brightness(0.9) contrast(0.9) saturate(0.6)' }}
       />
       {/* on-brand wash */}
@@ -106,7 +106,7 @@ export function ContactPage() {
               get back to you.
             </p>
 
-            {/* Contact details — diamond icons */}
+            {/* Contact details (diamond icons) */}
             <div className="mt-10 grid grid-cols-1 gap-8 sm:grid-cols-3">
               {INFO.map(({ icon, label, lines, href, external }) => (
                 <a
