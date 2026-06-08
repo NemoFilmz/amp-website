@@ -5,24 +5,14 @@ import { Globe } from '../components/Globe'
 import { Award } from '../components/Awards'
 import { ABOUT_STORY } from '../data/site'
 
-/** AMP's global awards — MUSE and NYX, grouped by programme, one laurel per tier. */
-const AWARD_GROUPS = [
-  {
-    label: 'MUSE Creative Awards',
-    awards: [
-      { title: '7+', tier: 'Platinum', level: 'platinum' as const },
-      { title: '5+', tier: 'Gold', level: 'gold' as const },
-      { title: '1+', tier: 'Silver', level: 'silver' as const },
-    ],
-  },
-  {
-    label: 'NYX Awards',
-    awards: [
-      { title: '2+', tier: 'Grand', level: 'platinum' as const },
-      { title: '1+', tier: 'Gold', level: 'gold' as const },
-      { title: '2+', tier: 'Silver', level: 'silver' as const },
-    ],
-  },
+/** AMP's global awards — MUSE and NYX, one laurel per tier, labelled inside. */
+const AWARDS = [
+  { title: '7+', tier: 'Platinum', level: 'platinum' as const, subtitle: 'MUSE Creative Awards' },
+  { title: '5+', tier: 'Gold', level: 'gold' as const, subtitle: 'MUSE Creative Awards' },
+  { title: '1+', tier: 'Silver', level: 'silver' as const, subtitle: 'MUSE Creative Awards' },
+  { title: '2+', tier: 'Grand', level: 'platinum' as const, subtitle: 'NYX Awards' },
+  { title: '1+', tier: 'Gold', level: 'gold' as const, subtitle: 'NYX Awards' },
+  { title: '2+', tier: 'Silver', level: 'silver' as const, subtitle: 'NYX Awards' },
 ]
 
 export function AboutPage() {
@@ -102,17 +92,10 @@ export function AboutPage() {
           </p>
         </Reveal>
 
-        <div className="mt-12 space-y-12 md:mt-16 md:space-y-14">
-          {AWARD_GROUPS.map((group, gi) => (
-            <Reveal key={group.label} delay={0.05 + gi * 0.05}>
-              <h3 className="text-center font-body text-sm font-semibold uppercase tracking-[0.2em] text-amp">
-                {group.label}
-              </h3>
-              <div className="mt-2 flex flex-wrap items-start justify-center gap-x-6 gap-y-4 md:gap-x-12">
-                {group.awards.map((award) => (
-                  <Award key={`${group.label}-${award.tier}`} {...award} className="w-56" />
-                ))}
-              </div>
+        <div className="mt-10 grid max-w-3xl grid-cols-2 justify-items-start gap-y-2 sm:grid-cols-3 md:mt-12">
+          {AWARDS.map((award, i) => (
+            <Reveal key={`${award.subtitle}-${award.tier}`} delay={0.04 + i * 0.04}>
+              <Award {...award} className="w-52" />
             </Reveal>
           ))}
         </div>

@@ -63,7 +63,7 @@ export const WHO_WE_ARE = {
 export const ABOUT_STORY = {
   headline: 'We make complicated things easy to understand.',
   intro:
-    'Action Media Productions (AMP) is a visual communication studio in Abu Dhabi. We work with the government, energy companies, and major industry and infrastructure.',
+    "For over 15 years, Action Media Productions has been a leading force in governments' economic growth and industrial advancement. We transform complex industries into visual work that informs decisions and secures investment.",
   clientsLabel: 'Clients since 2009',
   clients: ['ADNOC', 'Mubadala', 'Etihad'],
   awards: [
@@ -71,10 +71,7 @@ export const ABOUT_STORY = {
     { value: 'Top 10', label: 'NYX Awards, worldwide' },
   ],
   paragraphs: [
-    "Their work is hard to explain. It's technical, it runs deep, and the people who need to understand it rarely share the same background. We close that gap by building the work from scratch, turning complex subjects into visuals that make sense at a glance.",
-    "That also lets us show what a camera can't reach: the inside of a working refinery, or a facility still on the drawing board. When filming is the right call, we shoot it. When it isn't, we build it.",
-    'Understanding changes outcomes. When the work is clear, people are far more willing to trust it and back it.',
-    "Behind it is a team of animators, filmmakers, and art directors who do their best work on the hardest briefs. They're led by people with decades in production, broadcasting, and film, here and abroad. That's why the work stays on brand, and stays with the people who see it.",
+    "Their work is hard to explain. It's technical, it runs deep, and the people who need to understand it rarely share the same background. We close that gap by building the work from scratch, turning complex subjects into visuals that move decisions. Our core teams specialize in Oil & Gas, Urban Reconstruction, Logistics, and Aviation. We partner with governments and organizations worldwide.",
   ],
   bringIntro: 'What we bring to it',
   bring: [
