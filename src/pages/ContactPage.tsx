@@ -11,7 +11,7 @@ const INFO = [
     icon: MapPin,
     label: 'Studio',
     lines: ['Yas Creative Hub, Podium 3', 'Abu Dhabi, United Arab Emirates'],
-    href: 'https://www.google.com/maps/search/?api=1&query=Yas+Creative+Hub+Podium+3+Abu+Dhabi',
+    href: 'https://maps.app.goo.gl/eQTc1HugfLC4i9477',
   },
   {
     icon: Phone,
@@ -27,9 +27,9 @@ const INFO = [
   },
 ]
 
-const MAP_QUERY = 'Yas Creative Hub, Podium 3, Abu Dhabi'
-const MAP_EMBED = `https://maps.google.com/maps?q=${encodeURIComponent(MAP_QUERY)}&z=15&output=embed`
-const MAP_LINK = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(MAP_QUERY)}`
+// Real AMP studio location (Action Media Production FZ LLC, near Yas, Abu Dhabi).
+const MAP_LINK = 'https://maps.app.goo.gl/eQTc1HugfLC4i9477'
+const MAP_EMBED = 'https://maps.google.com/maps?q=24.4604736,54.6007697&z=16&output=embed'
 
 /** Real map of the studio (Yas Creative Hub, Podium 3), dark-styled and AMP-tinted. */
 function LocationMap() {
@@ -111,12 +111,27 @@ export function ContactPage() {
             {INFO.map(({ icon: Icon, label, lines, href }, i) => (
               <Reveal key={label} delay={0.08 + i * 0.05}>
                 <div>
-                  <div className="flex items-center gap-2.5 text-amp">
-                    <Icon size={16} aria-hidden />
-                    <span className="font-body text-[12px] font-medium uppercase tracking-label text-secondary">
-                      {label}
-                    </span>
-                  </div>
+                  {href ? (
+                    <a
+                      href={href}
+                      target={href.startsWith('http') ? '_blank' : undefined}
+                      rel={href.startsWith('http') ? 'noopener noreferrer' : undefined}
+                      aria-label={`${label} — open`}
+                      className="flex items-center gap-2.5 text-amp transition-opacity duration-200 hover:opacity-80"
+                    >
+                      <Icon size={16} aria-hidden />
+                      <span className="font-body text-[12px] font-medium uppercase tracking-label text-secondary">
+                        {label}
+                      </span>
+                    </a>
+                  ) : (
+                    <div className="flex items-center gap-2.5 text-amp">
+                      <Icon size={16} aria-hidden />
+                      <span className="font-body text-[12px] font-medium uppercase tracking-label text-secondary">
+                        {label}
+                      </span>
+                    </div>
+                  )}
                   <div className="mt-4 space-y-1">
                     {lines.map((line) =>
                       href && line === lines[0] ? (
@@ -147,17 +162,10 @@ export function ContactPage() {
           </div>
 
           {/* Get in touch: large name input + Next (same section, one screen) */}
-          <Reveal delay={0.24}>
-            <div className="mt-16 flex items-center gap-4 md:mt-24">
-              <span aria-hidden className="h-4 w-1 rounded-full bg-amp" />
-              <span className="eyebrow">Get in touch</span>
-            </div>
-          </Reveal>
-
           <Reveal delay={0.28}>
             <form
               onSubmit={handleSubmit}
-              className="mt-8 flex flex-col gap-6 border-b border-line pb-6 sm:flex-row sm:items-center sm:gap-8"
+              className="mt-16 flex max-w-xl flex-col gap-6 border-b border-line pb-6 sm:flex-row sm:items-center sm:gap-8 md:mt-24 md:max-w-2xl"
             >
             <input
               type="text"

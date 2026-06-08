@@ -1,7 +1,7 @@
 import { useEffect } from 'react'
 import { useParams, Navigate } from 'react-router-dom'
 import { Play, ArrowRight, Check, ShieldCheck, Quote, Plus, ImageIcon } from 'lucide-react'
-import { Section, Container, CinematicMedia, CTAButton, Eyebrow, TickLabel } from '../components/ui'
+import { Section, Container, CinematicMedia, CTAButton, Eyebrow } from '../components/ui'
 import { Reveal, RevealGroup, RevealItem } from '../components/Reveal'
 import { COURSES, COURSE_SHARED } from '../data/site'
 import { slugify, cn } from '../lib/util'
@@ -298,10 +298,7 @@ export function CoursePage() {
         />
         <Container className="relative z-10 text-center">
           <Reveal>
-            <TickLabel className="justify-center">Reserve your seat</TickLabel>
-          </Reveal>
-          <Reveal delay={0.05}>
-            <h2 className="mx-auto mt-6 max-w-3xl text-balance font-display text-[clamp(2rem,4.5vw,3.6rem)] leading-[0.98] tracking-tighter text-primary">
+            <h2 className="mx-auto max-w-3xl text-balance font-display text-[clamp(2rem,4.5vw,3.6rem)] leading-[0.98] tracking-tighter text-primary">
               Spend one weekend inside real cinematic production
             </h2>
           </Reveal>

@@ -165,7 +165,7 @@ export function WorkPage() {
                   {pillar.title}
                 </h3>
                 {pillar.body && (
-                  <p className="mt-3 font-body leading-relaxed text-secondary">
+                  <p className="mt-3 font-body leading-relaxed text-primary/90">
                     {pillar.body}
                   </p>
                 )}
@@ -174,7 +174,7 @@ export function WorkPage() {
                     {pillar.items.map((item) => (
                       <li key={item} className="flex items-start gap-2.5">
                         <Check size={13} className="mt-1 shrink-0 text-amp" aria-hidden />
-                        <span className="font-body text-sm text-secondary">{item}</span>
+                        <span className="font-body text-sm text-primary/85">{item}</span>
                       </li>
                     ))}
                   </ul>
