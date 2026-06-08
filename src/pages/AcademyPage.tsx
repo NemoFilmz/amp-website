@@ -110,37 +110,38 @@ export function AcademyPage() {
       {/* ---------------------------------------------------------------- */}
       {/* 2. ADVANTAGE LEARNING                                            */}
       {/* ---------------------------------------------------------------- */}
-      <Section divider className="py-24 md:py-32">
-        <Reveal>
-          <h2 className="whitespace-nowrap text-center font-display text-[clamp(1.7rem,5vw,3.6rem)] leading-[0.98] tracking-tighter text-primary">
-            Why AMP Academy
-          </h2>
-        </Reveal>
+      <Section divider container={false} className="relative overflow-hidden py-24 md:py-32">
+        <Container className="relative">
+          <div className="lg:flex lg:gap-10">
+            <div className="lg:w-[56%]">
+              <Reveal>
+                <h2 className="whitespace-nowrap text-center font-display text-[clamp(1.7rem,5vw,3.6rem)] leading-[0.98] tracking-tighter text-primary">
+                  Why AMP Academy
+                </h2>
+              </Reveal>
+              <RevealGroup className="mt-12 grid gap-x-12 gap-y-12 sm:grid-cols-2 md:mt-14 md:gap-x-14">
+                {ADVANTAGES.map(({ title, text }) => (
+                  <RevealItem key={title}>
+                    <h3 className="font-display text-xl tracking-tighter text-primary md:text-2xl">{title}</h3>
+                    <p className="mt-3 font-body leading-relaxed text-primary/90">{text}</p>
+                  </RevealItem>
+                ))}
+              </RevealGroup>
+            </div>
 
-        {/* AMP-produced Etihad F1 car (cut out from the Yas Marina portfolio piece) */}
-        <Reveal delay={0.06}>
-          <div className="relative mx-auto mt-12 flex w-fit justify-center md:mt-14">
-            <div
-              aria-hidden
-              className="absolute left-1/2 top-1/2 -z-10 h-72 w-72 -translate-x-1/2 -translate-y-1/2 rounded-full bg-amp/15 blur-[90px]"
-            />
-            <img
-              src="/academy/f1-car.png"
-              alt="Etihad Formula 1 car, an AMP production"
-              loading="lazy"
-              className="w-48 select-none drop-shadow-[0_30px_50px_rgba(0,0,0,0.55)] md:w-56"
-            />
+            {/* AMP's Yas Marina F1 piece, in its own framed container, poking off the right edge */}
+            <div className="relative mt-12 hidden self-stretch lg:mt-0 lg:block lg:w-[44%]">
+              <div className="absolute left-0 top-1/2 w-[42rem] max-w-none -translate-y-1/2 overflow-hidden rounded-2xl ring-1 ring-line shadow-[0_30px_70px_rgba(0,0,0,0.55)] xl:w-[50rem]">
+                <img
+                  src="/work/F1-Marina-Circuit-600x403.jpg"
+                  alt="AMP's Yas Marina Circuit F1 production"
+                  loading="lazy"
+                  className="w-full select-none"
+                />
+              </div>
+            </div>
           </div>
-        </Reveal>
-
-        <RevealGroup className="mx-auto mt-12 grid max-w-4xl gap-x-12 gap-y-12 md:mt-14 md:grid-cols-2 md:gap-x-16">
-          {ADVANTAGES.map(({ title, text }) => (
-            <RevealItem key={title}>
-              <h3 className="font-display text-xl tracking-tighter text-primary md:text-2xl">{title}</h3>
-              <p className="mt-3 font-body leading-relaxed text-primary/90">{text}</p>
-            </RevealItem>
-          ))}
-        </RevealGroup>
+        </Container>
       </Section>
 
       {/* ---------------------------------------------------------------- */}

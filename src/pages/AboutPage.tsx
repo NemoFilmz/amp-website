@@ -82,22 +82,24 @@ export function AboutPage() {
       {/* 2. AWARDS & RECOGNITION                                           */}
       {/* ---------------------------------------------------------------- */}
       <Section divider className="py-24 md:py-32">
-        <Reveal>
-          <h2 className="max-w-prose font-display text-[clamp(2rem,4.5vw,3.6rem)] leading-[0.98] tracking-tighter text-primary">
-            Awards &amp; recognition
-          </h2>
-          <p className="mt-6 max-w-2xl font-body text-lg leading-relaxed text-primary/90">
-            Our work has been recognised among the best in the world, judged on craft,
-            originality, and impact.
-          </p>
-        </Reveal>
+        <div className="grid gap-y-8 lg:grid-cols-[0.8fr_1.2fr] lg:items-center lg:gap-16">
+          <Reveal>
+            <h2 className="font-display text-[clamp(2rem,4.5vw,3.6rem)] leading-[0.98] tracking-tighter text-primary">
+              Awards &amp; recognition
+            </h2>
+            <p className="mt-6 max-w-md font-body text-lg leading-relaxed text-primary/90">
+              Our work has been recognised among the best in the world, judged on craft,
+              originality, and impact.
+            </p>
+          </Reveal>
 
-        <div className="mt-10 grid max-w-3xl grid-cols-2 justify-items-start gap-y-2 sm:grid-cols-3 md:mt-12">
-          {AWARDS.map((award, i) => (
-            <Reveal key={`${award.subtitle}-${award.tier}`} delay={0.04 + i * 0.04}>
-              <Award {...award} className="w-52" />
-            </Reveal>
-          ))}
+          <div className="grid grid-cols-2 justify-items-center gap-y-4 sm:grid-cols-3">
+            {AWARDS.map((award, i) => (
+              <Reveal key={`${award.subtitle}-${award.tier}`} delay={0.04 + i * 0.04}>
+                <Award {...award} className="w-full max-w-[14rem]" />
+              </Reveal>
+            ))}
+          </div>
         </div>
       </Section>
 
