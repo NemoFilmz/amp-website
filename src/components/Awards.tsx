@@ -3,8 +3,8 @@ import { cn } from '../lib/util'
 export interface AwardProps {
   title: string
   subtitle?: string
-  recipient?: string
-  date?: string
+  /** Badge text (e.g. "Grand"); falls back to the colour level when omitted. */
+  tier?: string
   level?: 'bronze' | 'silver' | 'gold' | 'platinum'
   className?: string
 }
@@ -31,8 +31,8 @@ function LaurelWreath() {
   )
 }
 
-/** An award badge (laurel wreath + level + title + subtitle), adapted to the AMP palette. */
-export function Award({ title, subtitle, recipient, date, level = 'gold', className }: AwardProps) {
+/** An award badge (laurel wreath + tier + count + optional label), adapted to the AMP palette. */
+export function Award({ title, subtitle, tier, level = 'gold', className }: AwardProps) {
   return (
     <div className={cn('relative flex flex-col items-center justify-center px-16 py-12 text-center', className)}>
       <LaurelWreath />
@@ -43,15 +43,17 @@ export function Award({ title, subtitle, recipient, date, level = 'gold', classN
             `bg-gradient-to-r ${levelColors[level]}`,
           )}
         >
-          {level}
+          {tier ?? level}
         </div>
         <div className="font-display text-[2.4rem] leading-none tracking-tighter text-primary">{title}</div>
-        <div className="mx-auto my-2 h-px w-12 bg-amp"></div>
-        <p className="mx-auto max-w-[7.5rem] font-body text-[12px] font-light leading-tight text-primary/90">
-          {subtitle}
-        </p>
-        {recipient && <p className="mt-1.5 font-body text-xs italic text-secondary">{recipient}</p>}
-        {date && <div className="mt-1 font-body text-xs font-semibold text-amp">{date}</div>}
+        {subtitle && (
+          <>
+            <div className="mx-auto my-2 h-px w-12 bg-amp"></div>
+            <p className="mx-auto max-w-[7.5rem] font-body text-[12px] font-light leading-tight text-primary/90">
+              {subtitle}
+            </p>
+          </>
+        )}
       </div>
     </div>
   )

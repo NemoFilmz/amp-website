@@ -4,23 +4,26 @@ import { Reveal } from '../components/Reveal'
 import { Globe } from '../components/Globe'
 import { Award } from '../components/Awards'
 import { ABOUT_STORY } from '../data/site'
-import { cn } from '../lib/util'
 
-/** AMP's awards — one laurel per level. Adjust counts/levels as needed. */
-const AWARDS = [
-  { title: '7+', subtitle: 'MUSE Creative Awards', level: 'platinum' as const },
-  { title: '5+', subtitle: 'MUSE Creative Awards', level: 'gold' as const },
-  { title: '1+', subtitle: 'MUSE Creative Awards', level: 'silver' as const },
-  { title: 'Top 10', subtitle: 'NYX Awards, Worldwide', level: 'gold' as const },
+/** AMP's global awards — MUSE and NYX, grouped by programme, one laurel per tier. */
+const AWARD_GROUPS = [
+  {
+    label: 'MUSE Creative Awards',
+    awards: [
+      { title: '7+', tier: 'Platinum', level: 'platinum' as const },
+      { title: '5+', tier: 'Gold', level: 'gold' as const },
+      { title: '1+', tier: 'Silver', level: 'silver' as const },
+    ],
+  },
+  {
+    label: 'NYX Awards',
+    awards: [
+      { title: '2+', tier: 'Grand', level: 'platinum' as const },
+      { title: '1+', tier: 'Gold', level: 'gold' as const },
+      { title: '2+', tier: 'Silver', level: 'silver' as const },
+    ],
+  },
 ]
-
-/** White client logos for the credentials strip, keyed by client name.
- *  `size` is a per-logo height (some marks sit smaller within their bounds). */
-const CLIENT_LOGOS: Record<string, { src: string; size: string }> = {
-  ADNOC: { src: '/logos/adnoc.png', size: 'h-12 md:h-14' },
-  Mubadala: { src: '/logos/mubadala.png', size: 'h-11 md:h-12' },
-  Etihad: { src: '/logos/etihad.png', size: 'h-20 md:h-24' },
-}
 
 export function AboutPage() {
   return (
@@ -41,30 +44,6 @@ export function AboutPage() {
           <p className="mt-8 max-w-3xl font-light text-xl leading-snug text-primary md:text-2xl">
             {ABOUT_STORY.intro}
           </p>
-        </Reveal>
-
-        {/* Proof strip — real client logos (a conventional "trusted by" row)
-            balanced against amber award stats across a hairline band. */}
-        <Reveal delay={0.1}>
-          <div className="mt-12 border-y border-line py-10 md:mt-14">
-            <span className="font-body text-sm font-medium uppercase tracking-[0.18em] text-secondary">
-              {ABOUT_STORY.clientsLabel}
-            </span>
-            <div className="mt-6 flex flex-wrap items-center gap-x-9 gap-y-6 md:gap-x-14">
-              {ABOUT_STORY.clients.map((client) => (
-                <img
-                  key={client}
-                  src={CLIENT_LOGOS[client].src}
-                  alt={client}
-                  loading="lazy"
-                  className={cn(
-                    'w-auto max-w-[200px] select-none object-contain opacity-85 transition-opacity duration-300 hover:opacity-100',
-                    CLIENT_LOGOS[client].size,
-                  )}
-                />
-              ))}
-            </div>
-          </div>
         </Reveal>
 
         {/* Core idea — heads the narrative that explains how we work */}
@@ -123,10 +102,17 @@ export function AboutPage() {
           </p>
         </Reveal>
 
-        <div className="mt-12 flex flex-wrap items-start justify-center gap-x-8 gap-y-10 md:mt-16 md:gap-x-12">
-          {AWARDS.map((award, i) => (
-            <Reveal key={`${award.level}-${award.title}`} delay={0.06 + i * 0.05}>
-              <Award {...award} className="w-60" />
+        <div className="mt-12 space-y-12 md:mt-16 md:space-y-14">
+          {AWARD_GROUPS.map((group, gi) => (
+            <Reveal key={group.label} delay={0.05 + gi * 0.05}>
+              <h3 className="text-center font-body text-sm font-semibold uppercase tracking-[0.2em] text-amp">
+                {group.label}
+              </h3>
+              <div className="mt-2 flex flex-wrap items-start justify-center gap-x-6 gap-y-4 md:gap-x-12">
+                {group.awards.map((award) => (
+                  <Award key={`${group.label}-${award.tier}`} {...award} className="w-56" />
+                ))}
+              </div>
             </Reveal>
           ))}
         </div>
