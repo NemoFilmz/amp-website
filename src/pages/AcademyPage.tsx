@@ -32,61 +32,51 @@ export function AcademyPage() {
       {/* ---------------------------------------------------------------- */}
       {/* 1. HERO                                                          */}
       {/* ---------------------------------------------------------------- */}
-      <section className="flex min-h-screen flex-col bg-base px-3 pb-3 pt-[120px] sm:px-5 sm:pb-5 md:px-7 md:pb-7 md:pt-[132px]">
-        {/* Floating rounded image card framed by the obsidian background */}
-        <div className="relative flex flex-1 items-center justify-center overflow-hidden rounded-[1.75rem] ring-1 ring-white/10 md:rounded-[2.5rem]">
-          <img
-            src="/placeholders/academy-hero.jpg"
-            alt=""
-            aria-hidden
-            className="absolute inset-0 h-full w-full object-cover"
-          />
-          {/* legibility grades */}
-          <div
-            aria-hidden
-            className="absolute inset-0"
-            style={{
-              background:
-                'linear-gradient(0deg, rgba(32,33,36,0.92) 0%, rgba(32,33,36,0.4) 48%, rgba(32,33,36,0.7) 100%), radial-gradient(70% 60% at 50% 45%, rgba(32,33,36,0.55), transparent 80%)',
-            }}
-          />
-          {/* diagonal accent line */}
-          <svg aria-hidden className="pointer-events-none absolute inset-0 h-full w-full" preserveAspectRatio="none">
-            <line x1="0%" y1="100%" x2="100%" y2="30%" stroke="rgba(244,245,247,0.18)" strokeWidth="1.5" />
-          </svg>
+      <section className="flex min-h-screen items-center bg-base pb-16 pt-[120px] md:pb-20">
+        <Container>
+          <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
+            {/* Left: copy + CTA */}
+            <div>
+              <Reveal>
+                <h1 className="font-display text-[clamp(2.4rem,5.2vw,4.8rem)] leading-[0.95] tracking-tighter text-primary">
+                  Welcome to{' '}
+                  <span className="whitespace-nowrap">
+                    <span className="text-amp">AMP</span> Academy
+                  </span>
+                </h1>
+              </Reveal>
+              <Reveal delay={0.08}>
+                <p className="mt-6 max-w-lg font-body text-lg leading-relaxed text-secondary">
+                  An exclusive program where filmmakers, 3D artists, and AI creators learn how world-class
+                  cinematic industrial content is actually produced, directly from AMP instructors.
+                </p>
+              </Reveal>
+              <Reveal delay={0.16}>
+                <div className="mt-9">
+                  <button
+                    type="button"
+                    onClick={() => scrollTo('#courses', { offset: -90 })}
+                    className="inline-flex items-center gap-2 rounded-full bg-amp px-7 py-3.5 font-body text-[15px] font-medium uppercase tracking-[0.12em] text-base transition-shadow duration-300 hover:shadow-amp"
+                  >
+                    Reserve your seat
+                    <ArrowRight size={16} aria-hidden />
+                  </button>
+                </div>
+              </Reveal>
+            </div>
 
-          <div className="relative z-10 mx-auto max-w-4xl px-6 text-center">
-            <Reveal>
-              <h1
-                className="whitespace-nowrap font-display text-[clamp(1.9rem,5.2vw,4.6rem)] leading-[0.95] tracking-tighter text-primary"
-                style={{ textShadow: '0 2px 30px rgba(0,0,0,0.6)' }}
-              >
-                Welcome to <span className="text-amp">AMP</span> Academy
-              </h1>
-            </Reveal>
-            <Reveal delay={0.08}>
-              <p
-                className="mx-auto mt-6 max-w-lg font-body leading-relaxed text-primary"
-                style={{ textShadow: '0 1px 16px rgba(0,0,0,0.85)' }}
-              >
-                An exclusive program where filmmakers, 3D artists, and AI creators learn how world-class cinematic
-                industrial content is actually produced, directly from AMP instructors.
-              </p>
-            </Reveal>
-            <Reveal delay={0.16}>
-              <div className="mt-9 flex justify-center">
-                <button
-                  type="button"
-                  onClick={() => scrollTo('#courses', { offset: -90 })}
-                  className="inline-flex items-center gap-2 rounded-full bg-amp px-7 py-3.5 font-body text-[15px] font-medium uppercase tracking-[0.12em] text-base transition-shadow duration-300 hover:shadow-amp"
-                >
-                  Reserve your seat
-                  <ArrowRight size={16} aria-hidden />
-                </button>
+            {/* Right: hero image */}
+            <Reveal delay={0.1}>
+              <div className="overflow-hidden rounded-3xl ring-1 ring-line shadow-[0_30px_70px_rgba(0,0,0,0.5)]">
+                <img
+                  src="/placeholders/academy-hero.jpg"
+                  alt="AMP Academy production environment"
+                  className="aspect-[4/3] w-full object-cover"
+                />
               </div>
             </Reveal>
           </div>
-        </div>
+        </Container>
       </section>
 
       {/* ---------------------------------------------------------------- */}
