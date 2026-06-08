@@ -69,13 +69,16 @@ export function AcademyPage() {
         </svg>
 
         <Container className="relative z-10">
-          <div className="mx-auto max-w-2xl pt-24 text-center md:pt-0">
+          <div className="mx-auto max-w-4xl pt-24 text-center md:pt-0">
             <Reveal>
               <h1
-                className="font-display text-[clamp(2.6rem,6.5vw,5.5rem)] leading-[0.95] tracking-tighter text-primary"
+                className="font-display text-[clamp(2.4rem,6vw,5rem)] leading-[0.95] tracking-tighter text-primary"
                 style={{ textShadow: '0 2px 30px rgba(0,0,0,0.6)' }}
               >
-                Welcome to <span className="text-amp">AMP</span> Academy
+                Welcome to{' '}
+                <span className="whitespace-nowrap">
+                  <span className="text-amp">AMP</span> Academy
+                </span>
               </h1>
             </Reveal>
             <Reveal delay={0.08}>
