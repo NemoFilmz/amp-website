@@ -1,8 +1,11 @@
-import { ArrowRight } from 'lucide-react'
+import { useState } from 'react'
+import { Link } from 'react-router-dom'
+import { ArrowRight, Plus, Minus } from 'lucide-react'
 import { Section, Container } from '../components/ui'
 import { Reveal, RevealGroup, RevealItem } from '../components/Reveal'
 import { useSmoothScroll } from '../components/SmoothScroll'
 import { CourseWheel } from '../components/CourseWheel'
+import { cn } from '../lib/util'
 
 /* Four advantages of the academy (the "Why AMP Academy" grid). */
 const ADVANTAGES = [
@@ -24,18 +27,92 @@ const ADVANTAGES = [
   },
 ]
 
+/* Real clients whose work AMP has produced (social proof). */
+const LOGOS = [
+  { src: '/logos/adnoc.png', name: 'ADNOC', h: 'h-9 md:h-10' },
+  { src: '/logos/mubadala.png', name: 'Mubadala', h: 'h-7 md:h-8' },
+  { src: '/logos/etihad.png', name: 'Etihad', h: 'h-14 md:h-16' },
+  { src: '/logos/masdar.png', name: 'Masdar', h: 'h-7 md:h-8' },
+  { src: '/logos/nmdc.png', name: 'NMDC', h: 'h-9 md:h-10' },
+  { src: '/logos/adairports.png', name: 'Abu Dhabi Airports', h: 'h-9 md:h-10' },
+]
+
+/* FAQ — answers drawn from the established academy facts. */
+const FAQS = [
+  {
+    q: 'Who is AMP Academy for?',
+    a: 'Filmmakers, 3D artists, AI creators, and visual storytellers who want to learn how world-class cinematic industrial content is actually produced.',
+  },
+  {
+    q: 'How is it different from a normal course?',
+    a: 'Every session is taught directly from real AMP productions and industry projects developed over the last 15 years, never from theory.',
+  },
+  {
+    q: 'What will I learn?',
+    a: 'Cinematic industrial storytelling, high-end 3D animation pipelines, AI production, building large-scale environments, and how visual direction shapes the decisions of the people who watch.',
+  },
+  {
+    q: 'How is the program structured?',
+    a: 'As weekend intensive masterclasses, each built on one selected AMP production, with real production breakdowns, AI and 3D demonstrations, lighting and rendering, and creative direction sessions.',
+  },
+  {
+    q: 'Where is it held?',
+    a: 'At the AMP studio in Yas Creative Hub, Podium 3, Abu Dhabi.',
+  },
+]
+
+const CTA_CLASS =
+  'inline-flex items-center gap-2 rounded-full bg-amp px-7 py-3.5 font-body text-[15px] font-medium uppercase tracking-[0.12em] text-base transition-shadow duration-300 hover:shadow-amp'
+
+/** Accordion FAQ (one open at a time), with the wireframe's +/- affordance. */
+function Faq({ items }: { items: { q: string; a: string }[] }) {
+  const [open, setOpen] = useState<number | null>(0)
+  return (
+    <div className="mx-auto max-w-3xl border-y border-line">
+      {items.map((item, i) => {
+        const isOpen = open === i
+        return (
+          <div key={item.q} className={i > 0 ? 'border-t border-line' : ''}>
+            <button
+              type="button"
+              onClick={() => setOpen(isOpen ? null : i)}
+              aria-expanded={isOpen}
+              className="flex w-full items-center justify-between gap-6 py-5 text-left transition-colors md:py-6"
+            >
+              <span className="font-display text-lg tracking-tight text-primary md:text-xl">{item.q}</span>
+              <span aria-hidden className="shrink-0 text-amp">
+                {isOpen ? <Minus size={20} /> : <Plus size={20} />}
+              </span>
+            </button>
+            <div
+              className={cn(
+                'grid overflow-hidden transition-all duration-300 ease-out',
+                isOpen ? 'grid-rows-[1fr] pb-6 opacity-100' : 'grid-rows-[0fr] opacity-0',
+              )}
+            >
+              <div className="min-h-0">
+                <p className="max-w-2xl font-body leading-relaxed text-secondary">{item.a}</p>
+              </div>
+            </div>
+          </div>
+        )
+      })}
+    </div>
+  )
+}
+
 export function AcademyPage() {
   const { scrollTo } = useSmoothScroll()
+  const reserve = () => scrollTo('#courses', { offset: -90 })
 
   return (
     <main>
       {/* ---------------------------------------------------------------- */}
-      {/* 1. HERO                                                          */}
+      {/* 1. HERO — copy + CTA left, image right                           */}
       {/* ---------------------------------------------------------------- */}
       <section className="flex min-h-screen items-center bg-base pb-16 pt-[120px] md:pb-20">
         <Container>
           <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
-            {/* Left: copy + CTA */}
             <div>
               <Reveal>
                 <h1 className="font-display text-[clamp(2.4rem,5.2vw,4.8rem)] leading-[0.95] tracking-tighter text-primary">
@@ -53,11 +130,7 @@ export function AcademyPage() {
               </Reveal>
               <Reveal delay={0.16}>
                 <div className="mt-9">
-                  <button
-                    type="button"
-                    onClick={() => scrollTo('#courses', { offset: -90 })}
-                    className="inline-flex items-center gap-2 rounded-full bg-amp px-7 py-3.5 font-body text-[15px] font-medium uppercase tracking-[0.12em] text-base transition-shadow duration-300 hover:shadow-amp"
-                  >
+                  <button type="button" onClick={reserve} className={CTA_CLASS}>
                     Reserve your seat
                     <ArrowRight size={16} aria-hidden />
                   </button>
@@ -65,7 +138,6 @@ export function AcademyPage() {
               </Reveal>
             </div>
 
-            {/* Right: hero image */}
             <Reveal delay={0.1}>
               <div className="overflow-hidden rounded-3xl ring-1 ring-line shadow-[0_30px_70px_rgba(0,0,0,0.5)]">
                 <img
@@ -80,7 +152,34 @@ export function AcademyPage() {
       </section>
 
       {/* ---------------------------------------------------------------- */}
-      {/* 2. ADVANTAGE LEARNING                                            */}
+      {/* 2. SOCIAL PROOF — client logos                                   */}
+      {/* ---------------------------------------------------------------- */}
+      <section className="border-y border-line bg-base py-12 md:py-14">
+        <Container>
+          <Reveal>
+            <p className="text-center font-body text-[12px] font-medium uppercase tracking-[0.2em] text-muted">
+              Taught on real work for the region's landmark institutions
+            </p>
+            <div className="mt-8 flex flex-wrap items-center justify-center gap-x-10 gap-y-6 md:gap-x-16">
+              {LOGOS.map((logo) => (
+                <img
+                  key={logo.name}
+                  src={logo.src}
+                  alt={logo.name}
+                  loading="lazy"
+                  className={cn(
+                    'w-auto select-none object-contain opacity-70 transition-opacity duration-300 hover:opacity-100',
+                    logo.h,
+                  )}
+                />
+              ))}
+            </div>
+          </Reveal>
+        </Container>
+      </section>
+
+      {/* ---------------------------------------------------------------- */}
+      {/* 3. BENEFITS — Why AMP Academy + image                            */}
       {/* ---------------------------------------------------------------- */}
       <Section divider container={false} className="relative overflow-hidden py-24 md:py-32">
         <Container className="relative">
@@ -117,7 +216,7 @@ export function AcademyPage() {
       </Section>
 
       {/* ---------------------------------------------------------------- */}
-      {/* 2b. WHAT THESE SKILLS CAN DO FOR YOU (domain showcase)           */}
+      {/* 4. BENEFITS — What these skills can do for you (with CTA)        */}
       {/* ---------------------------------------------------------------- */}
       <Section divider className="py-24 md:py-32">
         <div className="grid gap-12 lg:grid-cols-2 lg:items-center lg:gap-16">
@@ -151,7 +250,7 @@ export function AcademyPage() {
             </div>
           </Reveal>
 
-          {/* Heading + supporting line */}
+          {/* Heading + supporting line + CTA */}
           <Reveal delay={0.08}>
             <div>
               <h2 className="font-display text-[clamp(2rem,4vw,3.4rem)] leading-[1.0] tracking-tighter text-primary">
@@ -176,13 +275,19 @@ export function AcademyPage() {
                   <span className="font-body text-lg text-primary/90">Precision engineering</span>
                 </li>
               </ul>
+              <div className="mt-9">
+                <button type="button" onClick={reserve} className={CTA_CLASS}>
+                  Reserve your seat
+                  <ArrowRight size={16} aria-hidden />
+                </button>
+              </div>
             </div>
           </Reveal>
         </div>
       </Section>
 
       {/* ---------------------------------------------------------------- */}
-      {/* 3. WELCOME + COURSE WHEEL                                        */}
+      {/* 5. OFFERING — What we teach (course wheel)                       */}
       {/* ---------------------------------------------------------------- */}
       <Section id="courses" container={false} divider className="py-24 md:py-32">
         <Container>
@@ -204,6 +309,53 @@ export function AcademyPage() {
           </div>
         </Reveal>
       </Section>
+
+      {/* ---------------------------------------------------------------- */}
+      {/* 6. FAQ — objection handling                                      */}
+      {/* ---------------------------------------------------------------- */}
+      <Section divider className="py-24 md:py-32">
+        <Reveal>
+          <h2 className="text-center font-display text-[clamp(2rem,4.5vw,3.4rem)] leading-[0.98] tracking-tighter text-primary">
+            Frequently asked <span className="text-amp">questions</span>
+          </h2>
+        </Reveal>
+        <Reveal delay={0.06}>
+          <div className="mt-12 md:mt-14">
+            <Faq items={FAQS} />
+          </div>
+        </Reveal>
+      </Section>
+
+      {/* ---------------------------------------------------------------- */}
+      {/* 7. FINAL CTA                                                     */}
+      {/* ---------------------------------------------------------------- */}
+      <section className="border-t border-line bg-surface py-20 md:py-28">
+        <Container>
+          <Reveal>
+            <div className="mx-auto max-w-2xl text-center">
+              <h2 className="font-display text-[clamp(2rem,4.5vw,3.4rem)] leading-[1.0] tracking-tighter text-primary">
+                Spend one weekend inside a real <span className="text-amp">AMP</span> production
+              </h2>
+              <p className="mx-auto mt-5 max-w-md font-body leading-relaxed text-secondary">
+                Pick a course, reserve your seat, and learn the craft on real work, directly from the people
+                who made it.
+              </p>
+              <div className="mt-9 flex flex-wrap items-center justify-center gap-4">
+                <button type="button" onClick={reserve} className={CTA_CLASS}>
+                  Reserve your seat
+                  <ArrowRight size={16} aria-hidden />
+                </button>
+                <Link
+                  to="/contact"
+                  className="inline-flex items-center gap-2 rounded-full border border-line-strong px-7 py-3.5 font-body text-[15px] font-medium uppercase tracking-[0.12em] text-primary transition-colors duration-300 hover:border-amp hover:text-amp"
+                >
+                  Get in touch
+                </Link>
+              </div>
+            </div>
+          </Reveal>
+        </Container>
+      </section>
     </main>
   )
 }
