@@ -1,6 +1,6 @@
 import { useEffect } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
-import { X } from 'lucide-react'
+import { X, ArrowUpRight } from 'lucide-react'
 
 type VideoModalProps = {
   /** Vimeo video id; the modal is open when this is set. */
@@ -55,9 +55,20 @@ export function VideoModal({ vimeo, title, onClose }: VideoModalProps) {
             onClick={(e) => e.stopPropagation()}
             className="relative w-full max-w-5xl"
           >
-            {title && (
-              <p className="mb-3 font-display text-lg tracking-tighter text-primary md:text-xl">{title}</p>
-            )}
+            <div className="mb-3 flex items-end justify-between gap-4">
+              {title && (
+                <p className="font-display text-lg tracking-tighter text-primary md:text-xl">{title}</p>
+              )}
+              <a
+                href={`https://vimeo.com/${vimeo}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="shrink-0 inline-flex items-center gap-1.5 font-body text-[12px] font-medium uppercase tracking-label text-secondary transition-colors hover:text-amp"
+              >
+                Watch on Vimeo
+                <ArrowUpRight size={14} aria-hidden />
+              </a>
+            </div>
             <div className="relative aspect-video overflow-hidden rounded-xl border border-line bg-black shadow-2xl shadow-black/60">
               <iframe
                 src={`https://player.vimeo.com/video/${vimeo}?autoplay=1&title=0&byline=0&portrait=0`}

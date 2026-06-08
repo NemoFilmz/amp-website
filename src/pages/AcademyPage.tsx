@@ -64,7 +64,7 @@ export function AcademyPage() {
           className="absolute inset-0"
           style={{
             background:
-              'linear-gradient(90deg, rgba(32,33,36,0.94) 0%, rgba(32,33,36,0.8) 28%, rgba(32,33,36,0.4) 62%, rgba(32,33,36,0.1) 100%), linear-gradient(0deg, rgba(32,33,36,0.95) 0%, rgba(32,33,36,0.15) 45%, rgba(32,33,36,0.6) 100%)',
+              'linear-gradient(0deg, rgba(32,33,36,0.92) 0%, rgba(32,33,36,0.4) 48%, rgba(32,33,36,0.7) 100%), radial-gradient(70% 60% at 50% 45%, rgba(32,33,36,0.55), transparent 80%)',
           }}
         />
         {/* diagonal accent line */}
@@ -73,20 +73,18 @@ export function AcademyPage() {
         </svg>
 
         <Container className="relative z-10">
-          <div className="max-w-xl pt-24 md:pt-0">
+          <div className="mx-auto max-w-2xl pt-24 text-center md:pt-0">
             <Reveal>
               <h1
                 className="font-display text-[clamp(2.6rem,6.5vw,5.5rem)] leading-[0.95] tracking-tighter text-primary"
                 style={{ textShadow: '0 2px 30px rgba(0,0,0,0.6)' }}
               >
-                Welcome to
-                <br />
-                <span className="text-amp">AMP</span> Academy
+                Welcome to <span className="text-amp">AMP</span> Academy
               </h1>
             </Reveal>
             <Reveal delay={0.08}>
               <p
-                className="mt-6 max-w-md font-body leading-relaxed text-primary"
+                className="mx-auto mt-6 max-w-lg font-body leading-relaxed text-primary"
                 style={{ textShadow: '0 1px 16px rgba(0,0,0,0.85)' }}
               >
                 An exclusive program where filmmakers, 3D artists, and AI creators learn how world-class cinematic
@@ -94,7 +92,7 @@ export function AcademyPage() {
               </p>
             </Reveal>
             <Reveal delay={0.16}>
-              <div className="mt-9 flex">
+              <div className="mt-9 flex justify-center">
                 <button
                   type="button"
                   onClick={() => scrollTo('#courses', { offset: -90 })}

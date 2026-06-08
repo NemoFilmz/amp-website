@@ -180,27 +180,15 @@ export function CoursePage() {
         </RevealGroup>
       </Section>
 
-      {/* 7. INSTRUCTOR BIO + PHOTO */}
+      {/* 7. INSTRUCTOR BIO */}
       <Section divider className="py-24 md:py-32">
-        <div className="grid gap-10 md:grid-cols-[0.85fr_1.15fr] md:items-center md:gap-16">
-          <Reveal>
-            <div className="aspect-[4/5] overflow-hidden rounded-2xl border border-line">
-              <img
-                src={instructor.photo}
-                alt={instructor.name}
-                className="h-full w-full object-cover object-[50%_25%] transition-transform duration-700 ease-out hover:scale-[1.03]"
-              />
-            </div>
-          </Reveal>
-          <Reveal delay={0.08}>
-            <Eyebrow>Your mentors</Eyebrow>
-            <h2 className="mt-4 font-display text-[clamp(2rem,4.5vw,3.6rem)] leading-[0.98] tracking-tighter text-primary">
-              {instructor.name}
-            </h2>
-            <p className="mt-2 font-body text-sm uppercase tracking-label text-amp">{instructor.role}</p>
-            <p className="mt-6 max-w-prose font-body text-lg leading-relaxed text-secondary">{instructor.bio}</p>
-          </Reveal>
-        </div>
+        <Reveal>
+          <h2 className="max-w-3xl font-display text-[clamp(2rem,4.5vw,3.6rem)] leading-[0.98] tracking-tighter text-primary">
+            {instructor.name}
+          </h2>
+          <p className="mt-2 font-body text-sm uppercase tracking-label text-amp">{instructor.role}</p>
+          <p className="mt-6 max-w-2xl font-body text-lg leading-relaxed text-primary/90">{instructor.bio}</p>
+        </Reveal>
       </Section>
 
       {/* 8. PRICING */}

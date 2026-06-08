@@ -1,5 +1,5 @@
 import { useState, type FormEvent } from 'react'
-import { MapPin, Phone, Mail, ArrowRight } from 'lucide-react'
+import { MapPin, Phone, Mail, ArrowRight, Send } from 'lucide-react'
 import { Section, Container } from '../components/ui'
 import { Reveal } from '../components/Reveal'
 
@@ -81,14 +81,29 @@ function LocationMap() {
   )
 }
 
+const STEPS = [
+  { key: 'name' as const, type: 'text', placeholder: 'Enter your name' },
+  { key: 'email' as const, type: 'email', placeholder: 'Your email' },
+  { key: 'message' as const, type: 'textarea', placeholder: 'Your message' },
+]
+
 export function ContactPage() {
-  const [name, setName] = useState('')
+  const [step, setStep] = useState(0)
+  const [form, setForm] = useState({ name: '', email: '', message: '' })
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
-    const subject = encodeURIComponent(name ? `New enquiry from ${name}` : 'New enquiry')
-    window.location.href = `mailto:${EMAIL}?subject=${subject}`
+    if (step < STEPS.length - 1) {
+      setStep(step + 1)
+      return
+    }
+    const subject = encodeURIComponent(`New enquiry from ${form.name}`)
+    const body = encodeURIComponent(`Name: ${form.name}\nEmail: ${form.email}\n\n${form.message}`)
+    window.location.href = `mailto:${EMAIL}?subject=${subject}&body=${body}`
   }
+
+  const current = STEPS[step]
+  const isLast = step === STEPS.length - 1
 
   return (
     <main>
@@ -120,14 +135,14 @@ export function ContactPage() {
                       className="flex items-center gap-2.5 text-amp transition-opacity duration-200 hover:opacity-80"
                     >
                       <Icon size={16} aria-hidden />
-                      <span className="font-body text-[12px] font-medium uppercase tracking-label text-secondary">
+                      <span className="font-body text-[12px] font-medium uppercase tracking-label text-primary/80">
                         {label}
                       </span>
                     </a>
                   ) : (
                     <div className="flex items-center gap-2.5 text-amp">
                       <Icon size={16} aria-hidden />
-                      <span className="font-body text-[12px] font-medium uppercase tracking-label text-secondary">
+                      <span className="font-body text-[12px] font-medium uppercase tracking-label text-primary/80">
                         {label}
                       </span>
                     </div>
@@ -148,7 +163,7 @@ export function ContactPage() {
                           className={
                             line === lines[0]
                               ? 'font-body text-primary'
-                              : 'font-body text-sm text-muted'
+                              : 'font-body text-sm text-secondary'
                           }
                         >
                           {line}
@@ -161,38 +176,84 @@ export function ContactPage() {
             ))}
           </div>
 
-          {/* Get in touch: large name input + Next (same section, one screen) */}
+          {/* Get in touch: a 3-step form (name -> email -> message -> send) */}
           <Reveal delay={0.28}>
-            <form
-              onSubmit={handleSubmit}
-              className="mt-16 flex max-w-xl flex-col gap-6 border-b border-line pb-6 sm:flex-row sm:items-center sm:gap-8 md:mt-24 md:max-w-2xl"
-            >
-            <input
-              type="text"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-              placeholder="Enter your name"
-              aria-label="Your name"
-              className="w-full flex-1 bg-transparent font-body text-[clamp(1.5rem,3.6vw,2.4rem)] font-light leading-tight tracking-tight text-primary placeholder:text-muted focus:outline-none"
-            />
-            <button
-              type="submit"
-              className="group inline-flex shrink-0 items-center gap-3 font-body text-sm font-medium uppercase tracking-label text-base"
-            >
-              <span className="text-primary transition-colors group-hover:text-amp">Next</span>
-              <span className="flex h-12 w-12 items-center justify-center rounded-full bg-amp text-base transition-shadow duration-300 group-hover:shadow-amp">
-                <ArrowRight size={18} aria-hidden />
-              </span>
-              </button>
-            </form>
+            <div className="mt-16 max-w-xl md:mt-24 md:max-w-2xl">
+              <form
+                onSubmit={handleSubmit}
+                className="flex flex-col gap-6 border-b border-line pb-6 sm:flex-row sm:items-end sm:gap-8"
+              >
+                {current.type === 'textarea' ? (
+                  <textarea
+                    key="message"
+                    rows={2}
+                    required
+                    autoFocus
+                    value={form.message}
+                    onChange={(e) => setForm({ ...form, message: e.target.value })}
+                    placeholder={current.placeholder}
+                    aria-label="Your message"
+                    className="w-full flex-1 resize-none bg-transparent font-body text-[clamp(1.3rem,3vw,2rem)] font-light leading-tight tracking-tight text-primary placeholder:text-muted focus:outline-none"
+                  />
+                ) : (
+                  <input
+                    key={current.key}
+                    type={current.type}
+                    required
+                    autoFocus
+                    value={form[current.key]}
+                    onChange={(e) => setForm({ ...form, [current.key]: e.target.value })}
+                    placeholder={current.placeholder}
+                    aria-label={current.placeholder}
+                    className="w-full flex-1 bg-transparent font-body text-[clamp(1.5rem,3.6vw,2.4rem)] font-light leading-tight tracking-tight text-primary placeholder:text-muted focus:outline-none"
+                  />
+                )}
+                <button
+                  type="submit"
+                  className="group inline-flex shrink-0 items-center gap-3 font-body text-sm font-medium uppercase tracking-label text-base"
+                >
+                  <span className="text-primary transition-colors group-hover:text-amp">
+                    {isLast ? 'Send' : 'Next'}
+                  </span>
+                  <span className="flex h-12 w-12 items-center justify-center rounded-full bg-amp text-base transition-shadow duration-300 group-hover:shadow-amp">
+                    {isLast ? <Send size={17} aria-hidden /> : <ArrowRight size={18} aria-hidden />}
+                  </span>
+                </button>
+              </form>
+
+              {/* progress + back */}
+              <div className="mt-5 flex items-center gap-5">
+                <div className="flex items-center gap-2">
+                  {STEPS.map((s, i) => (
+                    <span
+                      key={s.key}
+                      aria-hidden
+                      className={
+                        'h-1.5 rounded-full transition-all duration-300 ' +
+                        (i === step ? 'w-6 bg-amp' : i < step ? 'w-1.5 bg-amp/60' : 'w-1.5 bg-line-strong')
+                      }
+                    />
+                  ))}
+                </div>
+                {step > 0 && (
+                  <button
+                    type="button"
+                    onClick={() => setStep(step - 1)}
+                    className="font-body text-[12px] font-medium uppercase tracking-label text-muted transition-colors hover:text-primary"
+                  >
+                    Back
+                  </button>
+                )}
+              </div>
+            </div>
           </Reveal>
 
           <Reveal delay={0.32}>
-            <p className="mt-6 font-body text-sm text-muted">
+            <p className="mt-8 font-body text-sm text-secondary">
               Or write to us directly at{' '}
               <a
                 href={`mailto:${EMAIL}`}
-                className="text-secondary underline-offset-4 transition-colors hover:text-amp"
+                className="text-primary underline-offset-4 transition-colors hover:text-amp"
               >
                 {EMAIL}
               </a>

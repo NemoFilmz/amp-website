@@ -679,14 +679,14 @@ export const COURSE_SHARED = {
   pricing: [
     {
       tier: 'Weekend Intensive',
-      price: 'On request',
+      price: 'AED 5,500',
       note: 'Friday to Sunday',
       features: ['Three-day masterclass', 'Real production breakdowns', 'Workshop materials to keep'],
       highlighted: false,
     },
     {
       tier: 'Weekend + 5-Star Stay',
-      price: 'On request',
+      price: 'AED 10,000',
       note: 'Most popular',
       features: [
         'Everything in Weekend Intensive',
@@ -698,7 +698,7 @@ export const COURSE_SHARED = {
     },
     {
       tier: 'Private Mentorship',
-      price: 'On request',
+      price: 'AED 12,500',
       note: 'By arrangement',
       features: ['One-to-one with AMP leads', 'Tailored to your own project', 'Scheduled around you'],
       highlighted: false,
