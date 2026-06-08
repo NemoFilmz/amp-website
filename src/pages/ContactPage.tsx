@@ -110,6 +110,11 @@ export function ContactPage() {
       {/* ---- Contacts header + info, over the map texture ---- */}
       <Section container={false} className="relative overflow-hidden pt-40 pb-20 md:pt-44 md:pb-28">
         <LocationMap />
+        {/* Top fade so the fixed nav stays legible over the map */}
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-x-0 top-0 z-[1] h-44 bg-gradient-to-b from-base via-base/85 to-transparent"
+        />
         <Container className="relative z-10">
           {/* Heading block: amber accent bar + big title */}
           <Reveal>
