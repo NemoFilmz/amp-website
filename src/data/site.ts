@@ -332,7 +332,7 @@ export const WHY_PILLARS: Pillar[] = [
   },
   {
     title: 'Artistic + Technical Excellence',
-    body: 'Our team combines cinema production expertise, academic art backgrounds, technology-focused creators, industrial visualization specialists, creative directors, AI artists, and engineers and technical consultants. This combination allows AMP to deliver visuals that are technically accurate while emotionally powerful.',
+    body: 'Our team brings together cinema production, art, AI, and engineering. That mix lets AMP deliver visuals that are technically accurate and emotionally powerful.',
     items: [
       'Cinema production expertise',
       'Academic art backgrounds',
