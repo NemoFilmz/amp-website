@@ -1,11 +1,10 @@
 import { useEffect, useRef, useState } from 'react'
 import { AnimatePresence, motion, useScroll, useSpring } from 'framer-motion'
 import { Link, NavLink, useLocation } from 'react-router-dom'
-import { Menu, X, ArrowRight } from 'lucide-react'
+import { Menu, X } from 'lucide-react'
 import { NAV_LINKS } from '../data/site'
 import { useSmoothScroll } from './SmoothScroll'
 import { Wordmark } from './Wordmark'
-import { Magnetic } from './ui'
 import { cn } from '../lib/util'
 
 export function Nav() {
@@ -65,7 +64,7 @@ export function Nav() {
             <Wordmark />
           </Link>
 
-          <nav className="hidden items-center gap-8 lg:flex">
+          <nav className="hidden items-center gap-9 lg:flex">
             {NAV_LINKS.map((l) => {
               const active = isActive(l.to)
               return (
@@ -90,18 +89,6 @@ export function Nav() {
               )
             })}
           </nav>
-
-          <div className="hidden items-center gap-5 lg:flex">
-            <Magnetic>
-              <Link
-                to="/contact"
-                className="inline-flex items-center gap-2 rounded-full bg-amp px-7 py-3.5 font-body text-[17px] font-medium uppercase tracking-[0.12em] text-base transition-shadow duration-300 hover:shadow-amp"
-              >
-                Start Your Project
-                <ArrowRight size={16} aria-hidden />
-              </Link>
-            </Magnetic>
-          </div>
 
           <button
             ref={openBtnRef}

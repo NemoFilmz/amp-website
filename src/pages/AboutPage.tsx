@@ -2,8 +2,15 @@ import { CircleDot } from 'lucide-react'
 import { Section, Eyebrow } from '../components/ui'
 import { Reveal } from '../components/Reveal'
 import { Globe } from '../components/Globe'
+import { Award } from '../components/Awards'
 import { ABOUT_STORY } from '../data/site'
 import { cn } from '../lib/util'
+
+/** AMP's awards, mapped to the badge component. */
+const AWARDS = [
+  { title: '7×', subtitle: 'Platinum MUSE Creative Awards', level: 'platinum' as const },
+  { title: 'Top 10', subtitle: 'NYX Awards, Worldwide', level: 'gold' as const },
+]
 
 /** White client logos for the credentials strip, keyed by client name.
  *  `size` is a per-logo height (some marks sit smaller within their bounds). */
@@ -37,36 +44,22 @@ export function AboutPage() {
         {/* Proof strip — real client logos (a conventional "trusted by" row)
             balanced against amber award stats across a hairline band. */}
         <Reveal delay={0.1}>
-          <div className="mt-12 grid gap-10 border-y border-line py-10 md:mt-14 md:grid-cols-[1.3fr_1fr] md:items-center md:gap-0 md:divide-x md:divide-line">
-            <div className="md:pr-16">
-              <span className="font-body text-sm font-medium uppercase tracking-[0.18em] text-secondary">
-                {ABOUT_STORY.clientsLabel}
-              </span>
-              <div className="mt-6 flex flex-wrap items-center gap-x-9 gap-y-6 md:gap-x-12">
-                {ABOUT_STORY.clients.map((client) => (
-                  <img
-                    key={client}
-                    src={CLIENT_LOGOS[client].src}
-                    alt={client}
-                    loading="lazy"
-                    className={cn(
-                      'w-auto max-w-[200px] select-none object-contain opacity-85 transition-opacity duration-300 hover:opacity-100',
-                      CLIENT_LOGOS[client].size,
-                    )}
-                  />
-                ))}
-              </div>
-            </div>
-            <div className="flex gap-10 md:pl-16">
-              {ABOUT_STORY.awards.map((award) => (
-                <div key={award.label}>
-                  <div className="font-display text-[clamp(2.4rem,4.2vw,3.4rem)] leading-none text-amp">
-                    {award.value}
-                  </div>
-                  <div className="mt-2.5 font-body text-[13px] uppercase leading-snug tracking-[0.1em] text-secondary">
-                    {award.label}
-                  </div>
-                </div>
+          <div className="mt-12 border-y border-line py-10 md:mt-14">
+            <span className="font-body text-sm font-medium uppercase tracking-[0.18em] text-secondary">
+              {ABOUT_STORY.clientsLabel}
+            </span>
+            <div className="mt-6 flex flex-wrap items-center gap-x-9 gap-y-6 md:gap-x-14">
+              {ABOUT_STORY.clients.map((client) => (
+                <img
+                  key={client}
+                  src={CLIENT_LOGOS[client].src}
+                  alt={client}
+                  loading="lazy"
+                  className={cn(
+                    'w-auto max-w-[200px] select-none object-contain opacity-85 transition-opacity duration-300 hover:opacity-100',
+                    CLIENT_LOGOS[client].size,
+                  )}
+                />
               ))}
             </div>
           </div>
@@ -115,7 +108,30 @@ export function AboutPage() {
       </Section>
 
       {/* ---------------------------------------------------------------- */}
-      {/* 2. INTERNATIONAL PRESENCE                                         */}
+      {/* 2. AWARDS & RECOGNITION                                           */}
+      {/* ---------------------------------------------------------------- */}
+      <Section divider className="py-24 md:py-32">
+        <Reveal>
+          <h2 className="max-w-prose font-display text-[clamp(2rem,4.5vw,3.6rem)] leading-[0.98] tracking-tighter text-primary">
+            Awards &amp; recognition
+          </h2>
+          <p className="mt-6 max-w-2xl font-body text-lg leading-relaxed text-primary/90">
+            Our work has been recognised among the best in the world, judged on craft,
+            originality, and impact.
+          </p>
+        </Reveal>
+
+        <div className="mt-12 flex flex-wrap items-center justify-center gap-x-12 gap-y-10 md:mt-16 md:gap-x-20">
+          {AWARDS.map((award, i) => (
+            <Reveal key={award.subtitle} delay={0.06 + i * 0.05}>
+              <Award {...award} className="w-72" />
+            </Reveal>
+          ))}
+        </div>
+      </Section>
+
+      {/* ---------------------------------------------------------------- */}
+      {/* 3. INTERNATIONAL PRESENCE                                         */}
       {/* ---------------------------------------------------------------- */}
       <Section divider className="py-24 md:py-32">
         <Reveal>

@@ -217,13 +217,13 @@ export function CoursePage() {
               <h3 className="font-display text-2xl tracking-tighter text-primary">{tier.tier}</h3>
               <div className="mt-3 font-display text-[clamp(1.8rem,3vw,2.4rem)] leading-none text-amp">{tier.price}</div>
               {!tier.highlighted && (
-                <p className="mt-2 font-body text-sm uppercase tracking-label text-muted">{tier.note}</p>
+                <p className="mt-2 font-body text-sm uppercase tracking-label text-secondary">{tier.note}</p>
               )}
               <ul className="mt-6 flex-1 space-y-3">
                 {tier.features.map((f) => (
                   <li key={f} className="flex items-start gap-2.5">
                     <Check size={15} className="mt-0.5 shrink-0 text-amp" aria-hidden />
-                    <span className="font-body text-secondary">{f}</span>
+                    <span className="font-body text-primary/85">{f}</span>
                   </li>
                 ))}
               </ul>
