@@ -1,67 +1,21 @@
 import { useEffect, useMemo, useState } from 'react'
-import { Link, useSearchParams } from 'react-router-dom'
+import { useSearchParams } from 'react-router-dom'
 import { Check } from 'lucide-react'
-import { Section, CinematicMedia, Eyebrow } from '../components/ui'
+import { Section, Eyebrow } from '../components/ui'
 import { Reveal, RevealGroup, RevealItem } from '../components/Reveal'
 import { CtaCard } from '../components/CtaCard'
 import { STATS, WHY_PILLARS } from '../data/site'
+import { PROJECTS } from '../data/projects'
 import { cn, industrySlug } from '../lib/util'
-
-/* ------------------------------------------------------------------ */
-/* Representative case studies.                                        */
-/* Sample content only; replace with real AMP productions.            */
-/* ------------------------------------------------------------------ */
-
-type Case = {
-  title: string
-  tag: string
-  scope: string
-  image: string
-}
-
-const CASES: Case[] = [
-  {
-    title: 'Offshore Field Visualization',
-    tag: 'Oil & Gas',
-    scope: 'Upstream operations rendered for executive review',
-    image: '/placeholders/oilgas.jpg',
-  },
-  {
-    title: 'National Vision Film',
-    tag: 'Government & Culture',
-    scope: 'A cinematic vision film for a national program',
-    image: '/placeholders/gov.jpg',
-  },
-  {
-    title: 'The Future of Energy',
-    tag: 'Energy & Utilities',
-    scope: 'Hydrogen and renewables, explained visually',
-    image: '/placeholders/energy.jpg',
-  },
-  {
-    title: 'Fleet Experience Film',
-    tag: 'Aviation & Airlines',
-    scope: 'Aircraft and passenger experience storytelling',
-    image: '/placeholders/aviation.jpg',
-  },
-  {
-    title: 'Mega Port Reveal',
-    tag: 'Heavy Industries',
-    scope: 'Maritime infrastructure brought to the screen',
-    image: '/placeholders/heavy.jpg',
-  },
-  {
-    title: 'Smart City Showcase',
-    tag: 'Government & Culture',
-    scope: 'An immersive smart-city development reveal',
-    image: '/placeholders/gov.jpg',
-  },
-]
 
 const ALL = 'All'
 
-/* Distinct tags, in first-seen order, prefixed with the "All" filter. */
-const FILTERS: string[] = [ALL, ...Array.from(new Set(CASES.map((c) => c.tag)))]
+/* Distinct project categories, ordered by how often they appear, with "All" first. */
+const TAG_COUNTS = PROJECTS.flatMap((p) => p.tags).reduce<Record<string, number>>((acc, t) => {
+  acc[t] = (acc[t] ?? 0) + 1
+  return acc
+}, {})
+const FILTERS: string[] = [ALL, ...Object.keys(TAG_COUNTS).sort((a, b) => TAG_COUNTS[b] - TAG_COUNTS[a])]
 
 export function WorkPage() {
   const [searchParams] = useSearchParams()
@@ -82,7 +36,7 @@ export function WorkPage() {
   }, [fromParam])
 
   const visible = useMemo(
-    () => (active === ALL ? CASES : CASES.filter((c) => c.tag === active)),
+    () => (active === ALL ? PROJECTS : PROJECTS.filter((p) => p.tags.includes(active))),
     [active],
   )
 
@@ -92,7 +46,7 @@ export function WorkPage() {
         {/* Intro + representative-content note */}
         <Reveal>
           <Eyebrow index={1} total={4}>
-            Case Studies
+            Selected Work
           </Eyebrow>
           <h2 className="mt-4 max-w-prose font-display text-[clamp(2rem,4.5vw,3.6rem)] leading-[0.98] tracking-tighter text-primary">
             Work
@@ -128,39 +82,39 @@ export function WorkPage() {
           </div>
         </Reveal>
 
-        {/* Case-study grid */}
+        {/* Project grid */}
         <RevealGroup
           key={active}
-          className="mt-10 grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3"
+          className="mt-10 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3"
         >
-          {visible.map((c) => (
-            <RevealItem key={`${c.title}-${c.scope}`}>
-              <Link
-                to="/contact"
-                aria-label={`Enquire about ${c.title}`}
-                className="group relative block overflow-hidden rounded-2xl"
-              >
-                <CinematicMedia
-                  src={c.image}
-                  alt={c.title}
-                  className="aspect-[4/3] rounded-2xl transition-transform duration-500 group-hover:scale-[1.03]"
-                >
-                  {/* Tag pill */}
-                  <span className="absolute left-4 top-4 z-10 rounded-full border border-amp px-3 py-1 text-xs text-amp">
-                    {c.tag}
+          {visible.map((p, i) => (
+            <RevealItem key={`${p.image}-${i}`}>
+              <div className="group relative block aspect-[3/2] overflow-hidden rounded-2xl border border-line">
+                <img
+                  src={p.image}
+                  alt={p.title}
+                  loading="lazy"
+                  className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.04]"
+                />
+                <div
+                  aria-hidden
+                  className="absolute inset-0"
+                  style={{
+                    background:
+                      'linear-gradient(to top, rgba(32,33,36,0.92) 0%, rgba(32,33,36,0.25) 48%, rgba(32,33,36,0) 100%)',
+                  }}
+                />
+                {p.tags[0] && (
+                  <span className="absolute left-4 top-4 z-10 rounded-full border border-amp/70 bg-base/40 px-3 py-1 font-body text-[11px] uppercase tracking-label text-amp backdrop-blur-sm">
+                    {p.tags[0]}
                   </span>
-
-                  {/* Bottom text block */}
-                  <div className="absolute bottom-5 left-5 right-5 z-10">
-                    <h3 className="font-display text-xl tracking-tighter text-primary md:text-2xl">
-                      {c.title}
-                    </h3>
-                    <p className="mt-1.5 font-body text-sm leading-relaxed text-secondary">
-                      {c.scope}
-                    </p>
-                  </div>
-                </CinematicMedia>
-              </Link>
+                )}
+                <div className="absolute inset-x-0 bottom-0 z-10 p-5">
+                  <h3 className="font-display text-lg leading-tight tracking-tighter text-primary md:text-xl">
+                    {p.title}
+                  </h3>
+                </div>
+              </div>
             </RevealItem>
           ))}
         </RevealGroup>
