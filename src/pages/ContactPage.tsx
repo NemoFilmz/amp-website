@@ -93,16 +93,11 @@ export function ContactPage() {
 
   return (
     <main>
-      <section className="relative lg:grid lg:grid-cols-2">
-        {/* Top fade keeps the fixed nav legible over the map */}
-        <div
-          aria-hidden
-          className="pointer-events-none absolute inset-x-0 top-0 z-20 h-28 bg-gradient-to-b from-base via-base/80 to-transparent"
-        />
-
-        {/* ---- Left: contact details + form ---- */}
-        <div className="flex items-center bg-base px-6 pb-20 pt-40 sm:px-10 lg:px-14 lg:pb-24 lg:pt-44 xl:px-20">
-          <div className="w-full max-w-xl">
+      <section className="relative bg-base pb-16 pt-40 lg:pb-20 lg:pt-44">
+        <div className="lg:flex lg:items-stretch">
+          {/* ---- Left: contact details + form ---- */}
+          <div className="px-6 sm:px-10 lg:w-1/2 lg:pl-14 lg:pr-12 xl:pl-20">
+            <div className="mx-auto w-full max-w-xl lg:mx-0">
             <h1 className="font-display text-[clamp(2rem,4.5vw,3.4rem)] leading-[0.98] tracking-tighter text-primary">
               Get in <span className="text-amp">touch</span> with us
             </h1>
@@ -187,12 +182,13 @@ export function ContactPage() {
                 </button>
               </div>
             </form>
+            </div>
           </div>
-        </div>
 
-        {/* ---- Right: studio map ---- */}
-        <div className="relative min-h-[60vh] bg-surface lg:min-h-0">
-          <StudioMap />
+          {/* ---- Right: studio map (matches the left content height) ---- */}
+          <div className="relative mt-12 min-h-[55vh] bg-surface lg:mt-0 lg:min-h-0 lg:w-1/2">
+            <StudioMap />
+          </div>
         </div>
       </section>
     </main>
