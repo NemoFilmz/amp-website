@@ -1,11 +1,10 @@
 import { useState, type FormEvent } from 'react'
-import { Link } from 'react-router-dom'
-import { ArrowRight, ArrowUpRight, Clapperboard, Cpu, Compass, Users, MapPin, Phone, Mail } from 'lucide-react'
+import { ArrowRight, Clapperboard, Cpu, Compass, Users, MapPin, Phone, Mail } from 'lucide-react'
 import { Section, Container } from '../components/ui'
 import { Reveal, RevealGroup, RevealItem } from '../components/Reveal'
 import { useSmoothScroll } from '../components/SmoothScroll'
-import { ACADEMY, COURSES } from '../data/site'
-import { slugify } from '../lib/util'
+import { CourseWheel } from '../components/CourseWheel'
+import { ACADEMY } from '../data/site'
 
 const EMAIL = 'ayman@actionmpro.com'
 
@@ -143,53 +142,27 @@ export function AcademyPage() {
       </Section>
 
       {/* ---------------------------------------------------------------- */}
-      {/* 3. OUR COURSES (mosaic)                                          */}
+      {/* 3. WELCOME + COURSE WHEEL                                        */}
       {/* ---------------------------------------------------------------- */}
-      <Section id="courses" divider className="py-24 md:py-32">
-        <Reveal>
-          <h2 className="font-display text-[clamp(2rem,4.5vw,3.6rem)] leading-[0.98] tracking-tighter text-primary">
-            Our Courses
-          </h2>
-          <p className="mt-5 max-w-xl font-body leading-relaxed text-secondary">
-            Pick the course that fits you. Open it to see the full program, reserve your seat, and book your place.
-          </p>
-        </Reveal>
+      <Section id="courses" container={false} divider className="py-24 md:py-32">
+        <Container>
+          <Reveal>
+            <div className="mx-auto max-w-3xl text-center">
+              <h2 className="font-display text-[clamp(2rem,4.5vw,3.6rem)] leading-[0.98] tracking-tighter text-primary">
+                Welcome to <span className="text-amp">AMP</span> Academy
+              </h2>
+              <p className="mx-auto mt-6 max-w-xl font-body leading-relaxed text-secondary">
+                Pick the course that fits you. Open it to see the full program, reserve your seat, and book your place.
+              </p>
+            </div>
+          </Reveal>
+        </Container>
 
-        <RevealGroup className="mt-12 grid grid-cols-2 gap-3 md:mt-16 md:grid-cols-3">
-          {COURSES.map((course) => (
-            <RevealItem key={course.name}>
-              <Link
-                to={`/academy/${slugify(course.name)}`}
-                aria-label={`View the ${course.name} course`}
-                className="group relative block aspect-square overflow-hidden rounded-xl border border-line transition-colors duration-300 hover:border-amp"
-              >
-                <img
-                  src={course.image}
-                  alt={course.name}
-                  loading="lazy"
-                  className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
-                />
-                <div
-                  aria-hidden
-                  className="absolute inset-0"
-                  style={{
-                    background:
-                      'linear-gradient(to top, rgba(32,33,36,0.92) 0%, rgba(32,33,36,0.35) 50%, rgba(32,33,36,0.05) 100%)',
-                  }}
-                />
-                <div className="absolute inset-x-0 bottom-0 p-5">
-                  <h3 className="font-display text-lg leading-[1.02] tracking-tighter text-primary md:text-xl">
-                    {course.name}
-                  </h3>
-                  <span className="mt-2 inline-flex items-center gap-1.5 font-body text-[11px] font-medium uppercase tracking-label text-amp">
-                    View course
-                    <ArrowUpRight size={13} aria-hidden />
-                  </span>
-                </div>
-              </Link>
-            </RevealItem>
-          ))}
-        </RevealGroup>
+        <Reveal delay={0.05}>
+          <div className="mt-14 md:mt-16">
+            <CourseWheel />
+          </div>
+        </Reveal>
       </Section>
 
       {/* ---------------------------------------------------------------- */}
