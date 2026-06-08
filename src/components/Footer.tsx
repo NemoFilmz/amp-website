@@ -28,7 +28,7 @@ const SOCIALS = [
 ]
 
 const linkClass =
-  'font-body text-[12px] font-medium uppercase tracking-[0.18em] text-secondary transition-colors duration-200 hover:text-primary'
+  'font-body text-[12px] font-medium uppercase tracking-[0.18em] text-primary/85 transition-colors duration-200 hover:text-primary'
 
 function FooterLinks({ labels, align }: { labels: string[]; align: 'end' | 'start' }) {
   return (
@@ -67,7 +67,7 @@ export function Footer() {
                 className="h-9 w-auto select-none md:h-10"
               />
             </Link>
-            <p className="mt-6 max-w-xs font-body text-sm leading-relaxed text-secondary">
+            <p className="mt-6 max-w-xs font-body text-sm leading-relaxed text-primary/80">
               {FOOTER.statement.line}
             </p>
             <div className="mt-7 flex items-center gap-6">
@@ -78,7 +78,7 @@ export function Footer() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={label}
-                  className="text-secondary transition-colors duration-200 hover:text-amp"
+                  className="text-primary/75 transition-colors duration-200 hover:text-amp"
                 >
                   <Icon size={18} />
                 </a>
@@ -92,7 +92,7 @@ export function Footer() {
 
         {/* Bottom bar */}
         <div className="mt-14 border-t border-line pt-7 text-center">
-          <p className="font-body text-[11px] font-medium uppercase tracking-[0.14em] text-muted">
+          <p className="font-body text-[11px] font-medium uppercase tracking-[0.14em] text-secondary">
             © {year} {BRAND.short}. All rights reserved.
           </p>
         </div>
