@@ -58,13 +58,10 @@ export function AcademyPage() {
           <div className="relative z-10 mx-auto max-w-4xl px-6 text-center">
             <Reveal>
               <h1
-                className="font-display text-[clamp(2.4rem,6vw,5rem)] leading-[0.95] tracking-tighter text-primary"
+                className="whitespace-nowrap font-display text-[clamp(1.9rem,5.2vw,4.6rem)] leading-[0.95] tracking-tighter text-primary"
                 style={{ textShadow: '0 2px 30px rgba(0,0,0,0.6)' }}
               >
-                Welcome to{' '}
-                <span className="whitespace-nowrap">
-                  <span className="text-amp">AMP</span> Academy
-                </span>
+                Welcome to <span className="text-amp">AMP</span> Academy
               </h1>
             </Reveal>
             <Reveal delay={0.08}>
@@ -101,7 +98,7 @@ export function AcademyPage() {
             <div className="lg:w-[56%]">
               <Reveal>
                 <h2 className="whitespace-nowrap text-center font-display text-[clamp(1.7rem,5vw,3.6rem)] leading-[0.98] tracking-tighter text-primary">
-                  Why AMP Academy
+                  Why <span className="text-amp">AMP</span> Academy
                 </h2>
               </Reveal>
               <RevealGroup className="mt-12 grid gap-x-12 gap-y-12 sm:grid-cols-2 md:mt-14 md:gap-x-14">
@@ -130,6 +127,71 @@ export function AcademyPage() {
       </Section>
 
       {/* ---------------------------------------------------------------- */}
+      {/* 2b. WHAT THESE SKILLS CAN DO FOR YOU (domain showcase)           */}
+      {/* ---------------------------------------------------------------- */}
+      <Section divider className="py-24 md:py-32">
+        <div className="grid gap-12 lg:grid-cols-2 lg:items-center lg:gap-16">
+          {/* Three pictures in smooth rounded boxes (1 + 2 collage) */}
+          <Reveal>
+            <div className="grid grid-cols-2 gap-4 md:gap-5">
+              <div className="col-span-2 overflow-hidden rounded-2xl ring-1 ring-line shadow-[0_20px_50px_rgba(0,0,0,0.45)]">
+                <img
+                  src="/academy/domain-ai.jpg"
+                  alt="Holographic brain visualization for AI and neural systems"
+                  loading="lazy"
+                  className="aspect-[16/9] w-full object-cover"
+                />
+              </div>
+              <div className="overflow-hidden rounded-2xl ring-1 ring-line shadow-[0_20px_50px_rgba(0,0,0,0.45)]">
+                <img
+                  src="/academy/domain-aerospace.jpg"
+                  alt="Satellite in a hangar, aerospace visualization"
+                  loading="lazy"
+                  className="aspect-[5/4] w-full object-cover"
+                />
+              </div>
+              <div className="overflow-hidden rounded-2xl ring-1 ring-line shadow-[0_20px_50px_rgba(0,0,0,0.45)]">
+                <img
+                  src="/academy/domain-industrial.jpg"
+                  alt="Precision engineering close-up, industrial visualization"
+                  loading="lazy"
+                  className="aspect-[5/4] w-full object-cover"
+                />
+              </div>
+            </div>
+          </Reveal>
+
+          {/* Heading + supporting line */}
+          <Reveal delay={0.08}>
+            <div>
+              <h2 className="font-display text-[clamp(2rem,4vw,3.4rem)] leading-[1.0] tracking-tighter text-primary">
+                What these skills can do <span className="text-amp">for you</span>
+              </h2>
+              <p className="mt-6 max-w-md font-body text-lg leading-relaxed text-primary/90">
+                The same craft <span className="text-amp">AMP</span> brings to real productions, applied to
+                anything from AI and neural systems to aerospace and precision engineering. You leave able
+                to turn the most complex subject into work that is clear, accurate, and cinematic.
+              </p>
+              <ul className="mt-9 space-y-4">
+                <li className="flex items-center gap-3.5">
+                  <span aria-hidden className="h-1.5 w-1.5 shrink-0 rounded-full bg-amp" />
+                  <span className="font-body text-lg text-primary/90">AI &amp; neural systems</span>
+                </li>
+                <li className="flex items-center gap-3.5">
+                  <span aria-hidden className="h-1.5 w-1.5 shrink-0 rounded-full bg-amp" />
+                  <span className="font-body text-lg text-primary/90">Aerospace &amp; satellites</span>
+                </li>
+                <li className="flex items-center gap-3.5">
+                  <span aria-hidden className="h-1.5 w-1.5 shrink-0 rounded-full bg-amp" />
+                  <span className="font-body text-lg text-primary/90">Precision engineering</span>
+                </li>
+              </ul>
+            </div>
+          </Reveal>
+        </div>
+      </Section>
+
+      {/* ---------------------------------------------------------------- */}
       {/* 3. WELCOME + COURSE WHEEL                                        */}
       {/* ---------------------------------------------------------------- */}
       <Section id="courses" container={false} divider className="py-24 md:py-32">
@@ -137,7 +199,7 @@ export function AcademyPage() {
           <Reveal>
             <div className="mx-auto max-w-3xl text-center">
               <h2 className="font-display text-[clamp(2rem,4.5vw,3.6rem)] leading-[0.98] tracking-tighter text-primary">
-                What we teach
+                What we <span className="text-amp">teach</span>
               </h2>
               <p className="mx-auto mt-6 max-w-xl font-body leading-relaxed text-secondary">
                 Pick the course that fits you. Open it to see the full program, reserve your seat, and book your place.
