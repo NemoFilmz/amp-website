@@ -6,9 +6,11 @@ import { Award } from '../components/Awards'
 import { ABOUT_STORY } from '../data/site'
 import { cn } from '../lib/util'
 
-/** AMP's awards, mapped to the badge component. */
+/** AMP's awards — one laurel per level/colour. Adjust the counts as needed. */
 const AWARDS = [
-  { title: '7×', subtitle: 'Platinum MUSE Creative Awards', level: 'platinum' as const },
+  { title: '7×', subtitle: 'MUSE Creative Awards', level: 'platinum' as const },
+  { title: '5×', subtitle: 'MUSE Creative Awards', level: 'gold' as const },
+  { title: '1×', subtitle: 'MUSE Creative Awards', level: 'silver' as const },
   { title: 'Top 10', subtitle: 'NYX Awards, Worldwide', level: 'gold' as const },
 ]
 
@@ -121,10 +123,10 @@ export function AboutPage() {
           </p>
         </Reveal>
 
-        <div className="mt-12 flex flex-wrap items-center justify-center gap-x-12 gap-y-10 md:mt-16 md:gap-x-20">
+        <div className="mt-12 flex flex-wrap items-start justify-center gap-x-8 gap-y-10 md:mt-16 md:gap-x-12">
           {AWARDS.map((award, i) => (
-            <Reveal key={award.subtitle} delay={0.06 + i * 0.05}>
-              <Award {...award} className="w-72" />
+            <Reveal key={`${award.level}-${award.title}`} delay={0.06 + i * 0.05}>
+              <Award {...award} className="w-60" />
             </Reveal>
           ))}
         </div>
