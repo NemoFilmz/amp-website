@@ -75,19 +75,17 @@ export function AcademyPage() {
         <Container className="relative z-10">
           <div className="max-w-xl pt-24 md:pt-0">
             <Reveal>
-              <span className="eyebrow text-amp">{ACADEMY.wordmark}</span>
+              <span className="eyebrow text-amp">The Academy</span>
             </Reveal>
             <Reveal delay={0.05}>
               <h1 className="mt-4 font-display text-[clamp(2.6rem,6.5vw,5.5rem)] leading-[0.95] tracking-tighter text-primary">
-                Cinematic
+                Welcome to
                 <br />
-                Production
-                <br />
-                Training
+                <span className="text-amp">AMP</span> Academy
               </h1>
             </Reveal>
             <Reveal delay={0.1}>
-              <p className="mt-6 max-w-md font-body leading-relaxed text-secondary">
+              <p className="mt-6 max-w-md font-body leading-relaxed text-primary">
                 An exclusive program where filmmakers, 3D artists, and AI creators learn how world-class cinematic
                 industrial content is actually produced, directly from real AMP productions.
               </p>
@@ -106,15 +104,6 @@ export function AcademyPage() {
             </Reveal>
           </div>
 
-          {/* motto, lower area */}
-          <Reveal delay={0.22}>
-            <div className="mt-20 max-w-md md:mt-28">
-              <p className="font-display text-[clamp(1.3rem,2.6vw,2rem)] leading-snug tracking-tight text-primary">
-                “Mastery comes from real work, not theory.”
-              </p>
-              <p className="mt-2 font-body text-sm uppercase tracking-label text-amp">AMP Academy</p>
-            </div>
-          </Reveal>
         </Container>
       </section>
 
@@ -149,7 +138,7 @@ export function AcademyPage() {
           <Reveal>
             <div className="mx-auto max-w-3xl text-center">
               <h2 className="font-display text-[clamp(2rem,4.5vw,3.6rem)] leading-[0.98] tracking-tighter text-primary">
-                Welcome to <span className="text-amp">AMP</span> Academy
+                What we teach
               </h2>
               <p className="mx-auto mt-6 max-w-xl font-body leading-relaxed text-secondary">
                 Pick the course that fits you. Open it to see the full program, reserve your seat, and book your place.
