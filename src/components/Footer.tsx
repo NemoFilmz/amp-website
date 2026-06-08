@@ -16,8 +16,8 @@ const navToByLabel: Record<string, string> = {
   Contact: '/contact',
 }
 
-const LEFT_LINKS = ['Home', 'About AMP', 'Work', 'AMP Academy']
-const RIGHT_LINKS = ['Industries', 'Technology', 'Careers', 'Contact']
+const LEFT_LINKS = ['Home', 'About AMP', 'Work']
+const RIGHT_LINKS = ['AMP Academy', 'Industries', 'Contact']
 
 // Social links — replace the placeholder URLs with the real AMP profiles.
 const SOCIALS = [

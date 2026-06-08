@@ -6,11 +6,11 @@ import { Award } from '../components/Awards'
 import { ABOUT_STORY } from '../data/site'
 import { cn } from '../lib/util'
 
-/** AMP's awards — one laurel per level/colour. Adjust the counts as needed. */
+/** AMP's awards — one laurel per level. Adjust counts/levels as needed. */
 const AWARDS = [
-  { title: '7×', subtitle: 'MUSE Creative Awards', level: 'platinum' as const },
-  { title: '5×', subtitle: 'MUSE Creative Awards', level: 'gold' as const },
-  { title: '1×', subtitle: 'MUSE Creative Awards', level: 'silver' as const },
+  { title: '7+', subtitle: 'MUSE Creative Awards', level: 'platinum' as const },
+  { title: '5+', subtitle: 'MUSE Creative Awards', level: 'gold' as const },
+  { title: '1+', subtitle: 'MUSE Creative Awards', level: 'silver' as const },
   { title: 'Top 10', subtitle: 'NYX Awards, Worldwide', level: 'gold' as const },
 ]
 

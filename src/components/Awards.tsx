@@ -20,7 +20,7 @@ function LaurelWreath() {
   return (
     <svg
       aria-hidden
-      className="absolute top-1/2 h-full w-full -translate-y-1/2 fill-primary/90"
+      className="absolute inset-0 h-full w-full fill-[#4ADE80]"
       width="892.77"
       height="688.08"
       viewBox="0 0 892.77 688.08"
@@ -34,24 +34,24 @@ function LaurelWreath() {
 /** An award badge (laurel wreath + level + title + subtitle), adapted to the AMP palette. */
 export function Award({ title, subtitle, recipient, date, level = 'gold', className }: AwardProps) {
   return (
-    <div className={cn('relative z-0 flex flex-col items-center justify-center overflow-hidden p-6', className)}>
+    <div className={cn('relative flex flex-col items-center justify-center px-16 py-12 text-center', className)}>
       <LaurelWreath />
-      <div className="z-10 px-8 text-center">
+      <div className="relative z-10">
         <div
           className={cn(
-            'mb-3 inline-block rounded-md px-4 py-1 font-body text-[11px] font-medium uppercase tracking-[0.18em] text-base',
+            'mb-2 inline-block rounded px-2.5 py-0.5 font-body text-[9px] font-semibold uppercase tracking-[0.14em] text-base',
             `bg-gradient-to-r ${levelColors[level]}`,
           )}
         >
           {level}
         </div>
-        <h3 className="font-display text-4xl leading-none tracking-tighter text-primary">{title}</h3>
-        <div className="mx-auto my-3 h-px w-32 bg-amp"></div>
-        <p className="mx-auto max-w-[16rem] font-body text-lg font-light leading-snug text-primary/90">
+        <div className="font-display text-[2.4rem] leading-none tracking-tighter text-primary">{title}</div>
+        <div className="mx-auto my-2 h-px w-12 bg-amp"></div>
+        <p className="mx-auto max-w-[7.5rem] font-body text-[12px] font-light leading-tight text-primary/90">
           {subtitle}
         </p>
-        {recipient && <p className="mt-2 font-body text-sm italic text-secondary">{recipient}</p>}
-        {date && <div className="mt-1 font-body text-sm font-semibold text-amp">{date}</div>}
+        {recipient && <p className="mt-1.5 font-body text-xs italic text-secondary">{recipient}</p>}
+        {date && <div className="mt-1 font-body text-xs font-semibold text-amp">{date}</div>}
       </div>
     </div>
   )

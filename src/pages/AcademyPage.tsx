@@ -88,7 +88,7 @@ export function AcademyPage() {
                 style={{ textShadow: '0 1px 16px rgba(0,0,0,0.85)' }}
               >
                 An exclusive program where filmmakers, 3D artists, and AI creators learn how world-class cinematic
-                industrial content is actually produced, directly from real AMP productions.
+                industrial content is actually produced, directly from AMP instructors.
               </p>
             </Reveal>
             <Reveal delay={0.16}>
