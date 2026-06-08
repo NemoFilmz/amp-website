@@ -10,7 +10,8 @@ const INFO = [
   {
     icon: MapPin,
     label: 'Studio',
-    lines: ['Abu Dhabi, United Arab Emirates', 'Dubai · Riyadh · Barcelona'],
+    lines: ['Yas Creative Hub, Podium 3', 'Abu Dhabi, United Arab Emirates'],
+    href: 'https://www.google.com/maps/search/?api=1&query=Yas+Creative+Hub+Podium+3+Abu+Dhabi',
   },
   {
     icon: Phone,
@@ -26,41 +27,56 @@ const INFO = [
   },
 ]
 
-/** A faint, AMP-styled "map" texture with a location pin, sitting on the right. */
-function MapTexture() {
+const MAP_QUERY = 'Yas Creative Hub, Podium 3, Abu Dhabi'
+const MAP_EMBED = `https://maps.google.com/maps?q=${encodeURIComponent(MAP_QUERY)}&z=15&output=embed`
+const MAP_LINK = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(MAP_QUERY)}`
+
+/** Real map of the studio (Yas Creative Hub, Podium 3), dark-styled and AMP-tinted. */
+function LocationMap() {
   return (
     <div
-      aria-hidden
-      className="pointer-events-none absolute inset-y-0 right-0 hidden w-[58%] md:block"
+      className="absolute inset-y-0 right-0 hidden w-[55%] overflow-hidden md:block"
       style={{
-        WebkitMaskImage: 'linear-gradient(to right, transparent 0%, #000 38%, #000 100%)',
-        maskImage: 'linear-gradient(to right, transparent 0%, #000 38%, #000 100%)',
+        WebkitMaskImage: 'linear-gradient(to right, transparent 0%, #000 42%, #000 100%)',
+        maskImage: 'linear-gradient(to right, transparent 0%, #000 42%, #000 100%)',
       }}
     >
-      <svg className="h-full w-full" viewBox="0 0 600 600" preserveAspectRatio="xMidYMid slice">
-        <defs>
-          <pattern id="grid" width="46" height="46" patternUnits="userSpaceOnUse">
-            <path d="M46 0H0V46" fill="none" stroke="#383b42" strokeWidth="1" opacity="0.5" />
-          </pattern>
-        </defs>
-        <rect width="600" height="600" fill="url(#grid)" />
-        {/* a few "roads" for a map feel */}
-        <path d="M-20 140 L640 360" stroke="#494d55" strokeWidth="2" opacity="0.55" />
-        <path d="M120 -20 L380 640" stroke="#494d55" strokeWidth="2" opacity="0.45" />
-        <path d="M-20 460 L640 200" stroke="#383b42" strokeWidth="1.5" opacity="0.5" />
-        <circle cx="362" cy="300" r="120" fill="none" stroke="#383b42" strokeWidth="1" opacity="0.4" />
-      </svg>
-
-      {/* location pin */}
-      <span className="absolute left-[58%] top-1/2 flex -translate-x-1/2 -translate-y-1/2 items-center justify-center">
-        <span className="absolute h-9 w-9 animate-ping rounded-full bg-amp/25 motion-reduce:animate-none" />
-        <span className="relative flex h-9 w-9 items-center justify-center rounded-full bg-amp text-base shadow-amp">
-          <MapPin size={18} aria-hidden />
+      {/* Real map, filtered to a dark theme that blends with the AMP palette */}
+      <iframe
+        title="AMP studio location — Yas Creative Hub, Podium 3, Abu Dhabi"
+        src={MAP_EMBED}
+        loading="lazy"
+        referrerPolicy="no-referrer-when-downgrade"
+        className="h-full w-full border-0"
+        style={{ filter: 'invert(0.92) hue-rotate(185deg) brightness(0.92) contrast(0.9) saturate(0.65)' }}
+      />
+      {/* obsidian + amber wash so the map reads on-brand */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-0"
+        style={{
+          background:
+            'radial-gradient(120% 90% at 60% 50%, rgba(249,192,12,0.06), transparent 55%), linear-gradient(to right, rgba(32,33,36,0.55), rgba(32,33,36,0.12) 45%, transparent)',
+        }}
+      />
+      {/* amber pin marking the exact spot (map is centred on it) */}
+      <a
+        href={MAP_LINK}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="group absolute left-1/2 top-1/2 z-10 flex -translate-x-1/2 -translate-y-1/2 flex-col items-center"
+        aria-label="Open AMP studio location in Google Maps"
+      >
+        <span className="relative flex items-center justify-center">
+          <span className="absolute h-9 w-9 animate-ping rounded-full bg-amp/25 motion-reduce:animate-none" />
+          <span className="relative flex h-9 w-9 items-center justify-center rounded-full bg-amp text-base shadow-amp transition-transform duration-300 group-hover:-translate-y-0.5">
+            <MapPin size={18} aria-hidden />
+          </span>
         </span>
-      </span>
-      <span className="absolute left-[58%] top-[calc(50%+30px)] -translate-x-1/2 font-body text-[11px] font-medium uppercase tracking-label text-secondary">
-        Abu Dhabi
-      </span>
+        <span className="mt-2 whitespace-nowrap rounded-full bg-base/80 px-2.5 py-1 font-body text-[11px] font-medium uppercase tracking-label text-primary backdrop-blur">
+          Yas Creative Hub · Podium 3
+        </span>
+      </a>
     </div>
   )
 }
@@ -78,22 +94,11 @@ export function ContactPage() {
     <main>
       {/* ---- Contacts header + info, over the map texture ---- */}
       <Section container={false} className="relative overflow-hidden pt-40 pb-20 md:pt-44 md:pb-28">
-        <MapTexture />
+        <LocationMap />
         <Container className="relative z-10">
-          <div className="flex items-baseline justify-between gap-6">
-            <Reveal>
-              <span className="eyebrow">How to contact us</span>
-            </Reveal>
-            <Reveal>
-              <span className="hidden font-body text-sm uppercase tracking-label text-muted sm:block">
-                24.45°N 54.37°E
-              </span>
-            </Reveal>
-          </div>
-
           {/* Heading block: amber accent bar + big title */}
-          <Reveal delay={0.05}>
-            <div className="mt-5 flex items-stretch gap-5 md:gap-7">
+          <Reveal>
+            <div className="flex items-stretch gap-5 md:gap-7">
               <span aria-hidden className="w-1 shrink-0 rounded-full bg-amp" />
               <h1 className="font-display text-[clamp(2.5rem,7vw,6rem)] leading-[0.95] tracking-tighter text-primary">
                 Contact
@@ -140,23 +145,20 @@ export function ContactPage() {
               </Reveal>
             ))}
           </div>
-        </Container>
-      </Section>
 
-      {/* ---- Get in touch: large name input + Next ---- */}
-      <Section divider className="py-20 md:py-28">
-        <Reveal>
-          <div className="flex items-center gap-4">
-            <span aria-hidden className="h-4 w-1 rounded-full bg-amp" />
-            <span className="eyebrow">Get in touch</span>
-          </div>
-        </Reveal>
+          {/* Get in touch: large name input + Next (same section, one screen) */}
+          <Reveal delay={0.24}>
+            <div className="mt-16 flex items-center gap-4 md:mt-24">
+              <span aria-hidden className="h-4 w-1 rounded-full bg-amp" />
+              <span className="eyebrow">Get in touch</span>
+            </div>
+          </Reveal>
 
-        <Reveal delay={0.06}>
-          <form
-            onSubmit={handleSubmit}
-            className="mt-8 flex flex-col gap-6 border-b border-line pb-6 sm:flex-row sm:items-center sm:gap-8"
-          >
+          <Reveal delay={0.28}>
+            <form
+              onSubmit={handleSubmit}
+              className="mt-8 flex flex-col gap-6 border-b border-line pb-6 sm:flex-row sm:items-center sm:gap-8"
+            >
             <input
               type="text"
               value={name}
@@ -173,22 +175,23 @@ export function ContactPage() {
               <span className="flex h-12 w-12 items-center justify-center rounded-full bg-amp text-base transition-shadow duration-300 group-hover:shadow-amp">
                 <ArrowRight size={18} aria-hidden />
               </span>
-            </button>
-          </form>
-        </Reveal>
+              </button>
+            </form>
+          </Reveal>
 
-        <Reveal delay={0.1}>
-          <p className="mt-6 font-body text-sm text-muted">
-            Or write to us directly at{' '}
-            <a
-              href={`mailto:${EMAIL}`}
-              className="text-secondary underline-offset-4 transition-colors hover:text-amp"
-            >
-              {EMAIL}
-            </a>
-            .
-          </p>
-        </Reveal>
+          <Reveal delay={0.32}>
+            <p className="mt-6 font-body text-sm text-muted">
+              Or write to us directly at{' '}
+              <a
+                href={`mailto:${EMAIL}`}
+                className="text-secondary underline-offset-4 transition-colors hover:text-amp"
+              >
+                {EMAIL}
+              </a>
+              .
+            </p>
+          </Reveal>
+        </Container>
       </Section>
     </main>
   )
