@@ -260,21 +260,25 @@ export function AcademyPage() {
               </h2>
               <p className="mt-6 max-w-md font-body text-lg leading-relaxed text-primary/90">
                 The same craft <span className="text-amp">AMP</span> brings to real productions, applied to
-                anything from AI and neural systems to aerospace and precision engineering. You leave able
-                to turn the most complex subject into work that is clear, accurate, and cinematic.
+                fields few in the market can touch: AI and neural systems, aerospace, precision engineering.
+                You leave able to turn the most complex subject into work that is accurate and cinematic.
               </p>
               <ul className="mt-9 space-y-4">
-                <li className="flex items-center gap-3.5">
-                  <span aria-hidden className="h-1.5 w-1.5 shrink-0 rounded-full bg-amp" />
-                  <span className="font-body text-lg text-primary/90">AI &amp; neural systems</span>
+                <li className="flex items-start gap-3.5">
+                  <span aria-hidden className="mt-2.5 h-1.5 w-1.5 shrink-0 rounded-full bg-amp" />
+                  <span className="font-body text-lg text-primary/90">Skills that command premium rates</span>
                 </li>
-                <li className="flex items-center gap-3.5">
-                  <span aria-hidden className="h-1.5 w-1.5 shrink-0 rounded-full bg-amp" />
-                  <span className="font-body text-lg text-primary/90">Aerospace &amp; satellites</span>
+                <li className="flex items-start gap-3.5">
+                  <span aria-hidden className="mt-2.5 h-1.5 w-1.5 shrink-0 rounded-full bg-amp" />
+                  <span className="font-body text-lg text-primary/90">
+                    The kind of work that puts you in senior industry roles
+                  </span>
                 </li>
-                <li className="flex items-center gap-3.5">
-                  <span aria-hidden className="h-1.5 w-1.5 shrink-0 rounded-full bg-amp" />
-                  <span className="font-body text-lg text-primary/90">Precision engineering</span>
+                <li className="flex items-start gap-3.5">
+                  <span aria-hidden className="mt-2.5 h-1.5 w-1.5 shrink-0 rounded-full bg-amp" />
+                  <span className="font-body text-lg text-primary/90">
+                    A capability almost no one else in the market has
+                  </span>
                 </li>
               </ul>
               <div className="mt-9">
