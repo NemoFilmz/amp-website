@@ -1,302 +1,195 @@
 import { useState, type FormEvent } from 'react'
-import { Link } from 'react-router-dom'
-import { Check, ArrowUpRight, Send, ArrowRight } from 'lucide-react'
-import { Section, Eyebrow, CTAButton, Magnetic } from '../components/ui'
-import { Reveal, RevealGroup, RevealItem } from '../components/Reveal'
-import { OFFICES, GENERAL_EMAILS, SERVICES } from '../data/site'
+import { MapPin, Phone, Mail, ArrowRight } from 'lucide-react'
+import { Section, Container } from '../components/ui'
+import { Reveal } from '../components/Reveal'
 
-const PROJECTS_EMAIL = 'ayman@actionmpro.com'
+const EMAIL = 'ayman@actionmpro.com'
 
-const fieldClass =
-  'w-full bg-surface border border-line rounded-md py-3.5 px-5 text-primary placeholder:text-muted focus:border-amp focus:outline-none transition-colors font-body'
+/** Contact info columns (Address / Phone / E-mail), matching the reference layout. */
+const INFO = [
+  {
+    icon: MapPin,
+    label: 'Studio',
+    lines: ['Abu Dhabi, United Arab Emirates', 'Dubai · Riyadh · Barcelona'],
+  },
+  {
+    icon: Phone,
+    label: 'Phone',
+    lines: ['+971 50 322 2003'],
+    href: 'tel:+971503222003',
+  },
+  {
+    icon: Mail,
+    label: 'E-mail',
+    lines: [EMAIL],
+    href: `mailto:${EMAIL}`,
+  },
+]
 
-const labelClass = 'mb-2 block font-body text-[12px] font-medium uppercase tracking-label text-secondary'
+/** A faint, AMP-styled "map" texture with a location pin, sitting on the right. */
+function MapTexture() {
+  return (
+    <div
+      aria-hidden
+      className="pointer-events-none absolute inset-y-0 right-0 hidden w-[58%] md:block"
+      style={{
+        WebkitMaskImage: 'linear-gradient(to right, transparent 0%, #000 38%, #000 100%)',
+        maskImage: 'linear-gradient(to right, transparent 0%, #000 38%, #000 100%)',
+      }}
+    >
+      <svg className="h-full w-full" viewBox="0 0 600 600" preserveAspectRatio="xMidYMid slice">
+        <defs>
+          <pattern id="grid" width="46" height="46" patternUnits="userSpaceOnUse">
+            <path d="M46 0H0V46" fill="none" stroke="#383b42" strokeWidth="1" opacity="0.5" />
+          </pattern>
+        </defs>
+        <rect width="600" height="600" fill="url(#grid)" />
+        {/* a few "roads" for a map feel */}
+        <path d="M-20 140 L640 360" stroke="#494d55" strokeWidth="2" opacity="0.55" />
+        <path d="M120 -20 L380 640" stroke="#494d55" strokeWidth="2" opacity="0.45" />
+        <path d="M-20 460 L640 200" stroke="#383b42" strokeWidth="1.5" opacity="0.5" />
+        <circle cx="362" cy="300" r="120" fill="none" stroke="#383b42" strokeWidth="1" opacity="0.4" />
+      </svg>
+
+      {/* location pin */}
+      <span className="absolute left-[58%] top-1/2 flex -translate-x-1/2 -translate-y-1/2 items-center justify-center">
+        <span className="absolute h-9 w-9 animate-ping rounded-full bg-amp/25 motion-reduce:animate-none" />
+        <span className="relative flex h-9 w-9 items-center justify-center rounded-full bg-amp text-base shadow-amp">
+          <MapPin size={18} aria-hidden />
+        </span>
+      </span>
+      <span className="absolute left-[58%] top-[calc(50%+30px)] -translate-x-1/2 font-body text-[11px] font-medium uppercase tracking-label text-secondary">
+        Abu Dhabi
+      </span>
+    </div>
+  )
+}
 
 export function ContactPage() {
   const [name, setName] = useState('')
-  const [email, setEmail] = useState('')
-  const [organization, setOrganization] = useState('')
-  const [projectType, setProjectType] = useState('')
-  const [message, setMessage] = useState('')
-  const [submitted, setSubmitted] = useState(false)
 
-  function handleSubmit(e: FormEvent<HTMLFormElement>) {
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
-    // No backend yet: hand the inquiry to the user's mail client so the lead is never lost.
-    const subject = encodeURIComponent(`Project inquiry${name ? ` from ${name}` : ''}`)
-    const body = encodeURIComponent(
-      `Name: ${name}\nEmail: ${email}\nOrganization: ${organization}\nProject type: ${projectType}\n\n${message}`,
-    )
-    window.location.href = `mailto:${PROJECTS_EMAIL}?subject=${subject}&body=${body}`
-    setSubmitted(true)
+    const subject = encodeURIComponent(name ? `New enquiry from ${name}` : 'New enquiry')
+    window.location.href = `mailto:${EMAIL}?subject=${subject}`
   }
 
   return (
-    <>
-      {/* ---- Contact body: form + regional rail ---- */}
-      <Section className="pt-40 pb-24 md:pt-48 md:pb-32">
-        <div className="grid gap-12 lg:grid-cols-12">
-          {/* LEFT: inquiry form */}
-          <div className="lg:col-span-7">
+    <main>
+      {/* ---- Contacts header + info, over the map texture ---- */}
+      <Section container={false} className="relative overflow-hidden pt-40 pb-20 md:pt-44 md:pb-28">
+        <MapTexture />
+        <Container className="relative z-10">
+          <div className="flex items-baseline justify-between gap-6">
             <Reveal>
-              <Eyebrow index={1} total={2}>
-                Start a Conversation
-              </Eyebrow>
-              <h2 className="mt-4 max-w-xl font-display text-[clamp(1.9rem,4vw,3rem)] leading-[0.98] tracking-tighter text-primary">
-                Brief Our Team
-              </h2>
-              <p className="mt-5 max-w-xl font-body leading-relaxed text-secondary">
-                Tell us about the initiative, project, or technology you need to
-                communicate. Our producers will review the scope and respond with
-                next steps.
-              </p>
+              <span className="eyebrow">How to contact us</span>
             </Reveal>
-
-            <Reveal delay={0.08}>
-              {submitted ? (
-                <div className="mt-9 rounded-lg border border-line bg-surface p-10 text-center">
-                  <span
-                    aria-hidden
-                    className="mx-auto mb-6 flex h-14 w-14 items-center justify-center rounded-full border border-amp/40 bg-amp/10"
-                  >
-                    <Check className="text-amp" size={26} />
-                  </span>
-                  <h3 className="font-display text-[clamp(1.6rem,3vw,2.2rem)] leading-[1.02] tracking-tighter text-primary">
-                    Almost there
-                  </h3>
-                  <p className="mx-auto mt-4 max-w-md font-body leading-relaxed text-secondary">
-                    We have opened a draft email so you can review your message and send it to our
-                    team. If nothing opened, write to{' '}
-                    <a
-                      href={`mailto:${PROJECTS_EMAIL}`}
-                      className="text-amp underline-offset-4 hover:underline"
-                    >
-                      {PROJECTS_EMAIL}
-                    </a>
-                    .
-                  </p>
-                  <button
-                    type="button"
-                    onClick={() => setSubmitted(false)}
-                    className="mt-7 font-body text-[12px] font-medium uppercase tracking-label text-secondary underline-offset-4 transition-colors hover:text-amp"
-                  >
-                    Edit or send another
-                  </button>
-                </div>
-              ) : (
-                <>
-                  <form
-                    onSubmit={handleSubmit}
-                    className="mt-9 grid grid-cols-1 gap-5 md:grid-cols-2"
-                  >
-                    <div>
-                      <label htmlFor="contact-name" className={labelClass}>
-                        Name
-                      </label>
-                      <input
-                        id="contact-name"
-                        type="text"
-                        autoComplete="name"
-                        placeholder="Jane Doe"
-                        value={name}
-                        onChange={(e) => setName(e.target.value)}
-                        className={fieldClass}
-                      />
-                    </div>
-
-                    <div>
-                      <label htmlFor="contact-email" className={labelClass}>
-                        Email <span className="text-amp">*</span>
-                      </label>
-                      <input
-                        id="contact-email"
-                        type="email"
-                        required
-                        autoComplete="email"
-                        placeholder="jane@organization.com"
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                        className={fieldClass}
-                      />
-                    </div>
-
-                    <div>
-                      <label htmlFor="contact-organization" className={labelClass}>
-                        Organization
-                      </label>
-                      <input
-                        id="contact-organization"
-                        type="text"
-                        autoComplete="organization"
-                        placeholder="Ministry, company, or entity"
-                        value={organization}
-                        onChange={(e) => setOrganization(e.target.value)}
-                        className={fieldClass}
-                      />
-                    </div>
-
-                    <div>
-                      <label htmlFor="contact-project-type" className={labelClass}>
-                        Project type
-                      </label>
-                      <select
-                        id="contact-project-type"
-                        value={projectType}
-                        onChange={(e) => setProjectType(e.target.value)}
-                        className={fieldClass}
-                      >
-                        <option value="" disabled>
-                          Select a project type
-                        </option>
-                        {SERVICES.map((service) => (
-                          <option key={service.name} value={service.name}>
-                            {service.name}
-                          </option>
-                        ))}
-                      </select>
-                    </div>
-
-                    <div className="md:col-span-2">
-                      <label htmlFor="contact-message" className={labelClass}>
-                        Message <span className="text-amp">*</span>
-                      </label>
-                      <textarea
-                        id="contact-message"
-                        rows={5}
-                        required
-                        placeholder="Tell us about the initiative, project, or technology you need to communicate."
-                        value={message}
-                        onChange={(e) => setMessage(e.target.value)}
-                        className={fieldClass}
-                      />
-                    </div>
-
-                    <div className="md:col-span-2">
-                      <button
-                        type="submit"
-                        className="group inline-flex items-center justify-center gap-2.5 rounded-full bg-amp px-7 py-3.5 text-[14px] font-medium uppercase tracking-[0.08em] text-base transition hover:shadow-amp active:scale-[0.98]"
-                      >
-                        <span>Send Inquiry</span>
-                        <Send
-                          size={15}
-                          aria-hidden
-                          className="transition-transform duration-300 group-hover:translate-x-0.5"
-                        />
-                      </button>
-                    </div>
-                  </form>
-
-                  <p className="mt-6 font-body text-sm text-muted">
-                    Or write to us at{' '}
-                    <a
-                      href={`mailto:${PROJECTS_EMAIL}`}
-                      className="text-secondary underline-offset-4 transition-colors hover:text-amp"
-                    >
-                      {PROJECTS_EMAIL}
-                    </a>
-                    .
-                  </p>
-                </>
-              )}
+            <Reveal>
+              <span className="hidden font-body text-sm uppercase tracking-label text-muted sm:block">
+                24.45°N 54.37°E
+              </span>
             </Reveal>
           </div>
 
-          {/* RIGHT: regional offices rail */}
-          <div className="lg:col-span-5">
-            <Reveal delay={0.06}>
-              <Eyebrow index={2} total={2}>
-                Regional Studios
-              </Eyebrow>
-              <p className="mt-4 max-w-sm font-light text-lg leading-relaxed text-secondary">
-                We communicate at the highest executive and international levels.
-              </p>
-            </Reveal>
+          {/* Heading block: amber accent bar + big title */}
+          <Reveal delay={0.05}>
+            <div className="mt-5 flex items-stretch gap-5 md:gap-7">
+              <span aria-hidden className="w-1 shrink-0 rounded-full bg-amp" />
+              <h1 className="font-display text-[clamp(2.5rem,7vw,6rem)] leading-[0.95] tracking-tighter text-primary">
+                Contact
+              </h1>
+            </div>
+          </Reveal>
 
-            <RevealGroup className="mt-8 grid grid-cols-1 gap-4">
-              {OFFICES.map((office) => (
-                <RevealItem key={office.email}>
-                  <div className="group rounded-lg border border-line bg-surface p-6 transition-colors duration-300 hover:border-line-strong">
-                    <div className="flex items-baseline justify-between gap-4">
-                      <h3 className="font-display text-2xl tracking-tighter text-primary">
-                        {office.city}
-                      </h3>
-                      <span className="text-muted">{office.country}</span>
-                    </div>
-
-                    <p className="mt-4 text-sm leading-relaxed text-secondary">
-                      {office.role}
-                    </p>
-
-                    <a
-                      href={`mailto:${office.email}`}
-                      className="mt-5 inline-flex items-center gap-1.5 text-amp underline-offset-4 transition-colors hover:underline"
-                    >
-                      {office.email}
-                      <ArrowUpRight
-                        size={15}
-                        aria-hidden
-                        className="transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
-                      />
-                    </a>
+          {/* 3-column contact info */}
+          <div className="mt-16 grid max-w-3xl grid-cols-1 gap-10 sm:grid-cols-3 md:mt-20">
+            {INFO.map(({ icon: Icon, label, lines, href }, i) => (
+              <Reveal key={label} delay={0.08 + i * 0.05}>
+                <div>
+                  <div className="flex items-center gap-2.5 text-amp">
+                    <Icon size={16} aria-hidden />
+                    <span className="font-body text-[12px] font-medium uppercase tracking-label text-secondary">
+                      {label}
+                    </span>
                   </div>
-                </RevealItem>
-              ))}
-            </RevealGroup>
-
-            <Reveal delay={0.1}>
-              <div className="mt-8 border-t border-line pt-7">
-                <span className="eyebrow">General</span>
-                <ul className="mt-4 grid grid-cols-1 gap-2.5 sm:grid-cols-2 lg:grid-cols-1">
-                  {GENERAL_EMAILS.map((address) => (
-                    <li key={address}>
-                      <a
-                        href={`mailto:${address}`}
-                        className="inline-flex items-center gap-1.5 font-body text-sm text-secondary underline-offset-4 transition-colors hover:text-amp"
-                      >
-                        {address}
-                        <ArrowUpRight size={13} aria-hidden />
-                      </a>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </Reveal>
+                  <div className="mt-4 space-y-1">
+                    {lines.map((line) =>
+                      href && line === lines[0] ? (
+                        <a
+                          key={line}
+                          href={href}
+                          className="block font-body text-primary underline-offset-4 transition-colors hover:text-amp"
+                        >
+                          {line}
+                        </a>
+                      ) : (
+                        <p
+                          key={line}
+                          className={
+                            line === lines[0]
+                              ? 'font-body text-primary'
+                              : 'font-body text-sm text-muted'
+                          }
+                        >
+                          {line}
+                        </p>
+                      ),
+                    )}
+                  </div>
+                </div>
+              </Reveal>
+            ))}
           </div>
-        </div>
+        </Container>
       </Section>
 
-      {/* ---- Closing CTA band ---- */}
-      <Section divider className="py-24 md:py-32">
+      {/* ---- Get in touch: large name input + Next ---- */}
+      <Section divider className="py-20 md:py-28">
         <Reveal>
-          <div className="mx-auto max-w-3xl text-center">
-            <Eyebrow className="justify-center">Consultation</Eyebrow>
-            <p className="mx-auto mt-5 max-w-2xl font-body text-lg leading-relaxed text-secondary">
-              From national initiatives to billion-dollar projects, our team is
-              ready to bring your vision to the people who decide.
-            </p>
-            <div className="mt-9 flex flex-wrap justify-center gap-3">
-              <Magnetic>
-                <CTAButton to="/contact" icon={<ArrowRight size={16} />}>
-                  Book a Consultation
-                </CTAButton>
-              </Magnetic>
-              <CTAButton variant="outline" href={`mailto:${PROJECTS_EMAIL}`}>
-                Email Our Team
-              </CTAButton>
-            </div>
-            <p className="mt-8 font-body text-sm text-muted">
-              Prefer to explore first? Visit our{' '}
-              <Link
-                to="/work"
-                className="text-secondary underline-offset-4 transition-colors hover:text-amp"
-              >
-                selected work
-              </Link>
-              .
-            </p>
+          <div className="flex items-center gap-4">
+            <span aria-hidden className="h-4 w-1 rounded-full bg-amp" />
+            <span className="eyebrow">Get in touch</span>
           </div>
         </Reveal>
+
+        <Reveal delay={0.06}>
+          <form
+            onSubmit={handleSubmit}
+            className="mt-8 flex flex-col gap-6 border-b border-line pb-6 sm:flex-row sm:items-center sm:gap-8"
+          >
+            <input
+              type="text"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              placeholder="Enter your name"
+              aria-label="Your name"
+              className="w-full flex-1 bg-transparent font-display text-[clamp(1.6rem,4vw,2.8rem)] leading-none tracking-tighter text-primary placeholder:text-muted focus:outline-none"
+            />
+            <button
+              type="submit"
+              className="group inline-flex shrink-0 items-center gap-3 font-body text-sm font-medium uppercase tracking-label text-base"
+            >
+              <span className="text-primary transition-colors group-hover:text-amp">Next</span>
+              <span className="flex h-12 w-12 items-center justify-center rounded-full bg-amp text-base transition-shadow duration-300 group-hover:shadow-amp">
+                <ArrowRight size={18} aria-hidden />
+              </span>
+            </button>
+          </form>
+        </Reveal>
+
+        <Reveal delay={0.1}>
+          <p className="mt-6 font-body text-sm text-muted">
+            Or write to us directly at{' '}
+            <a
+              href={`mailto:${EMAIL}`}
+              className="text-secondary underline-offset-4 transition-colors hover:text-amp"
+            >
+              {EMAIL}
+            </a>
+            .
+          </p>
+        </Reveal>
       </Section>
-    </>
+    </main>
   )
 }
