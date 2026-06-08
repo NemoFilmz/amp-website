@@ -165,7 +165,7 @@ export function ContactPage() {
               onChange={(e) => setName(e.target.value)}
               placeholder="Enter your name"
               aria-label="Your name"
-              className="w-full flex-1 bg-transparent font-display text-[clamp(1.6rem,4vw,2.8rem)] leading-none tracking-tighter text-primary placeholder:text-muted focus:outline-none"
+              className="w-full flex-1 bg-transparent font-body text-[clamp(1.5rem,3.6vw,2.4rem)] font-light leading-tight tracking-tight text-primary placeholder:text-muted focus:outline-none"
             />
             <button
               type="submit"
