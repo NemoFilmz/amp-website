@@ -24,14 +24,18 @@ export function Section({
   className?: string
   /** Wrap children in the centered max-width container. */
   container?: boolean
-  /** Render a hairline divider at the top of the section. */
+  /** Softly separate this section from the one above with a seamless tonal
+   *  fade (no hard grey line). */
   divider?: boolean
 }) {
   return (
-    <section
-      id={id}
-      className={cn('relative scroll-mt-24', divider && 'border-t border-line', className)}
-    >
+    <section id={id} className={cn('relative scroll-mt-24', className)}>
+      {divider && (
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-x-0 top-0 z-0 h-40 bg-gradient-to-b from-white/[0.022] to-transparent"
+        />
+      )}
       {container ? <Container>{children}</Container> : children}
     </section>
   )
