@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { FaInstagram, FaLinkedinIn, FaYoutube, FaBehance } from 'react-icons/fa'
+import { FaInstagram, FaLinkedinIn, FaYoutube, FaVimeoV } from 'react-icons/fa'
 import { BRAND, FOOTER } from '../data/site'
 import { Container } from './ui'
 import { cn } from '../lib/util'
@@ -24,7 +24,7 @@ const SOCIALS = [
   { Icon: FaInstagram, label: 'Instagram', href: '#' },
   { Icon: FaLinkedinIn, label: 'LinkedIn', href: '#' },
   { Icon: FaYoutube, label: 'YouTube', href: '#' },
-  { Icon: FaBehance, label: 'Behance', href: '#' },
+  { Icon: FaVimeoV, label: 'Vimeo', href: '#' },
 ]
 
 const linkClass =
