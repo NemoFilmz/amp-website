@@ -112,24 +112,26 @@ export function AcademyPage() {
       {/* ---------------------------------------------------------------- */}
       <section className="flex min-h-screen items-center bg-base pb-16 pt-[120px] md:pb-20">
         <Container>
-          <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
-            <div>
-              <Reveal>
-                <h1 className="font-display text-[clamp(2.4rem,5.2vw,4.8rem)] leading-[0.95] tracking-tighter text-primary">
-                  Welcome to{' '}
-                  <span className="whitespace-nowrap">
-                    <span className="text-amp">AMP</span> Academy
-                  </span>
-                </h1>
-              </Reveal>
-              <Reveal delay={0.08}>
-                <p className="mt-6 max-w-lg font-body text-lg leading-relaxed text-secondary">
-                  An exclusive program where filmmakers, 3D artists, and AI creators learn how world-class
-                  cinematic industrial content is actually produced, directly from AMP instructors.
-                </p>
-              </Reveal>
+          <div className="grid gap-12 lg:grid-cols-2 lg:items-stretch lg:gap-16">
+            <div className="flex flex-col lg:h-full lg:justify-between">
+              <div>
+                <Reveal>
+                  <h1 className="font-display text-[clamp(2.4rem,5.2vw,4.8rem)] leading-[0.95] tracking-tighter text-primary">
+                    Welcome to{' '}
+                    <span className="whitespace-nowrap">
+                      <span className="text-amp">AMP</span> Academy
+                    </span>
+                  </h1>
+                </Reveal>
+                <Reveal delay={0.08}>
+                  <p className="mt-6 max-w-lg font-body text-lg leading-relaxed text-secondary">
+                    An exclusive program where filmmakers, 3D artists, and AI creators learn how world-class
+                    cinematic industrial content is actually produced, directly from AMP instructors.
+                  </p>
+                </Reveal>
+              </div>
               <Reveal delay={0.16}>
-                <div className="mt-9">
+                <div className="mt-9 lg:mt-0">
                   <button type="button" onClick={reserve} className={CTA_CLASS}>
                     Reserve your seat
                     <ArrowRight size={16} aria-hidden />
