@@ -101,7 +101,7 @@ export function ContactPage() {
             <h1 className="font-display text-[clamp(2rem,4.5vw,3.4rem)] leading-[0.98] tracking-tighter text-primary">
               Get in <span className="text-amp">touch</span> with us
             </h1>
-            <p className="mt-5 max-w-md font-body leading-relaxed text-secondary">
+            <p className="mt-6 max-w-md font-body leading-relaxed text-secondary">
               Have a project in mind, or a question about working with AMP? Send us a message and we will
               get back to you.
             </p>
@@ -139,7 +139,7 @@ export function ContactPage() {
             </div>
 
             {/* Send a message */}
-            <h2 className="mt-12 font-display text-xl tracking-tighter text-primary md:text-2xl">
+            <h2 className="mt-10 font-display text-xl tracking-tighter text-primary md:text-2xl">
               Send a message
             </h2>
             <form onSubmit={handleSubmit} className="mt-6 grid gap-4">
@@ -172,7 +172,7 @@ export function ContactPage() {
                 onChange={(e) => setForm({ ...form, message: e.target.value })}
                 className={`${field} resize-none`}
               />
-              <div className="pt-1">
+              <div>
                 <button
                   type="submit"
                   className="inline-flex items-center gap-2.5 rounded-full bg-amp px-9 py-3.5 font-body text-[14px] font-semibold uppercase tracking-[0.12em] text-base transition-shadow duration-300 hover:shadow-amp"
