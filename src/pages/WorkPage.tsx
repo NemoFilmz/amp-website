@@ -85,42 +85,41 @@ export function WorkPage() {
           </div>
         </Reveal>
 
-        {/* Project grid */}
-        <RevealGroup
-          key={active}
-          className="mt-10 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3"
-        >
+        {/* Project grid — plain (no scroll-reveal gating, which fails on a
+            very tall grid where the in-view threshold can never be met). */}
+        <div className="mt-10 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {visible.map((p, i) => (
-            <RevealItem key={`${p.image}-${i}`}>
-              <div className="group relative block aspect-[3/2] overflow-hidden rounded-2xl border border-line">
-                <img
-                  src={p.image}
-                  alt={p.title}
-                  loading="lazy"
-                  className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.04]"
-                />
-                <div
-                  aria-hidden
-                  className="absolute inset-0"
-                  style={{
-                    background:
-                      'linear-gradient(to top, rgba(32,33,36,0.92) 0%, rgba(32,33,36,0.25) 48%, rgba(32,33,36,0) 100%)',
-                  }}
-                />
-                {p.industries[0] && (
-                  <span className="absolute left-4 top-4 z-10 rounded-full border border-amp/70 bg-base/40 px-3 py-1 font-body text-[11px] uppercase tracking-label text-amp backdrop-blur-sm">
-                    {p.industries[0]}
-                  </span>
-                )}
-                <div className="absolute inset-x-0 bottom-0 z-10 p-5">
-                  <h3 className="font-display text-lg leading-tight tracking-tighter text-primary md:text-xl">
-                    {p.title}
-                  </h3>
-                </div>
+            <div
+              key={`${p.image}-${i}`}
+              className="group relative block aspect-[3/2] overflow-hidden rounded-2xl border border-line"
+            >
+              <img
+                src={p.image}
+                alt={p.title}
+                loading="lazy"
+                className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.04]"
+              />
+              <div
+                aria-hidden
+                className="absolute inset-0"
+                style={{
+                  background:
+                    'linear-gradient(to top, rgba(32,33,36,0.92) 0%, rgba(32,33,36,0.25) 48%, rgba(32,33,36,0) 100%)',
+                }}
+              />
+              {p.industries[0] && (
+                <span className="absolute left-4 top-4 z-10 rounded-full border border-amp/70 bg-base/40 px-3 py-1 font-body text-[11px] uppercase tracking-label text-amp backdrop-blur-sm">
+                  {p.industries[0]}
+                </span>
+              )}
+              <div className="absolute inset-x-0 bottom-0 z-10 p-5">
+                <h3 className="font-display text-lg leading-tight tracking-tighter text-primary md:text-xl">
+                  {p.title}
+                </h3>
               </div>
-            </RevealItem>
+            </div>
           ))}
-        </RevealGroup>
+        </div>
       </Section>
 
       {/* ---------------------------------------------------------------- */}
