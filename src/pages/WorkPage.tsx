@@ -10,12 +10,15 @@ import { cn, industrySlug } from '../lib/util'
 
 const ALL = 'All'
 
-/* Distinct project categories, ordered by how often they appear, with "All" first. */
-const TAG_COUNTS = PROJECTS.flatMap((p) => p.tags).reduce<Record<string, number>>((acc, t) => {
-  acc[t] = (acc[t] ?? 0) + 1
-  return acc
-}, {})
-const FILTERS: string[] = [ALL, ...Object.keys(TAG_COUNTS).sort((a, b) => TAG_COUNTS[b] - TAG_COUNTS[a])]
+/* Filter by industry, matching the home industry panels (and their deep-links). */
+const FILTERS: string[] = [
+  ALL,
+  'Government & Culture',
+  'Oil & Gas',
+  'Energy & Utilities',
+  'Aviation & Airlines',
+  'Heavy Industries',
+]
 
 export function WorkPage() {
   const [searchParams] = useSearchParams()
@@ -36,7 +39,7 @@ export function WorkPage() {
   }, [fromParam])
 
   const visible = useMemo(
-    () => (active === ALL ? PROJECTS : PROJECTS.filter((p) => p.tags.includes(active))),
+    () => (active === ALL ? PROJECTS : PROJECTS.filter((p) => p.industries.includes(active))),
     [active],
   )
 
@@ -104,9 +107,9 @@ export function WorkPage() {
                       'linear-gradient(to top, rgba(32,33,36,0.92) 0%, rgba(32,33,36,0.25) 48%, rgba(32,33,36,0) 100%)',
                   }}
                 />
-                {p.tags[0] && (
+                {p.industries[0] && (
                   <span className="absolute left-4 top-4 z-10 rounded-full border border-amp/70 bg-base/40 px-3 py-1 font-body text-[11px] uppercase tracking-label text-amp backdrop-blur-sm">
-                    {p.tags[0]}
+                    {p.industries[0]}
                   </span>
                 )}
                 <div className="absolute inset-x-0 bottom-0 z-10 p-5">
