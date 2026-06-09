@@ -14,7 +14,7 @@ export function Industries() {
   return (
     <section id="industries" className="relative scroll-mt-24">
       <div className="flex flex-col">
-        {INDUSTRIES.map((industry) => {
+        {INDUSTRIES.map((industry, i) => {
           const to = `/work?industry=${industrySlug(industry.name)}`
           return industry.video ? (
             <ScrollVideoPanel
@@ -24,6 +24,7 @@ export function Industries() {
               poster={industry.poster ?? industry.image}
               name={industry.name}
               blurb={industry.blurb}
+              first={i === 0}
             />
           ) : (
             <Link

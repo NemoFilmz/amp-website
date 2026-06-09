@@ -3,6 +3,7 @@ import { useReducedMotion } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import { Container } from './ui'
 import { Reveal } from './Reveal'
+import { cn } from '../lib/util'
 
 type ScrollVideoPanelProps = {
   src: string
@@ -11,10 +12,12 @@ type ScrollVideoPanelProps = {
   blurb: string
   /** Where the panel links to (the Work page, filtered to this industry). */
   to: string
+  /** First panel: blend up into the hero with a lighter top scrim. */
+  first?: boolean
 }
 
 /** Full-bleed name + blurb over a left fade and bottom scrim (matches the image panels). */
-function Overlay({ name, blurb }: { name: string; blurb: string }) {
+function Overlay({ name, blurb, first }: { name: string; blurb: string; first?: boolean }) {
   return (
     <>
       {/* Smooth left-side fade for text contrast; video stays visible through it. */}
@@ -26,10 +29,13 @@ function Overlay({ name, blurb }: { name: string; blurb: string }) {
             'linear-gradient(to right, rgba(32,33,36,0.72) 0%, rgba(32,33,36,0.42) 32%, transparent 66%)',
         }}
       />
-      {/* Top scrim */}
+      {/* Top scrim — lighter on the first panel so the video melts out of the hero */}
       <div
         aria-hidden
-        className="absolute inset-x-0 top-0 z-[1] h-2/3 bg-gradient-to-b from-base via-base/80 to-transparent"
+        className={cn(
+          'absolute inset-x-0 top-0 z-[1] bg-gradient-to-b to-transparent',
+          first ? 'h-1/2 from-base/85 via-base/25' : 'h-2/3 from-base via-base/80',
+        )}
       />
       {/* Bottom fade: blends the seam where stacked panels touch into base */}
       <div
@@ -60,7 +66,7 @@ function Overlay({ name, blurb }: { name: string; blurb: string }) {
  * Falls back to a static poster for reduced-motion and a muted autoplay loop on
  * touch devices (where scroll-scrubbing is unreliable).
  */
-export function ScrollVideoPanel({ src, poster, name, blurb, to }: ScrollVideoPanelProps) {
+export function ScrollVideoPanel({ src, poster, name, blurb, to, first }: ScrollVideoPanelProps) {
   const reduce = useReducedMotion()
   const [touch, setTouch] = useState(false)
   const boxRef = useRef<HTMLDivElement>(null)
@@ -122,13 +128,17 @@ export function ScrollVideoPanel({ src, poster, name, blurb, to }: ScrollVideoPa
   }, [scrub])
 
   const frame = (media: ReactNode) => (
-    <Link to={to} aria-label={`See our ${name} work`} className="group block">
+    <Link
+      to={to}
+      aria-label={`See our ${name} work`}
+      className={cn('group block', first && 'relative z-[1] -mt-[8vh]')}
+    >
       <div
         ref={boxRef}
         className="relative flex min-h-[58vh] items-start overflow-hidden md:min-h-[80vh]"
       >
         {media}
-        <Overlay name={name} blurb={blurb} />
+        <Overlay name={name} blurb={blurb} first={first} />
       </div>
     </Link>
   )
