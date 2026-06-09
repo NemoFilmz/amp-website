@@ -20,7 +20,7 @@ function LaurelWreath() {
   return (
     <svg
       aria-hidden
-      className="absolute inset-0 h-full w-full fill-[#4ADE80]"
+      className="absolute inset-0 h-full w-full fill-amp"
       width="892.77"
       height="688.08"
       viewBox="0 0 892.77 688.08"

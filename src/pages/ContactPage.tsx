@@ -101,7 +101,7 @@ export function ContactPage() {
             <h1 className="font-display text-[clamp(2rem,4.5vw,3.4rem)] leading-[0.98] tracking-tighter text-primary">
               Get in <span className="text-amp">touch</span> with us
             </h1>
-            <p className="mt-6 max-w-md font-body leading-relaxed text-secondary">
+            <p className="mt-6 max-w-md font-body leading-relaxed text-primary">
               Have a project in mind, or a question about working with AMP? Send us a message and we will
               get back to you.
             </p>
@@ -118,7 +118,7 @@ export function ContactPage() {
                 >
                   <Diamond icon={icon} />
                   <div className="mt-4">
-                    <div className="font-body text-[11px] font-medium uppercase tracking-[0.16em] text-muted">
+                    <div className="font-body text-[11px] font-medium uppercase tracking-[0.16em] text-primary">
                       {label}
                     </div>
                     {lines.map((line, i) => (
@@ -127,7 +127,7 @@ export function ContactPage() {
                         className={
                           i === 0
                             ? 'mt-1.5 font-body text-sm text-primary transition-colors group-hover:text-amp'
-                            : 'font-body text-sm text-secondary'
+                            : 'font-body text-sm text-primary'
                         }
                       >
                         {line}
