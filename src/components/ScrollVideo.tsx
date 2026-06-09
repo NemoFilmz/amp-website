@@ -128,11 +128,7 @@ export function ScrollVideoPanel({ src, poster, name, blurb, to, first }: Scroll
   }, [scrub])
 
   const frame = (media: ReactNode) => (
-    <Link
-      to={to}
-      aria-label={`See our ${name} work`}
-      className={cn('group block', first && 'relative z-[1] -mt-[8vh]')}
-    >
+    <Link to={to} aria-label={`See our ${name} work`} className="group block">
       <div
         ref={boxRef}
         className="relative flex min-h-[58vh] items-start overflow-hidden md:min-h-[80vh]"
