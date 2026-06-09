@@ -64,7 +64,7 @@ export function Nav() {
             <Wordmark />
           </Link>
 
-          <nav className="hidden items-center gap-9 lg:flex">
+          <nav className="hidden items-center gap-9 md:flex">
             {NAV_LINKS.map((l) => {
               const active = isActive(l.to)
               return (
@@ -92,7 +92,7 @@ export function Nav() {
 
           <button
             ref={openBtnRef}
-            className="-mr-2 flex h-11 w-11 items-center justify-center text-primary lg:hidden"
+            className="-mr-2 flex h-11 w-11 items-center justify-center text-primary md:hidden"
             onClick={() => setOpen(true)}
             aria-label="Open menu"
             aria-expanded={open}
@@ -119,7 +119,7 @@ export function Nav() {
             role="dialog"
             aria-modal="true"
             aria-label="Site menu"
-            className="fixed inset-0 z-[60] flex flex-col bg-base lg:hidden"
+            className="fixed inset-0 z-[60] flex flex-col bg-base md:hidden"
           >
             <div className="flex h-[116px] items-center justify-between px-6">
               <Link to="/" onClick={() => setOpen(false)}>
