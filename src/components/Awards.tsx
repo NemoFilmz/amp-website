@@ -39,7 +39,7 @@ export function Award({ title, subtitle, tier, level = 'gold', className }: Awar
       <div className="relative z-10">
         <div
           className={cn(
-            'mb-2 inline-block rounded px-2.5 py-0.5 font-body text-[9px] font-semibold uppercase tracking-[0.14em] text-base',
+            'mb-2 inline-block rounded px-2 py-0.5 font-body text-[8px] font-semibold uppercase tracking-[0.08em] text-base',
             `bg-gradient-to-r ${levelColors[level]}`,
           )}
         >

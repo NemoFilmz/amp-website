@@ -37,10 +37,10 @@ export function AboutPage() {
         </Reveal>
 
         {/* Core idea — heads the narrative that explains how we work */}
-        {/* Two balanced columns: the idea + narrative on the left, capabilities on the right.
-            Both are anchored by a heading on the same top line so the sides read as a pair. */}
-        <div className="mt-16 grid gap-y-12 md:mt-20 md:grid-cols-12 md:gap-x-16">
-          <div className="md:col-span-7">
+        {/* Two balanced, equal columns: the idea + narrative on the left, capabilities on the
+            right. Equal widths keep the paragraph and the list close in height. */}
+        <div className="mt-16 grid gap-y-12 md:mt-20 md:grid-cols-2 md:items-center md:gap-x-16">
+          <div>
             <Reveal delay={0.05}>
               <h3 className="max-w-xl text-balance font-display text-[clamp(1.6rem,3.4vw,2.6rem)] leading-[1.05] tracking-tighter text-primary">
                 We make complicated things{' '}
@@ -58,7 +58,7 @@ export function AboutPage() {
             </div>
           </div>
 
-          <div className="md:col-span-5">
+          <div>
             <Reveal delay={0.12}>
               <div className="md:border-l md:border-line md:pl-10 lg:pl-12">
                 <h3 className="font-display text-2xl tracking-tighter text-primary md:text-3xl">
