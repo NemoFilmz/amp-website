@@ -45,7 +45,7 @@ export function Award({ title, subtitle, tier, level = 'gold', className }: Awar
         >
           {tier ?? level}
         </div>
-        <div className="font-display text-[2.4rem] leading-none tracking-tighter text-primary">{title}</div>
+        <div className="font-body text-[2.4rem] font-bold leading-none tracking-tight text-primary">{title}</div>
         {subtitle && (
           <>
             <div className="mx-auto my-2 h-px w-12 bg-amp"></div>
