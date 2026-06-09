@@ -179,7 +179,7 @@ export function WorkPage() {
                   {pillar.title}
                 </h3>
                 {pillar.body && (
-                  <p className="mt-3 font-body leading-relaxed text-primary/90">
+                  <p className="mt-3 font-body leading-relaxed text-primary">
                     {pillar.body}
                   </p>
                 )}

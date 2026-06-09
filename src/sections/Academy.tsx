@@ -51,7 +51,7 @@ export function Academy() {
           <div className="grid grid-cols-2 gap-3">
             {MOSAIC.map((m) => (
               <CinematicMedia key={m.label} src={m.src} alt={m.label} className="aspect-square rounded-lg">
-                <span className="eyebrow absolute bottom-3 left-3 z-10 text-primary/90">{m.label}</span>
+                <span className="eyebrow absolute bottom-3 left-3 z-10 text-primary">{m.label}</span>
               </CinematicMedia>
             ))}
           </div>

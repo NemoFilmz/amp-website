@@ -46,7 +46,7 @@ export function CoursePage() {
             <h1 className="mt-4 max-w-4xl font-display text-[clamp(2.5rem,6.5vw,6rem)] leading-[1.02] tracking-tighter text-primary">
               {course.name}
             </h1>
-            <p className="mt-6 max-w-2xl font-light text-xl leading-snug text-primary/90 md:text-2xl">
+            <p className="mt-6 max-w-2xl font-light text-xl leading-snug text-primary md:text-2xl">
               {course.tagline}
             </p>
             <div className="mt-9">
@@ -64,7 +64,7 @@ export function CoursePage() {
           <Reveal>
             <div className="space-y-6">
               {course.story.map((para) => (
-                <p key={para} className="max-w-prose font-body text-lg leading-relaxed text-primary/90">
+                <p key={para} className="max-w-prose font-body text-lg leading-relaxed text-primary">
                   {para}
                 </p>
               ))}
@@ -171,7 +171,7 @@ export function CoursePage() {
               className="flex flex-col rounded-2xl border border-line bg-surface p-8 transition-all duration-300 ease-out hover:-translate-y-0.5 hover:border-line-strong"
             >
               <Quote size={26} className="text-amp" aria-hidden />
-              <p className="mt-4 flex-1 font-body text-lg leading-relaxed text-primary/90">{t.quote}</p>
+              <p className="mt-4 flex-1 font-body text-lg leading-relaxed text-primary">{t.quote}</p>
               <p className="mt-6 font-body text-sm uppercase tracking-label text-muted">
                 {t.name} · {t.role}
               </p>
@@ -187,7 +187,7 @@ export function CoursePage() {
             {instructor.name}
           </h2>
           <p className="mt-2 font-body text-sm uppercase tracking-label text-amp">{instructor.role}</p>
-          <p className="mt-6 max-w-2xl font-body text-lg leading-relaxed text-primary/90">{instructor.bio}</p>
+          <p className="mt-6 max-w-2xl font-body text-lg leading-relaxed text-primary">{instructor.bio}</p>
         </Reveal>
       </Section>
 

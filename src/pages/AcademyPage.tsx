@@ -196,7 +196,7 @@ export function AcademyPage() {
                 {ADVANTAGES.map(({ title, text }) => (
                   <RevealItem key={title}>
                     <h3 className="font-display text-xl tracking-tighter text-primary md:text-2xl">{title}</h3>
-                    <p className="mt-3 font-body leading-relaxed text-primary/90">{text}</p>
+                    <p className="mt-3 font-body leading-relaxed text-primary">{text}</p>
                   </RevealItem>
                 ))}
               </RevealGroup>
@@ -258,7 +258,7 @@ export function AcademyPage() {
               <h2 className="font-display text-[clamp(2rem,4vw,3.4rem)] leading-[1.0] tracking-tighter text-primary">
                 What these skills can do <span className="text-amp">for you</span>
               </h2>
-              <p className="mt-6 max-w-md font-body text-lg leading-relaxed text-primary/90">
+              <p className="mt-6 max-w-md font-body text-lg leading-relaxed text-primary">
                 The same craft <span className="text-amp">AMP</span> brings to real productions, applied to
                 fields few in the market can touch: AI and neural systems, aerospace, precision engineering.
                 You leave able to turn the most complex subject into work that is accurate and cinematic.
@@ -266,17 +266,17 @@ export function AcademyPage() {
               <ul className="mt-9 space-y-4">
                 <li className="flex items-start gap-3.5">
                   <span aria-hidden className="mt-2.5 h-1.5 w-1.5 shrink-0 rounded-full bg-amp" />
-                  <span className="font-body text-lg text-primary/90">Skills that command premium rates</span>
+                  <span className="font-body text-lg text-primary">Skills that command premium rates</span>
                 </li>
                 <li className="flex items-start gap-3.5">
                   <span aria-hidden className="mt-2.5 h-1.5 w-1.5 shrink-0 rounded-full bg-amp" />
-                  <span className="font-body text-lg text-primary/90">
+                  <span className="font-body text-lg text-primary">
                     The kind of work that puts you in senior industry roles
                   </span>
                 </li>
                 <li className="flex items-start gap-3.5">
                   <span aria-hidden className="mt-2.5 h-1.5 w-1.5 shrink-0 rounded-full bg-amp" />
-                  <span className="font-body text-lg text-primary/90">
+                  <span className="font-body text-lg text-primary">
                     A capability almost no one else in the market has
                   </span>
                 </li>

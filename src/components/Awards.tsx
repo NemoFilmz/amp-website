@@ -49,7 +49,7 @@ export function Award({ title, subtitle, tier, level = 'gold', className }: Awar
         {subtitle && (
           <>
             <div className="mx-auto my-2 h-px w-12 bg-amp"></div>
-            <p className="mx-auto max-w-[7.5rem] font-body text-[12px] font-light leading-tight text-primary/90">
+            <p className="mx-auto max-w-[7.5rem] font-body text-[12px] font-light leading-tight text-primary">
               {subtitle}
             </p>
           </>

@@ -50,7 +50,7 @@ export function AboutPage() {
             <div className="mt-7 space-y-6">
               {ABOUT_STORY.paragraphs.map((paragraph, i) => (
                 <Reveal key={paragraph} delay={0.1 + i * 0.04}>
-                  <p className="max-w-prose font-body text-lg leading-relaxed text-primary/90">
+                  <p className="max-w-prose font-body text-lg leading-relaxed text-primary">
                     {paragraph}
                   </p>
                 </Reveal>
@@ -68,7 +68,7 @@ export function AboutPage() {
                   {ABOUT_STORY.bring.map((item) => (
                     <li key={item} className="flex items-start gap-3.5">
                       <CircleDot size={16} className="mt-1.5 shrink-0 text-amp" aria-hidden />
-                      <span className="font-body text-lg leading-relaxed text-primary/90">{item}</span>
+                      <span className="font-body text-lg leading-relaxed text-primary">{item}</span>
                     </li>
                   ))}
                 </ul>
@@ -87,7 +87,7 @@ export function AboutPage() {
             <h2 className="font-display text-[clamp(2rem,4.5vw,3.6rem)] leading-[0.98] tracking-tighter text-primary">
               Awards &amp; recognition
             </h2>
-            <p className="mt-6 max-w-md font-body text-lg leading-relaxed text-primary/90">
+            <p className="mt-6 max-w-md font-body text-lg leading-relaxed text-primary">
               Our work has been recognised among the best in the world, judged on craft,
               originality, and impact.
             </p>

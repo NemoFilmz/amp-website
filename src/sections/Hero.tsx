@@ -142,7 +142,7 @@ export function Hero() {
 
           {motionItem(
             'mt-10',
-            <p className="max-w-3xl font-body text-[clamp(1.2rem,2.3vw,1.9rem)] font-light leading-snug text-primary/90">
+            <p className="max-w-3xl font-body text-[clamp(1.2rem,2.3vw,1.9rem)] font-light leading-snug text-primary">
               {HERO.subheadline}
             </p>,
           )}
